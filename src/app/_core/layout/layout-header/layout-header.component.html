@@ -1,10 +1,8 @@
-<div class="wrapper">
-  <h1 class="tui-text_h3 title">Decentr</h1>
-  <tui-tabs class="tabs">
-    <ng-container *ngFor="let page of pages">
-      <a tuiTab [routerLink]="page.pageUrl" routerLinkActive>
-        {{ page.pageName }}
-      </a>
-    </ng-container>
-  </tui-tabs>
-</div>
+<h1 class="tui-text_h3">Chronos</h1>
+<tui-tabs class="tabs">
+  <ng-container *ngFor="let page of pages">
+    <a tuiTab [routerLink]="page.pageUrl" routerLinkActive>
+      {{ page.pageName }}
+    </a>
+  </ng-container>
+</tui-tabs>

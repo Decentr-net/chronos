@@ -1,20 +1,10 @@
-.wrapper {
+:host {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 40px ;
 }
 
-.content {
-  padding: 32px;
-}
-
-.title {
-  min-width: 250px;
-  margin: 0;
-}
-
 .tabs {
-  width: calc(100% - 250px);
-  justify-content: flex-end;
   box-shadow: none;
 }
