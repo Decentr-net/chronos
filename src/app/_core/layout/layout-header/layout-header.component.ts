@@ -2,6 +2,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TUI_IS_ANDROID, TUI_IS_IOS } from '@taiga-ui/cdk';
 
 import { AppRoute } from '../../../app-route';
+import { SvgIconRegistry } from '@ngneat/svg-icon';
+import { svgLogoIcon } from '../../../svg-icons/logo';
+import { svgLogoIconIcon } from '../../../svg-icons/logo-icon';
 
 export interface PageModel {
   pageName: string,
@@ -44,4 +47,13 @@ export class LayoutHeaderComponent {
       pageUrl: AppRoute.Transactions,
     }
   ];
+
+  constructor(
+    private svgIconRegistry: SvgIconRegistry,
+  ) {
+    svgIconRegistry.register([
+      svgLogoIcon,
+      svgLogoIconIcon,
+    ]);
+  }
 }

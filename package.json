@@ -53,8 +53,8 @@
     "@ngneat/svg-generator": "^2.0.0"
   },
   "svgGenerator": {
-    "outputPath": "./src/app/svg",
-    "prefix": "app",
+    "outputPath": "./src/app/svg-icons",
+    "prefix": "svg",
     "srcPath": "./src/assets/svg",
     "svgoConfig": {
       "plugins": [
