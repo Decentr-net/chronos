@@ -27,7 +27,6 @@
     "@taiga-ui/icons": "^2.6.1",
     "@taiga-ui/kit": "^2.6.1",
     "rxjs": "~6.5.4",
-    "svg-to-ts": "^5.7.1",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },

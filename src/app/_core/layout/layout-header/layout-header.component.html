@@ -1,8 +1,12 @@
 <h1 class="tui-text_h3">Chronos</h1>
+
 <tui-tabs class="tabs">
-  <ng-container *ngFor="let page of pages">
-    <a tuiTab [routerLink]="page.pageUrl" routerLinkActive>
-      {{ page.pageName }}
-    </a>
-  </ng-container>
+  <a
+    *ngFor="let page of pages"
+    tuiTab
+    [routerLink]="page.pageUrl"
+    routerLinkActive
+  >
+    {{ page.pageName }}
+  </a>
 </tui-tabs>

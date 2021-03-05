@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TUI_IS_ANDROID, TUI_IS_IOS } from '@taiga-ui/cdk';
+
 import { AppRoute } from '../../../app-route';
 
 export interface PageModel {

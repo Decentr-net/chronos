@@ -1,24 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './dashboard.component';
-import { CurrencyModule } from './services/currency';
 import { TuiAxesModule, TuiLineChartModule } from '@taiga-ui/addon-charts';
-import { CurrencyComponent } from './components/currency';
+
+import { DASHBOARD_COMPONENTS } from './components';
+import { DASHBOARD_PAGES } from './pages';
+import { DashboardRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    CurrencyModule.forRoot({ api: 'https://api.coingecko.com/api/v3' }),
-    TuiLineChartModule,
     TuiAxesModule,
+    TuiLineChartModule,
   ],
   declarations: [
-    DashboardComponent,
-    CurrencyComponent,
+    DASHBOARD_COMPONENTS,
+    DASHBOARD_PAGES,
   ],
-  providers: []
 })
 export class DashboardModule {
 }

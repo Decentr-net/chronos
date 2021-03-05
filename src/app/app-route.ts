@@ -1,6 +1,6 @@
 export enum AppRoute {
+  Blocks = 'blocks',
   Dashboard = 'dashboard',
   Transactions = 'transactions',
-  Blocks = 'blocks',
   Validators = 'validators',
 }

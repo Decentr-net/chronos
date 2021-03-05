@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
 import { LayoutHeaderModule } from '../layout-header';
 import { MainLayoutComponent } from './main-layout.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
