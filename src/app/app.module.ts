@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { TuiRootModule } from '@taiga-ui/core';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TuiRootModule } from '@taiga-ui/core';
     SvgIconsModule.forRoot({
       icons: [],
     }),
+    HttpClientModule,
   ],
   providers: [
   ],

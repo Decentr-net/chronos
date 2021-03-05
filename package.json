@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~10.2.4",
     "@angular/router": "~10.2.4",
     "@ngneat/svg-icon": "^3.1.0",
+    "@taiga-ui/addon-charts": "^2.6.2",
     "@taiga-ui/cdk": "^2.6.1",
     "@taiga-ui/core": "^2.6.1",
     "@taiga-ui/icons": "^2.6.1",
