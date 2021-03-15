@@ -15,6 +15,8 @@ export class CurrencyChartComponent implements OnInit {
 
   @Input() stats;
 
+  chartOptions: Highcharts.Options;
+
   constructor(
     private injector: Injector,
     private compiler: Compiler,
@@ -30,12 +32,6 @@ export class CurrencyChartComponent implements OnInit {
     (this.injector, this.compiler).createComponent(TooltipModule, TooltipComponent);
 
     return {
-      credits: {
-        enabled: false,
-      },
-      chart: {
-        type: 'line',
-      },
       tooltip: {
         useHTML: true,
         backgroundColor: 'transparent',
@@ -51,12 +47,62 @@ export class CurrencyChartComponent implements OnInit {
           return component.location.nativeElement.outerHTML;
         },
       },
-      series: [
-        {
-          type: 'line',
-          data: this.stats
+      legend: {
+        enabled: false,
+      },
+      xAxis: {
+        labels: {
+          enabled: false,
+        },
+      },
+      yAxis: {
+        visible: true,
+        opposite: true,
+        endOnTick: true,
+        gridLineColor: '#eeeeee',
+        labels: {
+          enabled: false,
+        },
+        title: {
+          text: '',
+        },
+        tickAmount: 5,
+        tickPosition: 'inside',
+      },
+      title: {
+        text: '',
+      },
+      plotOptions: {
+        area: {
+          fillColor: {
+            linearGradient: {
+              x1: 0,
+              y1: 0,
+              x2: 0,
+              y2: 1
+            },
+            stops: [
+              [0, 'rgba(0, 98, 255, 0.7)'],
+              [1, 'rgba(0, 98, 255, 0)']
+            ]
+          },
+          marker: {
+            radius: 2
+          },
+          lineWidth: 1,
+          states: {
+            hover: {
+              lineWidth: 1
+            }
+          },
+          threshold: null
         }
-      ]
+      },
+      series: [{
+        color: '#2B5DE0',
+        data: this.stats,
+        type: 'area',
+      }]
     };
   }
 }
