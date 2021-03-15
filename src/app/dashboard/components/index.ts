@@ -1,7 +1,7 @@
-import { CurrencyComponent } from './currency';
+import { CurrencyChartComponent } from './currency-chart';
 
-export * from './currency';
+export * from './currency-chart';
 
 export const DASHBOARD_COMPONENTS = [
-  CurrencyComponent,
+  CurrencyChartComponent,
 ];

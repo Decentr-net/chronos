@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TuiAxesModule, TuiLineChartModule } from '@taiga-ui/addon-charts';
 
 import { DASHBOARD_COMPONENTS } from './components';
 import { DASHBOARD_PAGES } from './pages';
 import { DashboardRoutingModule } from './dashboard-routing.module';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { TuiIslandModule } from '@taiga-ui/kit';
+import { NumberSuffixModule } from '@shared/pipes/number-suffix';
+import { DateAgoModule } from '@shared/pipes/date-ago';
+
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    TuiAxesModule,
-    TuiLineChartModule,
+    HighchartsChartModule,
+    TuiIslandModule,
+    NumberSuffixModule,
+    DateAgoModule,
   ],
   declarations: [
     DASHBOARD_COMPONENTS,

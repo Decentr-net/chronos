@@ -7,8 +7,8 @@ import { svgLogoIcon } from '../../../svg-icons/logo';
 import { svgLogoIconIcon } from '../../../svg-icons/logo-icon';
 
 export interface PageModel {
-  pageName: string,
-  pageUrl: AppRoute,
+  pageName: string;
+  pageUrl: AppRoute;
 }
 
 @Component({

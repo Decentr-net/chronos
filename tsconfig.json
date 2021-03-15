@@ -12,7 +12,8 @@
     "importHelpers": true,
     "target": "es2015",
     "paths": {
-      "@core/*": ["src/app/_core/*"]
+      "@core/*": ["src/app/_core/*"],
+      "@shared/*": ["src/app/_shared/*"]
     },
     "lib": [
       "es2018",

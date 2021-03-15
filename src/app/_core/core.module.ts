@@ -5,12 +5,14 @@ import { SvgIconsModule } from '@ngneat/svg-icon';
 import { CurrencyModule } from '@core/services/currency';
 import { environment } from '../../environments/environment';
 import { Environment } from '../../environments/environments.definitions';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
     CurrencyModule,
     SvgIconsModule.forRoot(),
+    HttpClientModule,
   ],
   providers: [
     {

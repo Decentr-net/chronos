@@ -1,1 +1,25 @@
-<app-currency [stats]="value"></app-currency>
+<app-currency-chart
+  *ngIf="stats"
+  [stats]="stats">
+</app-currency-chart>
+<app-info-card>
+  <ng-container ngProjectAs="card-title">
+    <h3 class="tui-island__title">Bonded Tokens</h3>
+  </ng-container>
+
+  <ng-container ngProjectAs="card-body">
+    <p class="tui-text_body-xl">{{ bondedTokens?.not_bonded_tokens / bondedTokens?.bonded_tokens | percent }}</p>
+    <p class="tui-island__paragraph">{{ bondedTokens?.not_bonded_tokens | numberSuffix }}
+      / {{ bondedTokens?.bonded_tokens | numberSuffix}}</p>
+  </ng-container>
+</app-info-card>
+<app-info-card>
+  <ng-container ngProjectAs="card-title">
+    <h3 class="tui-island__title">Height</h3>
+  </ng-container>
+
+  <ng-container ngProjectAs="card-body">
+    <p class="tui-text_body-xl">{{ latestBlock?.height }}</p>
+    <p class="tui-island__paragraph">{{ latestBlock?.time | dateAgo}}</p>
+  </ng-container>
+</app-info-card>
