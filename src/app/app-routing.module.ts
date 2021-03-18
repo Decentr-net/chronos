@@ -18,6 +18,10 @@ const ROUTES: Routes = [
         path: AppRoute.Dashboard,
         loadChildren: () => import('./dashboard').then(m => m.DashboardModule),
       },
+      {
+        path: AppRoute.Validators,
+        loadChildren: () => import('./validators').then(m => m.ValidatorsModule),
+      }
     ],
   },
 ];
