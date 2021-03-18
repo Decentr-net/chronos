@@ -1,8 +1,13 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CurrencyService } from '@core/services/currency';
 import { DecentrService } from '@core/services/decentr';
-import { BlockHeader, Pool } from 'decentr-js';
+import { Block, BlockHeader, Pool, Transaction } from 'decentr-js';
+import { AppRoute } from '../../../app-route';
+import { Observable, timer } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Component({
   selector: 'app-dashboard-page',
   templateUrl: './dashboard-page.component.html',
@@ -11,32 +16,46 @@ import { BlockHeader, Pool } from 'decentr-js';
 })
 export class DashboardPageComponent implements OnInit {
 
-  stats: any;
-
-  bondedTokens: Pool;
-  latestBlock: Pick<BlockHeader, 'height' | 'time'>;
-
   constructor(
     private currencyService: CurrencyService,
     private decentrService: DecentrService,
-    private changeDetectorRef: ChangeDetectorRef,
   ) {
   }
 
+  AppRoute = AppRoute;
+  stats$: Observable<any>;
+  pool$: Observable<Pool>;
+  latestBlock$: Observable<Pick<BlockHeader, 'height' | 'time'>>;
+  transactions$: Observable<Transaction[]>;
+  blocks$: Observable<Block[]>;
+
   ngOnInit(): void {
-    this.currencyService.getDecentCoinRateHistory(1).subscribe(res => {
-      this.stats = res;
-      this.changeDetectorRef.detectChanges();
-    });
+    this.stats$ = this.currencyService.getDecentCoinRateHistory(1);
 
-    this.decentrService.getPool().subscribe(res => {
-      this.bondedTokens = res;
-      this.changeDetectorRef.detectChanges();
-    });
+    this.pool$ = this.decentrService.getPool();
 
-    this.decentrService.getLatestBlock().subscribe(latestBlock => {
-      this.latestBlock = latestBlock;
-      this.changeDetectorRef.detectChanges();
-    });
+    this.blocks$ = this.decentrService.getLatestBlock().pipe(
+      switchMap(blockResponse => this.decentrService.getBlocks(blockResponse.height, 5)
+        .pipe(
+          map(block => block.sort(this.sortByHeight))
+        )
+      )
+    );
+
+    this.latestBlock$ = timer(0, 3000).pipe(
+      switchMap(() => this.decentrService.getLatestBlock()),
+    );
+
+    this.transactions$ = this.decentrService.getTxs({ txMinHeight: 0, limit: 1 }).pipe(
+      switchMap(txsResponse => this.decentrService.getLatestTxs(5, txsResponse.page_total)
+        .pipe(
+          map(tx => tx.sort(this.sortByHeight)),
+        )
+      )
+    );
+  }
+
+  sortByHeight(a, b): any {
+    return a.height < b.height ? 1 : -1;
   }
 }

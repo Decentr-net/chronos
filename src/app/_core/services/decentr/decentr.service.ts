@@ -1,7 +1,17 @@
 import { Injectable } from '@angular/core';
 import { DecentrApiService } from '@core/services/decentr/api';
 import { defer, Observable } from 'rxjs';
-import { BlockHeader, Pool } from 'decentr-js';
+import {
+  Block,
+  BlockBody,
+  BlockHeader,
+  Pool,
+  Transaction,
+  TXsSearchParams,
+  TXsSearchResponse,
+  Validator,
+  ValidatorsFilterParams
+} from 'decentr-js';
 import { map, pluck } from 'rxjs/operators';
 
 @Injectable({
@@ -14,6 +24,18 @@ export class DecentrService {
   ) {
   }
 
+  getBlocks(currentHeight: BlockHeader['height'], count: number): Observable<Block[]> {
+    return defer(() => this.decentrApiService.getBlocks(currentHeight, count)).pipe(
+      map(blocksResponse => blocksResponse)
+    );
+  }
+
+  getBlockByHeight(height: BlockHeader['height']): Observable<BlockBody> {
+    return defer(() => this.decentrApiService.getBlockByHeight(height)).pipe(
+      map(blockResponse => blockResponse.block)
+    );
+  }
+
   getPool(): Observable<Pool> {
     return defer(() => this.decentrApiService.getPool());
   }
@@ -23,5 +45,27 @@ export class DecentrService {
       pluck('block', 'header'),
       map(({ height, time }) => ({ height, time })),
     );
+  }
+
+  getLatestTxs(count: number, lastPage: TXsSearchParams['page']): Observable<Transaction[]> {
+    return defer(() => this.decentrApiService.getLatestTxs(count, lastPage)).pipe(
+      map(txResponse => txResponse.map(tx => tx.txs[0]))
+    );
+  }
+
+  getTxByHash(hash: Transaction['txhash']): Observable<Transaction> {
+    return defer(() => this.decentrApiService.getTxByHash(hash));
+  }
+
+  getTxs(searchParams: TXsSearchParams): Observable<TXsSearchResponse> {
+    return defer(() => this.decentrApiService.getTxs(searchParams));
+  }
+
+  getValidators(filter?: ValidatorsFilterParams): Observable<Validator[]> {
+    return defer(() => this.decentrApiService.getValidators(filter));
+  }
+
+  getValidatorByAddress(address): Observable<Validator> {
+    return defer(() => this.decentrApiService.getValidatorByAddress(address));
   }
 }

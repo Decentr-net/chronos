@@ -8,6 +8,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { TuiIslandModule } from '@taiga-ui/kit';
 import { NumberSuffixModule } from '@shared/pipes/number-suffix';
 import { DateAgoModule } from '@shared/pipes/date-ago';
+import { TransactionsTableModule } from '@shared/components/transactions-table';
+import { TuiButtonModule, TuiModeModule } from '@taiga-ui/core';
+import { BlocksTableModule } from '@shared/components/blocks-table/blocks-table.module';
 
 
 @NgModule({
@@ -18,6 +21,10 @@ import { DateAgoModule } from '@shared/pipes/date-ago';
     TuiIslandModule,
     NumberSuffixModule,
     DateAgoModule,
+    TransactionsTableModule,
+    TuiButtonModule,
+    TuiModeModule,
+    BlocksTableModule,
   ],
   declarations: [
     DASHBOARD_COMPONENTS,

@@ -1,0 +1,22 @@
+<table tuiTable class="table" [columns]="columns">
+  <thead>
+  <tr tuiThGroup>
+    <th *ngFor="let column of columns" tuiTh [resizable]="true">{{ column }}</th>
+  </tr>
+  </thead>
+  <tbody tuiTbody [data]="data">
+  <tr *tuiRow="let item of data" tuiTr>
+    <td *tuiCell="'Height'" tuiTd>
+      {{ item.block.header.height }}
+    </td>
+
+    <td *tuiCell="'Block Hash'" tuiTd>
+      <a tuiLink [routerLink]="getBlockDetailsLink(item.block_id.hash)">{{ item.block_id.hash }}</a>
+    </td>
+
+    <td *tuiCell="'Time'" tuiTd>
+      {{item.block.header.time | dateAgo}}
+    </td>
+  </tr>
+  </tbody>
+</table>

@@ -3,3 +3,9 @@
   flex-direction: column;
   padding: 20px 40px;
 }
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
