@@ -1,5 +1,5 @@
 import { DashboardPageComponent } from './dashboard-page';
-import { InfoCardComponent } from '../components/info-card';
+import { InfoCardComponent } from '@shared/components/info-card';
 
 export * from './dashboard-page/';
 
