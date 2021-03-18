@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ValidatorsRoutingModule } from './validators-routing.module';
 import { VALIDATORS_PAGES } from './pages';
 import { VALIDATORS_COMPONENTS } from './components';
+import { InfoCardModule } from '@shared/components/info-card';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    ValidatorsRoutingModule
+    ValidatorsRoutingModule,
+    InfoCardModule,
   ],
   declarations: [
     VALIDATORS_PAGES,

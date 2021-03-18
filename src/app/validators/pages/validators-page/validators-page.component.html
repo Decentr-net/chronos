@@ -1,1 +1,12 @@
-<p>validators-page works!</p>
+<app-info-card>
+  <ng-container ngProjectAs="card-title">
+    <div class="card-title">
+      <h3 class="tui-island__title">Validators</h3>
+    </div>
+  </ng-container>
+
+  <ng-container ngProjectAs="card-body">
+    <app-validators-table>
+    </app-validators-table>
+  </ng-container>
+</app-info-card>
