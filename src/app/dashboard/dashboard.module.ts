@@ -11,6 +11,7 @@ import { TransactionsTableModule } from '@shared/components/transactions-table';
 import { TuiButtonModule, TuiModeModule } from '@taiga-ui/core';
 import { BlocksTableModule } from '@shared/components/blocks-table/blocks-table.module';
 import { InfoCardModule } from '@shared/components/info-card';
+import { TypefaceModule } from '@shared/directives/typeface';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { InfoCardModule } from '@shared/components/info-card';
     TuiModeModule,
     BlocksTableModule,
     InfoCardModule,
+    TypefaceModule,
   ],
   declarations: [
     DASHBOARD_COMPONENTS,
