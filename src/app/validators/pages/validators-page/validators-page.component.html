@@ -6,7 +6,8 @@
   </ng-container>
 
   <ng-container ngProjectAs="card-body">
-    <app-validators-table>
+    <app-validators-table
+    [data]="validators$ | async">
     </app-validators-table>
   </ng-container>
 </app-info-card>

@@ -5,6 +5,8 @@ import { ValidatorsRoutingModule } from './validators-routing.module';
 import { VALIDATORS_PAGES } from './pages';
 import { VALIDATORS_COMPONENTS } from './components';
 import { InfoCardModule } from '@shared/components/info-card';
+import { TuiTableModule } from '@taiga-ui/addon-table';
+import { TuiLinkModule } from '@taiga-ui/core';
 
 
 @NgModule({
@@ -12,6 +14,8 @@ import { InfoCardModule } from '@shared/components/info-card';
     CommonModule,
     ValidatorsRoutingModule,
     InfoCardModule,
+    TuiTableModule,
+    TuiLinkModule,
   ],
   declarations: [
     VALIDATORS_PAGES,

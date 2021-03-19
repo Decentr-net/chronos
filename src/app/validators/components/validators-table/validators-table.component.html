@@ -1,1 +1,22 @@
-<p>validators-table works!</p>
+<table tuiTable class="table" [columns]="columns">
+  <thead>
+  <tr tuiThGroup>
+    <th *ngFor="let column of columns" tuiTh [resizable]="true">{{ column }}</th>
+  </tr>
+  </thead>
+  <tbody tuiTbody [data]="data">
+  <tr *tuiRow="let item of data" tuiTr>
+    <td *tuiCell="'Validator'" tuiTd>
+      <a tuiLink>{{ item.description.moniker }}</a>
+    </td>
+
+    <td *tuiCell="'Status'" tuiTd>
+      {{ item.status }}
+    </td>
+
+    <td *tuiCell="'Commission'" tuiTd>
+      {{ item.commission.commission_rates.rate | percent }}
+    </td>
+  </tr>
+  </tbody>
+</table>
