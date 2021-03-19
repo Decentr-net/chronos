@@ -1,15 +1,11 @@
-<svg-icon
-  class="header__logo"
-  key="logo"
-></svg-icon>
+<div class="header__container">
+  <div class="header__logo-and-navigation">
+    <svg-icon
+      class="header__logo"
+      key="logo"
+      [routerLink]="['/']"
+    ></svg-icon>
 
-<tui-tabs class="tabs">
-  <a
-    *ngFor="let page of pages"
-    tuiTab
-    [routerLink]="page.pageUrl"
-    routerLinkActive
-  >
-    {{ page.pageName }}
-  </a>
-</tui-tabs>
+    <app-header-navigation class="header__navigation"></app-header-navigation>
+  </div>
+</div>

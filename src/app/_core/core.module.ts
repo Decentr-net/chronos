@@ -1,11 +1,11 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { CurrencyModule } from '@core/services/currency';
 import { environment } from '../../environments/environment';
 import { Environment } from '../../environments/environments.definitions';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [

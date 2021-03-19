@@ -1,0 +1,6 @@
+<app-header-navigation-link
+  class="header-navigation__link"
+  *ngFor="let page of pages; trackBy: trackByLink"
+  [link]="page.url"
+  [title]="page.name"
+></app-header-navigation-link>
