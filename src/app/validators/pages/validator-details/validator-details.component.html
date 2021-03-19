@@ -1,0 +1,29 @@
+<app-info-card *ngIf="validatorDetails$ | async as validatorDetails">
+  <ng-container ngProjectAs="card-title">
+    <div class="card-title">
+      <h5 class="tui-text_h5">Validator details</h5>
+      <p class="tui-text_h2">{{ validatorDetails.description.moniker }}</p>
+      <p class="tui-island__title">{{ validatorDetails.operator_address }}</p>
+      <p class="tui-text_body-l">Operator address</p>
+    </div>
+  </ng-container>
+
+  <ng-container ngProjectAs="card-body">
+    <div>
+      <p class="tui-text_h5">{{ validatorDetails.status }}</p>
+      <p>Status</p>
+    </div>
+    <div>
+      <a class="tui-text_h5" tuiLink target="_blank" href="{{ validatorDetails.description.website }}">{{ validatorDetails.description.website || 'No website' }}</a>
+      <p>Website</p>
+    </div>
+    <div>
+      <p class="tui-text_h5">{{ validatorDetails.commission.commission_rates.rate | percent }}</p>
+      <p>Commission</p>
+    </div>
+    <div>
+      <p class="tui-text_h5">{{ validatorDetails.description.details || 'No details' }}</p>
+      <p>Details</p>
+    </div>
+  </ng-container>
+</app-info-card>

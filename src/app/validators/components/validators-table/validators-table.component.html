@@ -7,7 +7,9 @@
   <tbody tuiTbody [data]="data">
   <tr *tuiRow="let item of data" tuiTr>
     <td *tuiCell="'Validator'" tuiTd>
-      <a tuiLink>{{ item.description.moniker }}</a>
+      <a tuiLink [routerLink]="getValidatorDetailsLink(item.operator_address)">
+        {{ item.description.moniker }}
+      </a>
     </td>
 
     <td *tuiCell="'Status'" tuiTd>
