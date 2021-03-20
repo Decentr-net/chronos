@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Block } from 'decentr-js';
+
 import { AppRoute } from '../../../app-route';
 
 @Component({
@@ -10,9 +11,9 @@ import { AppRoute } from '../../../app-route';
 })
 export class BlocksTableComponent {
   @Input() data: Block[] = [];
-  columns: string[] = ['Height', 'Block Hash', 'Time'];
+  public columns: string[] = ['Height', 'Block Hash', 'Time'];
 
-  getBlockDetailsLink(blockHash: string): string[] {
-    return [`/${AppRoute.Blocks}`, blockHash];
+  getBlockDetailsLink(blockHeight: string): string[] {
+    return [`/${AppRoute.Blocks}`, blockHeight];
   }
 }

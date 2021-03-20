@@ -2,24 +2,28 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TuiTableModule } from '@taiga-ui/addon-table';
 import { TuiButtonModule, TuiLinkModule } from '@taiga-ui/core';
-import { DateAgoModule } from '@shared/pipes/date-ago';
-import { BlocksTableComponent } from '@shared/components/blocks-table/blocks-table.component';
 import { RouterModule } from '@angular/router';
+
+import { BlocksTableComponent } from '@shared/components/blocks-table/blocks-table.component';
+import { DateAgoModule } from '@shared/pipes/date-ago';
+import { TruncateModule } from '@shared/pipes/truncate';
 
 @NgModule({
   imports: [
-    TuiTableModule,
-    TuiButtonModule,
     CommonModule,
     DateAgoModule,
-    TuiLinkModule,
     RouterModule,
+    TuiButtonModule,
+    TuiLinkModule,
+    TuiTableModule,
+    TruncateModule,
   ],
   declarations: [
     BlocksTableComponent,
   ],
   exports: [
-    BlocksTableComponent
+    BlocksTableComponent,
   ],
 })
-export class BlocksTableModule { }
+export class BlocksTableModule {
+}

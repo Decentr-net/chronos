@@ -1,72 +1,110 @@
-<app-currency-chart
-  *ngIf="stats$ | async as stats"
-  [stats]="stats">
-</app-currency-chart>
-<app-info-card>
-  <ng-container ngProjectAs="card-title">
-    <h3 class="tui-island__title">Bonded Tokens</h3>
-  </ng-container>
+<div class="dashboard__statistics">
+  <app-currency-chart
+    class="dashboard__statistics-chart"
+    *ngIf="stats$ | async as stats"
+    [stats]="stats"
+  >
+  </app-currency-chart>
 
-  <ng-container
-    *ngIf="pool$ | async as pool"
-    ngProjectAs="card-body">
-    <p class="tui-text_body-xl">{{ pool.not_bonded_tokens / pool.bonded_tokens | percent:'1.2-5' }}</p>
-    <p class="tui-island__paragraph">
-      {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
-    </p>
-  </ng-container>
-</app-info-card>
-<app-info-card>
-  <ng-container ngProjectAs="card-title">
-    <h3 class="tui-island__title">Height</h3>
-  </ng-container>
+  <div class="dashboard__statistics-bonded">
+    <app-info-card>
+      <ng-container ngProjectAs="card-title">
+        <div appTypeface="subheader">
+          Bonded Tokens
+        </div>
+      </ng-container>
 
-  <ng-container
-    *ngIf="latestBlock$ | async as latestBlock"
-    ngProjectAs="card-body">
-    <p class="tui-text_body-xl">{{ latestBlock.height }}</p>
-    <p class="tui-island__paragraph">{{ latestBlock.time | dateAgo}}</p>
-  </ng-container>
-</app-info-card>
+      <ng-container
+        *ngIf="pool$ | async as pool"
+        ngProjectAs="card-body"
+      >
+        <div class="dashboard__statistics-tokens">
+          <div
+            appTypeface="header-3"
+            class="dashboard__statistics-tokens-value"
+          >
+            {{ pool.not_bonded_tokens / pool.bonded_tokens | percent:'1.2-5' }}
+          </div>
 
-<app-info-card>
-  <ng-container ngProjectAs="card-title">
-    <div class="card-title">
-      <h3 class="tui-island__title">Transactions</h3>
-      <a tuiButton
-         type="button"
-         size="m"
-         class="tui-space_right-3 tui-space_bottom-3"
-         [routerLink]="AppRoute.Transactions">
-        Show more
-      </a>
-    </div>
-  </ng-container>
+          <div appTypeface="paragraph">
+            {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
+          </div>
+        </div>
+      </ng-container>
+    </app-info-card>
 
-  <ng-container ngProjectAs="card-body">
-    <app-transactions-table
-      [data]="transactions$ | async">
-    </app-transactions-table>
-  </ng-container>
-</app-info-card>
+    <app-info-card>
+      <ng-container ngProjectAs="card-title">
+        <div appTypeface="subheader">
+          Height
+        </div>
+      </ng-container>
 
-<app-info-card>
-  <ng-container ngProjectAs="card-title">
-    <div class="card-title">
-      <h3 class="tui-island__title">Blocks</h3>
-      <a tuiButton
-         type="button"
-         size="m"
-         class="tui-space_right-3 tui-space_bottom-3"
-         [routerLink]="AppRoute.Blocks">
-        Show more
-      </a>
-    </div>
-  </ng-container>
+      <ng-container
+        *ngIf="latestBlock$ | async as latestBlock"
+        ngProjectAs="card-body"
+      >
+        <div class="dashboard__statistics-height">
+          <div
+            appTypeface="header-3"
+            class="dashboard__statistics-height-value"
+          >
+            {{ +latestBlock.height | tuiFormatNumber }}
+          </div>
 
-  <ng-container ngProjectAs="card-body">
-    <app-blocks-table
-      [data]="blocks$ | async">
-    </app-blocks-table>
-  </ng-container>
-</app-info-card>
+          <div class="dashboard__statistics-height-time">
+            <svg-icon
+              class="dashboard__statistics-height-time-icon"
+              key="clock"
+            ></svg-icon>
+            <div appTypeface="paragraph">
+              {{ latestBlock.time | dateAgo }}
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </app-info-card>
+  </div>
+</div>
+
+<div class="dashboard__tables">
+  <app-info-card>
+    <ng-container ngProjectAs="card-title">
+      <div class="card-title">
+        <div appTypeface="subheader">Blocks</div>
+        <a
+          appTypeface="paragraph"
+          class="dashboard__tables-show-more"
+          [routerLink]="appRoute.Blocks"
+        >
+          Show more
+          <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
+        </a>
+      </div>
+    </ng-container>
+
+    <ng-container ngProjectAs="card-body">
+      <app-blocks-table [data]="blocks$ | async"></app-blocks-table>
+    </ng-container>
+  </app-info-card>
+
+  <app-info-card>
+    <ng-container ngProjectAs="card-title">
+      <div class="card-title">
+        <div appTypeface="subheader">Transactions</div>
+        <a
+          appTypeface="paragraph"
+          class="dashboard__tables-show-more"
+          [routerLink]="appRoute.Transactions"
+        >
+          Show more
+          <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
+        </a>
+      </div>
+    </ng-container>
+
+    <ng-container ngProjectAs="card-body">
+      <app-transactions-table [data]="transactions$ | async"></app-transactions-table>
+    </ng-container>
+  </app-info-card>
+</div>

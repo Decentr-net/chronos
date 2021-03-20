@@ -1,21 +1,23 @@
-<table tuiTable class="table" [columns]="columns">
-  <thead>
-  <tr tuiThGroup>
-    <th *ngFor="let column of columns" tuiTh [resizable]="true">{{ column }}</th>
+<table class="tui-table">
+  <tbody>
+  <tr class="tui-table__tr">
+    <th *ngFor="let column of columns" class="tui-table__th">
+      {{ column }}
+    </th>
   </tr>
-  </thead>
-  <tbody tuiTbody [data]="data">
-  <tr *tuiRow="let item of data" tuiTr>
-    <td *tuiCell="'Tx hash'" tuiTd>
-      <a tuiLink [routerLink]="getTransactionDetailsLink(item.txhash)">{{ item.txhash }}</a>
+  <tr *ngFor="let item of data" class="tui-table__tr" appTypeface="paragraph">
+    <td class="tui-table__td">
+      <a tuiLink [routerLink]="getTransactionDetailsLink(item.txhash)">
+        {{ item.txhash | truncate : 20 }}
+      </a>
     </td>
 
-    <td *tuiCell="'Type'" tuiTd>
-      {{item.tx.value.msg[0].type}}
+    <td class="tui-table__td">
+      {{ item.tx.value.msg[0].type }}
     </td>
 
-    <td *tuiCell="'Time'" tuiTd>
-      {{item.timestamp | dateAgo}}
+    <td class="tui-table__td">
+      {{ item.timestamp | dateAgo }}
     </td>
   </tr>
   </tbody>

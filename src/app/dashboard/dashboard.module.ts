@@ -3,29 +3,31 @@ import { CommonModule } from '@angular/common';
 
 import { DASHBOARD_COMPONENTS } from './components';
 import { DASHBOARD_PAGES } from './pages';
+import { BlocksTableModule } from '@shared/components/blocks-table/blocks-table.module';
+import { DateAgoModule } from '@shared/pipes/date-ago';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { NumberSuffixModule } from '@shared/pipes/number-suffix';
-import { DateAgoModule } from '@shared/pipes/date-ago';
-import { TransactionsTableModule } from '@shared/components/transactions-table';
-import { TuiButtonModule, TuiModeModule } from '@taiga-ui/core';
-import { BlocksTableModule } from '@shared/components/blocks-table/blocks-table.module';
 import { InfoCardModule } from '@shared/components/info-card';
+import { NumberSuffixModule } from '@shared/pipes/number-suffix';
+import { SvgIconsModule } from '@ngneat/svg-icon';
+import { TransactionsTableModule } from '@shared/components/transactions-table';
+import { TuiButtonModule, TuiFormatNumberPipeModule, TuiModeModule } from '@taiga-ui/core';
 import { TypefaceModule } from '@shared/directives/typeface';
-
 
 @NgModule({
   imports: [
+    BlocksTableModule,
     CommonModule,
     DashboardRoutingModule,
-    HighchartsChartModule,
-    NumberSuffixModule,
     DateAgoModule,
+    HighchartsChartModule,
+    InfoCardModule,
+    NumberSuffixModule,
+    SvgIconsModule,
     TransactionsTableModule,
     TuiButtonModule,
+    TuiFormatNumberPipeModule,
     TuiModeModule,
-    BlocksTableModule,
-    InfoCardModule,
     TypefaceModule,
   ],
   declarations: [

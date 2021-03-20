@@ -1,13 +1,17 @@
+@import 'variables';
+
 :host {
-  margin-top: 20px;
+  border: 2px solid $color-outlines;
+  border-radius: $border-radius;
+  padding: $grid-step * 2;
 }
 
-.card-value {
+.card-title {
   display: flex;
   justify-content: space-between;
 }
 
-.card-title {
+.info-card__value {
   display: flex;
   justify-content: space-between;
 }
