@@ -7,6 +7,7 @@ import { TuiTableModule } from '@taiga-ui/addon-table';
 import { DateAgoModule } from '@shared/pipes/date-ago';
 import { TransactionsTableComponent } from './transactions-table.component';
 import { TruncateModule } from '@shared/pipes/truncate';
+import { TypefaceModule } from '@shared/directives/typeface';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { TruncateModule } from '@shared/pipes/truncate';
     TuiButtonModule,
     TuiLinkModule,
     TuiTableModule,
+    TypefaceModule,
   ],
   declarations: [
     TransactionsTableComponent,

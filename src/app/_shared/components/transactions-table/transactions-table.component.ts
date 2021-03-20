@@ -1,6 +1,9 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Transaction } from 'decentr-js';
+
 import { AppRoute } from '../../../app-route';
+
+type DetailsPages = AppRoute.Blocks | AppRoute.Transactions;
 
 @Component({
   selector: 'app-transactions-table',
@@ -10,9 +13,11 @@ import { AppRoute } from '../../../app-route';
 })
 export class TransactionsTableComponent {
   @Input() data: Transaction[] = [];
-  columns: string[] = ['Tx hash', 'Type', 'Time'];
 
-  getTransactionDetailsLink(txHash: string): string[] {
-    return [`/${AppRoute.Transactions}`, txHash];
+  public appRoute: typeof AppRoute = AppRoute;
+  public columns: string[] = ['Hash', 'Type', 'Height', 'Time'];
+
+  getDetailsLink(page: DetailsPages, param: string): string[] {
+    return ['/', page, param];
   }
 }

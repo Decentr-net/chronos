@@ -11,9 +11,10 @@ import { AppRoute } from '../../../app-route';
 })
 export class BlocksTableComponent {
   @Input() data: Block[] = [];
-  public columns: string[] = ['Height', 'Block Hash', 'Time'];
 
-  getBlockDetailsLink(blockHeight: string): string[] {
-    return [`/${AppRoute.Blocks}`, blockHeight];
+  public columns: string[] = ['Height', 'Hash', 'Time'];
+
+  getDetailsLink(param: string): string[] {
+    return ['/', AppRoute.Blocks, param];
   }
 }

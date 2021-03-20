@@ -7,16 +7,18 @@ import { RouterModule } from '@angular/router';
 import { BlocksTableComponent } from '@shared/components/blocks-table/blocks-table.component';
 import { DateAgoModule } from '@shared/pipes/date-ago';
 import { TruncateModule } from '@shared/pipes/truncate';
+import { TypefaceModule } from '@shared/directives/typeface';
 
 @NgModule({
   imports: [
     CommonModule,
     DateAgoModule,
     RouterModule,
+    TruncateModule,
     TuiButtonModule,
     TuiLinkModule,
     TuiTableModule,
-    TruncateModule,
+    TypefaceModule,
   ],
   declarations: [
     BlocksTableComponent,

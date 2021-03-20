@@ -6,10 +6,13 @@
   >
   </app-currency-chart>
 
-  <div class="dashboard__statistics-bonded">
+  <div class="dashboard__statistics-cards">
     <app-info-card>
       <ng-container ngProjectAs="card-title">
-        <div appTypeface="subheader">
+        <div
+          class="dashboard__statistics-cards-title"
+          appTypeface="subheader"
+        >
           Bonded Tokens
         </div>
       </ng-container>
@@ -26,7 +29,10 @@
             {{ pool.not_bonded_tokens / pool.bonded_tokens | percent:'1.2-5' }}
           </div>
 
-          <div appTypeface="paragraph">
+          <div
+            class="dashboard__statistics-tokens-time"
+            appTypeface="paragraph"
+          >
             {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
           </div>
         </div>
@@ -35,7 +41,10 @@
 
     <app-info-card>
       <ng-container ngProjectAs="card-title">
-        <div appTypeface="subheader">
+        <div
+          class="dashboard__statistics-cards-title"
+          appTypeface="subheader"
+        >
           Height
         </div>
       </ng-container>
@@ -71,11 +80,16 @@
   <app-info-card>
     <ng-container ngProjectAs="card-title">
       <div class="card-title">
-        <div appTypeface="subheader">Blocks</div>
+        <div
+          class="dashboard__tables-title"
+          appTypeface="subheader"
+        >
+          Blocks
+        </div>
         <a
           appTypeface="paragraph"
           class="dashboard__tables-show-more"
-          [routerLink]="appRoute.Blocks"
+          [routerLink]="['/', appRoute.Blocks]"
         >
           Show more
           <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
@@ -91,11 +105,16 @@
   <app-info-card>
     <ng-container ngProjectAs="card-title">
       <div class="card-title">
-        <div appTypeface="subheader">Transactions</div>
+        <div
+          class="dashboard__tables-title"
+          appTypeface="subheader"
+        >
+          Transactions
+        </div>
         <a
           appTypeface="paragraph"
           class="dashboard__tables-show-more"
-          [routerLink]="appRoute.Transactions"
+          [routerLink]="['/', appRoute.Transactions]"
         >
           Show more
           <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
