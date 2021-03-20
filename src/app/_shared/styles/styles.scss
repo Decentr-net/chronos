@@ -5,6 +5,10 @@
   //outline: 1px solid red;
 }
 
+:root {
+  --tui-font-text: $main-font-family !important;
+}
+
 *,
 ::after,
 ::before {

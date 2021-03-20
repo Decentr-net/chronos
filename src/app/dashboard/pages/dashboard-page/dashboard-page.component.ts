@@ -6,7 +6,8 @@ import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { AppRoute } from '../../../app-route';
-import { CurrencyService } from '@core/services/currency';
+import { CoinRateFor24Hours } from '@core/services/currency';
+import { DashboardPageService } from './dashboard-page.service';
 import { DecentrService } from '@core/services/decentr';
 import { svgClockIcon } from '../../../svg-icons/clock';
 import { svgExpandRightIcon } from '../../../svg-icons/expand-right';
@@ -21,13 +22,14 @@ import { svgExpandRightIcon } from '../../../svg-icons/expand-right';
 export class DashboardPageComponent implements OnInit {
   public readonly appRoute: typeof AppRoute = AppRoute;
   public blocks$: Observable<Block[]>;
+  public coinRate$: Observable<CoinRateFor24Hours>;
+  public coinStats$: Observable<any>;
   public latestBlock$: Observable<Pick<BlockHeader, 'height' | 'time'>>;
   public pool$: Observable<Pool>;
-  public stats$: Observable<any>;
   public transactions$: Observable<Transaction[]>;
 
   constructor(
-    private currencyService: CurrencyService,
+    private dashboardService: DashboardPageService,
     private decentrService: DecentrService,
     private svgIconRegistry: SvgIconRegistry,
   ) {
@@ -37,9 +39,9 @@ export class DashboardPageComponent implements OnInit {
     ]);
   }
 
-  ngOnInit(): void {
-    this.stats$ = this.currencyService.getDecentCoinRateHistory(1);
-
+  public ngOnInit(): void {
+    this.coinRate$ = this.dashboardService.getCoinRate();
+    this.coinStats$ = this.dashboardService.getDecentCoinRateHistory(1);
     this.pool$ = this.decentrService.getPool();
 
     this.blocks$ = this.decentrService.getLatestBlock().pipe(

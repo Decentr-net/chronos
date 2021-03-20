@@ -13,6 +13,12 @@
   align-items: center;
 }
 
+.dashboard__currency-stats {
+  border: 2px solid $color-outlines;
+  border-radius: $border-radius;
+  padding: $grid-step * 2;
+}
+
 .dashboard__statistics-tokens {
   margin-top: $grid-step * 1.5;
 }
@@ -54,11 +60,6 @@
   min-height: 360px;
 }
 
-.dashboard__statistics-chart {
-  border: 2px solid $color-outlines;
-  border-radius: $border-radius;
-}
-
 .dashboard__statistics-cards {
   display: grid;
   gap: $grid-step * 3;
@@ -75,10 +76,6 @@
   gap: $grid-step * 3;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin-top: $grid-step * 3;
-}
-
-.dashboard__tables-title {
-  font-weight: 500;
 }
 
 .dashboard__tables-show-more {

@@ -6,9 +6,16 @@
   padding: $grid-step * 2;
 }
 
-.card-title {
+.info-card__head {
   display: flex;
   justify-content: space-between;
+}
+
+.info-card__title {
+  font-weight: 500;
+}
+
+.info-card__show-more {
 }
 
 .info-card__value {

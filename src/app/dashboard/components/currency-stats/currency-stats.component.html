@@ -1,0 +1,38 @@
+<ng-container *ngIf="coinRate">
+  <div
+    class="currency-stats__coin-info"
+    appTypeface="paragraph"
+  >
+    <div class="currency-stats__coin-info-name-margin">
+      <span class="currency-stats__coin-info-name">
+        Decentr DEC
+      </span>
+
+      <app-margin-label
+        class="currency-stats__coin-info-margin-label"
+        [dayMargin]="coinRate.dayMargin"
+      ></app-margin-label>
+    </div>
+
+    <a
+      class="currency-stats__coin-stats-provider"
+      appTypeface="caption"
+      [href]="coinStatsProvider.url"
+    >
+      {{ coinStatsProvider.name }}
+    </a>
+  </div>
+
+  <div
+    class="currency-stats__coin-stats-value"
+    appTypeface="header-3"
+  >
+    {{ coinRate.value | currency : 'USD' : 'symbol' : '1.4' }}
+  </div>
+</ng-container>
+
+<app-currency-chart
+  *ngIf="coinStats"
+  class="currency-stats__chart"
+  [stats]="coinStats"
+></app-currency-chart>

@@ -1,10 +1,9 @@
 <div class="dashboard__statistics">
-  <app-currency-chart
-    class="dashboard__statistics-chart"
-    *ngIf="stats$ | async as stats"
-    [stats]="stats"
-  >
-  </app-currency-chart>
+  <app-currency-stats
+    class="dashboard__currency-stats"
+    [coinRate]="coinRate$ | async"
+    [coinStats]="coinStats$ | async"
+  ></app-currency-stats>
 
   <div class="dashboard__statistics-cards">
     <app-info-card>
@@ -78,23 +77,19 @@
 
 <div class="dashboard__tables">
   <app-info-card>
-    <ng-container ngProjectAs="card-title">
-      <div class="card-title">
-        <div
-          class="dashboard__tables-title"
-          appTypeface="subheader"
-        >
-          Blocks
-        </div>
-        <a
-          appTypeface="paragraph"
-          class="dashboard__tables-show-more"
-          [routerLink]="['/', appRoute.Blocks]"
-        >
-          Show more
-          <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
-        </a>
-      </div>
+    <ng-container ngProjectAs="[card-title]">
+      Blocks
+    </ng-container>
+
+    <ng-container ngProjectAs="[card-show-more]">
+      <a
+        appTypeface="paragraph"
+        class="dashboard__tables-show-more"
+        [routerLink]="['/', appRoute.Blocks]"
+      >
+        Show more
+        <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
+      </a>
     </ng-container>
 
     <ng-container ngProjectAs="card-body">
@@ -103,23 +98,19 @@
   </app-info-card>
 
   <app-info-card>
-    <ng-container ngProjectAs="card-title">
-      <div class="card-title">
-        <div
-          class="dashboard__tables-title"
-          appTypeface="subheader"
-        >
-          Transactions
-        </div>
-        <a
-          appTypeface="paragraph"
-          class="dashboard__tables-show-more"
-          [routerLink]="['/', appRoute.Transactions]"
-        >
-          Show more
-          <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
-        </a>
-      </div>
+    <ng-container ngProjectAs="[card-title]">
+      Transactions
+    </ng-container>
+
+    <ng-container ngProjectAs="[card-show-more]">
+      <a
+        appTypeface="paragraph"
+        class="dashboard__tables-show-more"
+        [routerLink]="['/', appRoute.Transactions]"
+      >
+        Show more
+        <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
+      </a>
     </ng-container>
 
     <ng-container ngProjectAs="card-body">
