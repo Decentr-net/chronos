@@ -7,7 +7,7 @@
 
   <div class="dashboard__statistics-cards">
     <app-info-card>
-      <ng-container ngProjectAs="card-title">
+      <ng-container ngProjectAs="[card-title]">
         <div
           class="dashboard__statistics-cards-title"
           appTypeface="subheader"
@@ -18,7 +18,7 @@
 
       <ng-container
         *ngIf="pool$ | async as pool"
-        ngProjectAs="card-body"
+        ngProjectAs="[card-body]"
       >
         <div class="dashboard__statistics-tokens">
           <div
@@ -39,7 +39,7 @@
     </app-info-card>
 
     <app-info-card>
-      <ng-container ngProjectAs="card-title">
+      <ng-container ngProjectAs="[card-title]">
         <div
           class="dashboard__statistics-cards-title"
           appTypeface="subheader"
@@ -50,7 +50,7 @@
 
       <ng-container
         *ngIf="latestBlock$ | async as latestBlock"
-        ngProjectAs="card-body"
+        ngProjectAs="[card-body]"
       >
         <div class="dashboard__statistics-height">
           <div
@@ -92,7 +92,7 @@
       </a>
     </ng-container>
 
-    <ng-container ngProjectAs="card-body">
+    <ng-container ngProjectAs="[card-body]">
       <app-blocks-table [data]="blocks$ | async"></app-blocks-table>
     </ng-container>
   </app-info-card>
@@ -113,7 +113,7 @@
       </a>
     </ng-container>
 
-    <ng-container ngProjectAs="card-body">
+    <ng-container ngProjectAs="[card-body]">
       <app-transactions-table [data]="transactions$ | async"></app-transactions-table>
     </ng-container>
   </app-info-card>

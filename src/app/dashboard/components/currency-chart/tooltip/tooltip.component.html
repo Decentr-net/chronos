@@ -1,4 +1,3 @@
-<div class="custom-tooltip">
-  <p style="color: coral">{{ data.y | number }}</p>
-  <p>{{ data.x | date : 'dd MMM yyyy hh:mm'}}</p>
-</div>
+<span><strong>{{ data.y | currency : 'USD' : 'symbol' : '1.4' }}</strong></span>
+<br />
+<span>{{ data.x | date : 'dd MMM yyyy HH:mm'}}</span>

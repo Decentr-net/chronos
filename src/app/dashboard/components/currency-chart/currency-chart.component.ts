@@ -12,10 +12,7 @@ import { TooltipModule } from './tooltip';
 })
 
 export class CurrencyChartComponent implements OnInit {
-
-  @Input() stats;
-
-  chartOptions: Highcharts.Options;
+  @Input() data: any;
 
   constructor(
     private injector: Injector,
@@ -31,46 +28,43 @@ export class CurrencyChartComponent implements OnInit {
     const component = new ComponentFactoryClass<TooltipModule, TooltipComponent>
     (this.injector, this.compiler).createComponent(TooltipModule, TooltipComponent);
 
+    const defaultOptions: Highcharts.Options = {
+      credits: {
+        enabled: false,
+      },
+      legend: {
+        enabled: false,
+      },
+      time: {
+        useUTC: false,
+      },
+      title: {
+        text: '',
+      },
+    };
+
     return {
+      ...defaultOptions,
+      chart: {
+        height: 250,
+        marginBottom: 20,
+        marginLeft: 10,
+        marginRight: 38,
+        marginTop: 10,
+      },
       tooltip: {
-        useHTML: true,
-        backgroundColor: 'transparent',
-        borderWidth: 0,
-        borderRadius: 0,
+        backgroundColor: "#FFFFFF",
+        borderColor: "#EDEDEE",
+        borderRadius: 12,
+        borderWidth: 2,
+        enabled: true,
+        headerShape: "square",
         shadow: false,
-        shape: 'square',
-        outside: true,
-        padding: 0,
         formatter(): string {
           component.instance.data = this;
           component.changeDetectorRef.detectChanges();
           return component.location.nativeElement.outerHTML;
         },
-      },
-      legend: {
-        enabled: false,
-      },
-      xAxis: {
-        labels: {
-          enabled: false,
-        },
-      },
-      yAxis: {
-        visible: true,
-        opposite: true,
-        endOnTick: true,
-        gridLineColor: '#eeeeee',
-        labels: {
-          enabled: false,
-        },
-        title: {
-          text: '',
-        },
-        tickAmount: 5,
-        tickPosition: 'inside',
-      },
-      title: {
-        text: '',
       },
       plotOptions: {
         area: {
@@ -82,27 +76,83 @@ export class CurrencyChartComponent implements OnInit {
               y2: 1
             },
             stops: [
-              [0, 'rgba(0, 98, 255, 0.7)'],
-              [1, 'rgba(0, 98, 255, 0)']
+              [0, 'rgba(159, 101, 253, .24)'],
+              [1, 'rgba(159, 101, 253, 0)'],
             ]
           },
+          lineWidth: 2,
           marker: {
-            radius: 2
-          },
-          lineWidth: 1,
-          states: {
-            hover: {
-              lineWidth: 1
+            enabled: false,
+            states: {
+              hover: {
+                enabled: true,
+                radius: 5,
+              }
             }
           },
-          threshold: null
-        }
+          states: {
+            hover: {
+              lineWidth: 2,
+            }
+          },
+          threshold: null,
+        },
       },
-      series: [{
-        color: '#2B5DE0',
-        data: this.stats,
-        type: 'area',
-      }]
+      series: [
+        {
+          color: '#9F65FD',
+          data: this.data,
+          type: 'area',
+        },
+      ],
+      xAxis: {
+        dateTimeLabelFormats: {
+          millisecond: '%H:%M:%S.%L',
+          second: '%H:%M:%S',
+          minute: '%H:%M',
+          hour: '%H:%M',
+          day: '%e. %b',
+          week: '%e. %b',
+          month: '%b \'%y',
+          year: '%Y',
+        },
+        labels: {
+          enabled: true,
+          style: {
+            color: '#B6B7BA',
+            fontSize: '12px',
+          },
+        },
+        type: 'datetime',
+        title: {
+          text: '',
+        },
+      },
+      yAxis: {
+        alignTicks: true,
+        visible: true,
+        opposite: true,
+        endOnTick: true,
+        gridLineColor: '#EDEDEE',
+        labels: {
+          enabled: true,
+          align: 'left',
+          step: 2,
+          x: 8,
+          y: -8,
+          style: {
+            color: '#B6B7BA',
+            fontSize: '12px',
+          },
+
+        },
+        tickAmount: 8,
+        tickPosition: 'inside',
+        title: {
+          text: '',
+        },
+        showLastLabel: false,
+      },
     };
   }
 }
