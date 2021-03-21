@@ -1,0 +1,13 @@
+<app-info-card>
+  <ng-container ngProjectAs="card-title">
+    <div class="card-title">
+      <h3 class="tui-island__title">Blocks</h3>
+    </div>
+  </ng-container>
+
+  <ng-container ngProjectAs="card-body">
+    <app-blocks-table
+      [data]="blocks$ | async">
+    </app-blocks-table>
+  </ng-container>
+</app-info-card>
