@@ -1,5 +1,11 @@
+@import 'variables';
+
 :host {
   display: flex;
   flex-direction: column;
-  padding: 20px 40px;
+  margin-top: $grid-step * 2;
+}
+
+.validation__loading {
+  width: 100%;
 }
