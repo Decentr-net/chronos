@@ -1,13 +1,24 @@
-<app-info-card>
-  <ng-container ngProjectAs="card-title">
-    <div class="card-title">
-      <h3 class="tui-island__title">Validators</h3>
-    </div>
-  </ng-container>
+<div class="container">
+  <div class="validators__table">
+    <app-info-card>
+      <ng-container ngProjectAs="[card-title]">
+        Validators
+      </ng-container>
 
-  <ng-container ngProjectAs="card-body">
-    <app-validators-table
-    [data]="validators$ | async">
-    </app-validators-table>
-  </ng-container>
-</app-info-card>
+      <ng-container ngProjectAs="[card-body]" *ngIf="validators$ | async as validators; else tablesLoading;">
+        <app-validators-table [data]="validators"></app-validators-table>
+      </ng-container>
+    </app-info-card>
+  </div>
+</div>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="validators__table--loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>

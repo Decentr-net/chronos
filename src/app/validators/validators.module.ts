@@ -7,6 +7,8 @@ import { VALIDATORS_COMPONENTS } from './components';
 import { InfoCardModule } from '@shared/components/info-card';
 import { TuiTableModule } from '@taiga-ui/addon-table';
 import { TuiLinkModule } from '@taiga-ui/core';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { TypefaceModule } from '@shared/directives/typeface';
 
 
 @NgModule({
@@ -16,6 +18,8 @@ import { TuiLinkModule } from '@taiga-ui/core';
     InfoCardModule,
     TuiTableModule,
     TuiLinkModule,
+    NgxSkeletonLoaderModule,
+    TypefaceModule,
   ],
   declarations: [
     VALIDATORS_PAGES,
