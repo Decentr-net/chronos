@@ -1,14 +1,8 @@
 @import 'variables';
 
 :host {
-  .table {
-    width: 100%;
-  }
-
-  .tui-table {
-    margin-left: -$grid-step * 2;
-    margin-right: -$grid-step * 2;
-  }
+  overflow: auto;
+  width: 100%;
 
   .tui-table__th {
     color: $color-grey;

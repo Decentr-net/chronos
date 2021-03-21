@@ -1,0 +1,7 @@
+@import 'variables';
+
+:host {
+  .footer {
+    min-height: $grid-step * 2;
+  }
+}

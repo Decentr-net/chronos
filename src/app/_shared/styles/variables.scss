@@ -7,7 +7,6 @@ $border-radius: 12px;
 
 $grid-step: 8px;
 
-$page-width: 1200px;
 $page-side-padding: $grid-step * 3;
 
 $color-font-base: $color-black;
@@ -15,3 +14,9 @@ $color-primary: $color-blue;
 $color-negative: $color-red;
 $color-neutral: $color-grey;
 $color-positive: $color-green;
+
+$screen-desktop-xlarge: 1200px;
+$screen-desktop-large: 1024px;
+$screen-desktop: 968px;
+$screen-tablet: 768px;
+$screen-mobile: 640px;

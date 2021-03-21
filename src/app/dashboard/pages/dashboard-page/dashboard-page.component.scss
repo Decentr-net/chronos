@@ -3,8 +3,6 @@
 :host {
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  max-width: $page-width;
 }
 
 .card-title {
@@ -67,10 +65,6 @@
   position: relative;
 }
 
-.dashboard__statistics-cards-title {
-  font-weight: 500;
-}
-
 .dashboard__tables {
   display: grid;
   gap: $grid-step * 3;
@@ -94,4 +88,35 @@
   display: inline-flex;
   height: 24px;
   width: 24px;
+}
+
+@media (max-width: $screen-desktop-large) {
+  .dashboard__statistics {
+    grid-template-columns: minmax(0, 2fr);
+  }
+
+  .dashboard__statistics-cards {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: $screen-desktop) {
+  .dashboard__tables {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: $screen-mobile) {
+  .dashboard__statistics {
+    grid-template-columns: minmax(0, 2fr);
+  }
+
+  .dashboard__statistics-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__tables {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }

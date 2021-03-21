@@ -9,24 +9,25 @@
   --tui-font-text: $main-font-family !important;
 }
 
-*,
-::after,
-::before {
-  box-sizing: border-box;
-}
-
 html {
   font-family: $main-font-family;
   font-size: $main-font-size;
 }
 
 body {
+  color: $color-font-base;
+  font-family: $main-font-family;
   margin: 0;
   padding: 0;
-  font-family: $main-font-family;
-  color: $color-font-base;
 }
 
 svg-icon {
   display: inline-flex;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $screen-desktop-xlarge + $page-side-padding * 2;
+  padding: 0 $page-side-padding;
+  width: 100%;
 }
