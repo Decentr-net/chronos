@@ -9,6 +9,8 @@ export interface CoinRateFor24Hours {
   value: number;
 }
 
+export type CoinRateHistory = Record<number, number>;
+
 @Injectable()
 export class CurrencyService {
   constructor(
@@ -40,7 +42,7 @@ export class CurrencyService {
       );
   }
 
-  public getDecentCoinRateHistory(days: number): Observable<any> {
+  public getDecentCoinRateHistory(days: number): Observable<CoinRateHistory> {
     const blockchainId = 'decentr';
     const currencyId = 'usd';
 

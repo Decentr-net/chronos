@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CoinRateFor24Hours } from '@core/services/currency';
+import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';
 
 interface CoinStatsProvider {
   name: string;
@@ -19,7 +19,7 @@ const COIN_STATS_PROVIDER: CoinStatsProvider = {
 })
 export class CurrencyStatsComponent {
   @Input() public coinRate: CoinRateFor24Hours;
-  @Input() public coinStats: any;
+  @Input() public coinStats: CoinRateHistory;
 
   public coinStatsProvider: CoinStatsProvider = COIN_STATS_PROVIDER;
 }

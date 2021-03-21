@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Block, BlockHeader, Pool, Transaction } from 'decentr-js';
 import { Observable, timer } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { AppRoute } from '../../../app-route';
-import { CoinRateFor24Hours } from '@core/services/currency';
+import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';
 import { DashboardPageService } from './dashboard-page.service';
 import { DecentrService } from '@core/services/decentr';
+import { ONE_SECOND } from '@shared/utils/date';
 import { svgClockIcon } from '../../../svg-icons/clock';
 import { svgExpandRightIcon } from '../../../svg-icons/expand-right';
 
@@ -23,7 +24,7 @@ export class DashboardPageComponent implements OnInit {
   public readonly appRoute: typeof AppRoute = AppRoute;
   public blocks$: Observable<Block[]>;
   public coinRate$: Observable<CoinRateFor24Hours>;
-  public coinStats$: Observable<any>;
+  public coinStats$: Observable<CoinRateHistory>;
   public latestBlock$: Observable<Pick<BlockHeader, 'height' | 'time'>>;
   public pool$: Observable<Pool>;
   public transactions$: Observable<Transaction[]>;
@@ -42,30 +43,18 @@ export class DashboardPageComponent implements OnInit {
   public ngOnInit(): void {
     this.coinRate$ = this.dashboardService.getCoinRate();
     this.coinStats$ = this.dashboardService.getDecentCoinRateHistory(1);
-    this.pool$ = this.decentrService.getPool();
+    this.pool$ = this.dashboardService.getPool();
 
-    this.blocks$ = this.decentrService.getLatestBlock().pipe(
-      switchMap(blockResponse => this.decentrService.getBlocks(blockResponse.height, 5)
-        .pipe(
-          map(block => block.sort(this.sortByHeight)),
-        )
-      )
+    this.blocks$ = timer(0, ONE_SECOND * 10).pipe(
+      switchMap(() => this.dashboardService.getBlocks(5)),
     );
 
-    this.latestBlock$ = timer(0, 3000).pipe(
-      switchMap(() => this.decentrService.getLatestBlock()),
+    this.transactions$ = timer(0, ONE_SECOND * 10).pipe(
+      switchMap(() => this.dashboardService.getLatestTxs()),
     );
 
-    this.transactions$ = this.decentrService.getTxs({ txMinHeight: 0, limit: 1 }).pipe(
-      switchMap(txsResponse => this.decentrService.getLatestTxs(5, txsResponse.page_total)
-        .pipe(
-          map(tx => tx.sort(this.sortByHeight)),
-        )
-      )
+    this.latestBlock$ = timer(0, ONE_SECOND * 10).pipe(
+      switchMap(() => this.dashboardService.getLatestBlock()),
     );
-  }
-
-  sortByHeight(a, b): any {
-    return a.height < b.height ? 1 : -1;
   }
 }

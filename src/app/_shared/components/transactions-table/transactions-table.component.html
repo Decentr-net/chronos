@@ -8,7 +8,7 @@
   <tr *ngFor="let item of data; let last = last;" class="tui-table__tr" [ngClass]="{'tui-table__tr_border_none': last}">
     <td class="tui-table__td" appTypeface="paragraph">
       <a tuiLink [routerLink]="getDetailsLink(appRoute.Transactions, item.txhash)" title="{{ item.txhash }}">
-        {{ item.txhash | truncate : 14 }}
+        {{ item.txhash | truncate : 10 }}
       </a>
     </td>
 
