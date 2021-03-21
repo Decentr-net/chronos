@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Validator } from 'decentr-js';
+import { ValidatorDetailsService } from './validator-details.service';
 
 @Component({
   selector: 'app-validator-details',
@@ -15,14 +16,14 @@ export class ValidatorDetailsComponent implements OnInit {
   validatorDetails$: Observable<Validator>;
 
   constructor(
-    private decentrService: DecentrService,
+    private validatorDetailsService: ValidatorDetailsService,
     private route: ActivatedRoute,
   ) {
   }
 
   ngOnInit(): void {
     this.validatorDetails$ = this.route.params.pipe(
-      switchMap(params => this.decentrService.getValidatorByAddress(params.operatorAddress))
+      switchMap(params => this.validatorDetailsService.getValidatorDetails(params.operatorAddress))
     );
   }
 

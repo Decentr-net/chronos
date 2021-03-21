@@ -63,7 +63,7 @@ export class DecentrService {
     return defer(() => this.decentrApiService.getValidators(filter));
   }
 
-  getValidatorByAddress(address): Observable<Validator> {
+  getValidatorByAddress(address: Validator['operator_address']): Observable<Validator> {
     return defer(() => this.decentrApiService.getValidatorByAddress(address));
   }
 }

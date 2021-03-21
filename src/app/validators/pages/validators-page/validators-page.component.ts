@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DecentrService } from '@core/services/decentr';
 import { Observable } from 'rxjs';
 import { Validator } from 'decentr-js';
+import { ValidatorsPageService } from './validators-page.service';
 
 @Component({
   selector: 'app-validators-page',
@@ -13,12 +14,12 @@ export class ValidatorsPageComponent implements OnInit {
   validators$: Observable<Validator[]>;
 
   constructor(
-    private decentrService: DecentrService,
+    private validatorsPageService: ValidatorsPageService,
   ) {
   }
 
   ngOnInit(): void {
-    this.validators$ = this.decentrService.getValidators();
+    this.validators$ = this.validatorsPageService.getValidators();
   }
 
 }

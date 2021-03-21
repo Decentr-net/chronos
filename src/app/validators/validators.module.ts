@@ -9,6 +9,8 @@ import { TuiTableModule } from '@taiga-ui/addon-table';
 import { TuiLinkModule } from '@taiga-ui/core';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { TypefaceModule } from '@shared/directives/typeface';
+import { ValidatorsPageService } from './pages/validators-page/validators-page.service';
+import { ValidatorDetailsService } from './pages/validator-details/validator-details.service';
 
 
 @NgModule({
@@ -24,6 +26,10 @@ import { TypefaceModule } from '@shared/directives/typeface';
   declarations: [
     VALIDATORS_PAGES,
     VALIDATORS_COMPONENTS,
+  ],
+  providers: [
+    ValidatorDetailsService,
+    ValidatorsPageService,
   ],
 })
 export class ValidatorsModule {
