@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="transactions__table">
+    <app-info-card>
+      <ng-container ngProjectAs="[card-title]">
+        Transactions
+      </ng-container>
+
+      <ng-container ngProjectAs="[card-body]" *ngIf="transactions$ | async as transactions; else tablesLoading;">
+        <app-transactions-table
+          [data]="transactions">
+        </app-transactions-table>
+      </ng-container>
+    </app-info-card>
+  </div>
+</div>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="transactions__table--loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>
