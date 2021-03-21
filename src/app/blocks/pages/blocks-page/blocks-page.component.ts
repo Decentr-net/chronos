@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DecentrService } from '@core/services/decentr';
-import { Observable } from 'rxjs';
+import { Observable, timer } from 'rxjs';
 import { Block } from 'decentr-js';
-import { map, switchMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { ONE_SECOND } from '@shared/utils/date';
+import { BlocksPageService } from './blocks-page.service';
 
 @Component({
   selector: 'app-blocks-page',
@@ -14,17 +15,13 @@ export class BlocksPageComponent implements OnInit {
   blocks$: Observable<Block[]>;
 
   constructor(
-    private decentrService: DecentrService,
+    private blocksPageService: BlocksPageService,
   ) {
   }
 
   ngOnInit(): void {
-    this.blocks$ = this.decentrService.getLatestBlock().pipe(
-      switchMap(blockResponse => this.decentrService.getBlocks(blockResponse.height, 50)
-        .pipe(
-          map(block => block.sort(this.sortByHeight))
-        )
-      )
+    this.blocks$ = timer(0, ONE_SECOND * 10).pipe(
+      switchMap(() => this.blocksPageService.getBlocks(50)),
     );
   }
 
