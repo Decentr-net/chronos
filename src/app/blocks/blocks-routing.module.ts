@@ -9,7 +9,7 @@ const routes: Routes = [
     component: BlocksPageComponent,
   },
   {
-    path: ':blockHash',
+    path: ':blockHeight',
     component: BlockDetailsComponent,
   }
 ];

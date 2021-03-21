@@ -1,13 +1,26 @@
-<app-info-card>
-  <ng-container ngProjectAs="card-title">
-    <div class="card-title">
-      <h3 class="tui-island__title">Blocks</h3>
-    </div>
-  </ng-container>
+<div class="container">
+  <div class="blocks__table">
+    <app-info-card>
+      <ng-container ngProjectAs="[card-title]">
+        Blocks
+      </ng-container>
 
-  <ng-container ngProjectAs="card-body">
-    <app-blocks-table
-      [data]="blocks$ | async">
-    </app-blocks-table>
-  </ng-container>
-</app-info-card>
+      <ng-container ngProjectAs="[card-body]" *ngIf="blocks$ | async as blocks; else tablesLoading;">
+        <app-blocks-table
+          [data]="blocks">
+        </app-blocks-table>
+      </ng-container>
+    </app-info-card>
+  </div>
+</div>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="blocks__table--loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>
