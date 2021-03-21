@@ -1,38 +1,65 @@
-<ng-container *ngIf="coinRate">
-  <div
-    class="currency-stats__coin-info"
-    appTypeface="paragraph"
-  >
-    <div class="currency-stats__coin-info-name-margin">
-      <span class="currency-stats__coin-info-name">
-        Decentr DEC
-      </span>
+<div
+  class="currency-stats__coin-info"
+  appTypeface="paragraph"
+>
+  <div class="currency-stats__coin-info-name-margin">
+    <span class="currency-stats__coin-info-name">
+      Decentr DEC
+    </span>
 
-      <app-margin-label
-        class="currency-stats__coin-info-margin-label"
-        [dayMargin]="coinRate.dayMargin"
-      ></app-margin-label>
-    </div>
+    <app-margin-label
+      *ngIf="coinRate"
+      class="currency-stats__coin-info-margin-label"
+      [dayMargin]="coinRate.dayMargin"
+    ></app-margin-label>
 
-    <a
-      class="currency-stats__coin-stats-provider"
-      appTypeface="caption"
-      [href]="coinStatsProvider.url"
-    >
-      {{ coinStatsProvider.name }}
-    </a>
+    <ngx-skeleton-loader
+      *ngIf="!coinRate"
+      [theme]="{
+        height: '16px',
+        marginBottom: '0',
+        width: '70px'
+      }"
+    ></ngx-skeleton-loader>
   </div>
 
-  <div
-    class="currency-stats__coin-stats-value"
-    appTypeface="header-3"
+  <a
+    class="currency-stats__coin-stats-provider"
+    appTypeface="caption"
+    [href]="coinStatsProvider.url"
   >
-    {{ coinRate.value | currency : 'USD' : 'symbol' : '1.4' }}
-  </div>
-</ng-container>
+    {{ coinStatsProvider.name }}
+  </a>
+</div>
+
+<div
+  *ngIf="coinRate"
+  class="currency-stats__coin-stats-value"
+  appTypeface="header-3"
+>
+  {{ coinRate.value | currency : 'USD' : 'symbol' : '1.4' }}
+</div>
+
+<ngx-skeleton-loader
+  *ngIf="!coinRate"
+  [theme]="{
+    height: '55px',
+    marginBottom: '0',
+    width: '220px'
+  }"
+></ngx-skeleton-loader>
 
 <app-currency-chart
   *ngIf="coinStats"
   class="currency-stats__chart"
   [data]="coinStats"
 ></app-currency-chart>
+
+<ngx-skeleton-loader
+  *ngIf="!coinStats"
+  [theme]="{
+    height: '250px',
+    marginBottom: '0',
+    width: '100%'
+  }"
+></ngx-skeleton-loader>

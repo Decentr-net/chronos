@@ -72,6 +72,10 @@
   margin-top: $grid-step * 3;
 }
 
+.dashboard__statistics-tables--loading {
+  width: 100%;
+}
+
 .dashboard__tables-show-more {
   align-items: center;
   color: $color-primary;
@@ -88,6 +92,11 @@
   display: inline-flex;
   height: 24px;
   width: 24px;
+}
+
+.dashboard__statistics-cards--loading {
+  display: flex;
+  flex-direction: column;
 }
 
 @media (max-width: $screen-desktop-large) {

@@ -30,9 +30,10 @@
     "@taiga-ui/core": "^2.6.2",
     "@taiga-ui/icons": "^2.6.2",
     "@taiga-ui/kit": "^2.6.2",
-    "decentr-js": "^1.12.2",
+    "decentr-js": "^1.13.0",
     "highcharts": "^9.0.1",
     "highcharts-angular": "^2.10.0",
+    "ngx-skeleton-loader": "^2.9.1",
     "rxjs": "~6.5.4",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

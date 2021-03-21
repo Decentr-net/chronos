@@ -13,7 +13,7 @@
         </ng-container>
 
         <ng-container
-          *ngIf="pool$ | async as pool"
+          *ngIf="pool$ | async as pool; else cardsLoading"
           ngProjectAs="[card-body]"
         >
           <div class="dashboard__statistics-tokens">
@@ -42,7 +42,7 @@
         </ng-container>
 
         <ng-container
-          *ngIf="latestBlock$ | async as latestBlock"
+          *ngIf="latestBlock$ | async as latestBlock; else cardsLoading"
           ngProjectAs="[card-body]"
         >
           <div class="dashboard__statistics-height">
@@ -86,8 +86,8 @@
         </a>
       </ng-container>
 
-      <ng-container ngProjectAs="[card-body]">
-        <app-blocks-table [data]="blocks$ | async"></app-blocks-table>
+      <ng-container ngProjectAs="[card-body]" *ngIf="blocks$ | async as blocks; else tablesLoading;">
+        <app-blocks-table [data]="blocks"></app-blocks-table>
       </ng-container>
     </app-info-card>
 
@@ -107,9 +107,41 @@
         </a>
       </ng-container>
 
-      <ng-container ngProjectAs="[card-body]">
-        <app-transactions-table [data]="transactions$ | async"></app-transactions-table>
+      <ng-container ngProjectAs="[card-body]" *ngIf="transactions$ | async as transactions; else tablesLoading;">
+        <app-transactions-table [data]="transactions"></app-transactions-table>
       </ng-container>
     </app-info-card>
   </div>
 </div>
+
+<ng-template #cardsLoading>
+  <div class="dashboard__statistics-cards--loading">
+    <ngx-skeleton-loader
+      [theme]="{
+        height: '54px',
+        marginTop: '25px',
+        marginBottom: '0',
+        width: '220px'
+      }"
+    ></ngx-skeleton-loader>
+    <ngx-skeleton-loader
+      [theme]="{
+        height: '16px',
+        marginTop: '15px',
+        marginBottom: '0',
+        width: '100px'
+      }"
+    ></ngx-skeleton-loader>
+  </div>
+</ng-template>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="dashboard__statistics-tables--loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>

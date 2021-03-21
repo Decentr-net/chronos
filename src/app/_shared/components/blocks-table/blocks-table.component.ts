@@ -10,7 +10,7 @@ import { AppRoute } from '../../../app-route';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlocksTableComponent {
-  @Input() data: Block[] = [];
+  @Input() data: Block[];
 
   public columns: string[] = ['Height', 'Hash', 'Time'];
 

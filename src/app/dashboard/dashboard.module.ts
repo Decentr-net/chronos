@@ -10,6 +10,7 @@ import { DashboardPageService } from './pages/dashboard-page';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { InfoCardModule } from '@shared/components/info-card';
 import { MarginLabelModule } from '@shared/components/margin-label';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NumberSuffixModule } from '@shared/pipes/number-suffix';
 import { PositiveNumberModule } from '@shared/pipes/positiveNumber';
 import { SvgIconsModule } from '@ngneat/svg-icon';
@@ -26,6 +27,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
     HighchartsChartModule,
     InfoCardModule,
     MarginLabelModule,
+    NgxSkeletonLoaderModule,
     NumberSuffixModule,
     PositiveNumberModule,
     SvgIconsModule,
