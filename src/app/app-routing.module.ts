@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoute } from './app-route';
 import { MainLayoutComponent } from '@core/layout/main-layout/main-layout.component';
@@ -21,7 +21,11 @@ const ROUTES: Routes = [
       {
         path: AppRoute.Validators,
         loadChildren: () => import('./validators').then(m => m.ValidatorsModule),
-      }
+      },
+      {
+        path: AppRoute.Blocks,
+        loadChildren: () => import('./blocks').then(m => m.BlocksModule),
+      },
     ],
   },
 ];
