@@ -13,7 +13,7 @@ import {
 } from 'decentr-js';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DecentrApiService {
   private Decentr: Decentr;
@@ -31,7 +31,7 @@ export class DecentrApiService {
   getBlocks(currentHeight: BlockHeader['height'], count: number): Promise<Block[]> {
     const blockPromises = [];
 
-    for (let i = +currentHeight - count; i < +currentHeight; ++i) {
+    for (let i = +currentHeight - count + 1; i <= +currentHeight; i++) {
       blockPromises.push(this.getBlockByHeight(String(i)));
     }
 
@@ -62,7 +62,7 @@ export class DecentrApiService {
     const txsPromises = [];
 
     for (let i = page - count + 1; i <= page; i++) {
-      txsPromises.push(this.getTxs({txMinHeight: 0, limit: 1, page: i}));
+      txsPromises.push(this.getTxs({ txMinHeight: 0, limit: 1, page: i }));
     }
 
     return Promise.all(txsPromises);

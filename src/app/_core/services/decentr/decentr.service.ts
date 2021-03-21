@@ -25,9 +25,7 @@ export class DecentrService {
   }
 
   getBlocks(currentHeight: BlockHeader['height'], count: number): Observable<Block[]> {
-    return defer(() => this.decentrApiService.getBlocks(currentHeight, count)).pipe(
-      map(blocksResponse => blocksResponse)
-    );
+    return defer(() => this.decentrApiService.getBlocks(currentHeight, count));
   }
 
   getBlockByHeight(height: BlockHeader['height']): Observable<BlockBody> {
