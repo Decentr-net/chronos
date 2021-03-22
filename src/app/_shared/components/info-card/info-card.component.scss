@@ -3,6 +3,8 @@
 :host {
   border: 2px solid $color-outlines;
   border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
   padding: $grid-step * 2;
 }
 

@@ -1,18 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Validator } from 'decentr-js';
+
 import { AppRoute } from '../../../app-route';
 
 @Component({
   selector: 'app-validators-table',
   templateUrl: './validators-table.component.html',
-  styleUrls: ['./validators-table.component.scss']
+  styleUrls: ['./validators-table.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidatorsTableComponent {
+  @Input() data: Validator[];
 
-  @Input() data: Validator[] = [];
-  columns: string[] = ['Validator', 'Status', 'Commission'];
+  public columns: string[] = ['Validator', 'Status', 'Commission'];
 
-  getValidatorDetailsLink(operatorAddress: Validator['operator_address']): string[] {
-    return [`/${AppRoute.Validators}`, operatorAddress];
+  getDetailsLink(operatorAddress: Validator['operator_address']): string[] {
+    return ['/', AppRoute.Validators, operatorAddress];
   }
 }

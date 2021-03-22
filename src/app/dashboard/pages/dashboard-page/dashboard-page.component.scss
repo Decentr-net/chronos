@@ -3,6 +3,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  margin-top: $grid-step * 2;
 }
 
 .card-title {
@@ -54,7 +55,6 @@
   display: grid;
   gap: $grid-step * 3;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  margin-top: $grid-step * 2;
   min-height: 360px;
 }
 

@@ -1,18 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import { DecentrService } from '@core/services/decentr';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { mergeMap } from 'rxjs/operators';
 import { Validator } from 'decentr-js';
+
+import { DecentrService } from '@core/services/decentr';
 
 @Component({
   selector: 'app-validator-details',
   templateUrl: './validator-details.component.html',
-  styleUrls: ['./validator-details.component.scss']
+  styleUrls: ['./validator-details.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidatorDetailsComponent implements OnInit {
+  @HostBinding('class.container') public readonly useContainerClass: boolean = true;
 
-  validatorDetails$: Observable<Validator>;
+  public validatorDetails$: Observable<Validator>;
 
   constructor(
     private decentrService: DecentrService,
@@ -20,10 +23,9 @@ export class ValidatorDetailsComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.validatorDetails$ = this.route.params.pipe(
-      switchMap(params => this.decentrService.getValidatorByAddress(params.operatorAddress))
+      mergeMap((params) => this.decentrService.getValidatorByAddress(params.operatorAddress)),
     );
   }
-
 }
