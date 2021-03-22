@@ -1,0 +1,29 @@
+@import 'variables';
+
+.currency-stats__coin-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.currency-stats__coin-info-name-margin {
+  font-weight: 500;
+}
+
+.currency-stats__coin-info-name {
+}
+
+.currency-stats__coin-info-margin-label {
+  margin-left: $grid-step;
+}
+
+.currency-stats__coin-stats-provider {
+  color: $color-light-grey;
+}
+
+.currency-stats__coin-stats-value {
+  font-weight: 500;
+}
+
+.currency-stats__chart {
+}

@@ -1,0 +1,17 @@
+<a
+  class="header-navigation-link"
+  [routerLink]="link"
+  routerLinkActive="is-active"
+  [routerLinkActiveOptions]="{ exact: true }"
+
+>
+  <span
+    appTypeface="paragraph"
+    class="header-navigation-link__title"
+    [attr.data-title]="title"
+  >
+    {{ title }}
+  </span>
+
+  <span class="header-navigation-link__border"></span>
+</a>

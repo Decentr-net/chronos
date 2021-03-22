@@ -2,8 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const environment = {
-  production: false
+import { Environment } from './environments.definitions';
+
+export const environment: Environment = {
+  chainId: 'testnet4',
+  currencyApi: 'https://api.coingecko.com/api/v3',
+  decentrApi: 'https://hera.testnet.decentr.xyz',
+  production: false,
 };
 
 /*

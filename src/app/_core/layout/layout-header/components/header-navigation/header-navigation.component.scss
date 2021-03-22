@@ -1,0 +1,15 @@
+@import 'variables';
+
+:host {
+  align-items: flex-end;
+  display: flex;
+}
+
+.header-navigation__link {
+  height: 48px;
+  margin: 0 $grid-step * 2;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}

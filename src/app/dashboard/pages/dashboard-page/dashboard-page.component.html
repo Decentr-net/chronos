@@ -1,0 +1,147 @@
+<div class="container">
+  <div class="dashboard__statistics">
+    <app-currency-stats
+      class="dashboard__currency-stats"
+      [coinRate]="coinRate$ | async"
+      [coinStats]="coinStats$ | async"
+    ></app-currency-stats>
+
+    <div class="dashboard__statistics-cards">
+      <app-info-card>
+        <ng-container ngProjectAs="[card-title]">
+          Bonded Tokens
+        </ng-container>
+
+        <ng-container
+          *ngIf="pool$ | async as pool; else cardsLoading"
+          ngProjectAs="[card-body]"
+        >
+          <div class="dashboard__statistics-tokens">
+            <div
+              class="dashboard__statistics-tokens-value"
+              appTypeface="header-3"
+            >
+              {{ pool.not_bonded_tokens / pool.bonded_tokens | percent:'1.2-5' }}
+            </div>
+
+            <div
+              class="dashboard__statistics-tokens-time"
+              appTypeface="paragraph"
+            >
+              <span title="{{ pool.not_bonded_tokens }} / {{ pool.bonded_tokens }}">
+                {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
+              </span>
+            </div>
+          </div>
+        </ng-container>
+      </app-info-card>
+
+      <app-info-card>
+        <ng-container ngProjectAs="[card-title]">
+          Height
+        </ng-container>
+
+        <ng-container
+          *ngIf="blocks$ | async as blocks; else cardsLoading"
+          ngProjectAs="[card-body]"
+        >
+          <div class="dashboard__statistics-height">
+            <div
+              class="dashboard__statistics-height-value"
+              appTypeface="header-3"
+            >
+              {{ +blocks[0].block.header.height | tuiFormatNumber }}
+            </div>
+
+            <div
+              class="dashboard__statistics-height-time"
+              appTypeface="paragraph"
+            >
+              <svg-icon
+                class="dashboard__statistics-height-time-icon"
+                key="clock"
+              ></svg-icon>
+              {{ blocks[0].block.header.time | dateAgo }}
+            </div>
+          </div>
+        </ng-container>
+      </app-info-card>
+    </div>
+  </div>
+
+  <div class="dashboard__tables">
+    <app-info-card>
+      <ng-container ngProjectAs="[card-title]">
+        Blocks
+      </ng-container>
+
+      <ng-container ngProjectAs="[card-show-more]">
+        <a
+          appTypeface="paragraph"
+          class="dashboard__tables-show-more"
+          [routerLink]="['/', appRoute.Blocks]"
+        >
+          Show more
+          <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
+        </a>
+      </ng-container>
+
+      <ng-container ngProjectAs="[card-body]" *ngIf="blocks$ | async as blocks; else tablesLoading;">
+        <app-blocks-table [data]="blocks"></app-blocks-table>
+      </ng-container>
+    </app-info-card>
+
+    <app-info-card>
+      <ng-container ngProjectAs="[card-title]">
+        Transactions
+      </ng-container>
+
+      <ng-container ngProjectAs="[card-show-more]">
+        <a
+          appTypeface="paragraph"
+          class="dashboard__tables-show-more"
+          [routerLink]="['/', appRoute.Transactions]"
+        >
+          Show more
+          <svg-icon class="dashboard__tables-show-more-icon" key="expand-right"></svg-icon>
+        </a>
+      </ng-container>
+
+      <ng-container ngProjectAs="[card-body]" *ngIf="transactions$ | async as transactions; else tablesLoading;">
+        <app-transactions-table [data]="transactions"></app-transactions-table>
+      </ng-container>
+    </app-info-card>
+  </div>
+</div>
+
+<ng-template #cardsLoading>
+  <div class="dashboard__statistics-cards--loading">
+    <ngx-skeleton-loader
+      [theme]="{
+        height: '54px',
+        marginTop: '25px',
+        marginBottom: '0',
+        width: '220px'
+      }"
+    ></ngx-skeleton-loader>
+    <ngx-skeleton-loader
+      [theme]="{
+        height: '16px',
+        marginTop: '15px',
+        marginBottom: '0',
+        width: '100px'
+      }"
+    ></ngx-skeleton-loader>
+  </div>
+</ng-template>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="dashboard__statistics-tables--loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>
