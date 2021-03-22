@@ -1,1 +1,54 @@
-<p>bloc-details works!</p>
+<app-info-card>
+  <ng-container ngProjectAs="[card-title]">
+    Block details
+  </ng-container>
+
+  <ng-container ngProjectAs="[card-body]" *ngIf="blockDetails$ | async as blockDetails; else tablesLoading;">
+    <div class="block-details__info">
+      <div class="block-details__hash">
+        <p appTypeface="header-4">{{ blockDetails.block_id.hash | titlecase }}</p>
+      </div>
+
+      <div class="block-details__detailed-info">
+        <div>
+          <p class="block-details__value" appTypeface="subheader">
+            {{ blockDetails.block.header.height }}
+          </p>
+          <p class="block-details__label" appTypeface="paragraph">
+            Height
+          </p>
+        </div>
+        <div>
+          <p class="block-details__value" appTypeface="subheader">
+            {{ blockDetails.block.header.time | date:'yyyy.MM.dd, h:mm:ss' }}
+          </p>
+          <p class="block-details__label" appTypeface="paragraph">
+            Time
+          </p>
+        </div>
+        <div>
+          <p class="block-details__value" appTypeface="subheader">
+            {{ blockDetails.block.data.txs?.length || 0 }}
+          </p>
+          <p class="block-details__label" appTypeface="paragraph">
+            Number of Tx
+          </p>
+        </div>
+      </div>
+      <ng-container *ngIf="blockTxs$ | async as blockTxs">
+        <app-transactions-table *ngIf="blockTxs.length" [data]="blockTxs"></app-transactions-table>
+      </ng-container>
+    </div>
+  </ng-container>
+</app-info-card>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="block-details__loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>

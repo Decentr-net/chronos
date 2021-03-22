@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { Block } from 'decentr-js';
 import { switchMap } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { BlocksPageService } from './blocks-page.service';
 @Component({
   selector: 'app-blocks-page',
   templateUrl: './blocks-page.component.html',
-  styleUrls: ['./blocks-page.component.scss']
+  styleUrls: ['./blocks-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlocksPageComponent implements OnInit {
 
