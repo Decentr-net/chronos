@@ -1,1 +1,60 @@
-<p>transaction-details works!</p>
+<app-info-card>
+  <ng-container ngProjectAs="[card-title]">
+    Transaction details
+  </ng-container>
+
+  <ng-container ngProjectAs="[card-body]"
+                *ngIf="transactionDetails$ | async as transactionDetails; else tablesLoading;">
+    <div class="transaction-details__info">
+      <div class="transaction-details__hash">
+        <p appTypeface="header-4">{{ transactionDetails.txhash| titlecase }}</p>
+      </div>
+
+      <div class="transaction-details__detailed-info">
+        <div>
+          <p class="transaction-details__value" appTypeface="subheader">
+            {{ transactionDetails.height }}
+          </p>
+          <p class="transaction-details__label" appTypeface="paragraph">
+            Height
+          </p>
+        </div>
+        <div>
+          <p class="transaction-details__value" appTypeface="subheader">
+            {{ transactionDetails.timestamp | date:'yyyy.MM.dd, h:mm:ss' }}
+          </p>
+          <p class="transaction-details__label" appTypeface="paragraph">
+            Time
+          </p>
+        </div>
+        <div>
+          <p *ngIf="transactionDetails.gas_used; else gasNotUsed" class="transaction-details__value"
+             appTypeface="subheader">
+            {{ transactionDetails.gas_used }} / {{ transactionDetails.gas_wanted }}
+          </p>
+          <ng-template #gasNotUsed>
+            <p class="transaction-details__value" appTypeface="subheader">Gas not used</p>
+          </ng-template>
+          <p class="block-details__label" appTypeface="paragraph">
+            Gas (used / wanted)
+          </p>
+        </div>
+      </div>
+
+      <app-transaction-message [txMessage]="transactionDetails.tx.value.msg[0]"></app-transaction-message>
+    </div>
+
+
+  </ng-container>
+</app-info-card>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="validator-details__loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>
