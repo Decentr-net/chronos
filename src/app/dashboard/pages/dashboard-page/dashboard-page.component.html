@@ -42,7 +42,7 @@
         </ng-container>
 
         <ng-container
-          *ngIf="latestBlock$ | async as latestBlock; else cardsLoading"
+          *ngIf="blocks$ | async as blocks; else cardsLoading"
           ngProjectAs="[card-body]"
         >
           <div class="dashboard__statistics-height">
@@ -50,7 +50,7 @@
               class="dashboard__statistics-height-value"
               appTypeface="header-3"
             >
-              {{ +latestBlock.height | tuiFormatNumber }}
+              {{ +blocks[0].block.header.height | tuiFormatNumber }}
             </div>
 
             <div
@@ -61,7 +61,7 @@
                 class="dashboard__statistics-height-time-icon"
                 key="clock"
               ></svg-icon>
-              {{ latestBlock.time | dateAgo }}
+              {{ blocks[0].block.header.time | dateAgo }}
             </div>
           </div>
         </ng-container>

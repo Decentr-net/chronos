@@ -23,9 +23,9 @@ export class DashboardPageService {
     return this.currencyService.getDecentCoinRateHistory(days);
   }
 
-  public getBlocks(days: number): Observable<Block[]> {
+  public getBlocks(count: number): Observable<Block[]> {
     return this.decentrService.getLatestBlock().pipe(
-      switchMap(blockResponse => this.decentrService.getBlocks(blockResponse.height, days)),
+      switchMap(blockResponse => this.decentrService.getBlocks(blockResponse.height, count)),
       map(block => block.sort(sortByHeight)),
     );
   }

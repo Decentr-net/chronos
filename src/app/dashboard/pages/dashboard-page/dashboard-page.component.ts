@@ -25,7 +25,6 @@ export class DashboardPageComponent implements OnInit {
   public blocks$: Observable<Block[]>;
   public coinRate$: Observable<CoinRateFor24Hours>;
   public coinStats$: Observable<CoinRateHistory>;
-  public latestBlock$: Observable<Pick<BlockHeader, 'height' | 'time'>>;
   public pool$: Observable<Pool>;
   public transactions$: Observable<Transaction[]>;
 
@@ -51,10 +50,6 @@ export class DashboardPageComponent implements OnInit {
 
     this.transactions$ = timer(0, ONE_SECOND * 10).pipe(
       switchMap(() => this.dashboardService.getLatestTxs()),
-    );
-
-    this.latestBlock$ = timer(0, ONE_SECOND * 10).pipe(
-      switchMap(() => this.dashboardService.getLatestBlock()),
     );
   }
 }
