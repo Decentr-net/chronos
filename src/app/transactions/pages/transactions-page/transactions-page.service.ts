@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Transaction } from 'decentr-js';
+import { Transaction, TXsSearchParams, TXsSearchResponse } from 'decentr-js';
 import { map, switchMap } from 'rxjs/operators';
-import { sortByHeight } from '@shared/utils/blockchain';
+
 import { DecentrService } from '@core/services/decentr';
+import { sortByHeight } from '@shared/utils/blockchain';
 
 @Injectable()
 export class TransactionsPageService {
@@ -18,5 +19,9 @@ export class TransactionsPageService {
       switchMap(txsResponse => this.decentrService.getLatestTxs(50, txsResponse.page_total)),
       map(tx => tx.sort(sortByHeight)),
     );
+  }
+
+  public getTxs(searchParams: TXsSearchParams): Observable<TXsSearchResponse> {
+    return this.decentrService.getTxs(searchParams);
   }
 }
