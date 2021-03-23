@@ -1,0 +1,48 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: $grid-step * 2;
+}
+
+.transaction-details__loading {
+  width: 100%;
+}
+
+.transaction-details__hash {
+  word-wrap: break-word;
+}
+
+.transaction-details__info {
+  width: 100%;
+}
+
+.transaction-details__detailed-info {
+  display: grid;
+  gap: $grid-step * 3;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  padding-top: $grid-step * 3;
+  padding-bottom: $grid-step * 2;
+}
+
+.transaction-details__value {
+  font-weight: 500;
+}
+
+.transaction-details__label {
+  color: $color-grey;
+  font-weight: 500;
+}
+
+@media (max-width: $screen-desktop) {
+  .transaction-details__detailed-info {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: $screen-mobile) {
+  .transaction-details__detailed-info {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
