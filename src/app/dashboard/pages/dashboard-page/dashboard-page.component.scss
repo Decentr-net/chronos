@@ -54,7 +54,14 @@
 .dashboard__statistics {
   display: grid;
   gap: $grid-step * 3;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 4fr);
+  min-height: 360px;
+}
+
+.dashboard__statistics-cards-row {
+  display: grid;
+  gap: $grid-step * 3;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
   min-height: 360px;
 }
 

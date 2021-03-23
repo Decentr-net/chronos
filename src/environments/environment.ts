@@ -9,6 +9,7 @@ export const environment: Environment = {
   currencyApi: 'https://api.coingecko.com/api/v3',
   decentrApi: 'https://hera.testnet.decentr.xyz',
   production: false,
+  theseusUrl: 'https://theseus.testnet.decentr.xyz',
 };
 
 /*

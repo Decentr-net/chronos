@@ -12,6 +12,7 @@ import { DecentrService } from '@core/services/decentr';
 import { ONE_SECOND } from '@shared/utils/date';
 import { svgClockIcon } from '../../../svg-icons/clock';
 import { svgExpandRightIcon } from '../../../svg-icons/expand-right';
+import { AdvDdvStatistics } from '../../models/adv-ddv-statistics.model';
 
 @UntilDestroy()
 @Component({
@@ -21,6 +22,7 @@ import { svgExpandRightIcon } from '../../../svg-icons/expand-right';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardPageComponent implements OnInit {
+  public advDdvStats: Observable<AdvDdvStatistics>;
   public readonly appRoute: typeof AppRoute = AppRoute;
   public blocks$: Observable<Block[]>;
   public coinRate$: Observable<CoinRateFor24Hours>;
@@ -40,6 +42,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.advDdvStats = this.dashboardService.getAdvDdvStatistics();
     this.coinRate$ = this.dashboardService.getCoinRate();
     this.coinStats$ = this.dashboardService.getDecentCoinRateHistory(1);
     this.pool$ = this.dashboardService.getPool();
