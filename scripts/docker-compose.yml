@@ -1,0 +1,11 @@
+version: '2.2'
+
+services:
+  chronos:
+    image: decentr/chronos:latest
+    build:
+      context: ./
+      dockerfile: ./scripts/Dockerfile
+    container_name: decentr-chronos
+    ports:
+      - "8080:80"
