@@ -3,4 +3,5 @@ export abstract class Environment {
   abstract currencyApi: string;
   abstract decentrApi: string;
   abstract production: boolean;
+  abstract theseusUrl: string;
 }

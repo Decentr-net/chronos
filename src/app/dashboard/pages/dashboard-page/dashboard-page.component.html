@@ -5,7 +5,9 @@
       [coinRate]="coinRate$ | async"
       [coinStats]="coinStats$ | async"
     ></app-currency-stats>
+  </div>
 
+  <div class="dashboard__tables">
     <div class="dashboard__statistics-cards">
       <app-info-card>
         <ng-container ngProjectAs="[card-title]">
@@ -66,6 +68,47 @@
           </div>
         </ng-container>
       </app-info-card>
+    </div>
+    <div class="dashboard__statistics-cards">
+      <ng-container *ngIf="advDdvStats | async as advDdvStats">
+        <app-info-card>
+          <ng-container ngProjectAs="[card-title]">
+            Average Data Value
+          </ng-container>
+
+          <ng-container
+            ngProjectAs="[card-body]"
+          >
+            <div class="dashboard__statistics-adv">
+              <div
+                class="dashboard__statistics-adv-value"
+                appTypeface="header-3"
+              >
+                {{ advDdvStats.adv | tuiFormatNumber: 6 : '.'  }}
+              </div>
+            </div>
+          </ng-container>
+        </app-info-card>
+
+        <app-info-card>
+          <ng-container ngProjectAs="[card-title]">
+            Digital Data Value
+          </ng-container>
+
+          <ng-container
+            ngProjectAs="[card-body]"
+          >
+            <div class="dashboard__statistics-ddv">
+              <div
+                class="dashboard__statistics-ddv-value"
+                appTypeface="header-3"
+              >
+                {{ advDdvStats.ddv | tuiFormatNumber: 3 : '.' }}
+              </div>
+            </div>
+          </ng-container>
+        </app-info-card>
+      </ng-container>
     </div>
   </div>
 

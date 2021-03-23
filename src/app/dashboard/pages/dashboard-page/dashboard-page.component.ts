@@ -5,6 +5,7 @@ import { share, switchMap } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
+import { AdvDdvStatistics } from '../../models/adv-ddv-statistics.model';
 import { AppRoute } from '../../../app-route';
 import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';
 import { DashboardPageService } from './dashboard-page.service';
@@ -21,6 +22,7 @@ import { svgExpandRightIcon } from '../../../svg-icons/expand-right';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardPageComponent implements OnInit {
+  public advDdvStats: Observable<AdvDdvStatistics>;
   public readonly appRoute: typeof AppRoute = AppRoute;
   public blocks$: Observable<Block[]>;
   public coinRate$: Observable<CoinRateFor24Hours>;
@@ -40,6 +42,7 @@ export class DashboardPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.advDdvStats = this.dashboardService.getAdvDdvStatistics();
     this.coinRate$ = this.dashboardService.getCoinRate();
     this.coinStats$ = this.dashboardService.getDecentCoinRateHistory(1);
     this.pool$ = this.dashboardService.getPool();
