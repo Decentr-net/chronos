@@ -5,6 +5,7 @@ import { share, switchMap } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
+import { AdvDdvStatistics } from '../../models/adv-ddv-statistics.model';
 import { AppRoute } from '../../../app-route';
 import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';
 import { DashboardPageService } from './dashboard-page.service';
@@ -12,7 +13,6 @@ import { DecentrService } from '@core/services/decentr';
 import { ONE_SECOND } from '@shared/utils/date';
 import { svgClockIcon } from '../../../svg-icons/clock';
 import { svgExpandRightIcon } from '../../../svg-icons/expand-right';
-import { AdvDdvStatistics } from '../../models/adv-ddv-statistics.model';
 
 @UntilDestroy()
 @Component({
