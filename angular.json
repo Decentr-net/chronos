@@ -97,8 +97,15 @@
               "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-global.less",
+              "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/app/_shared/styles"
+              ]
+            },
             "scripts": []
           }
         },
