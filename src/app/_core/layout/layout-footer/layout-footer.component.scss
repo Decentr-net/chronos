@@ -3,31 +3,29 @@
 :host {
   background-color: $color-black;
   display: flex;
-  align-items: center;
-  height: $grid-step * 6;
-  margin-top: $grid-step * 3;
 }
 
 .footer__container {
   align-items: center;
   display: flex;
   justify-content: space-between;
+  margin: $grid-step auto;
 }
 
 .footer__logo {
+  color: $color-white;
   cursor: pointer;
   height: 30px;
   width: 100px;
-  color: $color-white;
 }
 
 .social__link {
+  color: $color-grey;
   cursor: pointer;
-  margin-right: $grid-step * 3;
-  color: $color-light-grey;
+  transition: all 0.3s ease;
 
-  &:last-child {
-    margin-right: 0;
+  &:not(:first-child) {
+    margin-left: $grid-step * 3;
   }
 
   &:hover {
@@ -41,9 +39,17 @@
 }
 
 .footer__copyright {
-  color: $color-light-grey;
+  color: $color-grey;
 }
 
-.footer__social-links {
-  color: $color-light-grey;
+@media (max-width: $screen-mobile) {
+  .footer__container {
+    flex-direction: column-reverse;
+
+    & > * {
+      &:not(:first-child) {
+        margin-bottom: $grid-step * 1.5;
+      }
+    }
+  }
 }
