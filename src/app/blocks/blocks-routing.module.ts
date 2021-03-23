@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BlocksPageComponent } from './pages/blocks-page';
 import { BlockDetailsComponent } from './pages/block-details';
 
-const routes: Routes = [
+const ROUTES: Routes = [
   {
     path: '',
     component: BlocksPageComponent,
@@ -11,12 +11,12 @@ const routes: Routes = [
   {
     path: ':blockHeight',
     component: BlockDetailsComponent,
-  }
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes),
+    RouterModule.forChild(ROUTES),
   ],
   exports: [
     RouterModule,

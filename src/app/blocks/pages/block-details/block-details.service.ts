@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { DecentrService } from '@core/services/decentr';
-import { Observable } from 'rxjs';
-import { Block, BlockHeader, Transaction, TXsSearchResponse } from 'decentr-js';
+import { Block, BlockHeader, Transaction } from 'decentr-js';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
+import { DecentrService } from '@core/services/decentr';
 
 @Injectable()
 export class BlockDetailsService {
@@ -17,8 +18,8 @@ export class BlockDetailsService {
   }
 
   public getBlockTxs(height: number): Observable<Transaction[]> {
-    return this.decentrService.getTxs({txMinHeight: height, txMaxHeight: height}).pipe(
-      map(txSearchResponse => txSearchResponse.txs)
+    return this.decentrService.getTxs({ txMinHeight: height, txMaxHeight: height }).pipe(
+      map(txSearchResponse => txSearchResponse.txs),
     );
   }
 }

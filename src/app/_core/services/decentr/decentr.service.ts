@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { DecentrApiService } from '@core/services/decentr/api';
 import { defer, Observable } from 'rxjs';
 import {
   Block,
-  BlockBody,
   BlockHeader,
   Pool,
   Transaction,
   TXsSearchParams,
   TXsSearchResponse,
   Validator,
-  ValidatorsFilterParams
+  ValidatorsFilterParams,
 } from 'decentr-js';
 import { map, pluck } from 'rxjs/operators';
+
+import { DecentrApiService } from '@core/services/decentr/api';
 
 @Injectable({
   providedIn: 'root'

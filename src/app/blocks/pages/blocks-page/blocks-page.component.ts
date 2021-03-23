@@ -2,8 +2,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable, timer } from 'rxjs';
 import { Block } from 'decentr-js';
 import { switchMap } from 'rxjs/operators';
-import { ONE_SECOND } from '@shared/utils/date';
+
 import { BlocksPageService } from './blocks-page.service';
+import { ONE_SECOND } from '@shared/utils/date';
 
 @Component({
   selector: 'app-blocks-page',
@@ -12,7 +13,6 @@ import { BlocksPageService } from './blocks-page.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BlocksPageComponent implements OnInit {
-
   blocks$: Observable<Block[]>;
 
   constructor(
@@ -20,13 +20,9 @@ export class BlocksPageComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.blocks$ = timer(0, ONE_SECOND * 10).pipe(
       switchMap(() => this.blocksPageService.getBlocks(50)),
     );
-  }
-
-  sortByHeight(a, b): any {
-    return a.height < b.height ? 1 : -1;
   }
 }

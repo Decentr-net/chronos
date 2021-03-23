@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
-import { BlockDetailsService } from './block-details.service';
 import { ActivatedRoute } from '@angular/router';
-import { map, mergeMap, switchMap } from 'rxjs/operators';
+import { Block, Transaction } from 'decentr-js';
 import { Observable } from 'rxjs';
-import { Block, Transaction, TXsSearchResponse } from 'decentr-js';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+
+import { BlockDetailsService } from './block-details.service';
 
 @UntilDestroy()
 @Component({
@@ -25,7 +25,7 @@ export class BlockDetailsComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.route.params.pipe(
       untilDestroyed(this),
     ).subscribe(params => {

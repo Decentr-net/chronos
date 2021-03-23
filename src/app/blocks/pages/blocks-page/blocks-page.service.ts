@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { DecentrService } from '@core/services/decentr';
-import { Observable } from 'rxjs';
 import { Block } from 'decentr-js';
+import { Observable } from 'rxjs';
+
+import { DecentrService } from '@core/services/decentr';
 import { map, switchMap } from 'rxjs/operators';
 import { sortByHeight } from '@shared/utils/blockchain';
 
@@ -9,7 +10,7 @@ import { sortByHeight } from '@shared/utils/blockchain';
 export class BlocksPageService {
 
   constructor(
-    private decentrService: DecentrService
+    private decentrService: DecentrService,
   ) {
   }
 
