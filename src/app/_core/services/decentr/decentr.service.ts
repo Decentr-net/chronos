@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { DecentrApiService } from '@core/services/decentr/api';
 import { defer, Observable } from 'rxjs';
 import {
   Block,
-  BlockBody,
   BlockHeader,
   Pool,
   Transaction,
   TXsSearchParams,
   TXsSearchResponse,
   Validator,
-  ValidatorsFilterParams
+  ValidatorsFilterParams,
 } from 'decentr-js';
 import { map, pluck } from 'rxjs/operators';
+
+import { DecentrApiService } from '@core/services/decentr/api';
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +28,8 @@ export class DecentrService {
     return defer(() => this.decentrApiService.getBlocks(currentHeight, count));
   }
 
-  getBlockByHeight(height: BlockHeader['height']): Observable<BlockBody> {
-    return defer(() => this.decentrApiService.getBlockByHeight(height)).pipe(
-      map(blockResponse => blockResponse.block)
-    );
+  getBlockByHeight(height: BlockHeader['height']): Observable<Block> {
+    return defer(() => this.decentrApiService.getBlockByHeight(height));
   }
 
   getPool(): Observable<Pool> {
