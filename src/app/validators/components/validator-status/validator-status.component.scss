@@ -1,0 +1,23 @@
+@import "variables";
+
+.status {
+  display: flex;
+
+  .status__icon {
+    width: 20px;
+    height: 20px;
+    margin-right: $grid-step;
+  }
+}
+
+.bonded {
+  color: $color-positive;
+}
+
+.unbonded {
+  color: $color-light-grey;
+}
+
+.unbonding {
+  color: $color-grey;
+}

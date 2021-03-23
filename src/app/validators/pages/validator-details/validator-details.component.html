@@ -21,7 +21,7 @@
       <div class="validator-details__detailed-info">
         <div>
           <p class="validator-details__value" appTypeface="subheader">
-            {{ validatorDetails.status }}
+            <app-validator-status [status]="validatorDetails.status"></app-validator-status>
           </p>
           <p class="validator-details__label" appTypeface="paragraph">
             Status
