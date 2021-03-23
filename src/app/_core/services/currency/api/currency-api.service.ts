@@ -30,7 +30,12 @@ export class CurrencyApiService {
     );
   }
 
-  public getCoinRateHistory(blockchainId: string, currency: string, days: number, interval?: 'daily' | null): Observable<CoinRateHistoryResponse> {
+  public getCoinRateHistory(
+    blockchainId: string,
+    currency: string,
+    days: number,
+    interval?: 'daily' | null
+  ): Observable<CoinRateHistoryResponse> {
     const params = new HttpParams()
       .append(`days`, days.toString())
       .append(`interval`, interval)

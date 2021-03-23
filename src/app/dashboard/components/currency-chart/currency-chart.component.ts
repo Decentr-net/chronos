@@ -53,12 +53,12 @@ export class CurrencyChartComponent implements OnInit {
         marginTop: 10,
       },
       tooltip: {
-        backgroundColor: "#FFFFFF",
-        borderColor: "#EDEDEE",
+        backgroundColor: '#FFFFFF',
+        borderColor: '#EDEDEE',
         borderRadius: 12,
         borderWidth: 2,
         enabled: true,
-        headerShape: "square",
+        headerShape: 'square',
         shadow: false,
         formatter(): string {
           component.instance.data = this;

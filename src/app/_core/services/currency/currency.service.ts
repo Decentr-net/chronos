@@ -48,7 +48,7 @@ export class CurrencyService {
 
     return this.currencyApiService.getCoinRateHistory(blockchainId, currencyId, days)
       .pipe(
-        map((rateHistory) => rateHistory['prices']),
+        map((rateHistory) => rateHistory.prices),
       );
   }
 }

@@ -26,18 +26,18 @@ export class LayoutHeaderComponent {
     ]);
   }
 
-  onActiveZone(active: boolean) {
+  onActiveZone(active: boolean): void {
     if (!active) {
       this.isMobileMenuOpen = false;
     }
   }
 
-  onClick() {
+  onClick(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
     this.changeDetectorRef.detectChanges();
   }
 
-  onObscured(obscured: boolean) {
+  onObscured(obscured: boolean): void {
     if (obscured) {
       this.isMobileMenuOpen = false;
     }
