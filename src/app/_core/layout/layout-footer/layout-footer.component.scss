@@ -1,0 +1,48 @@
+@import 'variables';
+
+:host {
+  background-color: $color-black;
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.footer__container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__logo {
+  cursor: pointer;
+  height: 30px;
+  width: 100px;
+  color: $color-white;
+}
+
+.social__link {
+  cursor: pointer;
+  margin-right: 25px;
+  color: $color-light-grey;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover {
+    color: $color-white;
+  }
+}
+
+.social__icon {
+  height: 22px;
+  width: 22px;
+}
+
+.footer__copyright {
+  color: $color-light-grey;
+}
+
+.footer__social-links {
+  color: $color-light-grey;
+}

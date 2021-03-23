@@ -1,0 +1,37 @@
+<div class="footer__container container">
+  <div>
+    <svg-icon
+      class="footer__logo"
+      key="logo-2"
+      [routerLink]="['/']"
+    ></svg-icon>
+  </div>
+  <p class="footer__copyright" appTypeface="caption">&copy; Copyright {{ currentYear }} Decentr All Rights
+    Reserved</p>
+  <div class="footer__social-links">
+    <a class="social__link" [href]="socialLinks.GitHub" target="_blank">
+      <svg-icon
+        class="social__icon"
+        key="github"
+      ></svg-icon>
+    </a>
+    <a class="social__link" [href]="socialLinks.Telegram" target="_blank">
+      <svg-icon
+        class="social__icon"
+        key="telegram"
+      ></svg-icon>
+    </a>
+    <a class="social__link" [href]="socialLinks.Twitter" target="_blank">
+      <svg-icon
+        class="social__icon"
+        key="twitter"
+      ></svg-icon>
+    </a>
+    <a class="social__link" [href]="socialLinks.Medium" target="_blank">
+      <svg-icon
+        class="social__icon"
+        key="medium"
+      ></svg-icon>
+    </a>
+  </div>
+</div>
