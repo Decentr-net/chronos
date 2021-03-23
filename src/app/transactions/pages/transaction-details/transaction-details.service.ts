@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import { DecentrService } from '@core/services/decentr';
-import { Transaction } from 'decentr-js';
 import { Observable } from 'rxjs';
+import { Transaction } from 'decentr-js';
+
+import { DecentrService } from '@core/services/decentr';
 
 @Injectable()
 export class TransactionDetailsService {
 
   constructor(
-    private decentrService: DecentrService
+    private decentrService: DecentrService,
   ) {
   }
 
