@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
 import { MessageTypes } from '../../enums/message-types.enum';
 
 @Component({
@@ -9,5 +10,6 @@ import { MessageTypes } from '../../enums/message-types.enum';
 })
 export class TransactionMessageComponent {
   @Input() txMessage;
+
   public messageTypes: typeof MessageTypes = MessageTypes;
 }

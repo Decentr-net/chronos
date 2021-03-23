@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
-import { mergeMap } from 'rxjs/operators';
-import { TransactionDetailsService } from './transaction-details.service';
 import { ActivatedRoute } from '@angular/router';
-import { Transaction } from 'decentr-js';
+import { mergeMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { Transaction } from 'decentr-js';
+
+import { TransactionDetailsService } from './transaction-details.service';
 
 @Component({
   selector: 'app-transaction-details',
@@ -17,15 +18,14 @@ export class TransactionDetailsComponent implements OnInit {
   public transactionDetails$: Observable<Transaction>;
 
   constructor(
-    private transactionDetailsService: TransactionDetailsService,
     private route: ActivatedRoute,
+    private transactionDetailsService: TransactionDetailsService,
   ) {
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.transactionDetails$ = this.route.params.pipe(
       mergeMap((params) => this.transactionDetailsService.getTransaction(params.transactionHash)),
     );
   }
-
 }

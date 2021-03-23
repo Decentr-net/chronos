@@ -3,11 +3,10 @@
     Transaction details
   </ng-container>
 
-  <ng-container ngProjectAs="[card-body]"
-                *ngIf="transactionDetails$ | async as transactionDetails; else tablesLoading;">
+  <ng-container ngProjectAs="[card-body]" *ngIf="transactionDetails$ | async as transactionDetails; else tablesLoading;">
     <div class="transaction-details__info">
       <div class="transaction-details__hash">
-        <p appTypeface="header-4">{{ transactionDetails.txhash| titlecase }}</p>
+        <p appTypeface="header-4">{{ transactionDetails.txhash }}</p>
       </div>
 
       <div class="transaction-details__detailed-info">
@@ -21,36 +20,35 @@
         </div>
         <div>
           <p class="transaction-details__value" appTypeface="subheader">
-            {{ transactionDetails.timestamp | date:'yyyy.MM.dd, h:mm:ss' }}
+            {{ transactionDetails.timestamp | date:'yyyy.MM.dd, HH:mm:ss' }}
           </p>
           <p class="transaction-details__label" appTypeface="paragraph">
             Time
           </p>
         </div>
         <div>
-          <p *ngIf="transactionDetails.gas_used; else gasNotUsed" class="transaction-details__value"
-             appTypeface="subheader">
+          <p *ngIf="transactionDetails.gas_used; else gasNotUsed" class="transaction-details__value" appTypeface="subheader">
             {{ transactionDetails.gas_used }} / {{ transactionDetails.gas_wanted }}
           </p>
+
+          <p class="transaction-details__label" appTypeface="paragraph">
+            Gas (used / wanted)
+          </p>
+
           <ng-template #gasNotUsed>
             <p class="transaction-details__value" appTypeface="subheader">Gas not used</p>
           </ng-template>
-          <p class="block-details__label" appTypeface="paragraph">
-            Gas (used / wanted)
-          </p>
         </div>
       </div>
 
       <app-transaction-message [txMessage]="transactionDetails.tx.value.msg[0]"></app-transaction-message>
     </div>
-
-
   </ng-container>
 </app-info-card>
 
 <ng-template #tablesLoading>
   <ngx-skeleton-loader
-    class="validator-details__loading"
+    class="transaction-details__loading"
     count="6"
     [theme]="{
       height: '40px',

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit } from '@angular/core';
 import { forkJoin, Observable, timer } from 'rxjs';
 import { distinctUntilChanged, map, mergeMap, scan, switchMap } from 'rxjs/operators';
 import { Transaction } from 'decentr-js';
@@ -16,6 +16,8 @@ const UPDATE_PERIOD = ONE_SECOND * 10;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsPageComponent implements OnInit {
+  @HostBinding('class.container') public readonly useContainerClass: boolean = true;
+
   transactions$: Observable<Transaction[]>;
 
   constructor(

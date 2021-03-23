@@ -1,4 +1,5 @@
 <p><b>Message type:</b> {{ txMessage.type }}</p>
+
 <ng-container [ngSwitch]="txMessage.type">
   <ng-container *ngSwitchCase="messageTypes.DistributeRewards">
     <p><b>Owner:</b> {{txMessage.value.owner}}</p>
@@ -53,4 +54,3 @@
     <p><b>Owner:</b> {{txMessage.value.owner}}</p>
   </ng-container>
 </ng-container>
-
