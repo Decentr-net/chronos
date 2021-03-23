@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Block, BlockHeader, Pool, Transaction } from 'decentr-js';
+import { Block, Pool, Transaction } from 'decentr-js';
 import { Observable, timer } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { share, switchMap } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
@@ -46,6 +46,7 @@ export class DashboardPageComponent implements OnInit {
 
     this.blocks$ = timer(0, ONE_SECOND * 10).pipe(
       switchMap(() => this.dashboardService.getBlocks(5)),
+      share(),
     );
 
     this.transactions$ = timer(0, ONE_SECOND * 10).pipe(
