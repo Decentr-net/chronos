@@ -1,0 +1,25 @@
+<div class="footer__container container">
+  <a href="https://decentr.net" target="_blank">
+    <svg-icon
+      class="footer__logo"
+      key="logo-blue"
+    ></svg-icon>
+  </a>
+  <p class="footer__copyright" appTypeface="caption">
+    &copy; Copyright {{ currentYear }} Decentr All Rights Reserved
+  </p>
+  <div class="footer__social-links">
+    <a
+      *ngFor="let socialLink of socialLinks"
+      class="social__link"
+      [href]="socialLink.url"
+      target="_blank"
+      [title]="socialLink.title"
+    >
+      <svg-icon
+        class="social__icon"
+        [key]="socialLink.iconKey"
+      ></svg-icon>
+    </a>
+  </div>
+</div>
