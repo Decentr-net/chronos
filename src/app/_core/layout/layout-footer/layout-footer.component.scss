@@ -4,7 +4,8 @@
   background-color: $color-black;
   display: flex;
   align-items: center;
-  height: 48px;
+  height: $grid-step * 6;
+  margin-top: $grid-step * 3;
 }
 
 .footer__container {
@@ -22,7 +23,7 @@
 
 .social__link {
   cursor: pointer;
-  margin-right: 25px;
+  margin-right: $grid-step * 3;
   color: $color-light-grey;
 
   &:last-child {
