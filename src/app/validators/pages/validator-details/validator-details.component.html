@@ -6,7 +6,7 @@
   <ng-container ngProjectAs="[card-body]" *ngIf="validatorDetails$ | async as validatorDetails; else tablesLoading;">
     <div class="validator-details__info">
       <div class="validator-details__moniker">
-        <p appTypeface="header-4">{{ validatorDetails.description.moniker | titlecase }}</p>
+        <p appTypeface="header-4">{{ validatorDetails.description.moniker }}</p>
       </div>
 
       <div class="validator-details__wallet">
