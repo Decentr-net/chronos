@@ -1,0 +1,23 @@
+@import 'variables';
+
+:host {
+  overflow: auto;
+  width: 100%;
+
+  .tui-table__th {
+    color: $color-grey;
+    border-bottom: 2px solid $color-outlines;
+    height: unset;
+    padding: $grid-step $grid-step * 2 $grid-step / 2;
+  }
+}
+
+.blocks__table {
+  display: grid;
+  gap: $grid-step * 3;
+  margin-top: $grid-step * 3;
+}
+
+.blocks__table--loading {
+  width: 100%;
+}

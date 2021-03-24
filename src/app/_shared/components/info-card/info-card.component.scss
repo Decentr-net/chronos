@@ -1,0 +1,26 @@
+@import 'variables';
+
+:host {
+  border: 2px solid $color-outlines;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  padding: $grid-step * 2;
+}
+
+.info-card__head {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-card__title {
+  font-weight: 500;
+}
+
+.info-card__show-more {
+}
+
+.info-card__value {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,33 @@
+@import 'mixins';
+@import 'variables';
+
+* {
+  //outline: 1px solid red;
+}
+
+:root {
+  --tui-font-text: $main-font-family !important;
+}
+
+html {
+  font-family: $main-font-family;
+  font-size: $main-font-size;
+}
+
+body {
+  color: $color-font-base;
+  font-family: $main-font-family;
+  margin: 0;
+  padding: 0;
+}
+
+svg-icon {
+  display: inline-flex;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: $screen-desktop-xlarge + $page-side-padding * 2;
+  padding: 0 $page-side-padding;
+  width: 100%;
+}

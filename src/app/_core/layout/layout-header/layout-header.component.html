@@ -1,0 +1,26 @@
+<div class="header__container container" >
+  <div class="header__logo-and-navigation">
+    <svg-icon
+      class="header__logo"
+      key="logo"
+      [routerLink]="['/']"
+    ></svg-icon>
+
+    <app-header-navigation class="header__navigation"></app-header-navigation>
+  </div>
+  <div class="header__mobile-menu">
+    <svg-icon
+      class="header__mobile-menu-icon"
+      [key]="isMobileMenuOpen ? 'close' : 'menu'"
+      (tuiActiveZoneChange)="onActiveZone($event)"
+      [tuiDropdownContent]="dropdownContent"
+      [tuiDropdown]="isMobileMenuOpen"
+      (tuiObscured)="onObscured($event)"
+      (click)="onClick()"
+    ></svg-icon>
+
+    <ng-template #dropdownContent>
+      <app-header-navigation class="header__navigation--mobile" (click)="onClick()"></app-header-navigation>
+    </ng-template>
+  </div>
+</div>

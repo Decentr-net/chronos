@@ -1,0 +1,16 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .content {
+    flex: 1 0 auto;
+  }
+
+  .footer {
+    flex: 0 0 auto;
+    margin-top: $grid-step * 2;
+  }
+}

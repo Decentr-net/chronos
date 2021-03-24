@@ -1,0 +1,156 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: $grid-step * 2;
+}
+
+.card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard__currency-stats {
+  border: 2px solid $color-outlines;
+  border-radius: $border-radius;
+  padding: $grid-step * 2;
+}
+
+.dashboard__statistics-tokens {
+  margin-top: $grid-step * 1.5;
+}
+
+.dashboard__statistics-tokens-value {
+  font-weight: 500;
+}
+
+.dashboard__statistics-tokens-time {
+  color: $color-grey;
+}
+
+.dashboard__statistics-height {
+  margin-top: $grid-step * 1.5;
+}
+
+.dashboard__statistics-height-value {
+  font-weight: 500;
+}
+
+.dashboard__statistics-height-time {
+  color: $color-grey;
+  display: flex;
+}
+
+.dashboard__statistics-height-time-icon {
+  align-items: center;
+  display: flex;
+  height: 24px;
+  margin-right: $grid-step;
+  width: 24px;
+}
+
+.dashboard__statistics-adv {
+  margin-top: $grid-step * 1.5;
+}
+
+.dashboard__statistics-adv-value {
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.dashboard__statistics-ddv {
+  margin-top: $grid-step * 1.5;
+}
+
+.dashboard__statistics-ddv-value {
+  font-weight: 500;
+  word-break: break-all;
+}
+
+.dashboard__statistics {
+  display: grid;
+  gap: $grid-step * 3;
+  grid-template-columns: minmax(0, 4fr);
+  min-height: 360px;
+}
+
+.dashboard__statistics-cards-row {
+  display: grid;
+  gap: $grid-step * 3;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 2fr);
+  min-height: 360px;
+}
+
+.dashboard__statistics-cards {
+  display: grid;
+  gap: $grid-step * 3;
+  grid-template-rows: 1fr 1fr;
+  position: relative;
+}
+
+.dashboard__tables {
+  display: grid;
+  gap: $grid-step * 3;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: $grid-step * 3;
+}
+
+.dashboard__statistics-tables--loading {
+  width: 100%;
+}
+
+.dashboard__tables-show-more {
+  align-items: center;
+  color: $color-primary;
+  display: inline-flex;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: $color-blue-hover;
+  }
+}
+
+.dashboard__tables-show-more-icon {
+  align-items: center;
+  display: inline-flex;
+  height: 24px;
+  width: 24px;
+}
+
+.dashboard__statistics-cards--loading {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: $screen-desktop-large) {
+  .dashboard__statistics {
+    grid-template-columns: minmax(0, 2fr);
+  }
+
+  .dashboard__statistics-cards {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: $screen-desktop) {
+  .dashboard__tables {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: $screen-mobile) {
+  .dashboard__statistics {
+    grid-template-columns: minmax(0, 2fr);
+  }
+
+  .dashboard__statistics-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard__tables {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

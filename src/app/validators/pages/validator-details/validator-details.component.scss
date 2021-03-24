@@ -1,0 +1,61 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: $grid-step * 2;
+}
+
+.validator-details__loading {
+  width: 100%;
+}
+
+.validator-details__info {
+  width: 100%;
+}
+
+.validator-details__moniker {
+  border-bottom: 2px solid $color-outlines;
+  padding-bottom: $grid-step * 3;
+}
+
+.validator-details__wallet {
+  border-bottom: 2px solid $color-outlines;
+  padding-top: $grid-step * 3;
+  padding-bottom: $grid-step * 3;
+}
+
+.validator-details__wallet-address {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.validator-details__detailed-info {
+  display: grid;
+  gap: $grid-step * 3;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  padding-top: $grid-step * 3;
+  padding-bottom: $grid-step * 2;
+}
+
+.validator-details__value {
+  font-weight: 500;
+}
+
+.validator-details__label {
+  color: $color-grey;
+  font-weight: 500;
+}
+
+@media (max-width: $screen-desktop) {
+  .validator-details__detailed-info {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: $screen-mobile) {
+  .validator-details__detailed-info {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

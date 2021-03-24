@@ -1,0 +1,22 @@
+<div class="container">
+  <app-info-card>
+    <ng-container ngProjectAs="[card-title]">
+      Validators
+    </ng-container>
+
+    <ng-container ngProjectAs="[card-body]" *ngIf="validators$ | async as validators; else tablesLoading;">
+      <app-validators-table [data]="validators"></app-validators-table>
+    </ng-container>
+  </app-info-card>
+</div>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="validators-page__loading"
+    count="10"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>

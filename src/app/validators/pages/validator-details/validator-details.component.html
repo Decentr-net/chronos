@@ -1,0 +1,75 @@
+<app-info-card>
+  <ng-container ngProjectAs="[card-title]">
+    Validator details
+  </ng-container>
+
+  <ng-container ngProjectAs="[card-body]" *ngIf="validatorDetails$ | async as validatorDetails; else tablesLoading;">
+    <div class="validator-details__info">
+      <div class="validator-details__moniker">
+        <p appTypeface="header-4">{{ validatorDetails.description.moniker }}</p>
+      </div>
+
+      <div class="validator-details__wallet">
+        <p class="validator-details__wallet-address validator-details__value" appTypeface="subheader">
+          {{ validatorDetails.operator_address }}
+        </p>
+        <p class="validator-details__label" appTypeface="paragraph">
+          Operator address
+        </p>
+      </div>
+
+      <div class="validator-details__detailed-info">
+        <div>
+          <p class="validator-details__value" appTypeface="subheader">
+            <app-validator-status [status]="validatorDetails.status"></app-validator-status>
+          </p>
+          <p class="validator-details__label" appTypeface="paragraph">
+            Status
+          </p>
+        </div>
+        <div>
+          <p class="validator-details__value" appTypeface="subheader">
+            <ng-container *ngIf="validatorDetails.description.website; else noWebsite;">
+              <a tuiLink target="_blank" href="{{ validatorDetails.description.website }}">
+                {{ validatorDetails.description.website }}
+              </a>
+            </ng-container>
+            <ng-template #noWebsite>
+              No website
+            </ng-template>
+          </p>
+          <p class="validator-details__label" appTypeface="paragraph">
+            Website
+          </p>
+        </div>
+        <div>
+          <p class="validator-details__value" appTypeface="subheader">
+            {{ validatorDetails.commission.commission_rates.rate | percent }}
+          </p>
+          <p class="validator-details__label" appTypeface="paragraph">
+            Commission
+          </p>
+        </div>
+        <div>
+          <p class="validator-details__value" appTypeface="subheader">
+            {{ validatorDetails.description.details || 'No details' }}
+          </p>
+          <p class="validator-details__label" appTypeface="paragraph">
+            Details
+          </p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</app-info-card>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="validator-details__loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>

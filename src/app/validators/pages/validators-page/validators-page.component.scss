@@ -1,0 +1,11 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  flex-direction: column;
+  margin-top: $grid-step * 2;
+}
+
+.validators-page__loading {
+  width: 100%;
+}
