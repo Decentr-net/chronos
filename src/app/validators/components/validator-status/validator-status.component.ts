@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
-import { Validator } from 'decentr-js';
-import { ValidatorStatus } from '../../enum/validator-status.enum';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
+import { Validator } from 'decentr-js';
+
 import { svgUnbondedIcon } from '../../../svg-icons/unbonded';
 import { svgBondedIcon } from '../../../svg-icons/bonded';
 import { svgUnbondingIcon } from '../../../svg-icons/unbonding';
+import { ValidatorStatus } from '../../enum/validator-status.enum';
 
 @Component({
   selector: 'app-validator-status',
@@ -12,9 +13,26 @@ import { svgUnbondingIcon } from '../../../svg-icons/unbonding';
   styleUrls: ['./validator-status.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ValidatorStatusComponent {
+export class ValidatorStatusComponent implements OnInit {
   @Input() status: Validator['status'];
+
+  @HostBinding('class.mod-unbonded')
+  public get isUnbonded(): boolean {
+    return this.status === ValidatorStatus.Unbonded;
+  }
+
+  @HostBinding('class.mod-unbonding')
+  public get isUnbonding(): boolean {
+    return this.status === ValidatorStatus.Unbonding;
+  }
+
+  @HostBinding('class.mod-bonded')
+  public get isBonded(): boolean {
+    return this.status === ValidatorStatus.Bonded;
+  }
+
   public readonly validatorStatus: typeof ValidatorStatus = ValidatorStatus;
+  public validatorStatusName: string;
 
   constructor(
     svgIconRegistry: SvgIconRegistry,
@@ -24,5 +42,9 @@ export class ValidatorStatusComponent {
       svgUnbondedIcon,
       svgUnbondingIcon,
     ]);
+  }
+
+  public ngOnInit(): void {
+    this.validatorStatusName = this.validatorStatus[this.status];
   }
 }

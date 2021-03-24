@@ -1,10 +1,5 @@
-<div
-  class="status"
-  [ngClass]="validatorStatus[status].toLowerCase()"
->
-  <svg-icon
-    class="status__icon"
-    [key]="validatorStatus[status].toLowerCase()"
-  ></svg-icon>
-  <p>{{ validatorStatus[status] }}</p>
-</div>
+<svg-icon
+  class="validator-status__icon"
+  [key]="validatorStatusName.toLowerCase()"
+></svg-icon>
+{{ validatorStatusName }}

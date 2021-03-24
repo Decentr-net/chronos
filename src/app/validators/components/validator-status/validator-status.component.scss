@@ -1,23 +1,25 @@
-@import "variables";
+@import 'variables';
 
-.status {
+:host {
   display: flex;
 
-  .status__icon {
-    width: 20px;
-    height: 20px;
-    margin-right: $grid-step;
+  &.mod-bonded {
+    color: $color-positive;
   }
-}
 
-.bonded {
-  color: $color-positive;
-}
+  &.mod-unbonded {
+    color: $color-light-grey;
+  }
 
-.unbonded {
-  color: $color-light-grey;
-}
+  &.mod-unbonding {
+    color: $color-grey;
+  }
 
-.unbonding {
-  color: $color-grey;
+  .validator-status__icon {
+    align-self: center;
+    display: flex;
+    height: 24px;
+    margin-right: $grid-step;
+    width: 24px;
+  }
 }
