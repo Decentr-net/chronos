@@ -6,7 +6,7 @@
   <ng-container ngProjectAs="[card-body]" *ngIf="blockDetails$ | async as blockDetails; else tablesLoading;">
     <div class="block-details__info">
       <div class="block-details__hash">
-        <p appTypeface="header-4">{{ blockDetails.block_id.hash | titlecase }}</p>
+        <p appTypeface="header-4">{{ blockDetails.block_id.hash }}</p>
       </div>
 
       <div class="block-details__detailed-info">
