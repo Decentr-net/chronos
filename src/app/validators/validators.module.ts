@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { InfoCardModule } from '@shared/components/info-card';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
@@ -15,6 +16,7 @@ import { ValidatorsRoutingModule } from './validators-routing.module';
     CommonModule,
     InfoCardModule,
     NgxSkeletonLoaderModule,
+    SvgIconsModule,
     TuiTableModule,
     TuiLinkModule,
     TypefaceModule,
