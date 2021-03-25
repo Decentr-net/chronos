@@ -1,0 +1,16 @@
+<app-info-card class="dashboard-adv-card__info-card">
+  <ng-container ngProjectAs="[card-title]">
+    Average Data Value
+  </ng-container>
+
+  <ng-container
+    ngProjectAs="[card-body]"
+  >
+    <div
+      class="dashboard-adv-card__value"
+      appTypeface="header-3"
+    >
+      {{ adv | tuiFormatNumber: 6 : '.'  }}
+    </div>
+  </ng-container>
+</app-info-card>

@@ -1,0 +1,21 @@
+@import 'variables';
+
+.dashboard-height-card__info-card {
+  height: 100%;
+}
+
+.dashboard-height-card__height {
+  font-weight: 500;
+  margin-top: $grid-step * 1.5;
+}
+
+.dashboard-height-card__time {
+  color: $color-grey;
+  display: flex;
+}
+
+.dashboard-height-card__time-icon {
+  height: 24px;
+  margin-right: $grid-step;
+  width: 24px;
+}

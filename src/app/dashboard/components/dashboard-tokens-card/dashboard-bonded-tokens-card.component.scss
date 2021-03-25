@@ -1,0 +1,14 @@
+@import 'variables';
+
+.dashboard-bonded-tokens-card__info-card {
+  height: 100%;
+}
+
+.dashboard-bonded-tokens-card__percent {
+  font-weight: 500;
+  margin-top: $grid-step * 1.5;
+}
+
+.dashboard-bonded-tokens-card__ratio {
+  color: $color-grey;
+}

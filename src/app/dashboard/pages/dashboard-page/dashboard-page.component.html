@@ -6,107 +6,24 @@
   ></app-currency-stats>
 </div>
 
-<div class="dashboard__tables">
+<div class="dashboard__tables ">
   <div class="dashboard__statistics-cards">
-    <app-info-card>
-      <ng-container ngProjectAs="[card-title]">
-        Bonded Tokens
-      </ng-container>
+    <app-dashboard-bonded-tokens-card
+      [pool]="pool$ | async"
+      [loadingTemplate]="cardsLoading"
+    ></app-dashboard-bonded-tokens-card>
 
-      <ng-container
-        *ngIf="pool$ | async as pool; else cardsLoading"
-        ngProjectAs="[card-body]"
-      >
-        <div class="dashboard__statistics-tokens">
-          <div
-            class="dashboard__statistics-tokens-value"
-            appTypeface="header-3"
-          >
-            {{ pool.not_bonded_tokens / pool.bonded_tokens | percent:'1.2-5' }}
-          </div>
-
-          <div
-            class="dashboard__statistics-tokens-time"
-            appTypeface="paragraph"
-          >
-            <span title="{{ pool.not_bonded_tokens }} / {{ pool.bonded_tokens }}">
-              {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
-            </span>
-          </div>
-        </div>
-      </ng-container>
-    </app-info-card>
-
-    <app-info-card>
-      <ng-container ngProjectAs="[card-title]">
-        Height
-      </ng-container>
-
-      <ng-container
-        *ngIf="blocks$ | async as blocks; else cardsLoading"
-        ngProjectAs="[card-body]"
-      >
-        <div class="dashboard__statistics-height">
-          <div
-            class="dashboard__statistics-height-value"
-            appTypeface="header-3"
-          >
-            {{ +blocks[0].block.header.height | tuiFormatNumber }}
-          </div>
-
-          <div
-            class="dashboard__statistics-height-time"
-            appTypeface="paragraph"
-          >
-            <svg-icon
-              class="dashboard__statistics-height-time-icon"
-              key="clock"
-            ></svg-icon>
-            {{ blocks[0].block.header.time | dateAgo }}
-          </div>
-        </div>
-      </ng-container>
-    </app-info-card>
+    <app-dashboard-height-card
+      [latestBlockHeader]="(latestBlock$ | async)?.block.header"
+      [loadingTemplate]="cardsLoading"
+    ></app-dashboard-height-card>
   </div>
+
   <div class="dashboard__statistics-cards">
     <ng-container *ngIf="advDdvStats$ | async as advDdvStats">
-      <app-info-card>
-        <ng-container ngProjectAs="[card-title]">
-          Average Data Value
-        </ng-container>
+      <app-dashboard-adv-card [adv]="advDdvStats.adv"></app-dashboard-adv-card>
 
-        <ng-container
-          ngProjectAs="[card-body]"
-        >
-          <div class="dashboard__statistics-adv">
-            <div
-              class="dashboard__statistics-adv-value"
-              appTypeface="header-3"
-            >
-              {{ advDdvStats.adv | tuiFormatNumber: 6 : '.'  }}
-            </div>
-          </div>
-        </ng-container>
-      </app-info-card>
-
-      <app-info-card>
-        <ng-container ngProjectAs="[card-title]">
-          Digital Data Value
-        </ng-container>
-
-        <ng-container
-          ngProjectAs="[card-body]"
-        >
-          <div class="dashboard__statistics-ddv">
-            <div
-              class="dashboard__statistics-ddv-value"
-              appTypeface="header-3"
-            >
-              {{ advDdvStats.ddv | tuiFormatNumber: 3 : '.' }}
-            </div>
-          </div>
-        </ng-container>
-      </app-info-card>
+      <app-dashboard-ddv-card [ddv]="advDdvStats.ddv"></app-dashboard-ddv-card>
     </ng-container>
   </div>
 </div>

@@ -1,0 +1,26 @@
+<app-info-card class="dashboard-bonded-tokens-card__info-card">
+  <ng-container ngProjectAs="[card-title]">
+    Bonded Tokens
+  </ng-container>
+
+  <ng-container
+    *ngIf="pool; else loadingTemplate"
+    ngProjectAs="[card-body]"
+  >
+    <div
+      class="dashboard-bonded-tokens-card__percent"
+      appTypeface="header-3"
+    >
+      {{ pool.not_bonded_tokens / pool.bonded_tokens | percent :'1.2-5' }}
+    </div>
+
+    <div
+      class="dashboard-bonded-tokens-card__ratio"
+      appTypeface="paragraph"
+    >
+      <span title="{{ pool.not_bonded_tokens }} / {{ pool.bonded_tokens }}">
+        {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
+      </span>
+    </div>
+  </ng-container>
+</app-info-card>
