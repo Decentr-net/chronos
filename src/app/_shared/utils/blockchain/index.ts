@@ -1,3 +1,3 @@
-export function sortByHeight(a, b): number {
-  return a.height < b.height ? 1 : -1;
-}
+export const sortByHeight = <T extends { height: number | string }>(left: T, right: T): number => {
+  return +right.height - +left.height;
+};

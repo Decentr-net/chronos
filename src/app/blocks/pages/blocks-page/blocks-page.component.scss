@@ -1,6 +1,7 @@
 @import 'variables';
 
 :host {
+  display: block;
   overflow: auto;
   width: 100%;
 
@@ -10,12 +11,6 @@
     height: unset;
     padding: $grid-step $grid-step * 2 $grid-step / 2;
   }
-}
-
-.blocks__table {
-  display: grid;
-  gap: $grid-step * 3;
-  margin-top: $grid-step * 3;
 }
 
 .blocks__table--loading {

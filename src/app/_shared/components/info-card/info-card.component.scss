@@ -3,8 +3,7 @@
 :host {
   border: 2px solid $color-outlines;
   border-radius: $border-radius;
-  display: flex;
-  flex-direction: column;
+  display: block;
   padding: $grid-step * 2;
 }
 
@@ -15,9 +14,6 @@
 
 .info-card__title {
   font-weight: 500;
-}
-
-.info-card__show-more {
 }
 
 .info-card__value {

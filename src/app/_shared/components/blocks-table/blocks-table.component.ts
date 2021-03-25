@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@angular/core';
 import { Block } from 'decentr-js';
 
 import { AppRoute } from '../../../app-route';
@@ -12,9 +12,9 @@ import { AppRoute } from '../../../app-route';
 export class BlocksTableComponent {
   @Input() data: Block[];
 
+  public blocksRoute: AppRoute = AppRoute.Blocks;
+
   public columns: string[] = ['Height', 'Hash', 'Time'];
 
-  getDetailsLink(param: string): string[] {
-    return ['/', AppRoute.Blocks, param];
-  }
+  public trackByHash: TrackByFunction<Block> = ({}, { block_id }) => block_id.hash;
 }

@@ -4,13 +4,13 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+}
 
-  .content {
-    flex: 1 0 auto;
-  }
+.main-layout__content-container {
+  flex: 1 0 auto;
+  padding: $grid-step * 2 0;
+}
 
-  .footer {
-    flex: 0 0 auto;
-    margin-top: $grid-step * 2;
-  }
+.main-layout__footer {
+  flex: 0 0 auto;
 }

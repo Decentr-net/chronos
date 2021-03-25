@@ -70,7 +70,7 @@
       </app-info-card>
     </div>
     <div class="dashboard__statistics-cards">
-      <ng-container *ngIf="advDdvStats | async as advDdvStats">
+      <ng-container *ngIf="advDdvStats$ | async as advDdvStats">
         <app-info-card>
           <ng-container ngProjectAs="[card-title]">
             Average Data Value

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ValidatorsPageComponent } from './pages/validators-page';
-import { ValidatorDetailsComponent } from './pages/validator-details';
+
+import { ValidatorDetailsPageComponent, ValidatorsPageComponent } from './pages';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: ':operatorAddress',
-    component: ValidatorDetailsComponent,
+    component: ValidatorDetailsPageComponent,
   }
 ];
 
@@ -20,7 +20,7 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule,
-  ]
+  ],
 })
 
 export class ValidatorsRoutingModule {

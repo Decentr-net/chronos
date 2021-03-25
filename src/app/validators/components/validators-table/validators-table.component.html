@@ -5,9 +5,12 @@
       {{ column }}
     </th>
   </tr>
-  <tr *ngFor="let item of data; let last = last;" class="tui-table__tr" [ngClass]="{'tui-table__tr_border_none': last}">
+  <tr
+    *ngFor="let item of data; trackBy: trackByAddress"
+    class="tui-table__tr"
+  >
     <td class="tui-table__td" appTypeface="paragraph">
-      <a tuiLink [routerLink]="getDetailsLink(item.operator_address)">
+      <a tuiLink [routerLink]="['/', validatorRoute, item.operator_address]">
         {{ item.description.moniker }}
       </a>
     </td>
