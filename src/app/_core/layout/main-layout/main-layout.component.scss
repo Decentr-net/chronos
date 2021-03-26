@@ -6,8 +6,11 @@
   height: 100%;
 }
 
-.main-layout__content-container {
+.container {
   flex: 1 0 auto;
+}
+
+.main-layout__content-container {
   padding: $grid-step * 2 0;
 }
 
