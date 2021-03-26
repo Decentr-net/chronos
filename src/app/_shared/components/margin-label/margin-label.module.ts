@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { MarginLabelComponent } from './margin-label.component';
-import { PositiveNumberModule } from '../../pipes/positiveNumber';
+import { PositiveNumberModule } from '../../pipes/positive-number';
 
 @NgModule({
   imports: [

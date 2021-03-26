@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { CurrencyApiService } from './api';
+import { CurrencyApiService } from './currency-api.service';
 
 export interface CoinRateFor24Hours {
   dayMargin: number;
@@ -11,7 +11,9 @@ export interface CoinRateFor24Hours {
 
 export type CoinRateHistory = Record<number, number>;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class CurrencyService {
   constructor(
     private currencyApiService: CurrencyApiService,

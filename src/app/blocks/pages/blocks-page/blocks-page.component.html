@@ -1,18 +1,15 @@
-<div class="container">
-  <div class="blocks__table">
-    <app-info-card>
-      <ng-container ngProjectAs="[card-title]">
-        Blocks
-      </ng-container>
+<app-info-card>
+  <ng-container ngProjectAs="[card-title]">
+    Blocks
+  </ng-container>
 
-      <ng-container ngProjectAs="[card-body]" *ngIf="blocks$ | async as blocks; else tablesLoading;">
-        <app-blocks-table
-          [data]="blocks">
-        </app-blocks-table>
-      </ng-container>
-    </app-info-card>
-  </div>
-</div>
+  <app-blocks-table
+    class="blocks__table"
+    ngProjectAs="[card-body]"
+    *ngIf="blocks$ | async as blocks; else tablesLoading;"
+    [data]="blocks"
+  ></app-blocks-table>
+</app-info-card>
 
 <ng-template #tablesLoading>
   <ngx-skeleton-loader

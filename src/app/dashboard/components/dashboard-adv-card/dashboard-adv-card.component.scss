@@ -1,0 +1,11 @@
+@import 'variables';
+
+.dashboard-adv-card__info-card {
+  height: 100%;
+}
+
+.dashboard-adv-card__value {
+  font-weight: 500;
+  margin-top: $grid-step * 1.5;
+  word-break: break-all;
+}

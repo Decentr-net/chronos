@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
-import { svgGithubIcon } from '../../../svg-icons/github';
-import { svgLogoBlueIcon } from '../../../svg-icons/logo-blue';
-import { svgMediumIcon } from '../../../svg-icons/medium';
-import { svgTelegramIcon } from '../../../svg-icons/telegram';
-import { svgTwitterIcon } from '../../../svg-icons/twitter';
+import { svgGithubIcon } from '@shared/svg-icons/github';
+import { svgLogoBlueIcon } from '@shared/svg-icons/logo-blue';
+import { svgMediumIcon } from '@shared/svg-icons/medium';
+import { svgTelegramIcon } from '@shared/svg-icons/telegram';
+import { svgTwitterIcon } from '@shared/svg-icons/twitter';
 
 interface SocialLinks {
   iconKey: string;
@@ -21,6 +21,7 @@ interface SocialLinks {
 })
 export class LayoutFooterComponent {
   public readonly currentYear: number = new Date().getFullYear();
+
   public readonly socialLinks: SocialLinks[] = [
     {
       iconKey: svgGithubIcon.name,

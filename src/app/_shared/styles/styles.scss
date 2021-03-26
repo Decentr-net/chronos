@@ -22,7 +22,8 @@ body {
 }
 
 svg-icon {
-  display: inline-flex;
+  align-items: center;
+  display: inline-flex !important;
 }
 
 .container {

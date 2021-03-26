@@ -1,14 +1,14 @@
-<div class="container">
-  <app-info-card>
-    <ng-container ngProjectAs="[card-title]">
-      Validators
-    </ng-container>
+<app-info-card>
+  <ng-container ngProjectAs="[card-title]">
+    Validators
+  </ng-container>
 
-    <ng-container ngProjectAs="[card-body]" *ngIf="validators$ | async as validators; else tablesLoading;">
-      <app-validators-table [data]="validators"></app-validators-table>
-    </ng-container>
-  </app-info-card>
-</div>
+  <app-validators-table
+    ngProjectAs="[card-body]"
+    *ngIf="validators$ | async as validators; else tablesLoading;"
+    [data]="validators"
+  ></app-validators-table>
+</app-info-card>
 
 <ng-template #tablesLoading>
   <ngx-skeleton-loader

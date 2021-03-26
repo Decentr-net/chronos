@@ -3,16 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
-import { CurrencyModule } from '@core/services/currency';
-import { environment } from '../../environments/environment';
-import { Environment } from '../../environments/environments.definitions';
+import { environment } from '@environments/environment';
+import { Environment } from '@environments/environments.definitions';
 
 @NgModule({
   imports: [
     CommonModule,
-    CurrencyModule,
-    SvgIconsModule.forRoot(),
     HttpClientModule,
+    SvgIconsModule.forRoot(),
   ],
   providers: [
     {

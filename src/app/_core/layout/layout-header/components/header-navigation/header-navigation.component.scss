@@ -2,12 +2,12 @@
 
 :host {
   align-items: flex-end;
+  column-gap: $grid-step * 4;
   display: flex;
 }
 
 .header-navigation__link {
   height: 48px;
-  margin: 0 $grid-step * 2;
 
   &:first-child {
     margin-left: 0;

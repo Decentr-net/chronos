@@ -44,9 +44,10 @@
     "@angular/cli": "~10.2.3",
     "@angular/compiler-cli": "~10.2.4",
     "@angular/language-service": "~10.2.4",
-    "@types/node": "^12.11.1",
+    "@ngneat/svg-generator": "^2.0.0",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
@@ -58,11 +59,10 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~4.0.7",
-    "@ngneat/svg-generator": "^2.0.0"
+    "typescript": "~4.0.7"
   },
   "svgGenerator": {
-    "outputPath": "./src/app/svg-icons",
+    "outputPath": "./src/app/_shared/svg-icons",
     "prefix": "svg",
     "srcPath": "./src/assets/svg",
     "svgoConfig": {
