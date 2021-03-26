@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { Validator } from 'decentr-js';
 
 import { StakingService } from '@core/services/staking';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-validators-page',
@@ -19,6 +20,11 @@ export class ValidatorsPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.validators$ = this.stakingService.getValidators();
+    this.validators$ = forkJoin([
+      this.stakingService.getValidators(),
+      this.stakingService.getValidators({ status: 'unbonded' }),
+    ]).pipe(
+      map(([bonded, unbonded]) => [...bonded, ...unbonded]),
+    );
   }
 }
