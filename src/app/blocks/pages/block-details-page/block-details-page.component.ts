@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Block, Transaction } from 'decentr-js';
-import { Observable } from 'rxjs';
-import { map, pluck, switchMap } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 
 import { BlocksService } from '@core/services/blocks';
 import { TransactionsService } from '@core/services/transactions';
@@ -20,6 +20,7 @@ export class BlockDetailsPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private blocksService: BlocksService,
+    private router: Router,
     private transactionsService: TransactionsService,
   ) {
   }
@@ -30,8 +31,15 @@ export class BlockDetailsPageComponent implements OnInit {
     );
 
     this.blockDetails$ = height$.pipe(
-      switchMap((height) => this.blocksService.getBlockByHeight(height),
-    ));
+      switchMap((height) => this.blocksService.getBlockByHeight(height)),
+      catchError(() => {
+        this.router.navigate(['../'], {
+          relativeTo: this.activatedRoute,
+        });
+
+        return EMPTY;
+      }),
+    );
 
     this.blockTxs$ = height$.pipe(
       switchMap((height) => this.transactionsService.searchTransactions({ txMinHeight: height, txMaxHeight: height })),

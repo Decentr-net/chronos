@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, mergeMap } from 'rxjs/operators';
 import { Validator } from 'decentr-js';
 
 import { StakingService } from '@core/services/staking';
@@ -17,6 +17,7 @@ export class ValidatorDetailsPageComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private stakingService: StakingService,
   ) {
   }
@@ -24,6 +25,13 @@ export class ValidatorDetailsPageComponent implements OnInit {
   public ngOnInit(): void {
     this.validatorDetails$ = this.activatedRoute.params.pipe(
       mergeMap((params) => this.stakingService.getValidatorByAddress(params.operatorAddress)),
+      catchError(() => {
+        this.router.navigate(['../'], {
+          relativeTo: this.activatedRoute,
+        });
+
+        return EMPTY;
+      }),
     );
   }
 }
