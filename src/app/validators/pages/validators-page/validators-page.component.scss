@@ -1,9 +1,11 @@
 @import 'variables';
 
 :host {
-  display: flex;
-  flex-direction: column;
-  margin-top: $grid-step * 2;
+  display: block;
+}
+
+.validators-page__table {
+  margin: 0 (-$grid-step * 2);
 }
 
 .validators-page__loading {

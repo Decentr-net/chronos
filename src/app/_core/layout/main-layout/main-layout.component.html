@@ -1,5 +1,9 @@
 <app-layout-header></app-layout-header>
-<div class="content">
-  <router-outlet></router-outlet>
+
+<div class="container">
+  <div class="main-layout__content-container">
+    <ng-content></ng-content>
+  </div>
 </div>
-<app-layout-footer class="footer"></app-layout-footer>
+
+<app-layout-footer class="main-layout__footer"></app-layout-footer>

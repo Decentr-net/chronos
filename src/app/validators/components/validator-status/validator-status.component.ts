@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
-import { Validator } from 'decentr-js';
+import { Validator, ValidatorStatus } from 'decentr-js';
 
-import { svgUnbondedIcon } from '../../../svg-icons/unbonded';
-import { svgBondedIcon } from '../../../svg-icons/bonded';
-import { svgUnbondingIcon } from '../../../svg-icons/unbonding';
-import { ValidatorStatus } from '../../enum/validator-status.enum';
+import { svgUnbondedIcon } from '@shared/svg-icons/unbonded';
+import { svgBondedIcon } from '@shared/svg-icons/bonded';
+import { svgUnbondingIcon } from '@shared/svg-icons/unbonding';
 
 @Component({
   selector: 'app-validator-status',

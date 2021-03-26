@@ -1,9 +1,10 @@
 import { ValidatorsPageComponent } from './validators-page';
-import { ValidatorDetailsComponent } from './validator-details';
+import { ValidatorDetailsPageComponent } from './validator-details-page';
 
-export * from './validators-page/';
+export * from './validators-page';
+export * from './validator-details-page';
 
 export const VALIDATORS_PAGES = [
   ValidatorsPageComponent,
-  ValidatorDetailsComponent,
+  ValidatorDetailsPageComponent,
 ];

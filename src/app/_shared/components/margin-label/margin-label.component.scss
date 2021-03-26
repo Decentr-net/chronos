@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import 'variables';
 
 :host {
   align-items: center;
@@ -17,7 +17,6 @@
   }
 
   .color-margin-label-icon {
-    display: inline-flex;
     height: 24px;
     width: 24px;
   }

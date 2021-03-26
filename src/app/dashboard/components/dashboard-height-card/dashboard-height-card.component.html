@@ -1,0 +1,29 @@
+<app-info-card class="dashboard-height-card__info-card">
+  <ng-container ngProjectAs="[card-title]">
+    Height
+  </ng-container>
+
+  <ng-container
+    ngProjectAs="[card-body]"
+    *ngIf="latestBlockHeader; else loadingTemplate"
+  >
+    <div
+      class="dashboard-height-card__height"
+      appTypeface="header-3"
+    >
+      {{ +latestBlockHeader.height | tuiFormatNumber }}
+    </div>
+
+    <div
+      class="dashboard-height-card__time"
+      appTypeface="paragraph"
+    >
+      <svg-icon
+        class="dashboard-height-card__time-icon"
+        key="clock"
+      ></svg-icon>
+
+      {{ latestBlockHeader.time | dateAgo }}
+    </div>
+  </ng-container>
+</app-info-card>

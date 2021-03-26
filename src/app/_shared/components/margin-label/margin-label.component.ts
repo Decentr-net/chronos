@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
-import { svgChartArrowDownIcon } from '../../../svg-icons/chart-arrow-down';
-import { svgChartArrowFlatIcon } from '../../../svg-icons/chart-arrow-flat';
-import { svgChartArrowUpIcon } from '../../../svg-icons/chart-arrow-up';
+import { svgChartArrowDownIcon } from '../../svg-icons/chart-arrow-down';
+import { svgChartArrowFlatIcon } from '../../svg-icons/chart-arrow-flat';
+import { svgChartArrowUpIcon } from '../../svg-icons/chart-arrow-up';
 
 @Component({
   selector: 'app-margin-label',

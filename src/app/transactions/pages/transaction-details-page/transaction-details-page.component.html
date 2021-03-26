@@ -1,0 +1,65 @@
+<app-info-card>
+  <ng-container ngProjectAs="[card-title]">
+    Transaction details
+  </ng-container>
+
+  <ng-container
+    ngProjectAs="[card-body]"
+    *ngIf="transactionDetails$ | async as transactionDetails; else tablesLoading;"
+  >
+    <div class="transaction-details__info">
+      <div class="transaction-details__hash">
+        <p appTypeface="header-4">{{ transactionDetails.txhash }}</p>
+      </div>
+
+      <div class="transaction-details__detailed-info" appTypeface="paragraph">
+        <div>
+          <p appTypeface="subheader">
+            {{ transactionDetails.height }}
+          </p>
+          <p class="transaction-details__label">
+            Height
+          </p>
+        </div>
+
+        <div>
+          <p appTypeface="subheader">
+            {{ transactionDetails.timestamp | date:'yyyy.MM.dd, HH:mm:ss' }}
+          </p>
+          <p class="transaction-details__label">
+            Time
+          </p>
+        </div>
+
+        <div>
+          <p appTypeface="subheader">
+            <ng-template [ngIf]="transactionDetails.gas_used" [ngIfElse]="gasNotUsed">
+              {{ transactionDetails.gas_used }} / {{ transactionDetails.gas_wanted }}
+            </ng-template>
+
+            <ng-template #gasNotUsed>
+              Gas not used
+            </ng-template>
+          </p>
+
+          <p class="transaction-details__label">
+            Gas (used / wanted)
+          </p>
+        </div>
+      </div>
+
+      <app-transaction-message [txMessage]="transactionDetails.tx.value.msg[0]"></app-transaction-message>
+    </div>
+  </ng-container>
+</app-info-card>
+
+<ng-template #tablesLoading>
+  <ngx-skeleton-loader
+    class="transaction-details__loading"
+    count="6"
+    [theme]="{
+      height: '40px',
+      width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>

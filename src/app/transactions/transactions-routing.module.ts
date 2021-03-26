@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TransactionDetailsComponent } from './pages/transaction-details';
-import { TransactionsPageComponent } from './pages/transactions-page';
+import { TransactionDetailsPageComponent, TransactionsPageComponent } from './pages';
 
 const ROUTES: Routes = [
   {
@@ -11,7 +10,7 @@ const ROUTES: Routes = [
   },
   {
     path: ':transactionHash',
-    component: TransactionDetailsComponent,
+    component: TransactionDetailsPageComponent,
   },
 ];
 

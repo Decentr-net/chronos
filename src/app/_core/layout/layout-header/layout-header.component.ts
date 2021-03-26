@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
-import { svgCloseIcon } from '../../../svg-icons/close';
-import { svgLogoIcon } from '../../../svg-icons/logo';
-import { svgMenuIcon } from '../../../svg-icons/menu';
+import { svgCloseIcon } from '@shared/svg-icons/close';
+import { svgLogoIcon } from '@shared/svg-icons/logo';
+import { svgMenuIcon } from '@shared/svg-icons/menu';
 
 @Component({
   selector: 'app-layout-header',
@@ -26,20 +26,23 @@ export class LayoutHeaderComponent {
     ]);
   }
 
-  onActiveZone(active: boolean): void {
-    if (!active) {
-      this.isMobileMenuOpen = false;
-    }
+  public onMenuActiveZoneChange(active: boolean): void {
+    this.isMobileMenuOpen = active;
   }
 
-  onClick(): void {
+  public openMenu(): void {
+    this.isMobileMenuOpen = true;
+  }
+
+  public closeMenu(): void {
+    this.isMobileMenuOpen = false;
+  }
+
+  public toggleMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    this.changeDetectorRef.detectChanges();
   }
 
-  onObscured(obscured: boolean): void {
-    if (obscured) {
-      this.isMobileMenuOpen = false;
-    }
+  public onObscured(obscured: boolean): void {
+    this.isMobileMenuOpen = !obscured;
   }
 }
