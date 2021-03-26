@@ -38,6 +38,10 @@ export class LayoutHeaderComponent {
     this.isMobileMenuOpen = false;
   }
 
+  public toggleMenu(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
   public onObscured(obscured: boolean): void {
     this.isMobileMenuOpen = !obscured;
   }

@@ -69,6 +69,11 @@
   flex-direction: column;
 }
 
+.dashboard__blocks-table,
+.dashboard__transactions-table {
+  margin: 0 (-$grid-step * 2);
+}
+
 @media (max-width: $screen-desktop-large) {
   .dashboard__statistics {
     grid-template-columns: minmax(0, 2fr);

@@ -45,9 +45,12 @@
       </a>
     </ng-container>
 
-    <ng-container ngProjectAs="[card-body]" *ngIf="blocks$ | async as blocks; else tablesLoading;">
-      <app-blocks-table [data]="blocks"></app-blocks-table>
-    </ng-container>
+    <app-blocks-table
+      class="dashboard__blocks-table"
+      ngProjectAs="[card-body]"
+      *ngIf="blocks$ | async as blocks; else tablesLoading;"
+      [data]="blocks"
+    ></app-blocks-table>
   </app-info-card>
 
   <app-info-card>
@@ -66,9 +69,12 @@
       </a>
     </ng-container>
 
-    <ng-container ngProjectAs="[card-body]" *ngIf="transactions$ | async as transactions; else tablesLoading;">
-      <app-transactions-table [data]="transactions"></app-transactions-table>
-    </ng-container>
+    <app-transactions-table
+      class="dashboard__transactions-table"
+      ngProjectAs="[card-body]"
+      *ngIf="transactions$ | async as transactions; else tablesLoading;"
+      [data]="transactions"
+    ></app-transactions-table>
   </app-info-card>
 </div>
 

@@ -4,6 +4,10 @@
   display: block;
 }
 
+.transactions__table {
+  margin: 0 (-$grid-step * 2);
+}
+
 .transactions__table--loading {
   width: 100%;
 }
