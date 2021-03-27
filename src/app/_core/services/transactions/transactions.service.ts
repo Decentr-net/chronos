@@ -34,6 +34,7 @@ export class TransactionsService {
       }), { newCount: 0, totalCount: 0 }),
       mergeMap((updateInfo) => this.getLatestTransactions(updateInfo.newCount, updateInfo.totalCount)),
       scan((acc, newTransactions) => [...newTransactions, ...acc].slice(0, count), []),
+      map((transactions) => transactions.sort((left, right) => +right.height - +left.height)),
     );
   }
 
