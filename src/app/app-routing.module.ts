@@ -29,6 +29,10 @@ const ROUTES: Routes = [
     path: AppRoute.Empty,
     loadChildren: () => import('./empty-page').then((m) => m.EmptyPageModule),
   },
+  {
+    path: '**',
+    redirectTo: AppRoute.Dashboard,
+  },
 ];
 
 @NgModule({
