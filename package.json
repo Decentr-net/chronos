@@ -7,6 +7,7 @@
     "build": "ng build",
     "build:prod": "ng build chronos --prod",
     "test": "ng test",
+    "test:quiet": "ng test -c quiet",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "generate-icons": "svg-generator"
