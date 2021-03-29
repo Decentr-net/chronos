@@ -79,23 +79,15 @@
     grid-template-columns: minmax(0, 2fr);
   }
 
-  .dashboard__statistics-cards {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  .dashboard__tables {
     grid-template-rows: minmax(0, 1fr);
   }
 }
 
 @media (max-width: $screen-desktop) {
-  .dashboard__tables {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 @media (max-width: $screen-mobile) {
-  .dashboard__statistics {
-    grid-template-columns: minmax(0, 2fr);
-  }
-
   .dashboard__statistics-cards {
     grid-template-columns: 1fr;
   }
