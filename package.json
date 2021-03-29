@@ -1,12 +1,13 @@
 {
   "name": "chronos",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:prod": "ng build --prod",
+    "build:prod": "ng build chronos --prod",
     "test": "ng test",
+    "test:quiet": "ng test -c quiet",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "generate-icons": "svg-generator"

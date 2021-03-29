@@ -3,6 +3,7 @@
 <ng-container [ngSwitch]="txMessage.type">
   <ng-container *ngSwitchCase="messageTypes.DistributeRewards">
     <p><b>Owner:</b> {{txMessage.value.owner}}</p>
+    <p><b>ID:</b> {{txMessage.value.rewards[0].id}}</p>
     <p><b>Receiver:</b> {{txMessage.value.rewards[0].receiver}}</p>
     <p><b>Reward:</b> {{txMessage.value.rewards[0].reward}}</p>
   </ng-container>
@@ -17,6 +18,9 @@
     <p><b>Last name:</b> {{txMessage.value.public.lastName}}</p>
     <p><b>Birthday:</b> {{txMessage.value.public.birthday}}</p>
     <p><b>Gender:</b> {{txMessage.value.public.gender}}</p>
+    <ng-container *ngIf="txMessage.value.public.bio">
+      <p><b>Bio:</b> {{txMessage.value.public.bio}}</p>
+    </ng-container>
   </ng-container>
 
   <ng-container *ngSwitchCase="messageTypes.MsgSend">

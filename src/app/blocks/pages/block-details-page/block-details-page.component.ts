@@ -6,6 +6,7 @@ import { catchError, map, pluck, switchMap } from 'rxjs/operators';
 
 import { BlocksService } from '@core/services/blocks';
 import { TransactionsService } from '@core/services/transactions';
+import { AppRoute } from '../../../app-route';
 
 @Component({
   selector: 'app-block-details-page',
@@ -33,8 +34,11 @@ export class BlockDetailsPageComponent implements OnInit {
     this.blockDetails$ = height$.pipe(
       switchMap((height) => this.blocksService.getBlockByHeight(height)),
       catchError(() => {
-        this.router.navigate(['../'], {
-          relativeTo: this.activatedRoute,
+        this.router.navigate(['/', AppRoute.Empty], {
+          skipLocationChange: true,
+          state: {
+            title: 'Block not found',
+          },
         });
 
         return EMPTY;
@@ -44,6 +48,7 @@ export class BlockDetailsPageComponent implements OnInit {
     this.blockTxs$ = height$.pipe(
       switchMap((height) => this.transactionsService.searchTransactions({ txMinHeight: height, txMaxHeight: height })),
       map((transactions) => transactions.txs),
+      catchError(() => EMPTY),
     );
   }
 }

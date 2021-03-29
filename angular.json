@@ -107,6 +107,13 @@
               ]
             },
             "scripts": []
+          },
+          "configurations": {
+            "quiet": {
+              "watch": false,
+              "progress": false,
+              "browsers": "ChromeNoSandbox"
+            }
           }
         },
         "lint": {

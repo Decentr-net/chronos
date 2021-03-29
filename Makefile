@@ -13,9 +13,9 @@ build:
 build-prod:
 	npm run build:prod
 
-.PHONY: test
-test:
-	npm run test
+.PHONY: test-quiet
+test-quiet:
+	npm run test:quiet
 
 .PHONY: lint
 lint:
@@ -30,7 +30,5 @@ run-docker:
 	docker-compose --project-directory . -f ./scripts/docker-compose.yml build
 	docker-compose --project-directory . -f ./scripts/docker-compose.yml up
 
-
 .PHONY: all
-all: install test lint build image
-
+all: install test-quiet lint build-prod image

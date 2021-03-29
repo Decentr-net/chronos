@@ -49,7 +49,7 @@ export class CurrencyChartComponent implements OnInit {
         height: 250,
         marginBottom: 20,
         marginLeft: 10,
-        marginRight: 38,
+        marginRight: 45,
         marginTop: 10,
       },
       tooltip: {
