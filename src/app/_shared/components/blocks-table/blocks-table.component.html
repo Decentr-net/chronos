@@ -8,7 +8,7 @@
 
     <tr
       class="tui-table__tr"
-      *ngFor="let item of data; trackBy: trackByHash"
+      *ngFor="let item of data; trackBy: trackByHash; let last = last;" [ngClass]="{'tui-table__tr_border_none': last}"
     >
       <td class="tui-table__td" appTypeface="paragraph">
         <a tuiLink [routerLink]="['/', blocksRoute, item.block.header.height]">{{ item.block.header.height }}</a>
