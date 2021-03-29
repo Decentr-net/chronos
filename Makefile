@@ -32,5 +32,4 @@ run-docker:
 
 
 .PHONY: all
-all: install test lint build image
-
+all: install test lint build-prod image
