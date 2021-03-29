@@ -5,6 +5,7 @@ import { catchError, mergeMap } from 'rxjs/operators';
 import { Validator } from 'decentr-js';
 
 import { StakingService } from '@core/services/staking';
+import { AppRoute } from '../../../app-route';
 
 @Component({
   selector: 'app-validator-details-page',
@@ -26,8 +27,11 @@ export class ValidatorDetailsPageComponent implements OnInit {
     this.validatorDetails$ = this.activatedRoute.params.pipe(
       mergeMap((params) => this.stakingService.getValidatorByAddress(params.operatorAddress)),
       catchError(() => {
-        this.router.navigate(['../'], {
-          relativeTo: this.activatedRoute,
+        this.router.navigate(['/', AppRoute.Empty], {
+          skipLocationChange: true,
+          state: {
+            title: 'Validator not found',
+          },
         });
 
         return EMPTY;

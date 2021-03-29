@@ -5,6 +5,7 @@ import { EMPTY, Observable } from 'rxjs';
 import { Transaction } from 'decentr-js';
 
 import { TransactionsService } from '@core/services/transactions';
+import { AppRoute } from '../../../app-route';
 
 @Component({
   selector: 'app-transaction-details',
@@ -27,8 +28,11 @@ export class TransactionDetailsPageComponent implements OnInit {
       pluck('transactionHash'),
       mergeMap((transactionHash) => this.transactionsService.getTransactionByHash(transactionHash)),
       catchError(() => {
-        this.router.navigate(['../'], {
-          relativeTo: this.activatedRoute,
+        this.router.navigate(['/', AppRoute.Empty], {
+          skipLocationChange: true,
+          state: {
+            title: 'Transaction not found',
+          },
         });
 
         return EMPTY;
