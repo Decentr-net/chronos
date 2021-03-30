@@ -1,6 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { environment } from '@environments/environment';
@@ -10,6 +11,8 @@ import { Environment } from '@environments/environments.definitions';
   imports: [
     CommonModule,
     HttpClientModule,
+    NgxGoogleAnalyticsModule.forRoot(environment.ga),
+    NgxGoogleAnalyticsRouterModule,
     SvgIconsModule.forRoot(),
   ],
   providers: [
