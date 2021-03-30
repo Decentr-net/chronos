@@ -16,6 +16,7 @@
       "@shared/*": ["src/app/_shared/*"],
       "@environments/*": ["src/environments/*"]
     },
+    "resolveJsonModule": true,
     "lib": [
       "es2018",
       "dom"
