@@ -2,14 +2,13 @@
 
 :host {
   align-items: flex-end;
-  column-gap: $grid-step * 4;
   display: flex;
 }
 
 .header-navigation__link {
   height: 48px;
 
-  &:first-child {
-    margin-left: 0;
+  & + & {
+    margin-left: $grid-step * 2;
   }
 }
