@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input, OnChanges } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
 import { svgChartArrowDownIcon } from '../../svg-icons/chart-arrow-down';
@@ -40,7 +40,7 @@ export class MarginLabelComponent implements OnChanges {
     ]);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.marginIcon = this.isNegative
       ? 'chart-arrow-down' : this.isPositive
         ? 'chart-arrow-up' : 'chart-arrow-flat';
