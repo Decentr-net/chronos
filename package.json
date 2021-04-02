@@ -8,15 +8,10 @@
     "build:prod": "ng build chronos --prod",
     "test": "ng test",
     "test:quiet": "ng test -c quiet",
-    "lint": "eslint src --ext .js,.ts",
+    "lint": "eslint --max-warnings 0 src --ext .js,.ts",
     "e2e": "ng e2e",
-    "generate-icons": "svg-generator"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint",
-      "pre-push": "npm run test:quiet"
-    }
+    "generate-icons": "svg-generator",
+    "prepare": "husky install"
   },
   "private": true,
   "dependencies": {
@@ -67,7 +62,7 @@
     "codelyzer": "^5.1.2",
     "eslint": "^7.6.0",
     "eslint-plugin-import": "^2.22.1",
-    "husky": "^4.3.0",
+    "husky": "^6.0.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",

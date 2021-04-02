@@ -44,6 +44,13 @@ module.exports = {
         "@typescript-eslint/no-unsafe-return": [
           "off",
         ],
+        "@typescript-eslint/restrict-template-expressions": [
+          "off",
+        ],
+        // TODO: cleanup
+        "@typescript-eslint/no-explicit-any": [
+          "off",
+        ],
         "semi": [
           "off",
         ],
