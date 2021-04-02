@@ -8,9 +8,15 @@
     "build:prod": "ng build chronos --prod",
     "test": "ng test",
     "test:quiet": "ng test -c quiet",
-    "lint": "ng lint",
+    "lint": "eslint src --ext .js,.ts",
     "e2e": "ng e2e",
     "generate-icons": "svg-generator"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run test:quiet"
+    }
   },
   "private": true,
   "dependencies": {
@@ -43,6 +49,11 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1002.3",
+    "@angular-eslint/builder": "1.2.0",
+    "@angular-eslint/eslint-plugin": "1.2.0",
+    "@angular-eslint/eslint-plugin-template": "1.2.0",
+    "@angular-eslint/schematics": "1.2.0",
+    "@angular-eslint/template-parser": "1.2.0",
     "@angular/cli": "~10.2.3",
     "@angular/compiler-cli": "~10.2.4",
     "@angular/language-service": "~10.2.4",
@@ -50,7 +61,13 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "4.3.0",
+    "@typescript-eslint/eslint-plugin-tslint": "^4.20.0",
+    "@typescript-eslint/parser": "4.3.0",
     "codelyzer": "^5.1.2",
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^4.3.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
