@@ -1,0 +1,37 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  background-color: $color-background;
+  border-radius: $border-radius;
+  display: inline-flex;
+  padding: $grid-step * 1.5 $grid-step * 3 $grid-step * 1.5 $grid-step * 2;
+  width: 240px;
+}
+
+.header-search__icon {
+  color: $color-grey;
+}
+
+.header-search__input {
+  background-color: transparent;
+  margin-left: $grid-step;
+  overflow: hidden;
+}
+
+.header-search__dropdown {
+  background-color: $color-white;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  margin-top: $grid-step / 2;
+  padding: $grid-step * 1.5 $grid-step * 2;
+  width: 100%;
+}
+
+.header-search__dropdown__item {
+  color: $color-black;
+}
+
+.header-search__dropdown__item-negative {
+  color: $color-negative;
+}
