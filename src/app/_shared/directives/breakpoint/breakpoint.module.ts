@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { BreakpointDirective } from './breakpoint.directive';
 
-
-
 @NgModule({
-  declarations: [BreakpointDirective],
-  exports: [
-    BreakpointDirective
+  declarations: [
+    BreakpointDirective,
   ],
-  imports: [
-    CommonModule
-  ]
+  exports: [
+    BreakpointDirective,
+  ],
 })
-export class BreakpointModule { }
+export class BreakpointModule {
+}
