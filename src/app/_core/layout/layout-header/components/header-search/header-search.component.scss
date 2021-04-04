@@ -24,12 +24,13 @@
   border-radius: $border-radius;
   box-shadow: $box-shadow;
   margin-top: $grid-step / 2;
-  padding: $grid-step * 1.5 $grid-step * 2;
   width: 100%;
 }
 
 .header-search__dropdown__item {
   color: $color-black;
+  display: block;
+  padding: $grid-step * 1.5 $grid-step * 2;
 }
 
 .header-search__dropdown__item-negative {
