@@ -7,6 +7,12 @@
 
 :root {
   --tui-font-text: $main-font-family !important;
+
+  --breakpoint-desktop-xlarge: #{$screen-desktop-xlarge};
+  --breakpoint-desktop-large: #{$screen-desktop-large};
+  --breakpoint-desktop: #{$screen-desktop};
+  --breakpoint-tablet: #{$screen-tablet};
+  --breakpoint-mobile: #{$screen-mobile};
 }
 
 html {
