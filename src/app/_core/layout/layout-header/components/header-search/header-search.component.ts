@@ -39,6 +39,8 @@ export class HeaderSearchComponent implements OnInit {
 
   public resultTemplate: TemplateRef<{}>;
 
+  public isDropdownOpened: boolean;
+
   public appRoute: typeof AppRoute = AppRoute;
 
   constructor(
@@ -100,5 +102,13 @@ export class HeaderSearchComponent implements OnInit {
 
   public onLinkClick(): void {
     this.searchControl.reset();
+  }
+
+  public closeDropdown(): void {
+    this.isDropdownOpened = false;
+  }
+
+  public openDropdown(): void {
+    this.isDropdownOpened = true;
   }
 }
