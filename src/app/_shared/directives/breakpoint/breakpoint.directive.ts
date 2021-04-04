@@ -12,6 +12,7 @@ type Breakpoint = 'desktop-xlarge' | 'desktop-large' | 'desktop' | 'tablet' | 'm
 export class BreakpointDirective implements OnInit {
   @Input('appBreakpoint') public breakpoint: Breakpoint;
   @Input('appBreakpointRevert') public revert = false;
+  @Input('appBreakpointElse') public elseTemplateRef: TemplateRef<{}>;
 
   private breakpointMap: Map<Breakpoint, string>;
 
@@ -32,7 +33,9 @@ export class BreakpointDirective implements OnInit {
       this.viewContainerRef.clear();
 
       if (matches === !this.revert) {
-        this.viewContainerRef.createEmbeddedView(this.templateRef).detectChanges();
+        this.renderTemplate(this.templateRef);
+      } else if (this.elseTemplateRef) {
+        this.renderTemplate(this.elseTemplateRef);
       }
     });
   }
@@ -46,5 +49,9 @@ export class BreakpointDirective implements OnInit {
     const width = getComputedStyle(document.documentElement).getPropertyValue(`--breakpoint-${breakpoint}`);
 
     return `(max-width: ${width})`;
+  }
+
+  private renderTemplate(templateRef: TemplateRef<{}>): void {
+    this.viewContainerRef.createEmbeddedView(templateRef).detectChanges();
   }
 }
