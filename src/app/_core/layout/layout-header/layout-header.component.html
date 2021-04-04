@@ -1,30 +1,71 @@
 <div class="header__container container">
-  <div class="header__logo-and-navigation">
-    <svg-icon
-      class="header__logo"
-      key="logo"
-      [routerLink]="['/']"
-    ></svg-icon>
+  <div class="header__section">
+    <ng-container *appBreakpoint="'mobile'; revert: true; else headerSectionMobile">
+      <ng-template [ngTemplateOutlet]="logo"></ng-template>
 
-    <app-header-navigation class="header__navigation"></app-header-navigation>
-  </div>
-
-  <div class="header__mobile-menu">
-    <svg-icon
-      class="header__mobile-menu-icon"
-      [key]="isMobileMenuOpen ? 'close' : 'menu'"
-      (tuiActiveZoneChange)="onMenuActiveZoneChange($event)"
-      [tuiDropdownContent]="dropdownContent"
-      [tuiDropdown]="isMobileMenuOpen"
-      (tuiObscured)="onObscured($event)"
-      (click)="toggleMenu()"
-    ></svg-icon>
-
-    <ng-template #dropdownContent>
       <app-header-navigation
-        class="header__navigation mod-mobile"
-        (click)="closeMenu()"
+        class="header__navigation"
       ></app-header-navigation>
+    </ng-container>
+
+    <ng-template #headerSectionMobile>
+      <ng-template [ngIf]="!isMobileSearchOpened" [ngIfElse]="headerSearch">
+        <ng-template [ngTemplateOutlet]="logo"></ng-template>
+      </ng-template>
     </ng-template>
   </div>
+
+  <div class="header__section">
+    <div class="header__mobile-actions" *appBreakpoint="'mobile'; else headerSearch">
+      <ng-template [ngIf]="!isMobileSearchOpened" [ngIfElse]="mobileSearchClose">
+        <svg-icon
+          class="header__mobile-actions__icon"
+          key="search"
+          size="lg"
+          (click)="openMobileSearch()"
+        ></svg-icon>
+
+        <div class="header__mobile-actions__divider"></div>
+
+        <svg-icon
+          class="header__mobile-actions__icon"
+          [key]="isMobileMenuOpen ? 'close' : 'menu'"
+          size="lg"
+          (tuiActiveZoneChange)="onMenuActiveZoneChange($event)"
+          [tuiDropdownContent]="menuDropdownContent"
+          [tuiDropdown]="isMobileMenuOpen"
+          (tuiObscured)="onObscured($event)"
+          (click)="toggleMenu()"
+        ></svg-icon>
+      </ng-template>
+    </div>
+  </div>
 </div>
+
+<ng-template #logo>
+  <svg-icon
+    class="header__logo"
+    key="logo"
+    [routerLink]="['/']"
+  ></svg-icon>
+</ng-template>
+
+<ng-template #menuDropdownContent>
+  <app-header-navigation
+    class="header__navigation mod-mobile"
+    (click)="closeMenu()"
+  ></app-header-navigation>
+</ng-template>
+
+<ng-template #mobileSearchClose>
+  <svg-icon
+    class="header__mobile-actions__icon"
+    key="close"
+    size="lg"
+    (click)="closeMobileSearch()"
+  ></svg-icon>
+</ng-template>
+
+<ng-template #headerSearch>
+  <app-header-search class="header__search"></app-header-search>
+</ng-template>
