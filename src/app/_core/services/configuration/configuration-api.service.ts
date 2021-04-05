@@ -13,11 +13,11 @@ import { Configuration } from './configuration.definitions';
   providedIn: 'root',
 })
 export class ConfigurationApiService {
-  constructor(
+  // constructor(
     // private environment: Environment,
     // private httpClient: HttpClient,
-  ) {
-  }
+  // ) {
+  // }
 
   public getConfig(): Observable<Configuration> {
     // const now = Date.now();
@@ -43,7 +43,7 @@ export class ConfigurationApiService {
       },
       maintenance: false,
       theseus: {
-        url: 'https://theseus.testnet.decentr.xyz'
+        url: 'https://theseus.testnet.decentr.xyz',
       },
     });
   }
