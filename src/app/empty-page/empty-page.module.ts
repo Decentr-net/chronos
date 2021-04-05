@@ -12,7 +12,7 @@ import { EmptyPageComponent } from './empty-page.component';
     TypefaceModule,
   ],
   declarations: [
-    EmptyPageComponent
+    EmptyPageComponent,
   ],
   exports: [
     EmptyPageComponent,

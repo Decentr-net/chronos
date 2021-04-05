@@ -1,4 +1,4 @@
-export const getGreatestCommonDivisor = (firstNum, secondNum) => {
+export const getGreatestCommonDivisor = (firstNum: number, secondNum: number): number => {
   if (!secondNum) {
     return firstNum;
   }

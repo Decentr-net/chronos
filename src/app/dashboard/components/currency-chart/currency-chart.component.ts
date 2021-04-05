@@ -4,6 +4,8 @@ import { ComponentFactoryClass } from './utils/component-factory';
 import { TooltipComponent } from './tooltip/tooltip.component';
 import { TooltipModule } from './tooltip';
 
+export type ChartPoint = Record<number, number>;
+
 @Component({
   selector: 'app-currency-chart',
   templateUrl: './currency-chart.component.html',
@@ -12,7 +14,7 @@ import { TooltipModule } from './tooltip';
 })
 
 export class CurrencyChartComponent implements OnInit {
-  @Input() data: any;
+  @Input() data: ChartPoint[];
 
   constructor(
     private injector: Injector,
@@ -73,12 +75,12 @@ export class CurrencyChartComponent implements OnInit {
               x1: 0,
               y1: 0,
               x2: 0,
-              y2: 1
+              y2: 1,
             },
             stops: [
               [0, 'rgba(159, 101, 253, .24)'],
               [1, 'rgba(159, 101, 253, 0)'],
-            ]
+            ],
           },
           lineWidth: 2,
           marker: {
@@ -87,13 +89,13 @@ export class CurrencyChartComponent implements OnInit {
               hover: {
                 enabled: true,
                 radius: 5,
-              }
-            }
+              },
+            },
           },
           states: {
             hover: {
               lineWidth: 2,
-            }
+            },
           },
           threshold: null,
         },

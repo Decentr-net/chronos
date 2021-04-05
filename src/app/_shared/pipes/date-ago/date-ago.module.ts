@@ -3,10 +3,10 @@ import { DateAgoPipe } from '@shared/pipes/date-ago/date-ago.pipe';
 
 @NgModule({
   declarations: [
-    DateAgoPipe
+    DateAgoPipe,
   ],
   exports: [
-    DateAgoPipe
+    DateAgoPipe,
   ],
 })
 export class DateAgoModule { }

@@ -16,7 +16,7 @@ export class BlocksApiService {
 
   public getBlockByHeight(height: BlockHeader['height']): Observable<Block> {
     return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => getBlock(restUrl, height))
+      mergeMap((restUrl) => getBlock(restUrl, height)),
     );
   }
 

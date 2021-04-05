@@ -9,7 +9,7 @@ import { StatisticsApiService } from './statistics-api.service';
 })
 export class StatisticsService {
   constructor(
-    private statisticsApiService: StatisticsApiService
+    private statisticsApiService: StatisticsApiService,
   ) {
   }
 

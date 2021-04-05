@@ -32,7 +32,7 @@ export class DateAgoPipe implements PipeTransform, OnDestroy {
       .pipe(
         map(() => this.ngZone.run(() => this.changeDetectorRef.markForCheck())),
       )
-      .subscribe()
+      .subscribe(),
     );
 
     let output = '';

@@ -36,7 +36,7 @@ export class TransactionDetailsPageComponent implements OnInit {
         });
 
         return EMPTY;
-      })
+      }),
     );
   }
 }
