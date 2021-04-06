@@ -8,7 +8,8 @@
   &.mod-gamma-white {
     background-color: $color-white;
 
-    .footer__logo {
+    .footer__logo,
+    .social__link:hover {
       color: $color-black;
     }
   }

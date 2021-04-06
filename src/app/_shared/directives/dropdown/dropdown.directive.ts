@@ -1,7 +1,18 @@
-import { Directive, Input, OnDestroy, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  Directive,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+@UntilDestroy()
 @Directive({
   selector: '[appDropdown]',
 })
@@ -9,6 +20,7 @@ export class DropdownDirective implements OnInit, OnDestroy {
   @Input('appDropdown') public anchor: HTMLElement;
   @Input('appDropdownBackdrop') public backdrop = false;
   @Input('appDropdownBackdropClass') public backdropClass = '';
+  @Output() public appDropdownBackdropClick: EventEmitter<void> = new EventEmitter();
 
   private overlayRef: OverlayRef;
 
@@ -21,10 +33,13 @@ export class DropdownDirective implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.show();
+
+    this.overlayRef.backdropClick().pipe(
+      untilDestroyed(this),
+    ).subscribe(() => this.appDropdownBackdropClick.emit());
   }
 
   public ngOnDestroy(): void {
-    // this.hide();
     this.overlayRef.dispose();
   }
 
@@ -34,10 +49,6 @@ export class DropdownDirective implements OnInit, OnDestroy {
     this.overlayRef.attach(templatePortal);
 
     this.syncWidth();
-  }
-
-  private hide(): void {
-    this.overlayRef.detach();
   }
 
   private getOverlayConfig(): OverlayConfig {
@@ -56,10 +67,13 @@ export class DropdownDirective implements OnInit, OnDestroy {
         overlayY: 'bottom',
       }]);
 
+    const hasBackdrop = this.backdrop || !!this.backdropClass;
+
     return new OverlayConfig({
       positionStrategy,
-      hasBackdrop: this.backdrop || !!this.backdropClass,
+      hasBackdrop,
       backdropClass: this.backdropClass || 'cdk-overlay-transparent-backdrop',
+      scrollStrategy: hasBackdrop && this.overlay.scrollStrategies.block(),
     });
   }
 

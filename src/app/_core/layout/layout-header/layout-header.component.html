@@ -1,6 +1,6 @@
 <div class="header__container container">
   <div class="header__section">
-    <ng-container *appBreakpoint="'mobile'; revert: true; else headerSectionMobile">
+    <ng-container *appBreakpoint="'tablet'; revert: true; else headerSectionMobile">
       <ng-template [ngTemplateOutlet]="logo"></ng-template>
 
       <app-header-navigation
@@ -16,16 +16,18 @@
   </div>
 
   <div class="header__section">
-    <div class="header__mobile-actions" *appBreakpoint="'mobile'; else headerSearch">
+    <div class="header__mobile-actions" *appBreakpoint="'tablet'; else headerSearch">
       <ng-template [ngIf]="!isMobileSearchOpened" [ngIfElse]="mobileSearchClose">
-        <svg-icon
-          class="header__mobile-actions__icon"
-          key="search"
-          size="lg"
-          (click)="openMobileSearch()"
-        ></svg-icon>
+        <ng-template [ngIf]="!isMobileMenuOpen">
+          <svg-icon
+            class="header__mobile-actions__icon"
+            key="search"
+            size="lg"
+            (click)="openMobileSearch()"
+          ></svg-icon>
 
-        <div class="header__mobile-actions__divider"></div>
+          <div class="header__mobile-actions__divider"></div>
+        </ng-template>
 
         <svg-icon
           class="header__mobile-actions__icon"
@@ -60,7 +62,11 @@
 </ng-template>
 
 <ng-template [ngIf]="isMobileMenuOpen">
-  <app-header-mobile-menu-dropdown
-    *appDropdown="elementRef.nativeElement; backdropClass: 'header-mobile-menu-dropdown__overlay-backdrop'"
-  ></app-header-mobile-menu-dropdown>
+  <ng-template
+    [appDropdown]="elementRef.nativeElement"
+    [appDropdownBackdropClass]="'header-mobile-menu-dropdown__overlay-backdrop'"
+    (appDropdownBackdropClick)="closeMenu()"
+  >
+    <app-header-mobile-menu-dropdown></app-header-mobile-menu-dropdown>
+  </ng-template>
 </ng-template>

@@ -3,10 +3,10 @@
 $layout-header--height: 64px;
 
 :host {
+  background-color: $color-white;
   border-bottom: 1px solid $color-outlines;
   display: block;
   height: $layout-header--height;
-  position: sticky;
   z-index: 1001;
 }
 
@@ -65,5 +65,10 @@ $layout-header--height: 64px;
     background: $color-black;
     margin-top: $layout-header--height;
     opacity: 0.4 !important;
+
+    // hack to fix delayed overlay drop
+    &:not(.cdk-overlay-backdrop-showing) {
+      display: none;
+    }
   }
 }
