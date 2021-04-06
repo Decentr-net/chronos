@@ -4,6 +4,7 @@ import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { svgCloseIcon } from '@shared/svg-icons/close';
 import { svgLogoIcon } from '@shared/svg-icons/logo';
 import { svgMenuIcon } from '@shared/svg-icons/menu';
+import { svgSearchIcon } from '@shared/svg-icons/search';
 
 @Component({
   selector: 'app-layout-header',
@@ -11,9 +12,9 @@ import { svgMenuIcon } from '@shared/svg-icons/menu';
   styleUrls: ['./layout-header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export class LayoutHeaderComponent {
   public isMobileMenuOpen = false;
+  public isMobileSearchOpened = false;
 
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
@@ -23,6 +24,7 @@ export class LayoutHeaderComponent {
       svgCloseIcon,
       svgLogoIcon,
       svgMenuIcon,
+      svgSearchIcon,
     ]);
   }
 
@@ -44,5 +46,13 @@ export class LayoutHeaderComponent {
 
   public onObscured(obscured: boolean): void {
     this.isMobileMenuOpen = !obscured;
+  }
+
+  public openMobileSearch(): void {
+    this.isMobileSearchOpened = true;
+  }
+
+  public closeMobileSearch(): void {
+    this.isMobileSearchOpened = false;
   }
 }

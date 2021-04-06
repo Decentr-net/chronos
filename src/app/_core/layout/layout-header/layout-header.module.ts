@@ -10,11 +10,13 @@ import { TuiTabsModule } from '@taiga-ui/kit';
 
 import { HEADER_COMPONENTS } from './components';
 import { LayoutHeaderComponent } from './layout-header.component';
+import { BreakpointModule } from '@shared/directives/breakpoint';
 import { DropdownModule } from '@shared/directives/dropdown';
 import { TypefaceModule } from '@shared/directives/typeface';
 
 @NgModule({
   imports: [
+    BreakpointModule,
     CommonModule,
     DropdownModule,
     PolymorpheusModule,

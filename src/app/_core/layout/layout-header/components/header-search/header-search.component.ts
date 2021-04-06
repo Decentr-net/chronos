@@ -105,7 +105,9 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   public closeDropdown(): void {
-    this.isDropdownOpened = false;
+    timer(0).pipe(
+      untilDestroyed(this),
+    ).subscribe(() => this.isDropdownOpened = false);
   }
 
   public openDropdown(): void {

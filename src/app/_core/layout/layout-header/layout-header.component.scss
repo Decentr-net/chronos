@@ -8,15 +8,19 @@
 .header__container {
   align-items: center;
   display: flex;
+  height: 64px;
   justify-content: space-between;
 }
 
-.header__logo-and-navigation {
+.header__section {
+  align-items: center;
   display: flex;
+  height: 100%;
 }
 
 .header__navigation {
-  margin-left: $grid-step * 7;
+  height: 100%;
+  margin: 0 $grid-step * 3;
 
   &.mod-mobile {
     display: flex;
@@ -30,27 +34,25 @@
   cursor: pointer;
   display: flex;
   height: 40px;
-  margin: $grid-step * 1.5 0;
   width: 147px;
 }
 
-.header__mobile-menu {
-  display: none;
+.header__search {
 }
 
-.header__mobile-menu-icon {
+.header__mobile-actions {
+  align-items: center;
+  display: inline-flex;
+}
+
+.header__mobile-actions__icon {
   color: $color-grey;
   cursor: pointer;
-  height: 24px;
-  width: 24px;
 }
 
-@media (max-width: $screen-mobile) {
-  .header__navigation {
-    display: none;
-  }
-
-  .header__mobile-menu {
-    display: inline-flex;
-  }
+.header__mobile-actions__divider {
+  background-color: $color-outlines;
+  height: 40px;
+  margin: 0 $grid-step * 2;
+  width: 1px;
 }
