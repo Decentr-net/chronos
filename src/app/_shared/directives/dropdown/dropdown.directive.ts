@@ -46,12 +46,12 @@ export class DropdownDirective implements OnInit, OnDestroy {
         originX: 'start',
         originY: 'bottom',
         overlayX: 'start',
-        overlayY: 'top'
+        overlayY: 'top',
       }, {
         originX: 'start',
         originY: 'top',
         overlayX: 'start',
-        overlayY: 'bottom'
+        overlayY: 'bottom',
       }]);
 
     return new OverlayConfig({

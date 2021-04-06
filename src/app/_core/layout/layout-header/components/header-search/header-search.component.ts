@@ -73,7 +73,7 @@ export class HeaderSearchComponent implements OnInit {
         ? svgSearchIcon.name
         : result.result
           ? svgSearchPositiveIcon.name
-          : svgSearchNegativeIcon.name
+          : svgSearchNegativeIcon.name,
       ),
       untilDestroyed(this),
     ).subscribe((icon) => {
