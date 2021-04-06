@@ -16,7 +16,7 @@ export class BreakpointService {
   }
 
   public observe(breakpoint: Breakpoint): Observable<boolean> {
-    return this.breakpointObserver.observe(breakpoint).pipe(
+    return this.breakpointObserver.observe(this.breakpointMap.get(breakpoint)).pipe(
       pluck('matches'),
     );
   }
