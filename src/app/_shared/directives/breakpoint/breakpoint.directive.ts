@@ -7,14 +7,20 @@ type Breakpoint = 'desktop-xlarge' | 'desktop-large' | 'desktop' | 'tablet' | 'm
 
 @UntilDestroy()
 @Directive({
-  selector: '[appBreakpoint]'
+  selector: '[appBreakpoint]',
 })
 export class BreakpointDirective implements OnInit {
   @Input('appBreakpoint') public breakpoint: Breakpoint;
+
   @Input('appBreakpointRevert') public revert = false;
-  @Input('appBreakpointElse') public elseTemplateRef: TemplateRef<{}>;
+
+  @Input('appBreakpointElse') public set else(value: TemplateRef<{}>) {
+    this.elseTemplateRef = value;
+  }
 
   private breakpointMap: Map<Breakpoint, string>;
+
+  private elseTemplateRef: TemplateRef<{}>;
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -33,9 +39,11 @@ export class BreakpointDirective implements OnInit {
       this.viewContainerRef.clear();
 
       if (matches === !this.revert) {
-        this.renderTemplate(this.templateRef);
-      } else if (this.elseTemplateRef) {
-        this.renderTemplate(this.elseTemplateRef);
+        return this.renderTemplate(this.templateRef);
+      }
+
+      if (this.elseTemplateRef) {
+        return this.renderTemplate(this.elseTemplateRef);
       }
     });
   }
