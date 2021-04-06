@@ -1,13 +1,21 @@
 <div class="footer__container container">
-  <a href="https://decentr.net" target="_blank">
+  <a
+    class="footer__logo"
+    href="https://decentr.net"
+    target="_blank"
+  >
     <svg-icon
-      class="footer__logo"
+      class="footer__logo-icon"
       key="logo-blue"
+      size="lg"
     ></svg-icon>
+
+    <span appTypeface="paragraph">Decentr</span>
   </a>
 
   <p class="footer__copyright" appTypeface="caption">
-    &copy; Copyright {{ currentYear }} Decentr All Rights Reserved
+    <span>&copy; Copyright {{ currentYear }} Decentr </span>
+    <span>All Rights Reserved</span>
   </p>
 
   <div class="footer__social-links">
@@ -19,8 +27,8 @@
       [title]="socialLink.title"
     >
       <svg-icon
-        class="social__icon"
         [key]="socialLink.iconKey"
+        size="lg"
       ></svg-icon>
     </a>
   </div>
