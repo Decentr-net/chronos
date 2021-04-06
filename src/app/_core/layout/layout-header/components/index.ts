@@ -1,5 +1,6 @@
-import { HeaderNavigationLinkComponent } from '@core/layout/layout-header/components/header-navigation-link';
-import { HeaderNavigationComponent } from '@core/layout/layout-header/components/header-navigation';
+import { HeaderNavigationLinkComponent } from './header-navigation-link';
+import { HeaderNavigationComponent } from './header-navigation';
+import { HeaderSearchComponent } from './header-search';
 
 export * from './header-navigation';
 export * from './header-navigation-link';
@@ -7,4 +8,5 @@ export * from './header-navigation-link';
 export const HEADER_COMPONENTS = [
   HeaderNavigationComponent,
   HeaderNavigationLinkComponent,
+  HeaderSearchComponent,
 ];
