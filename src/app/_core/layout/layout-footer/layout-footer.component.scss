@@ -3,6 +3,15 @@
 :host {
   background-color: $color-black;
   display: flex;
+  width: 100%;
+
+  &.mod-gamma-white {
+    background-color: $color-white;
+
+    .footer__logo {
+      color: $color-black;
+    }
+  }
 }
 
 .footer__container {

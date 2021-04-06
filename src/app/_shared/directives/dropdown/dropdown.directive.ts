@@ -7,6 +7,8 @@ import { TemplatePortal } from '@angular/cdk/portal';
 })
 export class DropdownDirective implements OnInit, OnDestroy {
   @Input('appDropdown') public anchor: HTMLElement;
+  @Input('appDropdownBackdrop') public backdrop = false;
+  @Input('appDropdownBackdropClass') public backdropClass = '';
 
   private overlayRef: OverlayRef;
 
@@ -22,7 +24,7 @@ export class DropdownDirective implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    this.hide();
+    // this.hide();
     this.overlayRef.dispose();
   }
 
@@ -56,7 +58,8 @@ export class DropdownDirective implements OnInit, OnDestroy {
 
     return new OverlayConfig({
       positionStrategy,
-      backdropClass: 'cdk-overlay-transparent-backdrop',
+      hasBackdrop: this.backdrop || !!this.backdropClass,
+      backdropClass: this.backdropClass || 'cdk-overlay-transparent-backdrop',
     });
   }
 

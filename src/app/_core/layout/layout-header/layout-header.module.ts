@@ -8,17 +8,19 @@ import { TuiButtonModule, TuiDropdownModule, TuiModeModule } from '@taiga-ui/cor
 import { TuiActiveZoneModule, TuiObscuredModule } from '@taiga-ui/cdk';
 import { TuiTabsModule } from '@taiga-ui/kit';
 
-import { HEADER_COMPONENTS } from './components';
-import { LayoutHeaderComponent } from './layout-header.component';
 import { BreakpointModule } from '@shared/directives/breakpoint';
 import { DropdownModule } from '@shared/directives/dropdown';
 import { TypefaceModule } from '@shared/directives/typeface';
+import { LayoutFooterModule } from '@core/layout/layout-footer';
+import { HEADER_COMPONENTS } from './components';
+import { LayoutHeaderComponent } from './layout-header.component';
 
 @NgModule({
   imports: [
     BreakpointModule,
     CommonModule,
     DropdownModule,
+    LayoutFooterModule,
     PolymorpheusModule,
     ReactiveFormsModule,
     RouterModule,

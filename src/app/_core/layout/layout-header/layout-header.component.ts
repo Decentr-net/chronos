@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
 import { svgCloseIcon } from '@shared/svg-icons/close';
@@ -17,6 +17,7 @@ export class LayoutHeaderComponent {
   public isMobileSearchOpened = false;
 
   constructor(
+    public elementRef: ElementRef,
     private changeDetectorRef: ChangeDetectorRef,
     private svgIconRegistry: SvgIconRegistry,
   ) {
@@ -26,10 +27,6 @@ export class LayoutHeaderComponent {
       svgMenuIcon,
       svgSearchIcon,
     ]);
-  }
-
-  public onMenuActiveZoneChange(active: boolean): void {
-    this.isMobileMenuOpen = active;
   }
 
   public openMenu(): void {
@@ -42,10 +39,6 @@ export class LayoutHeaderComponent {
 
   public toggleMenu(): void {
     this.isMobileMenuOpen = !this.isMobileMenuOpen;
-  }
-
-  public onObscured(obscured: boolean): void {
-    this.isMobileMenuOpen = !obscured;
   }
 
   public openMobileSearch(): void {

@@ -1,0 +1,13 @@
+<a
+  class="header-mobile-menu-dropdown__link"
+  *ngFor="let page of pages; trackBy: trackByLink"
+  [routerLink]="page.url"
+  [routerLinkActive]="'is-active'"
+  appTypeface="subheader"
+>
+  {{ page.name }}
+</a>
+
+<div class="header-mobile-menu-dropdown__divider"></div>
+
+<app-layout-footer gamma="white"></app-layout-footer>

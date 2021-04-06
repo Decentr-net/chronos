@@ -1,14 +1,19 @@
 @import 'variables';
 
+$layout-header--height: 64px;
+
 :host {
   border-bottom: 1px solid $color-outlines;
   display: block;
+  height: $layout-header--height;
+  position: sticky;
+  z-index: 1001;
 }
 
 .header__container {
   align-items: center;
   display: flex;
-  height: 64px;
+  height: 100%;
   justify-content: space-between;
 }
 
@@ -37,9 +42,6 @@
   width: 147px;
 }
 
-.header__search {
-}
-
 .header__mobile-actions {
   align-items: center;
   display: inline-flex;
@@ -55,4 +57,13 @@
   height: 40px;
   margin: 0 $grid-step * 2;
   width: 1px;
+}
+
+::ng-deep {
+  .header-mobile-menu-dropdown__overlay-backdrop {
+    backdrop-filter: blur(8px);
+    background: $color-black;
+    margin-top: $layout-header--height;
+    opacity: 0.4 !important;
+  }
 }

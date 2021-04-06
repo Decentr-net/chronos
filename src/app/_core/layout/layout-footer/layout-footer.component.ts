@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
 import { svgGithubIcon } from '@shared/svg-icons/github';
@@ -20,6 +20,12 @@ interface SocialLinks {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutFooterComponent {
+  @Input() public gamma: 'black' | 'white' = 'black';
+
+  @HostBinding('class') public get gammaClass(): string {
+    return `mod-gamma-${this.gamma}`;
+  }
+
   public readonly currentYear: number = new Date().getFullYear();
 
   public readonly socialLinks: SocialLinks[] = [
