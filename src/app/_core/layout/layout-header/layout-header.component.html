@@ -18,23 +18,21 @@
   <div class="header__section">
     <div class="header__mobile-actions" *appBreakpoint="'tablet'; else headerSearch">
       <ng-template [ngIf]="!isMobileSearchOpened" [ngIfElse]="mobileSearchClose">
-        <svg-icon
-          class="header__mobile-actions__icon"
-          key="search"
-          size="lg"
-          (click)="openMobileSearch()"
-        ></svg-icon>
+        <ng-template [ngIf]="!isMobileMenuOpen">
+          <svg-icon
+            class="header__mobile-actions__icon"
+            key="search"
+            size="lg"
+            (click)="openMobileSearch()"
+          ></svg-icon>
 
-        <div class="header__mobile-actions__divider"></div>
+          <div class="header__mobile-actions__divider"></div>
+        </ng-template>
 
         <svg-icon
           class="header__mobile-actions__icon"
           [key]="isMobileMenuOpen ? 'close' : 'menu'"
           size="lg"
-          (tuiActiveZoneChange)="onMenuActiveZoneChange($event)"
-          [tuiDropdownContent]="menuDropdownContent"
-          [tuiDropdown]="isMobileMenuOpen"
-          (tuiObscured)="onObscured($event)"
           (click)="toggleMenu()"
         ></svg-icon>
       </ng-template>
@@ -50,13 +48,6 @@
   ></svg-icon>
 </ng-template>
 
-<ng-template #menuDropdownContent>
-  <app-header-navigation
-    class="header__navigation mod-mobile"
-    (click)="closeMenu()"
-  ></app-header-navigation>
-</ng-template>
-
 <ng-template #mobileSearchClose>
   <svg-icon
     class="header__mobile-actions__icon"
@@ -68,4 +59,14 @@
 
 <ng-template #headerSearch>
   <app-header-search class="header__search"></app-header-search>
+</ng-template>
+
+<ng-template [ngIf]="isMobileMenuOpen">
+  <ng-template
+    [appDropdown]="elementRef.nativeElement"
+    [appDropdownBackdropClass]="'header-mobile-menu-dropdown__overlay-backdrop'"
+    (appDropdownBackdropClick)="closeMenu()"
+  >
+    <app-header-mobile-menu-dropdown></app-header-mobile-menu-dropdown>
+  </ng-template>
 </ng-template>

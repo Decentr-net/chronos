@@ -1,0 +1,35 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  background-color: $color-white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: $grid-step * 3 $grid-step * 2 0;
+  width: 100%;
+}
+
+.header-mobile-menu-dropdown__link {
+  color: $color-grey;
+  font-weight: 500;
+
+  & + & {
+    margin-top: $grid-step * 3;
+  }
+
+  &:hover {
+    color: $color-dark-grey;
+  }
+
+  &.is-active {
+    color: $color-black;
+    font-weight: 700;
+  }
+}
+
+.header-mobile-menu-dropdown__divider {
+  border-bottom: 1px solid $color-outlines;
+  margin-top: $grid-step * 3;
+  width: 100%;
+}
