@@ -1,0 +1,20 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 0 $grid-step * 2;
+  padding-top: 100px;
+}
+
+.maintenance__logo {
+  height: 40px;
+  margin-bottom: 24px;
+  width: 147px;
+}
+
+.maintenance__message {
+  text-align: center;
+}
