@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxGoogleAnalyticsModule, NgxGoogleAnalyticsRouterModule } from 'ngx-google-analytics';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
+import { CORE_GUARDS } from '@core/guards';
 import { environment } from '@environments/environment';
 import { Environment } from '@environments/environments.definitions';
 
@@ -16,6 +17,7 @@ import { Environment } from '@environments/environments.definitions';
     SvgIconsModule.forRoot(),
   ],
   providers: [
+    CORE_GUARDS,
     {
       provide: Environment,
       useValue: environment,

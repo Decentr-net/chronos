@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 import { LayoutHeaderModule } from '../layout-header';
 import { LayoutFooterModule } from '../layout-footer';
@@ -8,6 +9,7 @@ import { MainLayoutComponent } from './main-layout.component';
   imports: [
     LayoutFooterModule,
     LayoutHeaderModule,
+    RouterModule,
   ],
   declarations: [
     MainLayoutComponent,
