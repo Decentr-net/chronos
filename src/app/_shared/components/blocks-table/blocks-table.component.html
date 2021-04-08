@@ -1,26 +1,19 @@
-<table class="tui-table">
-  <tbody>
-    <tr class="tui-table__tr">
-      <th *ngFor="let column of columns" class="tui-table__th" appTypeface="caption">
-        {{ column }}
-      </th>
-    </tr>
+<app-data-table [data]="data" [trackBy]="trackByHash">
+  <a
+    *dataTableColumnDef="let item; name: 'Height'"
+    [routerLink]="['/', blocksRoute, item.block.header.height]"
+  >
+    {{ item.block.header.height }}
+  </a>
 
-    <tr
-      class="tui-table__tr"
-      *ngFor="let item of data; trackBy: trackByHash; let last = last;" [ngClass]="{'tui-table__tr_border_none': last}"
-    >
-      <td class="tui-table__td" appTypeface="paragraph">
-        <a tuiLink [routerLink]="['/', blocksRoute, item.block.header.height]">{{ item.block.header.height }}</a>
-      </td>
+  <span
+    [attr.title]="item.block_id.hash"
+    *dataTableColumnDef="let item; name: 'Hash'"
+  >
+    {{ item.block_id.hash | truncate : 28 }}
+  </span>
 
-      <td class="tui-table__td" appTypeface="paragraph">
-        <span title="{{ item.block_id.hash }}">{{ item.block_id.hash | truncate : 28 }}</span>
-      </td>
-
-      <td class="tui-table__td" appTypeface="paragraph">
-        {{ item.block.header.time | dateAgo }}
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <ng-container *dataTableColumnDef="let item; name: 'Time'">
+    {{ item.block.header.time | dateAgo }}
+  </ng-container>
+</app-data-table>

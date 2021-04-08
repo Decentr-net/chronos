@@ -10,10 +10,9 @@ import { AppRoute } from '../../../app-route';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsTableComponent {
-  @Input() data: Transaction[];
+  @Input() data: Transaction[] = [];
 
   public appRoute: typeof AppRoute = AppRoute;
-  public columns: string[] = ['Hash', 'Type', 'Height', 'Time'];
 
   public trackByHash: TrackByFunction<Transaction> = ({}, { txhash }) => txhash;
 }
