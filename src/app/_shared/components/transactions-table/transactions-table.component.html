@@ -1,35 +1,26 @@
-<table class="tui-table">
-  <tbody>
-    <tr class="tui-table__tr">
-      <th *ngFor="let column of columns" class="tui-table__th" appTypeface="caption">
-        {{ column }}
-      </th>
-    </tr>
+<app-data-table [data]="data" [trackBy]="trackByHash">
+  <a
+    *dataTableColumnDef="let item; name: 'Hash'"
+    [attr.title]="item.txhash"
+    [routerLink]="['/', appRoute.Transactions, item.txhash]"
+  >
+    {{ item.txhash | truncate : 10 }}
+  </a>
 
-    <tr class="tui-table__tr" *ngFor="let item of data; trackBy: trackByHash; let last = last;" [ngClass]="{'tui-table__tr_border_none': last}">
-      <td class="tui-table__td" appTypeface="paragraph">
-        <a
-          tuiLink
-          [routerLink]="['/', appRoute.Transactions, item.txhash]"
-          [attr.title]="item.txhash"
-        >
-          {{ item.txhash | truncate : 10 }}
-        </a>
-      </td>
+  <ng-container
+    *dataTableColumnDef="let item; name: 'Type'"
+  >
+    {{ item.tx.value.msg[0].type }}
+  </ng-container>
 
-      <td class="tui-table__td" appTypeface="paragraph">
-        {{ item.tx.value.msg[0].type }}
-      </td>
+  <a
+    *dataTableColumnDef="let item; name: 'Height'"
+    [routerLink]="['/', appRoute.Blocks, item.height]"
+  >
+    {{ item.height | truncate : 10 }}
+  </a>
 
-      <td class="tui-table__td" appTypeface="paragraph">
-        <a tuiLink [routerLink]="['/', appRoute.Blocks, item.height]">
-          {{ item.height }}
-        </a>
-      </td>
-
-      <td class="tui-table__td" appTypeface="paragraph">
-        {{ item.timestamp | dateAgo }}
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <ng-container *dataTableColumnDef="let item; name: 'Time'">
+    {{ item.timestamp | dateAgo }}
+  </ng-container>
+</app-data-table>
