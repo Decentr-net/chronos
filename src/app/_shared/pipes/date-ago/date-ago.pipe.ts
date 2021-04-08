@@ -38,29 +38,19 @@ export class DateAgoPipe implements PipeTransform, OnDestroy {
     let output = '';
 
     if (Number.isNaN(seconds)) {
-      return '';
+      return output;
     } else if (seconds <= 45) {
-      output = `${seconds}s ago`;
-    } else if (seconds <= 90) {
-      output = 'a minute ago';
+      output = `${seconds}s`;
     } else if (minutes < 60) {
-      output = `${minutes}m ago`;
-    } else if (minutes < 120) {
-      output = 'an hour ago';
+      output = `${minutes}m`;
     } else if (hours < 24) {
-      output = `${hours}h ago`;
-    } else if (hours < 48) {
-      output = 'a day ago';
+      output = `${hours}h`;
     } else if (days <= 28) {
-      output = `${days} days ago`;
-    } else if (days <= 45) {
-      output = 'a month ago';
+      output = `${days}d`;
     } else if (days <= 345) {
-      output = `${months} months ago`;
-    } else if (days <= 545) {
-      output = 'a year ago';
+      output = `${months}mo`;
     } else {
-      output = `${years} years ago`;
+      output = `${years}y`;
     }
 
     return output;
