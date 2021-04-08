@@ -13,7 +13,6 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NumberSuffixModule } from '@shared/pipes/number-suffix';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { TransactionsTableModule } from '@shared/components/transactions-table';
-import { TuiButtonModule, TuiFormatNumberPipeModule, TuiModeModule } from '@taiga-ui/core';
 import { TypefaceModule } from '@shared/directives/typeface';
 
 @NgModule({
@@ -29,9 +28,6 @@ import { TypefaceModule } from '@shared/directives/typeface';
     NumberSuffixModule,
     SvgIconsModule,
     TransactionsTableModule,
-    TuiButtonModule,
-    TuiFormatNumberPipeModule,
-    TuiModeModule,
     TypefaceModule,
   ],
   declarations: [
