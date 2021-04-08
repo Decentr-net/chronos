@@ -39,7 +39,7 @@ export class DateAgoPipe implements PipeTransform, OnDestroy {
 
     if (Number.isNaN(seconds)) {
       return output;
-    } else if (seconds <= 45) {
+    } else if (seconds < 60) {
       output = `${seconds}s`;
     } else if (minutes < 60) {
       output = `${minutes}m`;
@@ -47,7 +47,7 @@ export class DateAgoPipe implements PipeTransform, OnDestroy {
       output = `${hours}h`;
     } else if (days <= 28) {
       output = `${days}d`;
-    } else if (days <= 345) {
+    } else if (days < 365) {
       output = `${months}mo`;
     } else {
       output = `${years}y`;
