@@ -7,6 +7,10 @@
   &::ng-deep {
     a {
       color: $color-primary;
+
+      &:hover {
+        color: $color-primary-hover;
+      }
     }
   }
 }
@@ -42,4 +46,5 @@
 
 .data-table__row__cell {
   padding: $grid-step $grid-step * 2;
+  vertical-align: middle;
 }
