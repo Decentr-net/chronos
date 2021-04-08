@@ -29,7 +29,16 @@
     </td>
   </ng-container>
 
-  <tr class="data-table__header-row" cdk-header-row *cdkHeaderRowDef="columnNames" appTypeface="caption"></tr>
+  <tr
+    class="data-table__header-row"
+    cdk-header-row
+    *cdkHeaderRowDef="columnNames"
+    appTypeface="caption"
+  ></tr>
 
-  <tr class="data-table__row" cdk-row *cdkRowDef="let row; columns: columnNames"></tr>
+  <tr
+    class="data-table__row"
+    cdk-row
+    *cdkRowDef="let row; columns: columnNames"
+  ></tr>
 </table>
