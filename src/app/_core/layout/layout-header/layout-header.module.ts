@@ -6,9 +6,9 @@ import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { BreakpointModule } from '@shared/directives/breakpoint';
 import { DropdownModule } from '@shared/directives/dropdown';
+import { HEADER_COMPONENTS } from './components';
 import { TypefaceModule } from '@shared/directives/typeface';
 import { LayoutFooterModule } from '../layout-footer';
-import { HEADER_COMPONENTS } from './components';
 import { LayoutHeaderComponent } from './layout-header.component';
 
 @NgModule({
