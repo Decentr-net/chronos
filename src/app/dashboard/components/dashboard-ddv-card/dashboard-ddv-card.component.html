@@ -5,6 +5,7 @@
 
   <ng-container
     ngProjectAs="[card-body]"
+    *ngIf="ddv; else loadingTemplate"
   >
     <div
       class="dashboard-ddv-card__value"

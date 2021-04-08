@@ -20,11 +20,15 @@
   </div>
 
   <div class="dashboard__statistics-cards">
-    <ng-container *ngIf="advDdvStats$ | async as advDdvStats">
-      <app-dashboard-adv-card [adv]="advDdvStats.adv"></app-dashboard-adv-card>
+    <app-dashboard-adv-card
+      [adv]="(advDdvStats$ | async)?.adv"
+      [loadingTemplate]="cardsLoading"
+    ></app-dashboard-adv-card>
 
-      <app-dashboard-ddv-card [ddv]="advDdvStats.ddv"></app-dashboard-ddv-card>
-    </ng-container>
+    <app-dashboard-ddv-card
+      [ddv]="(advDdvStats$ | async)?.ddv"
+      [loadingTemplate]="cardsLoading"
+    ></app-dashboard-ddv-card>
   </div>
 </div>
 

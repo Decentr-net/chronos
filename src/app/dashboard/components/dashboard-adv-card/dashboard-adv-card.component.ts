@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-adv-card',
@@ -8,4 +8,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class DashboardAdvCardComponent {
   @Input() public adv: number;
+
+  @Input() public loadingTemplate: TemplateRef<{}>;
 }

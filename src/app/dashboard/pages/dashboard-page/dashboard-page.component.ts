@@ -44,10 +44,14 @@ export class DashboardPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.advDdvStats$ = this.dashboardPageService.getAdvDdvStatistics();
+    this.advDdvStats$ = this.dashboardPageService.getAdvDdvStatistics().pipe(
+      share(),
+    );
+
     this.blocks$ = this.dashboardPageService.getBlocks().pipe(
       share(),
     );
+
     this.coinRate$ = this.dashboardPageService.getCoinRate();
     this.coinStats$ = this.dashboardPageService.getDecentCoinRateHistory(1);
     this.pool$ = this.dashboardPageService.getPool();
