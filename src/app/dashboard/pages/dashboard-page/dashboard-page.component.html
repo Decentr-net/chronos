@@ -8,27 +8,15 @@
 
 <div class="dashboard__tables ">
   <div class="dashboard__statistics-cards">
-    <app-dashboard-bonded-tokens-card
-      [pool]="pool$ | async"
-      [loadingTemplate]="cardsLoading"
-    ></app-dashboard-bonded-tokens-card>
+    <app-dashboard-bonded-tokens-card [pool]="pool$ | async"></app-dashboard-bonded-tokens-card>
 
-    <app-dashboard-height-card
-      [latestBlockHeader]="(latestBlock$ | async)?.block.header"
-      [loadingTemplate]="cardsLoading"
-    ></app-dashboard-height-card>
+    <app-dashboard-height-card [latestBlockHeader]="(latestBlock$ | async)?.block.header"></app-dashboard-height-card>
   </div>
 
   <div class="dashboard__statistics-cards">
-    <app-dashboard-adv-card
-      [adv]="(advDdvStats$ | async)?.adv"
-      [loadingTemplate]="cardsLoading"
-    ></app-dashboard-adv-card>
+    <app-dashboard-adv-card [adv]="(advDdvStats$ | async)?.adv"></app-dashboard-adv-card>
 
-    <app-dashboard-ddv-card
-      [ddv]="(advDdvStats$ | async)?.ddv"
-      [loadingTemplate]="cardsLoading"
-    ></app-dashboard-ddv-card>
+    <app-dashboard-ddv-card [ddv]="(advDdvStats$ | async)?.ddv"></app-dashboard-ddv-card>
   </div>
 </div>
 
@@ -81,27 +69,6 @@
     ></app-transactions-table>
   </app-info-card>
 </div>
-
-<ng-template #cardsLoading>
-  <div class="dashboard__statistics-cards--loading">
-    <ngx-skeleton-loader
-      [theme]="{
-        height: '54px',
-        marginTop: '25px',
-        marginBottom: '0',
-        width: '220px'
-      }"
-    ></ngx-skeleton-loader>
-    <ngx-skeleton-loader
-      [theme]="{
-        height: '16px',
-        marginTop: '15px',
-        marginBottom: '0',
-        width: '100px'
-      }"
-    ></ngx-skeleton-loader>
-  </div>
-</ng-template>
 
 <ng-template #tablesLoading>
   <ngx-skeleton-loader

@@ -5,7 +5,7 @@
 
   <ng-container
     ngProjectAs="[card-body]"
-    *ngIf="ddv; else loadingTemplate"
+    *ngIf="ddv; else loading"
   >
     <div
       class="dashboard-ddv-card__value"
@@ -14,4 +14,17 @@
       {{ ddv | tuiFormatNumber: 3 : '.' }}
     </div>
   </ng-container>
+
+  <ng-template #loading>
+    <div class="dashboard-ddv-card__loading">
+      <ngx-skeleton-loader
+        [theme]="{
+          height: '54px',
+          marginTop: '25px',
+          marginBottom: '0',
+          width: '220px'
+        }"
+      ></ngx-skeleton-loader>
+    </div>
+  </ng-template>
 </app-info-card>

@@ -9,3 +9,8 @@
   margin-top: $grid-step * 1.5;
   word-break: break-all;
 }
+
+.dashboard-ddv-card__loading {
+  display: flex;
+  flex-direction: column;
+}

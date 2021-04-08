@@ -12,3 +12,8 @@
 .dashboard-bonded-tokens-card__ratio {
   color: $color-grey;
 }
+
+.dashboard-bonded-tokens-card__loading {
+  display: flex;
+  flex-direction: column;
+}
