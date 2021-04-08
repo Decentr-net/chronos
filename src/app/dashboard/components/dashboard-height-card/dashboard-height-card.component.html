@@ -5,7 +5,7 @@
 
   <ng-container
     ngProjectAs="[card-body]"
-    *ngIf="latestBlockHeader; else loadingTemplate"
+    *ngIf="latestBlockHeader; else loading"
   >
     <div
       class="dashboard-height-card__height"
@@ -26,4 +26,25 @@
       {{ latestBlockHeader.time | dateAgo }}
     </div>
   </ng-container>
+
+  <ng-template #loading>
+    <div class="dashboard-height-card__loading">
+      <ngx-skeleton-loader
+        [theme]="{
+          height: '54px',
+          marginTop: '25px',
+          marginBottom: '0',
+          width: '220px'
+        }"
+      ></ngx-skeleton-loader>
+      <ngx-skeleton-loader
+        [theme]="{
+          height: '16px',
+          marginTop: '15px',
+          marginBottom: '0',
+          width: '100px'
+        }"
+      ></ngx-skeleton-loader>
+    </div>
+  </ng-template>
 </app-info-card>

@@ -19,3 +19,8 @@
   margin-right: $grid-step;
   width: 24px;
 }
+
+.dashboard-height-card__loading {
+  display: flex;
+  flex-direction: column;
+}
