@@ -2,12 +2,4 @@
 
 :host {
   display: block;
-  overflow: auto;
-
-  .tui-table__th {
-    color: $color-grey;
-    border-bottom: 2px solid $color-outlines;
-    height: unset;
-    padding: $grid-step $grid-step * 2 $grid-step / 2;
-  }
 }

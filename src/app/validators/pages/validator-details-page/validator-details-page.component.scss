@@ -46,6 +46,14 @@
   font-weight: 500;
 }
 
+.validator-details-page__link {
+  color: $color-primary;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
+}
+
 @media (max-width: $screen-desktop) {
   .validator-details__detailed-info {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);

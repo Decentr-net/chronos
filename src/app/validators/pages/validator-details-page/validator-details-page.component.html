@@ -30,7 +30,7 @@
         <div>
           <p class="validator-details__value" appTypeface="subheader">
             <ng-container *ngIf="validatorDetails.description.website; else noWebsite;">
-              <a tuiLink target="_blank" href="{{ validatorDetails.description.website }}">
+              <a class="validator-details-page__link" target="_blank" href="{{ validatorDetails.description.website }}">
                 {{ validatorDetails.description.website }}
               </a>
             </ng-container>
