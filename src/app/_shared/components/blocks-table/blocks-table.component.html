@@ -3,7 +3,7 @@
     *dataTableColumnDef="let item; name: 'Height'"
     [routerLink]="['/', blocksRoute, item.block.header.height]"
   >
-    {{ item.block.header.height }}
+    {{ item.block.header.height | numberFormat : null : true }}
   </a>
 
   <span

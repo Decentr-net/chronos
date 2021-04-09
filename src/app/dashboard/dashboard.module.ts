@@ -10,6 +10,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { InfoCardModule } from '@shared/components/info-card';
 import { MarginLabelModule } from '@shared/components/margin-label';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { NumberFormatModule } from '@shared/pipes/number-format';
 import { NumberSuffixModule } from '@shared/pipes/number-suffix';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { TransactionsTableModule } from '@shared/components/transactions-table';
@@ -25,6 +26,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
     InfoCardModule,
     MarginLabelModule,
     NgxSkeletonLoaderModule,
+    NumberFormatModule,
     NumberSuffixModule,
     SvgIconsModule,
     TransactionsTableModule,

@@ -17,7 +17,7 @@
     *dataTableColumnDef="let item; name: 'Height'"
     [routerLink]="['/', appRoute.Blocks, item.height]"
   >
-    {{ item.height | truncate : 10 }}
+    {{ item.height | numberFormat : null : true }}
   </a>
 
   <ng-container *dataTableColumnDef="let item; name: 'Time'">

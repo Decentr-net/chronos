@@ -11,7 +11,7 @@
       class="dashboard-height-card__height"
       appTypeface="header-3"
     >
-      {{ +latestBlockHeader.height }}
+      {{ +latestBlockHeader.height | numberFormat : '1.0-3' : true }}
     </div>
 
     <div

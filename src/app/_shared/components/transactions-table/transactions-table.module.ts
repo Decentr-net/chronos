@@ -3,11 +3,12 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
+import { DataTableModule } from '@shared/components/data-table';
 import { DateAgoModule } from '@shared/pipes/date-ago';
+import { NumberFormatModule } from '@shared/pipes/number-format';
 import { TransactionsTableComponent } from './transactions-table.component';
 import { TruncateModule } from '@shared/pipes/truncate';
 import { TypefaceModule } from '@shared/directives/typeface';
-import { DataTableModule } from '@shared/components/data-table';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { DataTableModule } from '@shared/components/data-table';
     CommonModule,
     DateAgoModule,
     DataTableModule,
+    NumberFormatModule,
     RouterModule,
     TruncateModule,
     TypefaceModule,

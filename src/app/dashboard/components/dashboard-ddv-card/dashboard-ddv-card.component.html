@@ -11,7 +11,7 @@
       class="dashboard-ddv-card__value"
       appTypeface="header-3"
     >
-      {{ ddv }}
+      {{ ddv | numberFormat : '1.0-3' : true }}
     </div>
   </ng-container>
 
