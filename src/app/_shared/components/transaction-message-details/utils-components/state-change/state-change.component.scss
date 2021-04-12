@@ -1,0 +1,24 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  display: flex;
+}
+
+.state-change__card {
+  background: $color-background;
+  border-radius: $border-radius;
+  padding: $grid-step * 2;
+  word-break: break-all;
+}
+
+.state-change__card__title {
+  color: $color-grey;
+  font-weight: 500;
+}
+
+.state-change__icon {
+  color: $color-light-grey;
+  flex-shrink: 0;
+  margin: 0 $grid-step * 2.5;
+}

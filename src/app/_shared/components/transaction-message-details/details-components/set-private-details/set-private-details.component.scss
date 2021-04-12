@@ -1,0 +1,10 @@
+@import 'variables';
+
+:host {
+  display: block;
+}
+
+.set-private-details__title {
+  color: $color-grey;
+  font-weight: 500;
+}

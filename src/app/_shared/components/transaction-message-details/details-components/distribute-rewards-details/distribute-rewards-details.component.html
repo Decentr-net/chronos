@@ -1,0 +1,11 @@
+<span appTypeface="header-3">{{ details.rewards[0].reward }} udec</span>
+
+<app-state-change>
+  <ng-template [appStateChangeFrom]="'Owner'">
+    {{ details.owner }}
+  </ng-template>
+
+  <ng-template [appStateChangeTo]="'Receiver'">
+    {{ details.rewards[0].receiver }}
+  </ng-template>
+</app-state-change>

@@ -10,6 +10,7 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CommunityDeletePost]: 'delete-post',
   [StdTxMessageType.PdvDistributeRewards]: 'distribute-rewards',
   [StdTxMessageType.CommunityFollow]: 'follow',
+  [StdTxMessageType.CosmosCreateValidator]: 'create-validator',
   [StdTxMessageType.CosmosSend]: 'send',
   [StdTxMessageType.CommunitySetLike]: 'set-like',
   [StdTxMessageType.ProfileSetPrivate]: 'set-private',

@@ -1,60 +1,18 @@
-<p><b>Message type:</b> {{ txMessage.type }}</p>
+<div class="transaction-message__type">
+  <app-transaction-message-type-icon
+    class="transaction-message__type-icon"
+    [messageType]="txMessage.type"
+  ></app-transaction-message-type-icon>
 
-<ng-container [ngSwitch]="txMessage.type">
-  <ng-container *ngSwitchCase="messageTypes.PdvDistributeRewards">
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-    <p><b>ID:</b> {{txMessage.value.rewards[0].id}}</p>
-    <p><b>Receiver:</b> {{txMessage.value.rewards[0].receiver}}</p>
-    <p><b>Reward:</b> {{txMessage.value.rewards[0].reward}}</p>
-  </ng-container>
+  <span
+    class="transaction-message__type-label"
+    appTypeface="subheader"
+  >
+    {{ messageTypeLabelMap[txMessage.type] }}
+  </span>
+</div>
 
-  <ng-container *ngSwitchCase="messageTypes.ProfileSetPrivate">
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="messageTypes.ProfileSetPublic">
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-    <p><b>First name:</b> {{txMessage.value.public.firstName}}</p>
-    <p><b>Last name:</b> {{txMessage.value.public.lastName}}</p>
-    <p><b>Birthday:</b> {{txMessage.value.public.birthday}}</p>
-    <p><b>Gender:</b> {{txMessage.value.public.gender}}</p>
-    <ng-container *ngIf="txMessage.value.public.bio">
-      <p><b>Bio:</b> {{txMessage.value.public.bio}}</p>
-    </ng-container>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="messageTypes.CosmosSend">
-    <p><b>From address:</b> {{txMessage.value.from_address}}</p>
-    <p><b>To address:</b> {{txMessage.value.to_address}}</p>
-    <p><b>Amount:</b> {{txMessage.value.amount[0].amount}} {{txMessage.value.amount[0].denom}}</p>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="messageTypes.CommunitySetLike">
-    <p><b>Post owner:</b> {{txMessage.value.postOwner}}</p>
-    <p><b>Post UUID:</b> {{txMessage.value.postUuid}}</p>
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-    <p><b>Weight:</b> {{txMessage.value.weight}}</p>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="messageTypes.CommunityUnfollow">
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-    <p><b>Whom:</b> {{txMessage.value.whom}}</p>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="messageTypes.CommunityFollow">
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-    <p><b>Whom:</b> {{txMessage.value.whom}}</p>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="messageTypes.CommunityCreatePost">
-    <p><b>UUID:</b> {{txMessage.value.uuid}}</p>
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-    <p><b>Title:</b> {{txMessage.value.title}}</p>
-  </ng-container>
-
-  <ng-container *ngSwitchCase="messageTypes.CommunityDeletePost">
-    <p><b>Post owner:</b> {{txMessage.value.postOwner}}</p>
-    <p><b>Post UUID:</b> {{txMessage.value.postUUID}}</p>
-    <p><b>Owner:</b> {{txMessage.value.owner}}</p>
-  </ng-container>
-</ng-container>
+<app-transaction-message-details
+  class="transaction-message__details"
+  [message]="txMessage"
+></app-transaction-message-details>

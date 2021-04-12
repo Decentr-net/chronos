@@ -1,5 +1,25 @@
+@import 'variables';
+
 :host {
-  p {
-    word-break: break-all;
-  }
+  display: block;
+}
+
+.transaction-message__type {
+  align-items: center;
+  display: flex;
+}
+
+.transaction-message__type-icon {
+  background-color: $color-background;
+  border-radius: $border-radius;
+  padding: $grid-step;
+}
+
+.transaction-message__type-label {
+  font-weight: 500;
+  margin-left: $grid-step * 2;
+}
+
+.transaction-message__details {
+  margin-top: $grid-step * 3;
 }
