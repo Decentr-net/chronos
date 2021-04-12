@@ -47,7 +47,7 @@ export class NumberFormatPipe implements PipeTransform {
       ? decimalSeparator
       : DEFAULT_DECIMAL_SEPARATOR;
 
-    return !!fractionPartString && fractionPartString
+    return !!fractionPartString
       ? result + separator + fractionPartString
       : result;
   }
