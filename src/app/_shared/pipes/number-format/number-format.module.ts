@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 
-import { NumberFormatPipe } from '@shared/pipes/number-format';
+import { NumberFormatPipe } from './number-format.pipe';
 
 @NgModule({
   declarations: [
