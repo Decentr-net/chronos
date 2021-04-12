@@ -6,14 +6,23 @@
   height: 100%;
 }
 
-.container {
-  flex: 1 0 auto;
+.main-layout__header {
+  position: sticky;
+  top: 0;
 }
 
-.main-layout__content-container {
-  padding: $grid-step * 2 0;
+.main-layout__content {
+  overflow: auto;
+  padding-bottom: $grid-step * 2;
+  padding-top: $grid-step * 2;
 }
 
-.main-layout__footer {
-  flex: 0 0 auto;
+@media (max-width: $screen-mobile) {
+  :host {
+    height: auto;
+  }
+
+  .main-layout__content {
+    overflow: initial;
+  }
 }
