@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Transaction, TXsSearchParams, TXsSearchResponse } from 'decentr-js';
+import { Transaction, TXsSearchParameters, TXsSearchResponse } from 'decentr-js';
 import { forkJoin, Observable, timer } from 'rxjs';
 import { distinctUntilChanged, map, mergeMap, scan, switchMap } from 'rxjs/operators';
 
@@ -19,7 +19,7 @@ export class TransactionsService {
     return this.transactionsApiService.getTransactionByHash(hash);
   }
 
-  public searchTransactions(searchParams: TXsSearchParams): Observable<TXsSearchResponse> {
+  public searchTransactions(searchParams: TXsSearchParameters): Observable<TXsSearchResponse> {
     return this.transactionsApiService.searchTransactions(searchParams);
   }
 

@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { StdTxMessage } from 'decentr-js';
-
-import { MessageType } from '../../enums/message-type.enum';
+import { StdTxMessage, StdTxMessageType } from 'decentr-js';
 
 @Component({
   selector: 'app-transaction-message',
@@ -10,7 +8,7 @@ import { MessageType } from '../../enums/message-type.enum';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionMessageComponent {
-  @Input() txMessage: StdTxMessage<MessageType, any>;
+  @Input() txMessage: StdTxMessage<any>;
 
-  public messageTypes: typeof MessageType = MessageType;
+  public messageTypes: typeof StdTxMessageType = StdTxMessageType;
 }

@@ -1,7 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-import { getTransactionByHash, searchTransactions, Transaction, TXsSearchParams, TXsSearchResponse } from 'decentr-js';
+import {
+  getTransactionByHash,
+  searchTransactions,
+  Transaction,
+  TXsSearchParameters,
+  TXsSearchResponse,
+} from 'decentr-js';
 
 import { Environment } from '@environments/environments.definitions';
 import { NetworkService } from '../network';
@@ -22,7 +28,7 @@ export class TransactionsApiService {
     );
   }
 
-  public searchTransactions(searchParams: TXsSearchParams): Observable<TXsSearchResponse> {
+  public searchTransactions(searchParams: TXsSearchParameters): Observable<TXsSearchResponse> {
     return this.networkService.getRestUrl().pipe(
       mergeMap((restUrl) => searchTransactions(restUrl, searchParams)),
     );
