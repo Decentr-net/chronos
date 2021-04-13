@@ -57,7 +57,7 @@
   text-align: center;
 }
 
-@media (max-width: $screen-mobile) {
+@media (max-width: $screen-tablet) {
   .footer__container {
     flex-direction: column;
     margin: $grid-step * 3 auto;
