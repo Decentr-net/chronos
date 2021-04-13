@@ -6,11 +6,15 @@
 
 .dashboard-bonded-tokens-card__percent {
   font-weight: 500;
-  margin-top: $grid-step * 1.5;
+  margin-top: $grid-step;
 }
 
 .dashboard-bonded-tokens-card__ratio {
   color: $color-grey;
+}
+
+.dashboard-bonded-tokens-card__ratio-value {
+  display: inline-flex;
 }
 
 .dashboard-bonded-tokens-card__loading {
