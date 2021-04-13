@@ -7,7 +7,7 @@ import {
   getValidators,
   Pool,
   Validator,
-  ValidatorsFilterParams,
+  ValidatorsFilterParameters,
 } from 'decentr-js';
 
 import { NetworkService } from '../network';
@@ -27,7 +27,7 @@ export class StakingApiService {
     );
   }
 
-  public getValidators(filter?: ValidatorsFilterParams): Observable<Validator[]> {
+  public getValidators(filter?: ValidatorsFilterParameters): Observable<Validator[]> {
     return this.networkService.getRestUrl().pipe(
       mergeMap((restUrl) => getValidators(restUrl, filter)),
     );
