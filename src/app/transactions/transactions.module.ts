@@ -10,6 +10,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { TRANSACTION_COMPONENTS } from './components';
 import { TRANSACTIONS_PAGES } from './pages';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { TRANSACTIONS_PAGES } from './pages';
     TransactionsRoutingModule,
     TransactionsTableModule,
     TypefaceModule,
+    SvgIconsModule,
   ],
   declarations: [
     TRANSACTION_COMPONENTS,

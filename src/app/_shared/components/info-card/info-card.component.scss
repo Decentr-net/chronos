@@ -1,10 +1,18 @@
 @import 'variables';
 
+$info-card--padding: $grid-step * 2;
+
 :host {
   border: 2px solid $color-outlines;
   border-radius: $border-radius;
   display: block;
-  padding: $grid-step * 2;
+  padding: $info-card--padding;
+
+  &.mod-content-divider {
+    .info-card__divider {
+      display: block;
+    }
+  }
 }
 
 .info-card__head {
@@ -14,5 +22,14 @@
 }
 
 .info-card__title {
+  align-items: center;
+  display: flex;
   font-weight: 500;
+}
+
+.info-card__divider {
+  background-color: $color-outlines;
+  display: none;
+  height: 2px;
+  margin: $grid-step * 2 (-$info-card--padding);
 }

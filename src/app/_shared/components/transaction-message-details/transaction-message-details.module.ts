@@ -19,6 +19,8 @@ import { TransactionMessageDetailsComponent } from './transaction-message-detail
     SvgIconsModule,
   ],
   exports: [
+    TRANSACTION_MESSAGE_DETAILS_COMPONENTS,
+    TRANSACTION_MESSAGE_DETAILS_UTILS_COMPONENTS,
     TransactionMessageDetailsComponent,
   ],
 })

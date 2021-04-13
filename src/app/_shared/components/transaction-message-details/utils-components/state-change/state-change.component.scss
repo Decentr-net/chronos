@@ -22,3 +22,22 @@
   flex-shrink: 0;
   margin: 0 $grid-step * 2.5;
 }
+
+@media (max-width: $screen-tablet) {
+  :host {
+    display: block;
+  }
+
+  .state-change__card {
+    width: max-content;
+  }
+
+  .state-change__icon {
+    $state-change--icon--size: 24px;
+
+    height: $state-change--icon--size;
+    margin: $grid-step 0;
+    transform: rotate(90deg);
+    width: $state-change--icon--size;
+  }
+}
