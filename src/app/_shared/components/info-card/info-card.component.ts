@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-info-card',
@@ -7,7 +7,5 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InfoCardComponent {
-  @Input()
-  @HostBinding('class.mod-content-divider')
-  public contentDivider = false;
+  @Input() public contentDivider = false;
 }

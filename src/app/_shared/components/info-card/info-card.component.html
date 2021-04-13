@@ -8,6 +8,6 @@
   </div>
 </div>
 
-<div class="info-card__divider"></div>
+<div class="info-card__divider" *ngIf="contentDivider"></div>
 
 <ng-content select="[card-body]"></ng-content>
