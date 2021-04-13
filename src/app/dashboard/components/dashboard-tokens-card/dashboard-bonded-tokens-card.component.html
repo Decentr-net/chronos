@@ -11,16 +11,17 @@
       class="dashboard-bonded-tokens-card__percent"
       appTypeface="header-3"
     >
-      {{ pool.not_bonded_tokens / pool.bonded_tokens | percent :'1.2-5' }}
+      {{ getPoolTokenPercent | number :'1.2-5' }}%
     </div>
 
     <div
       class="dashboard-bonded-tokens-card__ratio"
-      appTypeface="paragraph"
+      title="{{ pool.not_bonded_tokens }} / {{ pool.bonded_tokens }}"
     >
-      <span title="{{ pool.not_bonded_tokens }} / {{ pool.bonded_tokens }}">
+      <app-progress-bar [percent]="getPoolTokenPercent"></app-progress-bar>
+      <div appTypeface="paragraph">
         {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
-      </span>
+      </div>
     </div>
   </ng-container>
 

@@ -9,4 +9,8 @@ import { Pool } from 'decentr-js';
 })
 export class DashboardBondedTokensCardComponent {
   @Input() public pool: Pool;
+
+  get getPoolTokenPercent(): number {
+    return this.pool.not_bonded_tokens / this.pool.bonded_tokens * 100;
+  }
 }

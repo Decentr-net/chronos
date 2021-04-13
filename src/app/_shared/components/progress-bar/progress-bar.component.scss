@@ -1,0 +1,17 @@
+@import 'variables';
+
+:host {
+  background-color: $color-background;
+  border-radius: $border-radius;
+  color: $color-green;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-bar__line {
+  background-color: currentColor;
+  border-radius: $border-radius;
+  height: 12px;
+  min-width: 2px;
+}
