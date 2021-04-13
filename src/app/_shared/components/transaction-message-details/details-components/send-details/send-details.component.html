@@ -1,0 +1,11 @@
+<span appTypeface="header-3">{{ details.amount[0].amount }} {{ details.amount[0].denom }}</span>
+
+<app-state-change>
+  <ng-template [appStateChangeFrom]="'From'">
+    {{ details.from_address }}
+  </ng-template>
+
+  <ng-template [appStateChangeTo]="'To'">
+    {{ details.to_address }}
+  </ng-template>
+</app-state-change>

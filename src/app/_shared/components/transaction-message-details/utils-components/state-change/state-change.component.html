@@ -1,0 +1,33 @@
+<div class="state-change__card">
+  <div
+    class="state-change__card__title"
+    appTypeface="paragraph"
+  >
+    {{ from.title }}
+  </div>
+
+  <div
+    [ngTemplateOutlet]="from.templateRef"
+    appTypeface="subheader"
+  ></div>
+</div>
+
+<svg-icon
+  class="state-change__icon"
+  key="arrow-right"
+  size="xxl"
+></svg-icon>
+
+<div class="state-change__card">
+  <div
+    class="state-change__card__title"
+    appTypeface="paragraph"
+  >
+    {{ to.title }}
+  </div>
+
+  <div
+    [ngTemplateOutlet]="to.templateRef"
+    appTypeface="subheader"
+  ></div>
+</div>

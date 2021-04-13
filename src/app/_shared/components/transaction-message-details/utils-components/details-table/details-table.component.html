@@ -1,0 +1,18 @@
+<ng-container *ngFor="let cell of cells; let last = last">
+  <div class="details-table__cell">
+    <div
+      class="details-table__cell__title"
+      appTypeface="paragraph"
+    >
+      {{ cell.name }}
+    </div>
+
+    <div
+      class="details-table__cell__value"
+      [ngTemplateOutlet]="cell.templateRef"
+      appTypeface="subheader"
+    ></div>
+  </div>
+
+  <div class="details-table__divider" *ngIf="!last"></div>
+</ng-container>

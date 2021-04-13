@@ -6,6 +6,8 @@ import { Transaction } from 'decentr-js';
 
 import { TransactionsService } from '@core/services/transactions';
 import { AppRoute } from '../../../app-route';
+import { SvgIconRegistry } from '@ngneat/svg-icon';
+import { svgArrowLeftIcon } from '@shared/svg-icons/arrow-left';
 
 @Component({
   selector: 'app-transaction-details',
@@ -19,8 +21,10 @@ export class TransactionDetailsPageComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private svgIconRegistry: SvgIconRegistry,
     private transactionsService: TransactionsService,
   ) {
+    svgIconRegistry.register(svgArrowLeftIcon);
   }
 
   public ngOnInit(): void {
