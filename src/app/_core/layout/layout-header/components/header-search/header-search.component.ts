@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input,
   OnInit,
   TemplateRef,
   ViewChild,
@@ -28,8 +29,13 @@ import { AppRoute } from '../../../../../app-route';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderSearchComponent implements OnInit {
+  @Input() public autofocus = false;
+
   @ViewChild('blockResult') public blockResultTemplate: TemplateRef<{}>;
+
   @ViewChild('txResult') public txResultTemplate: TemplateRef<{}>;
+
+  @ViewChild('inputElement', { static: true }) public inputElement: ElementRef<HTMLInputElement>;
 
   public searchControl: FormControl = new FormControl('');
 
@@ -98,6 +104,10 @@ export class HeaderSearchComponent implements OnInit {
       }),
       untilDestroyed(this),
     ).subscribe((resultTemplate) => this.resultTemplate = resultTemplate);
+
+    if (this.autofocus) {
+      this.inputElement.nativeElement.focus();
+    }
   }
 
   public onLinkClick(): void {

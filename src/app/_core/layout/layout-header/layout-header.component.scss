@@ -7,7 +7,6 @@ $layout-header--height: 64px;
   border-bottom: 1px solid $color-outlines;
   display: block;
   height: $layout-header--height;
-  z-index: 1001;
 }
 
 .header__container {
@@ -21,6 +20,11 @@ $layout-header--height: 64px;
   align-items: center;
   display: flex;
   height: 100%;
+  width: 100%;
+
+  &.mod-right {
+    justify-content: flex-end;
+  }
 }
 
 .header__navigation {
@@ -70,5 +74,11 @@ $layout-header--height: 64px;
     &:not(.cdk-overlay-backdrop-showing) {
       display: none;
     }
+  }
+}
+
+@media (max-width: $screen-tablet) {
+  .header__section.mod-right {
+    width: auto;
   }
 }
