@@ -1,6 +1,11 @@
-<div class="set-public-details__owner" appTypeface="paragraph">Owner</div>
+<div class="set-public-details__owner-label" appTypeface="paragraph">Owner</div>
 
-<div appTypeface="subheader">{{ details.owner }}</div>
+<div
+  class="set-public-details__owner-value"
+  appTypeface="subheader"
+>
+  {{ details.owner }}
+</div>
 
 <div class="set-public-details__bio" *ngIf="details.public.bio as bio">{{ bio }}</div>
 

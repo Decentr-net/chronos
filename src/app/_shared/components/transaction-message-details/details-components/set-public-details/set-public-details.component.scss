@@ -4,8 +4,12 @@
   display: block;
 }
 
-.set-public-details__owner {
+.set-public-details__owner-label {
   color: $color-grey;
+}
+
+.set-public-details__owner-value {
+  word-wrap: break-word;
 }
 
 .set-public-details__bio {
