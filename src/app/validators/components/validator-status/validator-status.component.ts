@@ -15,6 +15,10 @@ import { svgUnbondingIcon } from '@shared/svg-icons/unbonding';
 export class ValidatorStatusComponent implements OnInit {
   @Input() status: Validator['status'];
 
+  @Input()
+  @HostBinding('class.mod-filled')
+  public filled = false;
+
   @HostBinding('class.mod-unbonded')
   public get isUnbonded(): boolean {
     return this.status === ValidatorStatus.Unbonded;

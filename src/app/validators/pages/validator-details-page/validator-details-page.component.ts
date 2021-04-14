@@ -4,6 +4,7 @@ import { EMPTY, Observable } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
 import { Validator } from 'decentr-js';
 
+import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { StakingService } from '@core/services/staking';
 import { AppRoute } from '../../../app-route';
 
@@ -16,8 +17,12 @@ import { AppRoute } from '../../../app-route';
 export class ValidatorDetailsPageComponent implements OnInit {
   public validatorDetails$: Observable<Validator>;
 
+  public isTablet$: Observable<boolean>;
+  public readonly breakpoint: typeof Breakpoint = Breakpoint;
+
   constructor(
     private activatedRoute: ActivatedRoute,
+    private breakpointService: BreakpointService,
     private router: Router,
     private stakingService: StakingService,
   ) {
@@ -37,5 +42,7 @@ export class ValidatorDetailsPageComponent implements OnInit {
         return EMPTY;
       }),
     );
+
+    this.isTablet$ = this.breakpointService.observe(Breakpoint.Tablet);
   }
 }

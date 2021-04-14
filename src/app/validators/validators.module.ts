@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
+import { ButtonBackModule } from '@shared/components/button-back';
 import { DataTableModule } from '@shared/components/data-table';
+import { DetailsTableModule } from '@shared/components/details-table';
 import { InfoCardModule } from '@shared/components/info-card';
 import { TypefaceModule } from '@shared/directives/typeface';
 import { VALIDATORS_PAGES } from './pages';
@@ -12,7 +14,9 @@ import { ValidatorsRoutingModule } from './validators-routing.module';
 
 @NgModule({
   imports: [
+    ButtonBackModule,
     DataTableModule,
+    DetailsTableModule,
     CommonModule,
     InfoCardModule,
     NgxSkeletonLoaderModule,
