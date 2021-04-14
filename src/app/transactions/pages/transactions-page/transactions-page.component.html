@@ -1,4 +1,4 @@
-<app-info-card>
+<app-info-card [border]="(isMobile$ | async) === false">
   <ng-container ngProjectAs="[card-title]">
     Transactions
   </ng-container>

@@ -4,6 +4,7 @@ import { Transaction } from 'decentr-js';
 
 import { ONE_SECOND } from '@shared/utils/date';
 import { TransactionsService } from '@core/services/transactions';
+import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 
 @Component({
   selector: 'app-transactions-page',
@@ -14,12 +15,17 @@ import { TransactionsService } from '@core/services/transactions';
 export class TransactionsPageComponent implements OnInit {
   public transactions$: Observable<Transaction[]>;
 
+  public isMobile$: Observable<boolean>;
+
   constructor(
+    private breakpointService: BreakpointService,
     private transactionsService: TransactionsService,
   ) {
   }
 
   public ngOnInit(): void {
     this.transactions$ = this.transactionsService.getTransactionsLive(50, ONE_SECOND * 10);
+
+    this.isMobile$ = this.breakpointService.observe(Breakpoint.Mobile);
   }
 }
