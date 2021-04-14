@@ -49,48 +49,6 @@
         {{ validatorDetails.commission.commission_rates.rate | percent }}
       </ng-template>
     </app-details-table>
-
-<!--      <div class="validator-details__detailed-info">-->
-<!--        <div>-->
-<!--          <p class="validator-details__value" appTypeface="subheader">-->
-<!--            <app-validator-status [status]="validatorDetails.status"></app-validator-status>-->
-<!--          </p>-->
-<!--          <p class="validator-details__label" appTypeface="paragraph">-->
-<!--            Status-->
-<!--          </p>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <p class="validator-details__value" appTypeface="subheader">-->
-<!--            <ng-container *ngIf="validatorDetails.description.website; else noWebsite;">-->
-<!--              <a class="validator-details-page__link" target="_blank" href="{{ validatorDetails.description.website }}">-->
-<!--                {{ validatorDetails.description.website }}-->
-<!--              </a>-->
-<!--            </ng-container>-->
-<!--            <ng-template #noWebsite>-->
-<!--              No website-->
-<!--            </ng-template>-->
-<!--          </p>-->
-<!--          <p class="validator-details__label" appTypeface="paragraph">-->
-<!--            Website-->
-<!--          </p>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <p class="validator-details__value" appTypeface="subheader">-->
-<!--            {{ validatorDetails.commission.commission_rates.rate | percent }}-->
-<!--          </p>-->
-<!--          <p class="validator-details__label" appTypeface="paragraph">-->
-<!--            Commission-->
-<!--          </p>-->
-<!--        </div>-->
-<!--        <div>-->
-<!--          <p class="validator-details__value" appTypeface="subheader">-->
-<!--            {{ validatorDetails.description.details || 'No details' }}-->
-<!--          </p>-->
-<!--          <p class="validator-details__label" appTypeface="paragraph">-->
-<!--            Details-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </div>-->
   </ng-container>
 </app-info-card>
 
