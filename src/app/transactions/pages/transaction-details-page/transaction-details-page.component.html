@@ -1,8 +1,10 @@
 <app-info-card [contentDivider]="true" [border]="(isMobile$ | async) === false">
   <ng-container ngProjectAs="[card-title]">
-    <a class="transaction-details__back-link" [routerLink]="['../']">
-      <svg-icon key="arrow-left" size="lg"></svg-icon>
-    </a>
+    <a
+      class="transaction-details__back-link"
+      app-button-back
+      [routerLink]="['../']"
+    ></a>
     Transaction details
   </ng-container>
 
@@ -14,7 +16,7 @@
       <p [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'">{{ transactionDetails.txhash }}</p>
     </div>
 
-    <div class="transaction-details__divider mod-horizontal"></div>
+    <div class="transaction-details__divider"></div>
 
     <app-details-table class="transaction-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Height'">
@@ -31,7 +33,7 @@
       </ng-template>
     </app-details-table>
 
-    <div class="transaction-details__divider mod-horizontal mod-wide"></div>
+    <div class="transaction-details__divider mod-wide"></div>
 
     <app-transaction-message
       class="transaction-details__message"

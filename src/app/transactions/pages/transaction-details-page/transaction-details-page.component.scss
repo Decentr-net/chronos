@@ -5,17 +5,7 @@
 }
 
 .transaction-details__back-link {
-  align-items: center;
-  background-color: $color-background;
-  border-radius: $border-radius;
-  color: $color-grey;
-  display: inline-flex;
   margin-right: $grid-step * 2;
-  padding: $grid-step;
-
-  &:hover {
-    color: $color-dark-grey;
-  }
 }
 
 .transaction-details__loading {
@@ -41,23 +31,11 @@
 }
 
 .transaction-details__divider {
-  --transaction-details--divider--width: 2px;
-
   background-color: $color-outlines;
+  height: 2px;
 
   &.mod-wide {
-    --transaction-details--divider--width: 8px;
-  }
-
-  &.mod-horizontal {
-    height: var(--transaction-details--divider--width);
-
-    &.mod-wide {
-      margin: 0 (-$grid-step * 2);
-    }
-  }
-
-  &.mod-vertical {
-    width: var(--transaction-details--divider--width);
+    height: 8px;
+    margin: 0 (-$grid-step * 2);
   }
 }

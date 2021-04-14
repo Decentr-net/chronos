@@ -1,44 +1,57 @@
-<app-info-card>
+<app-info-card [contentDivider]="true" [border]="(isMobile$ | async) === false">
   <ng-container ngProjectAs="[card-title]">
+    <a
+      class="block-details__back-link"
+      app-button-back
+      [routerLink]="['../']"
+    ></a>
     Block details
   </ng-container>
 
-  <ng-container ngProjectAs="[card-body]" *ngIf="blockDetails$ | async as blockDetails; else tablesLoading;">
-    <div class="block-details__info">
-      <div class="block-details__hash">
-        <p appTypeface="header-4">{{ blockDetails.block_id.hash }}</p>
-      </div>
-
-      <div class="block-details__detailed-info">
-        <div>
-          <p class="block-details__value" appTypeface="subheader">
-            {{ blockDetails.block.header.height }}
-          </p>
-          <p class="block-details__label" appTypeface="paragraph">
-            Height
-          </p>
-        </div>
-        <div>
-          <p class="block-details__value" appTypeface="subheader">
-            {{ blockDetails.block.header.time | date:'yyyy.MM.dd, h:mm:ss' }}
-          </p>
-          <p class="block-details__label" appTypeface="paragraph">
-            Time
-          </p>
-        </div>
-        <div>
-          <p class="block-details__value" appTypeface="subheader">
-            {{ blockDetails.block.data.txs?.length || 0 }}
-          </p>
-          <p class="block-details__label" appTypeface="paragraph">
-            Number of Tx
-          </p>
-        </div>
-      </div>
-      <ng-container *ngIf="blockTxs$ | async as blockTxs">
-        <app-transactions-table *ngIf="blockTxs.length" [data]="blockTxs"></app-transactions-table>
-      </ng-container>
+  <ng-container
+    ngProjectAs="[card-body]"
+    *ngIf="blockDetails$ | async as blockDetails; else tablesLoading;"
+  >
+    <div
+      class="block-details__hash"
+      [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
+    >
+      {{ blockDetails.block_id.hash }}
     </div>
+
+    <div class="block-details__divider"></div>
+
+    <app-details-table class="block-details__details-table">
+      <ng-template [appDetailsTableCellDef]="'Height'">
+        {{ blockDetails.block.header.height }}
+      </ng-template>
+
+      <ng-template [appDetailsTableCellDef]="'Time'">
+        {{ blockDetails.block.header.time | date:'yyyy.MM.dd, h:mm:ss' }}
+      </ng-template>
+    </app-details-table>
+
+    <ng-container *ngIf="blockTxs$ | async as blockTxs">
+      <ng-template [ngIf]="blockTxs.length > 0">
+        <div class="block-details__divider mod-wide"></div>
+
+        <div class="block-details__transactions-table__title">
+          <span appTypeface="subheader">Transactions</span>
+
+          <span
+            class="block-details__transactions-count"
+            appTypeface="paragraph"
+          >
+            <span class="block-details__transactions-count__value">{{ blockTxs.length }}</span>
+          </span>
+        </div>
+
+        <app-transactions-table
+          class="block-details__transactions-table"
+          [data]="blockTxs"
+        ></app-transactions-table>
+      </ng-template>
+    </ng-container>
   </ng-container>
 </app-info-card>
 

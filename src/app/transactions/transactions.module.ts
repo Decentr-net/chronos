@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
+import { ButtonBackModule } from '@shared/components/button-back';
 import { DetailsTableModule } from '@shared/components/details-table';
 import { InfoCardModule } from '@shared/components/info-card';
 import { TransactionMessageDetailsModule } from '@shared/components/transaction-message-details';
@@ -15,6 +16,7 @@ import { TRANSACTIONS_PAGES } from './pages';
 
 @NgModule({
   imports: [
+    ButtonBackModule,
     CommonModule,
     DetailsTableModule,
     InfoCardModule,
