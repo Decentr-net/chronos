@@ -5,19 +5,19 @@
   display: flex;
 }
 
-.state-change__card {
+.transfer-details__card {
   background: $color-background;
   border-radius: $border-radius;
   padding: $grid-step * 2;
   word-break: break-all;
 }
 
-.state-change__card__title {
+.transfer-details__card__title {
   color: $color-grey;
   font-weight: 500;
 }
 
-.state-change__icon {
+.transfer-details__icon {
   color: $color-light-grey;
   flex-shrink: 0;
   margin: 0 $grid-step * 2.5;
@@ -29,12 +29,12 @@
     flex-direction: column;
   }
 
-  .state-change__icon {
-    $state-change--icon--size: 24px;
+  .transfer-details__icon {
+    $transfer-details--icon--size: 24px;
 
-    height: $state-change--icon--size;
+    height: $transfer-details--icon--size;
     margin: $grid-step 0;
     transform: rotate(90deg);
-    width: $state-change--icon--size;
+    width: $transfer-details--icon--size;
   }
 }

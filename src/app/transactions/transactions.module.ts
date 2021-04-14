@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
+import { DetailsTableModule } from '@shared/components/details-table';
 import { InfoCardModule } from '@shared/components/info-card';
 import { TransactionMessageDetailsModule } from '@shared/components/transaction-message-details';
 import { TransactionMessageTypeIconModule } from '@shared/components/transaction-message-type-icon';
@@ -10,11 +12,11 @@ import { TypefaceModule } from '@shared/directives/typeface';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { TRANSACTION_COMPONENTS } from './components';
 import { TRANSACTIONS_PAGES } from './pages';
-import { SvgIconsModule } from '@ngneat/svg-icon';
 
 @NgModule({
   imports: [
     CommonModule,
+    DetailsTableModule,
     InfoCardModule,
     NgxSkeletonLoaderModule,
     TransactionMessageDetailsModule,

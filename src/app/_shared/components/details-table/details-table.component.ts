@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, ContentChildren, OnInit, QueryList } from '@angular/core';
-
-import { DetailsTableCellDefDirective } from './details-table-cell-def.directive';
-import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { Observable } from 'rxjs';
+
+import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
+import { DetailsTableCellDefDirective } from './details-table-cell-def.directive';
 
 @Component({
   selector: 'app-details-table',

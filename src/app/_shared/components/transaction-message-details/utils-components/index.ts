@@ -1,7 +1,0 @@
-import { DETAILS_TABLE_COMPONENTS } from './details-table';
-import { STAGE_CHANGE_COMPONENTS } from './state-change';
-
-export const TRANSACTION_MESSAGE_DETAILS_UTILS_COMPONENTS = [
-  ...DETAILS_TABLE_COMPONENTS,
-  ...STAGE_CHANGE_COMPONENTS,
-];

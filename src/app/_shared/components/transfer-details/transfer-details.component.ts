@@ -4,19 +4,19 @@ import { SvgIconRegistry } from '@ngneat/svg-icon';
 
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { svgArrowRightIcon } from '@shared/svg-icons/arrow-right';
-import { StateChangeFromDirective } from './state-change-from.directive';
-import { StateChangeToDirective } from './state-change-to.directive';
+import { TransferDetailsFromDirective } from './transfer-details-from.directive';
+import { TransferDetailsToDirective } from './transfer-details-to.directive';
 
 @Component({
-  selector: 'app-state-change',
-  templateUrl: './state-change.component.html',
-  styleUrls: ['./state-change.component.scss'],
+  selector: 'app-transfer-details',
+  templateUrl: './transfer-details.component.html',
+  styleUrls: ['./transfer-details.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StateChangeComponent implements OnInit {
-  @ContentChild(StateChangeFromDirective) public from: StateChangeFromDirective;
+export class TransferDetailsComponent implements OnInit {
+  @ContentChild(TransferDetailsFromDirective) public from: TransferDetailsFromDirective;
 
-  @ContentChild(StateChangeToDirective) public to: StateChangeToDirective;
+  @ContentChild(TransferDetailsToDirective) public to: TransferDetailsToDirective;
 
   public isTablet$: Observable<boolean>;
 

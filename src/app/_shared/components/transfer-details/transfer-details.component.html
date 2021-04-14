@@ -4,7 +4,7 @@
 ></ng-template>
 
 <svg-icon
-  class="state-change__icon"
+  class="transfer-details__icon"
   key="arrow-right"
   size="xxl"
 ></svg-icon>
@@ -15,9 +15,9 @@
 ></ng-template>
 
 <ng-template #card let-cardDef>
-  <div class="state-change__card">
+  <div class="transfer-details__card">
     <div
-      class="state-change__card__title"
+      class="transfer-details__card__title"
       [appTypeface]="(isTablet$ | async) ? 'caption' : 'subheader'"
       appTypeface="paragraph"
     >

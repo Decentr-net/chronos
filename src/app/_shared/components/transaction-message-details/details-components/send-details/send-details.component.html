@@ -5,12 +5,12 @@
   {{ details.amount[0].amount }} {{ details.amount[0].denom }}
 </div>
 
-<app-state-change>
-  <ng-template [appStateChangeFrom]="'From'">
+<app-transfer-details>
+  <ng-template [appTransferDetailsFrom]="'From'">
     {{ details.from_address }}
   </ng-template>
 
-  <ng-template [appStateChangeTo]="'To'">
+  <ng-template [appTransferDetailsTo]="'To'">
     {{ details.to_address }}
   </ng-template>
-</app-state-change>
+</app-transfer-details>

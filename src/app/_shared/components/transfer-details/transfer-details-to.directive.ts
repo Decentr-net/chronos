@@ -1,10 +1,10 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[appStateChangeFrom]',
+  selector: '[appTransferDetailsTo]',
 })
-export class StateChangeFromDirective {
-  @Input('appStateChangeFrom') public title: string;
+export class TransferDetailsToDirective {
+  @Input('appTransferDetailsTo') public title: string;
 
   constructor(public templateRef: TemplateRef<{ $implicit: any }>) {
   }
