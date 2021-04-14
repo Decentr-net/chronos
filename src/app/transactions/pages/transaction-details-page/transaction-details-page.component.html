@@ -1,4 +1,4 @@
-<app-info-card [contentDivider]="true">
+<app-info-card [contentDivider]="true" [border]="(isMobile$ | async) === false">
   <ng-container ngProjectAs="[card-title]">
     <a class="transaction-details__back-link" [routerLink]="['../']">
       <svg-icon key="arrow-left" size="lg"></svg-icon>
@@ -11,14 +11,19 @@
     *ngIf="transactionDetails$ | async as transactionDetails; else tablesLoading;"
   >
     <div class="transaction-details__hash">
-      <p appTypeface="header-4">{{ transactionDetails.txhash }}</p>
+      <p [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'">{{ transactionDetails.txhash }}</p>
     </div>
 
     <div class="transaction-details__divider mod-horizontal"></div>
 
     <app-details-table class="transaction-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Height'">
-        {{ transactionDetails.height }}
+        <a
+          class="transaction-details__block-link"
+          [routerLink]="['/', blocksRoute, transactionDetails.height]"
+        >
+          {{ transactionDetails.height }}
+        </a>
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Time'">

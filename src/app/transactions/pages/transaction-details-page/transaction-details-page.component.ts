@@ -2,12 +2,13 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, mergeMap, pluck } from 'rxjs/operators';
 import { EMPTY, Observable } from 'rxjs';
+import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { Transaction } from 'decentr-js';
 
+import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
+import { svgArrowLeftIcon } from '@shared/svg-icons/arrow-left';
 import { TransactionsService } from '@core/services/transactions';
 import { AppRoute } from '../../../app-route';
-import { SvgIconRegistry } from '@ngneat/svg-icon';
-import { svgArrowLeftIcon } from '@shared/svg-icons/arrow-left';
 
 @Component({
   selector: 'app-transaction-details',
@@ -18,8 +19,14 @@ import { svgArrowLeftIcon } from '@shared/svg-icons/arrow-left';
 export class TransactionDetailsPageComponent implements OnInit {
   public transactionDetails$: Observable<Transaction>;
 
+  public readonly blocksRoute = AppRoute.Blocks;
+
+  public isMobile$: Observable<boolean>;
+  public isTablet$: Observable<boolean>;
+
   constructor(
     private activatedRoute: ActivatedRoute,
+    private breakpointService: BreakpointService,
     private router: Router,
     private svgIconRegistry: SvgIconRegistry,
     private transactionsService: TransactionsService,
@@ -42,5 +49,8 @@ export class TransactionDetailsPageComponent implements OnInit {
         return EMPTY;
       }),
     );
+
+    this.isMobile$ = this.breakpointService.observe(Breakpoint.Mobile);
+    this.isTablet$ = this.breakpointService.observe(Breakpoint.Tablet);
   }
 }

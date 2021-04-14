@@ -25,11 +25,8 @@
 
 @media (max-width: $screen-tablet) {
   :host {
-    display: block;
-  }
-
-  .state-change__card {
-    width: max-content;
+    align-items: start;
+    flex-direction: column;
   }
 
   .state-change__icon {
