@@ -1,4 +1,9 @@
-<span appTypeface="header-3">{{ details.rewards[0].reward }} udec</span>
+<div
+  class="distribute-rewards-details__amount"
+  appTypeface="header-3"
+>
+  {{ details.rewards[0].reward }} udec
+</div>
 
 <app-transfer-details>
   <ng-template [appTransferDetailsFrom]="'Owner'">
