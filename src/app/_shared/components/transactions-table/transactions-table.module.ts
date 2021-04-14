@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { DataTableModule } from '@shared/components/data-table';
+import { TransactionMessageTypeIconModule } from '@shared/components/transaction-message-type-icon';
 import { DateAgoModule } from '@shared/pipes/date-ago';
 import { NumberFormatModule } from '@shared/pipes/number-format';
 import { TransactionsTableComponent } from './transactions-table.component';
@@ -18,6 +19,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
     DataTableModule,
     NumberFormatModule,
     RouterModule,
+    TransactionMessageTypeIconModule,
     TruncateModule,
     TypefaceModule,
   ],

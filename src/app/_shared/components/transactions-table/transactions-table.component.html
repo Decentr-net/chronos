@@ -10,7 +10,11 @@
   <ng-container
     *dataTableColumnDef="let item; name: 'Type'"
   >
-    {{ item.tx.value.msg[0].type }}
+    <app-transaction-message-type-icon
+      [messageType]="item.tx.value.msg[0].type"
+    ></app-transaction-message-type-icon>
+
+    <span class="transactions-table__type-label">{{ item.tx.value.msg[0].type }}</span>
   </ng-container>
 
   <a

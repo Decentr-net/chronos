@@ -1,3 +1,9 @@
+@import 'variables';
+
 :host {
   display: block;
+}
+
+.transactions-table__type-label {
+  margin-left: $grid-step;
 }
