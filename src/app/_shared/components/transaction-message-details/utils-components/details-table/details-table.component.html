@@ -2,16 +2,17 @@
   <div class="details-table__cell">
     <div
       class="details-table__cell__title"
-      appTypeface="paragraph"
+      [appTypeface]="(isTablet$ | async) ? 'caption' : 'paragraph'"
     >
       {{ cell.name }}
     </div>
 
     <div
       class="details-table__cell__value"
-      [ngTemplateOutlet]="cell.templateRef"
-      appTypeface="subheader"
-    ></div>
+      [appTypeface]="(isTablet$ | async) ? 'paragraph' : 'subheader'"
+    >
+      <ng-template [ngTemplateOutlet]="cell.templateRef"></ng-template>
+    </div>
   </div>
 
   <div class="details-table__divider" *ngIf="!last"></div>

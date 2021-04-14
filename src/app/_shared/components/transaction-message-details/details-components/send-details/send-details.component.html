@@ -1,4 +1,9 @@
-<span appTypeface="header-3">{{ details.amount[0].amount }} {{ details.amount[0].denom }}</span>
+<div
+  class="send-details__amount"
+  [appTypeface]="(isTablet$ | async) ? 'header-4' : 'header-3'"
+>
+  {{ details.amount[0].amount }} {{ details.amount[0].denom }}
+</div>
 
 <app-state-change>
   <ng-template [appStateChangeFrom]="'From'">

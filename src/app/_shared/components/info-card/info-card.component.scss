@@ -3,10 +3,13 @@
 $info-card--padding: $grid-step * 2;
 
 :host {
-  border: 2px solid $color-outlines;
-  border-radius: $border-radius;
   display: block;
-  padding: $info-card--padding;
+
+  &.mod-bordered {
+    border: 2px solid $color-outlines;
+    border-radius: $border-radius;
+    padding: $info-card--padding;
+  }
 }
 
 .info-card__head {

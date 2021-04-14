@@ -1,16 +1,7 @@
-<div class="state-change__card">
-  <div
-    class="state-change__card__title"
-    appTypeface="paragraph"
-  >
-    {{ from.title }}
-  </div>
-
-  <div
-    [ngTemplateOutlet]="from.templateRef"
-    appTypeface="subheader"
-  ></div>
-</div>
+<ng-template
+  [ngTemplateOutlet]="card"
+  [ngTemplateOutletContext]="{ $implicit: from }"
+></ng-template>
 
 <svg-icon
   class="state-change__icon"
@@ -18,16 +9,23 @@
   size="xxl"
 ></svg-icon>
 
-<div class="state-change__card">
-  <div
-    class="state-change__card__title"
-    appTypeface="paragraph"
-  >
-    {{ to.title }}
-  </div>
+<ng-template
+  [ngTemplateOutlet]="card"
+  [ngTemplateOutletContext]="{ $implicit: to }"
+></ng-template>
 
-  <div
-    [ngTemplateOutlet]="to.templateRef"
-    appTypeface="subheader"
-  ></div>
-</div>
+<ng-template #card let-cardDef>
+  <div class="state-change__card">
+    <div
+      class="state-change__card__title"
+      [appTypeface]="(isTablet$ | async) ? 'caption' : 'subheader'"
+      appTypeface="paragraph"
+    >
+      {{ cardDef.title }}
+    </div>
+
+    <div [appTypeface]="(isTablet$ | async) ? 'paragraph' : 'subheader'">
+      <ng-template [ngTemplateOutlet]="cardDef.templateRef"></ng-template>
+    </div>
+  </div>
+</ng-template>

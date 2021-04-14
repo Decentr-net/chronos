@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-info-card',
@@ -8,4 +8,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class InfoCardComponent {
   @Input() public contentDivider = false;
+
+  @Input()
+  @HostBinding('class.mod-bordered')
+  public border = true;
 }
