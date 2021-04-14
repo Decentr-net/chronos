@@ -1,0 +1,38 @@
+<div class="create-validator-details__description">
+  <div class="create-validator-details__description__title">
+    <span
+      class="create-validator-details__moniker"
+      [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
+    >
+      {{ details.description.moniker }}
+    </span>
+  </div>
+
+  <div
+    class="create-validator-details__description__details"
+    *ngIf="details.description.details as details"
+    appTypeface="paragraph"
+  >
+    {{ details }}
+  </div>
+</div>
+
+<div class="create-validator-details__divider"></div>
+
+<app-details-table class="create-validator-details__address">
+  <ng-template [appDetailsTableCellDef]="'Operator address'">
+    {{ details.validator_address }}
+  </ng-template>
+</app-details-table>
+
+<div class="create-validator-details__divider"></div>
+
+<app-details-table class="create-validator-details__details-table">
+  <ng-template [appDetailsTableCellDef]="'Website'">
+    {{ details.description.website }}
+  </ng-template>
+
+  <ng-template [appDetailsTableCellDef]="'Commission'">
+    {{ details.commission.rate| percent }}
+  </ng-template>
+</app-details-table>

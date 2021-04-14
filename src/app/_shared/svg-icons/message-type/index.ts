@@ -1,4 +1,5 @@
 import { svgCreatePostIcon } from './create-post';
+import { svgCreateValidatorIcon } from './create-validator';
 import { svgDeletePostIcon } from './delete-post';
 import { svgDistributeRewardsIcon } from './distribute-rewards';
 import { svgFollowIcon } from './follow';
@@ -10,6 +11,7 @@ import { svgUnfollowIcon } from './unfollow';
 
 export const messageTypeIcons = [
   svgCreatePostIcon,
+  svgCreateValidatorIcon,
   svgDeletePostIcon,
   svgDistributeRewardsIcon,
   svgFollowIcon,

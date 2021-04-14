@@ -43,4 +43,9 @@
     *ngSwitchCase="messageType.CommunityUnfollow"
     [details]="message.value"
   ></app-unfollow-details>
+
+  <app-create-validator-details
+    *ngSwitchCase="messageType.CosmosCreateValidator"
+    [details]="message.value"
+  ></app-create-validator-details>
 </ng-container>
