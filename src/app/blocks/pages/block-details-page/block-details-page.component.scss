@@ -23,18 +23,17 @@
 
   &.mod-wide {
     height: 8px;
-    margin: 0 (-$grid-step * 2);
+    margin: $grid-step * 2 (-$grid-step * 2);
   }
 }
 
 .block-details__details-table {
-  margin: $grid-step * 2 0;
+  margin-top: $grid-step * 2;
 }
 
 .block-details__transactions-table__title {
   align-items: center;
   display: inline-flex;
-  margin-top: $grid-step * 2;
 }
 
 .block-details__transactions-count {
