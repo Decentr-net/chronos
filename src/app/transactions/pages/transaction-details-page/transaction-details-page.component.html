@@ -1,4 +1,4 @@
-<app-info-card [contentDivider]="true" [border]="(isMobile$ | async) === false">
+<app-info-card [contentDivider]="true" [removeBorderBreakpoint]="breakpoint.Mobile">
   <ng-container ngProjectAs="[card-title]">
     <a
       class="transaction-details__back-link"

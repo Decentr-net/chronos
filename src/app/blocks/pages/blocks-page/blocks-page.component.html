@@ -1,4 +1,4 @@
-<app-info-card [border]="(isMobile$ | async) === false">
+<app-info-card [removeBorderBreakpoint]="breakpoint.Mobile">
   <ng-container ngProjectAs="[card-title]">
     Blocks
   </ng-container>

@@ -21,8 +21,8 @@ export class TransactionDetailsPageComponent implements OnInit {
 
   public readonly blocksRoute = AppRoute.Blocks;
 
-  public isMobile$: Observable<boolean>;
   public isTablet$: Observable<boolean>;
+  public breakpoint: typeof Breakpoint = Breakpoint;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -50,7 +50,6 @@ export class TransactionDetailsPageComponent implements OnInit {
       }),
     );
 
-    this.isMobile$ = this.breakpointService.observe(Breakpoint.Mobile);
     this.isTablet$ = this.breakpointService.observe(Breakpoint.Tablet);
   }
 }
