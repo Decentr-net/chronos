@@ -24,6 +24,10 @@
 .transaction-details__block-link {
   color: $color-primary;
   font-size: inherit;
+
+  &:hover {
+    color: $color-primary-hover;
+  }
 }
 
 .transaction-details__message {
