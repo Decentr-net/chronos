@@ -23,7 +23,7 @@
 
     <app-details-table class="block-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Height'">
-        {{ blockDetails.block.header.height }}
+        {{ +blockDetails.block.header.height | numberFormat : null : true }}
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Time'">

@@ -2,12 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
-import { DetailsTableModule } from '@shared/components/details-table';
-import { TransferDetailsModule } from '@shared/components/transfer-details';
 import { BreakpointModule } from '@shared/directives/breakpoint';
+import { DetailsTableModule } from '@shared/components/details-table';
+import { NumberFormatModule } from '@shared/pipes/number-format';
+import { TransactionMessageDetailsComponent } from './transaction-message-details.component';
+import { TransferDetailsModule } from '@shared/components/transfer-details';
 import { TypefaceModule } from '@shared/directives/typeface';
 import { TRANSACTION_MESSAGE_DETAILS_COMPONENTS } from './details-components';
-import { TransactionMessageDetailsComponent } from './transaction-message-details.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { TransactionMessageDetailsComponent } from './transaction-message-detail
     BreakpointModule,
     CommonModule,
     DetailsTableModule,
+    NumberFormatModule,
     TransferDetailsModule,
     TypefaceModule,
     SvgIconsModule,

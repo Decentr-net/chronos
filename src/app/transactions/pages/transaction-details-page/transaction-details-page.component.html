@@ -24,7 +24,7 @@
           class="transaction-details__block-link"
           [routerLink]="['/', blocksRoute, transactionDetails.height]"
         >
-          {{ transactionDetails.height }}
+          {{ +transactionDetails.height | numberFormat : null : true }}
         </a>
       </ng-template>
 
