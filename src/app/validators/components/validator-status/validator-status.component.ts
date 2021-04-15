@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, OnInit } from '
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { Validator, ValidatorStatus } from 'decentr-js';
 
+import { Breakpoint } from '@shared/directives/breakpoint';
 import { svgUnbondedIcon } from '@shared/svg-icons/unbonded';
 import { svgBondedIcon } from '@shared/svg-icons/bonded';
 import { svgUnbondingIcon } from '@shared/svg-icons/unbonding';
@@ -34,6 +35,7 @@ export class ValidatorStatusComponent implements OnInit {
     return this.status === ValidatorStatus.Bonded;
   }
 
+  public breakpoint: typeof Breakpoint = Breakpoint;
   public readonly validatorStatus: typeof ValidatorStatus = ValidatorStatus;
   public validatorStatusName: string;
 

@@ -3,6 +3,9 @@
   size="lg"
 ></svg-icon>
 
-<span class="validator-status__label">
+<span
+  *appBreakpoint="breakpoint.Mobile; revert true"
+  class="validator-status__label"
+>
   {{ validatorStatusName }}
 </span>

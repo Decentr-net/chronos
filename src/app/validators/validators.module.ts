@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
+import { BreakpointModule } from '@shared/directives/breakpoint';
 import { ButtonBackModule } from '@shared/components/button-back';
 import { DataTableModule } from '@shared/components/data-table';
 import { DetailsTableModule } from '@shared/components/details-table';
@@ -14,6 +15,7 @@ import { ValidatorsRoutingModule } from './validators-routing.module';
 
 @NgModule({
   imports: [
+    BreakpointModule,
     ButtonBackModule,
     DataTableModule,
     DetailsTableModule,

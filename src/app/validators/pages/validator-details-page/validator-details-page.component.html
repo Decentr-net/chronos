@@ -42,7 +42,7 @@
 
     <app-details-table class="validator-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Website'">
-        {{ validatorDetails.description.website }}
+        {{ validatorDetails.description.website || '-' }}
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Commission'">
