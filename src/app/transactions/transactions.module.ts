@@ -6,6 +6,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ButtonBackModule } from '@shared/components/button-back';
 import { DetailsTableModule } from '@shared/components/details-table';
 import { InfoCardModule } from '@shared/components/info-card';
+import { NumberFormatModule } from '@shared/pipes/number-format';
 import { TransactionMessageDetailsModule } from '@shared/components/transaction-message-details';
 import { TransactionMessageTypeIconModule } from '@shared/components/transaction-message-type-icon';
 import { TransactionsTableModule } from '@shared/components/transactions-table';
@@ -21,6 +22,7 @@ import { TRANSACTIONS_PAGES } from './pages';
     DetailsTableModule,
     InfoCardModule,
     NgxSkeletonLoaderModule,
+    NumberFormatModule,
     TransactionMessageDetailsModule,
     TransactionMessageTypeIconModule,
     TransactionsRoutingModule,
