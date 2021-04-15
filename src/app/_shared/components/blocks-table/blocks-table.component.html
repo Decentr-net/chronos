@@ -10,7 +10,19 @@
     [attr.title]="item.block_id.hash"
     *dataTableColumnDef="let item; name: 'Hash'"
   >
-    {{ item.block_id.hash | truncate : 28 }}
+    <ng-container *appBreakpoint="breakpoint.Desktop; revert true; else tabletHash">
+      {{ item.block_id.hash | truncate : hashSize[breakpoint.Desktop] }}
+    </ng-container>
+
+    <ng-template #tabletHash>
+      <ng-container *appBreakpoint="breakpoint.Tablet; revert true; else mobileHash">
+        {{ item.block_id.hash | truncate : hashSize[breakpoint.Tablet] }}
+      </ng-container>
+    </ng-template>
+
+    <ng-template #mobileHash>
+      {{ item.block_id.hash | truncate : hashSize[breakpoint.Mobile] }}
+    </ng-template>
   </span>
 
   <ng-container *dataTableColumnDef="let item; name: 'Time'">

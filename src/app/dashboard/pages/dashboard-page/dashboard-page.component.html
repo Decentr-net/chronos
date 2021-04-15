@@ -42,6 +42,7 @@
       ngProjectAs="[card-body]"
       *ngIf="blocks$ | async as blocks; else tablesLoading;"
       [data]="blocks"
+      [hashSize]="blocksHashSize"
     ></app-blocks-table>
   </app-info-card>
 
@@ -66,6 +67,7 @@
       ngProjectAs="[card-body]"
       *ngIf="transactions$ | async as transactions; else tablesLoading;"
       [data]="transactions"
+      [hashSize]="transactionsHashSize"
     ></app-transactions-table>
   </app-info-card>
 </div>
