@@ -18,7 +18,11 @@
           {{ validatorDetails.description.moniker }}
         </span>
 
-        <app-validator-status [status]="validatorDetails.status" [filled]="true"></app-validator-status>
+        <app-validator-status
+          [status]="validatorDetails.status"
+          [filled]="true"
+          [shrinkBreakpoint]="undefined"
+        ></app-validator-status>
       </div>
 
       <div

@@ -15,6 +15,7 @@ import { svgUnbondingIcon } from '@shared/svg-icons/unbonding';
 })
 export class ValidatorStatusComponent implements OnInit {
   @Input() status: Validator['status'];
+  @Input() shrinkBreakpoint: Breakpoint | undefined = Breakpoint.Mobile;
 
   @Input()
   @HostBinding('class.mod-filled')
