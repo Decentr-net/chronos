@@ -18,7 +18,11 @@
           {{ validatorDetails.description.moniker }}
         </span>
 
-        <app-validator-status [status]="validatorDetails.status" [filled]="true"></app-validator-status>
+        <app-validator-status
+          [status]="validatorDetails.status"
+          [filled]="true"
+          [shrinkBreakpoint]="undefined"
+        ></app-validator-status>
       </div>
 
       <div
@@ -42,7 +46,7 @@
 
     <app-details-table class="validator-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Website'">
-        {{ validatorDetails.description.website }}
+        {{ validatorDetails.description.website || '-' }}
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Commission'">

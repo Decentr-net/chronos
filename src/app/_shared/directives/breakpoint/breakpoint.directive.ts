@@ -9,7 +9,7 @@ import { BreakpointService } from './breakpoint.service';
   selector: '[appBreakpoint]',
 })
 export class BreakpointDirective implements OnInit {
-  @Input('appBreakpoint') public breakpoint: Breakpoint;
+  @Input('appBreakpoint') public breakpoint: Breakpoint | undefined;
 
   @Input('appBreakpointRevert') public revert = false;
 
@@ -27,6 +27,10 @@ export class BreakpointDirective implements OnInit {
   }
 
   public ngOnInit(): void {
+    if (!this.breakpoint) {
+      return this.renderTemplate(this.templateRef);
+    }
+
     this.breakpointService.observe(this.breakpoint).pipe(
       untilDestroyed(this),
     ).subscribe((matches) => {

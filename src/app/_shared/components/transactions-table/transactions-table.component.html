@@ -4,7 +4,19 @@
     [attr.title]="item.txhash"
     [routerLink]="['/', appRoute.Transactions, item.txhash]"
   >
-    {{ item.txhash | truncate : 10 }}
+    <ng-container *appBreakpoint="breakpoint.Desktop; revert true; else tabletHash">
+      {{ item.txhash | truncate : hashSize[breakpoint.Desktop] }}
+    </ng-container>
+
+    <ng-template #tabletHash>
+      <ng-container *appBreakpoint="breakpoint.Tablet; revert true; else mobileHash">
+        {{ item.txhash | truncate : hashSize[breakpoint.Tablet] }}
+      </ng-container>
+    </ng-template>
+
+    <ng-template #mobileHash>
+      {{ item.txhash | truncate : hashSize[breakpoint.Mobile] }}
+    </ng-template>
   </a>
 
   <ng-container
@@ -14,7 +26,12 @@
       [messageType]="item.tx.value.msg[0].type"
     ></app-transaction-message-type-icon>
 
-    <span class="transactions-table__type-label">{{ item.tx.value.msg[0].type }}</span>
+    <span
+      *appBreakpoint="shrinkBreakpoint; revert true"
+      class="transactions-table__type-label"
+    >
+      {{ item.tx.value.msg[0].type | txMessageTypeLabel }}
+    </span>
   </ng-container>
 
   <a

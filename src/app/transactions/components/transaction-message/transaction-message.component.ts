@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { StdTxMessage, StdTxMessageType } from 'decentr-js';
+import { StdTxMessage } from 'decentr-js';
 
 @Component({
   selector: 'app-transaction-message',
@@ -9,17 +9,4 @@ import { StdTxMessage, StdTxMessageType } from 'decentr-js';
 })
 export class TransactionMessageComponent {
   @Input() txMessage: StdTxMessage<any>;
-
-  public readonly messageTypeLabelMap: Record<StdTxMessageType, string> = {
-    [StdTxMessageType.CommunityCreatePost]: 'Create Post',
-    [StdTxMessageType.CommunityDeletePost]: 'Delete Post',
-    [StdTxMessageType.PdvDistributeRewards]: 'Distribute Rewards',
-    [StdTxMessageType.CommunityFollow]: 'Msg Follow',
-    [StdTxMessageType.CosmosCreateValidator]: 'Create validator',
-    [StdTxMessageType.CosmosSend]: 'Msg Send',
-    [StdTxMessageType.CommunitySetLike]: 'Set Like',
-    [StdTxMessageType.ProfileSetPrivate]: 'Set Private',
-    [StdTxMessageType.ProfileSetPublic]: 'Set Public',
-    [StdTxMessageType.CommunityUnfollow]: 'Msg Unfollow',
-  };
 }

@@ -14,6 +14,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { TRANSACTION_COMPONENTS } from './components';
 import { TRANSACTIONS_PAGES } from './pages';
+import { TxMessageTypeLabelModule } from '@shared/pipes/tx-message-type-label';
 
 @NgModule({
   imports: [
@@ -27,6 +28,7 @@ import { TRANSACTIONS_PAGES } from './pages';
     TransactionMessageTypeIconModule,
     TransactionsRoutingModule,
     TransactionsTableModule,
+    TxMessageTypeLabelModule,
     TypefaceModule,
     SvgIconsModule,
   ],
