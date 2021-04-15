@@ -8,7 +8,7 @@
     class="transaction-message__type-label"
     appTypeface="subheader"
   >
-    {{ messageTypeLabelMap[txMessage.type] }}
+    {{ txMessage.type | txMessageTypeLabel }}
   </span>
 </div>
 

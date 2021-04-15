@@ -9,6 +9,7 @@ import { DateAgoModule } from '@shared/pipes/date-ago';
 import { NumberFormatModule } from '@shared/pipes/number-format';
 import { TransactionsTableComponent } from './transactions-table.component';
 import { TruncateModule } from '@shared/pipes/truncate';
+import { TxMessageTypeLabelModule } from '@shared/pipes/tx-message-type-label';
 import { TypefaceModule } from '@shared/directives/typeface';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
     RouterModule,
     TransactionMessageTypeIconModule,
     TruncateModule,
+    TxMessageTypeLabelModule,
     TypefaceModule,
   ],
   declarations: [
