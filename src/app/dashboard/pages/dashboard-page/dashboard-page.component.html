@@ -68,6 +68,7 @@
       *ngIf="transactions$ | async as transactions; else tablesLoading;"
       [data]="transactions"
       [hashSize]="transactionsHashSize"
+      [shrinkBreakpoint]="breakpoint.Desktop"
     ></app-transactions-table>
   </app-info-card>
 </div>

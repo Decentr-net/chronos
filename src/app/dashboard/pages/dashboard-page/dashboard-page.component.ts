@@ -33,6 +33,7 @@ export class DashboardPageComponent implements OnInit {
   public transactions$: Observable<Transaction[]>;
 
   public readonly appRoute: typeof AppRoute = AppRoute;
+  public breakpoint: typeof Breakpoint = Breakpoint;
 
   public blocksHashSize: Record<Breakpoint.Desktop | Breakpoint.Mobile | Breakpoint.Tablet, number> = {
     [Breakpoint.Desktop]: 25,
@@ -41,9 +42,9 @@ export class DashboardPageComponent implements OnInit {
   };
 
   public transactionsHashSize: Record<Breakpoint.Desktop | Breakpoint.Mobile | Breakpoint.Tablet, number> = {
-    [Breakpoint.Desktop]: 15,
+    [Breakpoint.Desktop]: 10,
     [Breakpoint.Tablet]: 9,
-    [Breakpoint.Mobile]: 7,
+    [Breakpoint.Mobile]: 9,
   };
 
   constructor(

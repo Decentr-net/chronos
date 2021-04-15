@@ -17,6 +17,7 @@ export class TransactionsTableComponent {
     [Breakpoint.Tablet]: 15,
     [Breakpoint.Mobile]: 9,
   };
+  @Input() shrinkBreakpoint: Breakpoint = Breakpoint.Tablet;
 
   public appRoute: typeof AppRoute = AppRoute;
   public breakpoint: typeof Breakpoint = Breakpoint;
