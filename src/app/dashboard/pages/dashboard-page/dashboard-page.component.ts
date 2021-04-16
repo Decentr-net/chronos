@@ -42,7 +42,7 @@ export class DashboardPageComponent implements OnInit {
   };
 
   public transactionsHashSize: Record<Breakpoint.Desktop | Breakpoint.Mobile | Breakpoint.Tablet, number> = {
-    [Breakpoint.Desktop]: 10,
+    [Breakpoint.Desktop]: 7,
     [Breakpoint.Tablet]: 9,
     [Breakpoint.Mobile]: 9,
   };
