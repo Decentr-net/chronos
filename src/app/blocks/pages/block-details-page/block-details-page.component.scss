@@ -8,6 +8,41 @@
   margin-right: $grid-step * 2;
 }
 
+.block-details__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.block-details__pagination {
+  align-items: center;
+  display: inline-flex;
+  gap: 2px;
+  margin-left: $grid-step * 2;
+}
+
+.block-details__pagination-item {
+  color: $color-grey;
+  display: inline-flex;
+  background-color: $color-background;
+  padding: $grid-step;
+
+  &.is-disabled {
+    color: $color-outlines;
+    pointer-events: none;
+  }
+
+  &.mod-previous {
+    border-bottom-left-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+  }
+
+  &.mod-next {
+    border-bottom-right-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+}
+
 .block-details__loading {
   width: 100%;
 }

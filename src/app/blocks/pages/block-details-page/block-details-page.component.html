@@ -5,7 +5,26 @@
       app-button-back
       [routerLink]="['../']"
     ></a>
-    Block details
+
+    <span class="block-details__title">Block details</span>
+
+    <div class="block-details__pagination">
+      <a
+        class="block-details__pagination-item mod-previous"
+        [class.is-disabled]="!previousBlockHeight"
+        [routerLink]="['../', previousBlockHeight]"
+      >
+        <svg-icon key="expand-left" size="lg"></svg-icon>
+      </a>
+
+      <a
+        class="block-details__pagination-item mod-next"
+        [class.is-disabled]="!nextBlockHeight"
+        [routerLink]="['../', nextBlockHeight]"
+      >
+        <svg-icon key="expand-right" size="lg"></svg-icon>
+      </a>
+    </div>
   </ng-container>
 
   <ng-container
