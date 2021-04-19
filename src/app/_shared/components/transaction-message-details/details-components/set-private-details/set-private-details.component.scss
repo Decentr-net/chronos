@@ -4,7 +4,11 @@
   display: block;
 }
 
-.set-private-details__title {
+.set-private-details__owner-label {
   color: $color-grey;
   font-weight: 500;
+}
+
+.set-private-details__owner-value {
+  word-wrap: break-word;
 }
