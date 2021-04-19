@@ -40,3 +40,7 @@ svg-icon {
   padding: 0 $page-side-padding;
   width: 100%;
 }
+
+::-webkit-scrollbar {
+  //box-sizing: border-box;
+}
