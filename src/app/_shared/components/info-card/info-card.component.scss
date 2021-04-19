@@ -22,6 +22,11 @@ $info-card--padding: $grid-step * 2;
   align-items: center;
   display: flex;
   font-weight: 500;
+  width: 100%;
+}
+
+.info-card__actions-container {
+  flex-shrink: 0;
 }
 
 .info-card__divider {
