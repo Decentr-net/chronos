@@ -6,16 +6,22 @@
 
 .dashboard-height-card__height {
   font-weight: 500;
-  margin-top: $grid-step * 1.5;
+  margin-top: $grid-step;
 }
 
 .dashboard-height-card__time {
   color: $color-grey;
   display: flex;
+  margin-top: $grid-step * 1.5;
 }
 
 .dashboard-height-card__time-icon {
   height: 24px;
   margin-right: $grid-step;
   width: 24px;
+}
+
+.dashboard-height-card__loading {
+  display: flex;
+  flex-direction: column;
 }

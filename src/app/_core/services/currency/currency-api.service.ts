@@ -28,7 +28,7 @@ export class CurrencyApiService {
       `${this.environment.currencyApi}/simple/price`,
       {
         params,
-      }
+      },
     );
   }
 
@@ -36,18 +36,18 @@ export class CurrencyApiService {
     blockchainId: string,
     currency: string,
     days: number,
-    interval?: 'daily' | null
+    interval?: 'daily' | null,
   ): Observable<CoinRateHistoryResponse> {
     const params = new HttpParams()
       .append(`days`, days.toString())
       .append(`interval`, interval)
       .append(`vs_currency`, currency);
 
-    return this.http.get<any>(
+    return this.http.get<CoinRateHistoryResponse>(
       `${this.environment.currencyApi}/coins/${blockchainId}/market_chart`,
       {
         params,
-      }
+      },
     );
   }
 }

@@ -5,12 +5,26 @@
 
   <ng-container
     ngProjectAs="[card-body]"
+    *ngIf="adv; else loading"
   >
     <div
       class="dashboard-adv-card__value"
       appTypeface="header-3"
     >
-      {{ adv | tuiFormatNumber: 6 : '.'  }}
+      {{ adv | numberFormat : '1.6-6' : true }}
     </div>
   </ng-container>
+
+  <ng-template #loading>
+    <div class="dashboard-adv-card__loading">
+      <ngx-skeleton-loader
+        [theme]="{
+          height: '54px',
+          marginTop: '25px',
+          marginBottom: '0',
+          width: '220px'
+        }"
+      ></ngx-skeleton-loader>
+    </div>
+  </ng-template>
 </app-info-card>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Pool, Validator, ValidatorsFilterParams } from 'decentr-js';
+import { Pool, Validator, ValidatorsFilterParameters } from 'decentr-js';
 
 import { StakingApiService } from './staking-api.service';
 
@@ -17,7 +17,7 @@ export class StakingService {
     return this.stakingApiService.getPool();
   }
 
-  public getValidators(filter?: ValidatorsFilterParams): Observable<Validator[]> {
+  public getValidators(filter?: ValidatorsFilterParameters): Observable<Validator[]> {
     return this.stakingApiService.getValidators(filter);
   }
 

@@ -1,29 +1,26 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SvgIconsModule } from '@ngneat/svg-icon';
-import { TuiButtonModule, TuiDropdownModule, TuiModeModule } from '@taiga-ui/core';
-import { TuiActiveZoneModule, TuiObscuredModule } from '@taiga-ui/cdk';
-import { TuiTabsModule } from '@taiga-ui/kit';
 
+import { BreakpointModule } from '@shared/directives/breakpoint';
+import { DropdownModule } from '@shared/directives/dropdown';
 import { HEADER_COMPONENTS } from './components';
-import { LayoutHeaderComponent } from './layout-header.component';
 import { TypefaceModule } from '@shared/directives/typeface';
+import { LayoutFooterModule } from '../layout-footer';
+import { LayoutHeaderComponent } from './layout-header.component';
 
 @NgModule({
   imports: [
+    BreakpointModule,
     CommonModule,
-    PolymorpheusModule,
+    DropdownModule,
+    LayoutFooterModule,
+    ReactiveFormsModule,
     RouterModule,
     SvgIconsModule,
-    TuiActiveZoneModule,
-    TuiDropdownModule,
-    TuiModeModule,
-    TuiObscuredModule,
-    TuiTabsModule,
     TypefaceModule,
-    TuiButtonModule,
   ],
   declarations: [
     HEADER_COMPONENTS,

@@ -1,0 +1,40 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  display: flex;
+}
+
+.transfer-details__card {
+  background: $color-background;
+  border-radius: $border-radius;
+  padding: $grid-step * 2;
+  word-break: break-all;
+}
+
+.transfer-details__card__title {
+  color: $color-grey;
+  font-weight: 500;
+}
+
+.transfer-details__icon {
+  color: $color-light-grey;
+  flex-shrink: 0;
+  margin: 0 $grid-step * 2.5;
+}
+
+@media (max-width: $screen-tablet) {
+  :host {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .transfer-details__icon {
+    $transfer-details--icon--size: 24px;
+
+    height: $transfer-details--icon--size;
+    margin: $grid-step 0;
+    transform: rotate(90deg);
+    width: $transfer-details--icon--size;
+  }
+}

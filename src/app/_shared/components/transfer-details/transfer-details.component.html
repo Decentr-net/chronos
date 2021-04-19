@@ -1,0 +1,31 @@
+<ng-template
+  [ngTemplateOutlet]="card"
+  [ngTemplateOutletContext]="{ $implicit: from }"
+></ng-template>
+
+<svg-icon
+  class="transfer-details__icon"
+  key="arrow-right"
+  size="xxl"
+></svg-icon>
+
+<ng-template
+  [ngTemplateOutlet]="card"
+  [ngTemplateOutletContext]="{ $implicit: to }"
+></ng-template>
+
+<ng-template #card let-cardDef>
+  <div class="transfer-details__card">
+    <div
+      class="transfer-details__card__title"
+      [appTypeface]="(isTablet$ | async) ? 'caption' : 'subheader'"
+      appTypeface="paragraph"
+    >
+      {{ cardDef.title }}
+    </div>
+
+    <div [appTypeface]="(isTablet$ | async) ? 'paragraph' : 'subheader'">
+      <ng-template [ngTemplateOutlet]="cardDef.templateRef"></ng-template>
+    </div>
+  </div>
+</ng-template>

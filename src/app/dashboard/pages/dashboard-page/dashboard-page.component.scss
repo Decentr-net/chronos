@@ -64,11 +64,6 @@
   width: 24px;
 }
 
-.dashboard__statistics-cards--loading {
-  display: flex;
-  flex-direction: column;
-}
-
 .dashboard__blocks-table,
 .dashboard__transactions-table {
   margin: 0 (-$grid-step * 2);

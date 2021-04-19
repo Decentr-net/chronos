@@ -1,30 +1,80 @@
 <div class="header__container container">
-  <div class="header__logo-and-navigation">
-    <svg-icon
-      class="header__logo"
-      key="logo"
-      [routerLink]="['/']"
-    ></svg-icon>
+  <div class="header__section">
+    <ng-container *appBreakpoint="breakPoint.Tablet; revert: true; else headerSectionMobile">
+      <ng-template [ngTemplateOutlet]="logo"></ng-template>
 
-    <app-header-navigation class="header__navigation"></app-header-navigation>
-  </div>
-
-  <div class="header__mobile-menu">
-    <svg-icon
-      class="header__mobile-menu-icon"
-      [key]="isMobileMenuOpen ? 'close' : 'menu'"
-      (tuiActiveZoneChange)="onMenuActiveZoneChange($event)"
-      [tuiDropdownContent]="dropdownContent"
-      [tuiDropdown]="isMobileMenuOpen"
-      (tuiObscured)="onObscured($event)"
-      (click)="toggleMenu()"
-    ></svg-icon>
-
-    <ng-template #dropdownContent>
       <app-header-navigation
-        class="header__navigation mod-mobile"
-        (click)="closeMenu()"
+        class="header__navigation"
       ></app-header-navigation>
+    </ng-container>
+
+    <ng-template #headerSectionMobile>
+      <ng-template [ngIf]="!isMobileSearchOpened" [ngIfElse]="headerSearchTablet">
+        <ng-template [ngTemplateOutlet]="logo"></ng-template>
+      </ng-template>
     </ng-template>
   </div>
+
+  <div class="header__section mod-right">
+    <div class="header__mobile-actions" *appBreakpoint="breakPoint.Tablet; else headerSearchNotTablet">
+      <ng-template [ngIf]="!isMobileSearchOpened" [ngIfElse]="mobileSearchClose">
+        <ng-template [ngIf]="!isMobileMenuOpen">
+          <svg-icon
+            class="header__mobile-actions__icon"
+            key="search"
+            size="lg"
+            (click)="openMobileSearch()"
+          ></svg-icon>
+
+          <div class="header__mobile-actions__divider"></div>
+        </ng-template>
+
+        <svg-icon
+          class="header__mobile-actions__icon"
+          [key]="isMobileMenuOpen ? 'close' : 'menu'"
+          size="lg"
+          (click)="toggleMenu()"
+        ></svg-icon>
+      </ng-template>
+    </div>
+  </div>
 </div>
+
+<ng-template #logo>
+  <svg-icon
+    class="header__logo"
+    key="logo"
+    [routerLink]="['/']"
+  ></svg-icon>
+</ng-template>
+
+<ng-template #mobileSearchClose>
+  <svg-icon
+    class="header__mobile-actions__icon"
+    key="close"
+    size="lg"
+    (click)="closeMobileSearch()"
+  ></svg-icon>
+</ng-template>
+
+<ng-template #headerSearch let-autofocus>
+  <app-header-search class="header__search" [autofocus]="autofocus"></app-header-search>
+</ng-template>
+
+<ng-template #headerSearchTablet>
+  <ng-template [ngTemplateOutlet]="headerSearch" [ngTemplateOutletContext]="{ $implicit: true }"></ng-template>
+</ng-template>
+
+<ng-template #headerSearchNotTablet>
+  <ng-template [ngTemplateOutlet]="headerSearch" [ngTemplateOutletContext]="{ $implicit: false }"></ng-template>
+</ng-template>
+
+<ng-template [ngIf]="isMobileMenuOpen">
+  <ng-template
+    [appDropdown]="elementRef.nativeElement"
+    [appDropdownBackdropClass]="'header-mobile-menu-dropdown__overlay-backdrop'"
+    (appDropdownBackdropClick)="closeMenu()"
+  >
+    <app-header-mobile-menu-dropdown></app-header-mobile-menu-dropdown>
+  </ng-template>
+</ng-template>

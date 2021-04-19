@@ -6,7 +6,11 @@
 }
 
 :root {
-  --tui-font-text: $main-font-family !important;
+  --breakpoint-desktop-xlarge: #{$screen-desktop-xlarge};
+  --breakpoint-desktop-large: #{$screen-desktop-large};
+  --breakpoint-desktop: #{$screen-desktop};
+  --breakpoint-tablet: #{$screen-tablet};
+  --breakpoint-mobile: #{$screen-mobile};
 }
 
 html {
@@ -21,6 +25,10 @@ body {
   padding: 0;
 }
 
+input {
+  font-family: inherit;
+}
+
 svg-icon {
   align-items: center;
   display: inline-flex !important;
@@ -31,4 +39,8 @@ svg-icon {
   max-width: $screen-desktop-xlarge + $page-side-padding * 2;
   padding: 0 $page-side-padding;
   width: 100%;
+}
+
+::-webkit-scrollbar {
+  //box-sizing: border-box;
 }

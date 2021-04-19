@@ -1,0 +1,33 @@
+@import 'variables';
+
+:host {
+  display: flex;
+  font-weight: 500;
+}
+
+.details-table__cell {
+  padding: $grid-step 0;
+  width: 100%;
+  word-break: break-word;
+}
+
+.details-table__cell__title {
+  color: $color-grey;
+}
+
+.details-table__divider {
+  background-color: $color-outlines;
+  flex-shrink: 0;
+  margin: 0 $grid-step * 3;
+  width: 2px;
+}
+
+@media (max-width: $screen-tablet) {
+  :host {
+    display: block;
+  }
+
+  .details-table__divider {
+    display: none;
+  }
+}

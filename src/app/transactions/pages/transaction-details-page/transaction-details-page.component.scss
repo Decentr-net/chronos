@@ -4,39 +4,42 @@
   display: block;
 }
 
+.transaction-details__back-link {
+  margin-right: $grid-step * 2;
+}
+
 .transaction-details__loading {
   width: 100%;
 }
 
 .transaction-details__hash {
+  margin-bottom: $grid-step * 3;
   word-wrap: break-word;
 }
 
-.transaction-details__info {
-  width: 100%;
+.transaction-details__details-table {
+  margin: $grid-step * 2 0;
 }
 
-.transaction-details__detailed-info {
-  display: grid;
-  font-weight: 500;
-  gap: $grid-step * 3;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  padding-top: $grid-step * 3;
-  padding-bottom: $grid-step * 2;
-}
+.transaction-details__block-link {
+  color: $color-primary;
+  font-size: inherit;
 
-.transaction-details__label {
-  color: $color-grey;
-}
-
-@media (max-width: $screen-desktop) {
-  .transaction-details__detailed-info {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  &:hover {
+    color: $color-primary-hover;
   }
 }
 
-@media (max-width: $screen-mobile) {
-  .transaction-details__detailed-info {
-    grid-template-columns: 1fr;
+.transaction-details__message {
+  margin-top: $grid-step * 2;
+}
+
+.transaction-details__divider {
+  background-color: $color-outlines;
+  height: 2px;
+
+  &.mod-wide {
+    height: 8px;
+    margin: 0 (-$grid-step * 2);
   }
 }

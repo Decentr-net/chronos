@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Pool } from 'decentr-js';
 
 @Component({
@@ -10,5 +10,7 @@ import { Pool } from 'decentr-js';
 export class DashboardBondedTokensCardComponent {
   @Input() public pool: Pool;
 
-  @Input() public loadingTemplate: TemplateRef<{}>;
+  get getPoolTokenPercent(): number {
+    return this.pool.not_bonded_tokens / this.pool.bonded_tokens * 100;
+  }
 }

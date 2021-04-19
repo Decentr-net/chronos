@@ -1,0 +1,60 @@
+<svg-icon
+  class="header-search__icon"
+  [key]="icon"
+  size="lg"
+></svg-icon>
+
+<input
+  #inputElement
+  class="header-search__input"
+  placeholder="Search"
+  [formControl]="searchControl"
+  (focus)="openDropdown()"
+  (blur)="closeDropdown()"
+  appTypeface="paragraph"
+>
+
+<ng-container *ngIf="searchResult$ | async as searchResult">
+  <ng-template [ngIf]="isDropdownOpened">
+    <div
+      class="header-search__dropdown"
+      *appDropdown="elementRef.nativeElement"
+      appTypeface="paragraph"
+    >
+      <ng-template
+        [ngTemplateOutlet]="resultTemplate"
+        [ngTemplateOutletContext]="{ $implicit: searchResult }"
+      ></ng-template>
+    </div>
+  </ng-template>
+</ng-container>
+
+<ng-template #blockResult let-searchResult>
+  <a
+    class="header-search__dropdown__item"
+    *ngIf="searchResult.result; else invalidBlock"
+    [routerLink]="['/', appRoute.Blocks, searchResult.result.block.header.height]"
+    (click)="onLinkClick()"
+  >
+    Block details
+  </a>
+
+  <ng-template #invalidBlock>
+    <span class="header-search__dropdown__item mod-negative">Invalid Block</span>
+  </ng-template>
+</ng-template>
+
+<ng-template #txResult let-searchResult>
+  <a
+    class="header-search__dropdown__item"
+    *ngIf="searchResult.result; else invalidTx"
+    [routerLink]="['/', appRoute.Transactions, searchResult.result.txhash]"
+    (click)="onLinkClick()"
+  >
+    Tx details
+  </a>
+
+  <ng-template #invalidTx>
+    <span class="header-search__dropdown__item mod-negative">Invalid TxHash</span>
+  </ng-template>
+</ng-template>

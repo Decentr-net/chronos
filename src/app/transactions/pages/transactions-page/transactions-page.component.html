@@ -1,4 +1,4 @@
-<app-info-card>
+<app-info-card [removeBorderBreakpoint]="breakpoint.Mobile">
   <ng-container ngProjectAs="[card-title]">
     Transactions
   </ng-container>
@@ -14,7 +14,7 @@
 <ng-template #tablesLoading>
   <ngx-skeleton-loader
     class="transactions__table--loading"
-    count="15"
+    count="14"
     [theme]="{
       height: '40px',
       width: '100%'

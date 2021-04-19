@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, TemplateRef } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { BlockHeader } from 'decentr-js';
 
 @Component({
@@ -9,6 +9,4 @@ import { BlockHeader } from 'decentr-js';
 })
 export class DashboardHeightCardComponent {
   @Input() public latestBlockHeader: BlockHeader;
-
-  @Input() public loadingTemplate: TemplateRef<{}>;
 }

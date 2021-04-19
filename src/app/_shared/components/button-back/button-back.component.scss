@@ -1,0 +1,14 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  background-color: $color-background;
+  border-radius: $border-radius;
+  color: $color-grey;
+  display: inline-flex;
+  padding: $grid-step;
+
+  &:hover {
+    color: $color-dark-grey;
+  }
+}

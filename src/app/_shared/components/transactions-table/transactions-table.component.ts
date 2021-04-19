@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@ang
 import { Transaction } from 'decentr-js';
 
 import { AppRoute } from '../../../app-route';
+import { Breakpoint } from '@shared/directives/breakpoint';
 
 @Component({
   selector: 'app-transactions-table',
@@ -10,10 +11,16 @@ import { AppRoute } from '../../../app-route';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsTableComponent {
-  @Input() data: Transaction[];
+  @Input() data: Transaction[] = [];
+  @Input() hashSize: Record<Breakpoint.Desktop | Breakpoint.Mobile | Breakpoint.Tablet, number> = {
+    [Breakpoint.Desktop]: 25,
+    [Breakpoint.Tablet]: 15,
+    [Breakpoint.Mobile]: 9,
+  };
+  @Input() shrinkBreakpoint: Breakpoint = Breakpoint.Tablet;
 
   public appRoute: typeof AppRoute = AppRoute;
-  public columns: string[] = ['Hash', 'Type', 'Height', 'Time'];
+  public breakpoint: typeof Breakpoint = Breakpoint;
 
   public trackByHash: TrackByFunction<Transaction> = ({}, { txhash }) => txhash;
 }

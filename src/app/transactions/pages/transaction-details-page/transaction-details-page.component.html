@@ -1,5 +1,10 @@
-<app-info-card>
+<app-info-card [contentDivider]="true" [removeBorderBreakpoint]="breakpoint.Mobile">
   <ng-container ngProjectAs="[card-title]">
+    <a
+      class="transaction-details__back-link"
+      app-button-back
+      [routerLink]="['../']"
+    ></a>
     Transaction details
   </ng-container>
 
@@ -7,49 +12,33 @@
     ngProjectAs="[card-body]"
     *ngIf="transactionDetails$ | async as transactionDetails; else tablesLoading;"
   >
-    <div class="transaction-details__info">
-      <div class="transaction-details__hash">
-        <p appTypeface="header-4">{{ transactionDetails.txhash }}</p>
-      </div>
-
-      <div class="transaction-details__detailed-info" appTypeface="paragraph">
-        <div>
-          <p appTypeface="subheader">
-            {{ transactionDetails.height }}
-          </p>
-          <p class="transaction-details__label">
-            Height
-          </p>
-        </div>
-
-        <div>
-          <p appTypeface="subheader">
-            {{ transactionDetails.timestamp | date:'yyyy.MM.dd, HH:mm:ss' }}
-          </p>
-          <p class="transaction-details__label">
-            Time
-          </p>
-        </div>
-
-        <div>
-          <p appTypeface="subheader">
-            <ng-template [ngIf]="transactionDetails.gas_used" [ngIfElse]="gasNotUsed">
-              {{ transactionDetails.gas_used }} / {{ transactionDetails.gas_wanted }}
-            </ng-template>
-
-            <ng-template #gasNotUsed>
-              Gas not used
-            </ng-template>
-          </p>
-
-          <p class="transaction-details__label">
-            Gas (used / wanted)
-          </p>
-        </div>
-      </div>
-
-      <app-transaction-message [txMessage]="transactionDetails.tx.value.msg[0]"></app-transaction-message>
+    <div class="transaction-details__hash">
+      <p [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'">{{ transactionDetails.txhash }}</p>
     </div>
+
+    <div class="transaction-details__divider"></div>
+
+    <app-details-table class="transaction-details__details-table">
+      <ng-template [appDetailsTableCellDef]="'Height'">
+        <a
+          class="transaction-details__block-link"
+          [routerLink]="['/', blocksRoute, transactionDetails.height]"
+        >
+          {{ +transactionDetails.height | numberFormat : null : true }}
+        </a>
+      </ng-template>
+
+      <ng-template [appDetailsTableCellDef]="'Time'">
+        {{ transactionDetails.timestamp | date:'yyyy.MM.dd, HH:mm:ss' }}
+      </ng-template>
+    </app-details-table>
+
+    <div class="transaction-details__divider mod-wide"></div>
+
+    <app-transaction-message
+      class="transaction-details__message"
+      [txMessage]="transactionDetails.tx.value.msg[0]"
+    ></app-transaction-message>
   </ng-container>
 </app-info-card>
 

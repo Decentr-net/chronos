@@ -1,0 +1,51 @@
+<ng-container [ngSwitch]="message.type">
+  <app-distribute-rewards-details
+    *ngSwitchCase="messageType.PdvDistributeRewards"
+    [details]="message.value"
+  ></app-distribute-rewards-details>
+
+  <app-set-private-details
+    *ngSwitchCase="messageType.ProfileSetPrivate"
+    [details]="message.value"
+  ></app-set-private-details>
+
+  <app-set-public-details
+    *ngSwitchCase="messageType.ProfileSetPublic"
+    [details]="message.value"
+  ></app-set-public-details>
+
+  <app-send-details
+    *ngSwitchCase="messageType.CosmosSend"
+    [details]="message.value"
+  ></app-send-details>
+
+  <app-set-like-details
+    *ngSwitchCase="messageType.CommunitySetLike"
+    [details]="message.value"
+  ></app-set-like-details>
+
+  <app-create-post-details
+    *ngSwitchCase="messageType.CommunityCreatePost"
+    [details]="message.value"
+  ></app-create-post-details>
+
+  <app-delete-post-details
+    *ngSwitchCase="messageType.CommunityDeletePost"
+    [details]="message.value"
+  ></app-delete-post-details>
+
+  <app-follow-details
+    *ngSwitchCase="messageType.CommunityFollow"
+    [details]="message.value"
+  ></app-follow-details>
+
+  <app-unfollow-details
+    *ngSwitchCase="messageType.CommunityUnfollow"
+    [details]="message.value"
+  ></app-unfollow-details>
+
+  <app-create-validator-details
+    *ngSwitchCase="messageType.CosmosCreateValidator"
+    [details]="message.value"
+  ></app-create-validator-details>
+</ng-container>

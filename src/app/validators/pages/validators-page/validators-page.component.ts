@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Validator, ValidatorStatus } from 'decentr-js';
 
+import { Breakpoint } from '@shared/directives/breakpoint';
 import { StakingService } from '@core/services/staking';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-validators-page',
@@ -13,6 +14,8 @@ import { map } from 'rxjs/operators';
 })
 export class ValidatorsPageComponent implements OnInit {
   public validators$: Observable<Validator[]>;
+
+  public breakpoint: typeof Breakpoint = Breakpoint;
 
   constructor(
     private stakingService: StakingService,

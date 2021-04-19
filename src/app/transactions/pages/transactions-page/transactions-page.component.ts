@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Transaction } from 'decentr-js';
 
+import { Breakpoint } from '@shared/directives/breakpoint';
 import { ONE_SECOND } from '@shared/utils/date';
 import { TransactionsService } from '@core/services/transactions';
 
@@ -13,6 +14,8 @@ import { TransactionsService } from '@core/services/transactions';
 })
 export class TransactionsPageComponent implements OnInit {
   public transactions$: Observable<Transaction[]>;
+
+  public breakpoint: typeof Breakpoint = Breakpoint;
 
   constructor(
     private transactionsService: TransactionsService,

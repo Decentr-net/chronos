@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Block } from 'decentr-js';
 
+import { Breakpoint } from '@shared/directives/breakpoint';
 import { ONE_SECOND } from '@shared/utils/date';
 import { BlocksService } from '@core/services/blocks';
 
@@ -13,6 +14,8 @@ import { BlocksService } from '@core/services/blocks';
 })
 export class BlocksPageComponent implements OnInit {
   blocks$: Observable<Block[]>;
+
+  public breakpoint: typeof Breakpoint = Breakpoint;
 
   constructor(
     private blocksService: BlocksService,

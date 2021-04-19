@@ -4,46 +4,88 @@
   display: block;
 }
 
+.block-details__back-link {
+  margin-right: $grid-step * 2;
+}
+
+.block-details__title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.block-details__pagination {
+  align-items: center;
+  display: inline-flex;
+  gap: 2px;
+  margin-left: $grid-step * 2;
+}
+
+.block-details__pagination-item {
+  color: $color-grey;
+  display: inline-flex;
+  background-color: $color-background;
+  padding: $grid-step;
+
+  &.is-disabled {
+    color: $color-outlines;
+    pointer-events: none;
+  }
+
+  &.mod-previous {
+    border-bottom-left-radius: $border-radius;
+    border-top-left-radius: $border-radius;
+  }
+
+  &.mod-next {
+    border-bottom-right-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+  }
+}
+
 .block-details__loading {
   width: 100%;
 }
 
-.block-details__info {
-  width: 100%;
-}
-
 .block-details__hash {
-  border-bottom: 2px solid $color-outlines;
-  padding-bottom: $grid-step * 3;
+  margin-bottom: $grid-step * 3;
   word-wrap: break-word;
 }
 
+.block-details__divider {
+  background-color: $color-outlines;
+  height: 2px;
 
-.block-details__detailed-info {
-  display: grid;
-  gap: $grid-step * 3;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-  padding-top: $grid-step * 3;
-  padding-bottom: $grid-step * 2;
+  &.mod-wide {
+    height: 8px;
+    margin: $grid-step * 2 (-$grid-step * 2);
+  }
 }
 
-.block-details__value {
-  font-weight: 500;
+.block-details__details-table {
+  margin-top: $grid-step * 2;
 }
 
-.block-details__label {
+.block-details__transactions-table__title {
+  align-items: center;
+  display: inline-flex;
+}
+
+.block-details__transactions-count {
+  background-color: $color-outlines;
+  border-radius: $border-radius;
   color: $color-grey;
-  font-weight: 500;
+  display: inline-flex;
+  margin-left: $grid-step;
+  padding: $grid-step / 2;
 }
 
-@media (max-width: $screen-desktop) {
-  .block-details__detailed-info {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  }
+.block-details__transactions-count__value {
+  line-height: 100%;
+  min-width: 1em;
+  text-align: center;
 }
 
-@media (max-width: $screen-mobile) {
-  .block-details__detailed-info {
-    grid-template-columns: minmax(0, 1fr);
-  }
+.block-details__transactions-table {
+  margin: 0 (-$grid-step * 2);
 }

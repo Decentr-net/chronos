@@ -1,11 +1,6 @@
-import { ChangeDetectionStrategy, Component, TrackByFunction } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { AppRoute } from '../../../../../app-route';
-
-export interface NavigationMenuElement {
-  name: string;
-  url: AppRoute;
-}
+import { NAVIGATION_ELEMENTS, trackByNavigationElement } from '../navigation';
 
 @Component({
   selector: 'app-header-navigation',
@@ -14,24 +9,7 @@ export interface NavigationMenuElement {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderNavigationComponent {
-  readonly pages: NavigationMenuElement[] = [
-    {
-      name: 'Dashboard',
-      url: AppRoute.Dashboard,
-    },
-    {
-      name: 'Blocks',
-      url: AppRoute.Blocks,
-    },
-    {
-      name: 'Transactions',
-      url: AppRoute.Transactions,
-    },
-    {
-      name: 'Validators',
-      url: AppRoute.Validators,
-    },
-  ];
+  public readonly pages = NAVIGATION_ELEMENTS;
 
-  public readonly trackByLink: TrackByFunction<NavigationMenuElement> = ({}, { name }) => name;
+  public readonly trackByLink = trackByNavigationElement;
 }

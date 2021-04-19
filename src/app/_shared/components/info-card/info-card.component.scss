@@ -1,10 +1,15 @@
 @import 'variables';
 
+$info-card--padding: $grid-step * 2;
+
 :host {
-  border: 2px solid $color-outlines;
-  border-radius: $border-radius;
   display: block;
-  padding: $grid-step * 2;
+
+  &.mod-bordered {
+    border: 2px solid $color-outlines;
+    border-radius: $border-radius;
+    padding: $info-card--padding;
+  }
 }
 
 .info-card__head {
@@ -14,5 +19,18 @@
 }
 
 .info-card__title {
+  align-items: center;
+  display: flex;
   font-weight: 500;
+  width: 100%;
+}
+
+.info-card__actions-container {
+  flex-shrink: 0;
+}
+
+.info-card__divider {
+  background-color: $color-outlines;
+  height: 2px;
+  margin: $grid-step * 2 (-$info-card--padding);
 }

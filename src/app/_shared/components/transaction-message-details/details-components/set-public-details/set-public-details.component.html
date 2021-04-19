@@ -1,0 +1,30 @@
+<div class="set-public-details__owner-label" appTypeface="paragraph">Owner</div>
+
+<div
+  class="set-public-details__owner-value"
+  appTypeface="subheader"
+>
+  {{ details.owner }}
+</div>
+
+<div class="set-public-details__bio" *ngIf="details.public.bio as bio">{{ bio }}</div>
+
+<div class="set-public-details__divider"></div>
+
+<app-details-table>
+  <ng-template [appDetailsTableCellDef]="'First name'">
+    {{ details.public.firstName || '-' }}
+  </ng-template>
+
+  <ng-template [appDetailsTableCellDef]="'Last name'">
+    {{ details.public.lastName || '-' }}
+  </ng-template>
+
+  <ng-template [appDetailsTableCellDef]="'Birthday'">
+    {{ details.public.birthday || '-' }}
+  </ng-template>
+
+  <ng-template [appDetailsTableCellDef]="'Gender'">
+    {{ details.public.gender || '-' }}
+  </ng-template>
+</app-details-table>

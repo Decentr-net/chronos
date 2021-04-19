@@ -2,12 +2,10 @@
 
 :host {
   display: block;
-  overflow: auto;
-  width: 100%;
 }
 
 .blocks__table {
-  margin: 0 (-$grid-step * 2);
+  margin: 0 (-$page-side-padding);
 }
 
 .blocks__table--loading {

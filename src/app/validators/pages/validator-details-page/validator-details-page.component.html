@@ -1,65 +1,58 @@
-<app-info-card>
+<app-info-card [contentDivider]="true" [removeBorderBreakpoint]="breakpoint.Mobile">
   <ng-container ngProjectAs="[card-title]">
+    <a
+      class="validator-details__back-link"
+      app-button-back
+      [routerLink]="['../']"
+    ></a>
     Validator details
   </ng-container>
 
   <ng-container ngProjectAs="[card-body]" *ngIf="validatorDetails$ | async as validatorDetails; else tablesLoading;">
-    <div class="validator-details__info">
-      <div class="validator-details__moniker">
-        <p appTypeface="header-4">{{ validatorDetails.description.moniker }}</p>
+    <div class="validator-details__description">
+      <div class="validator-details__description__title">
+        <span
+          class="validator-details__moniker"
+          [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
+        >
+          {{ validatorDetails.description.moniker }}
+        </span>
+
+        <app-validator-status
+          [status]="validatorDetails.status"
+          [filled]="true"
+          [shrinkBreakpoint]="undefined"
+        ></app-validator-status>
       </div>
 
-      <div class="validator-details__wallet">
-        <p class="validator-details__wallet-address validator-details__value" appTypeface="subheader">
-          {{ validatorDetails.operator_address }}
-        </p>
-        <p class="validator-details__label" appTypeface="paragraph">
-          Operator address
-        </p>
-      </div>
-
-      <div class="validator-details__detailed-info">
-        <div>
-          <p class="validator-details__value" appTypeface="subheader">
-            <app-validator-status [status]="validatorDetails.status"></app-validator-status>
-          </p>
-          <p class="validator-details__label" appTypeface="paragraph">
-            Status
-          </p>
-        </div>
-        <div>
-          <p class="validator-details__value" appTypeface="subheader">
-            <ng-container *ngIf="validatorDetails.description.website; else noWebsite;">
-              <a tuiLink target="_blank" href="{{ validatorDetails.description.website }}">
-                {{ validatorDetails.description.website }}
-              </a>
-            </ng-container>
-            <ng-template #noWebsite>
-              No website
-            </ng-template>
-          </p>
-          <p class="validator-details__label" appTypeface="paragraph">
-            Website
-          </p>
-        </div>
-        <div>
-          <p class="validator-details__value" appTypeface="subheader">
-            {{ validatorDetails.commission.commission_rates.rate | percent }}
-          </p>
-          <p class="validator-details__label" appTypeface="paragraph">
-            Commission
-          </p>
-        </div>
-        <div>
-          <p class="validator-details__value" appTypeface="subheader">
-            {{ validatorDetails.description.details || 'No details' }}
-          </p>
-          <p class="validator-details__label" appTypeface="paragraph">
-            Details
-          </p>
-        </div>
+      <div
+        class="validator-details__description__details"
+        *ngIf="validatorDetails.description.details as details"
+        appTypeface="paragraph"
+      >
+        {{ details }}
       </div>
     </div>
+
+    <div class="validator-details__divider"></div>
+
+    <app-details-table class="validator-details__address">
+      <ng-template [appDetailsTableCellDef]="'Operator address'">
+        {{ validatorDetails.operator_address }}
+      </ng-template>
+    </app-details-table>
+
+    <div class="validator-details__divider"></div>
+
+    <app-details-table class="validator-details__details-table">
+      <ng-template [appDetailsTableCellDef]="'Website'">
+        {{ validatorDetails.description.website || '-' }}
+      </ng-template>
+
+      <ng-template [appDetailsTableCellDef]="'Commission'">
+        {{ validatorDetails.commission.commission_rates.rate | percent }}
+      </ng-template>
+    </app-details-table>
   </ng-container>
 </app-info-card>
 
