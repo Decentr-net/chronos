@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Block, BlockHeader } from 'decentr-js';
-import { forkJoin, Observable, timer } from 'rxjs';
-import { distinctUntilChanged, map, mergeMap, scan, switchMap } from 'rxjs/operators';
+import { forkJoin, Observable, of, timer } from 'rxjs';
+import { distinctUntilChanged, map, mergeMap, scan, switchMap, tap } from 'rxjs/operators';
 
 import { BlocksApiService } from './blocks-api.service';
 
@@ -9,11 +9,19 @@ import { BlocksApiService } from './blocks-api.service';
   providedIn: 'root',
 })
 export class BlocksService {
+  private readonly blocksCache: Map<string, Block> = new Map();
+
   constructor(private blocksApiService: BlocksApiService) {
   }
 
   public getBlockByHeight(height: BlockHeader['height']): Observable<Block> {
-    return this.blocksApiService.getBlockByHeight(height);
+    const cachedBlock = this.blocksCache.get(height);
+
+    return cachedBlock
+      ? of(cachedBlock)
+      : this.blocksApiService.getBlockByHeight(height).pipe(
+        tap((block) => this.blocksCache.set(height, block)),
+      );
   }
 
   public getLatestBlock(): Observable<Block> {
