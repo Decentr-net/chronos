@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Transaction, TXsSearchParameters, TXsSearchResponse } from 'decentr-js';
 import { forkJoin, Observable, timer } from 'rxjs';
-import { distinctUntilChanged, map, mergeMap, scan, switchMap } from 'rxjs/operators';
+import { distinctUntilChanged, map, mergeMap, scan, switchMap, throttleTime } from 'rxjs/operators';
 
+import { ONE_SECOND } from '@shared/utils/date';
+import { whileDocumentVisible } from '@shared/utils/document';
 import { getGreatestCommonDivisor } from '@shared/utils/number';
 import { TransactionsApiService } from './transactions-api.service';
 
@@ -24,7 +26,9 @@ export class TransactionsService {
   }
 
   public getTransactionsLive(count: number, updatePeriod: number): Observable<Transaction[]> {
-    return timer(0, updatePeriod).pipe(
+    return timer(0, ONE_SECOND).pipe(
+      whileDocumentVisible(),
+      throttleTime(updatePeriod),
       switchMap(() => this.searchTransactions({ limit: 1, txMinHeight: 0 })),
       map((response) => +response.page_total),
       distinctUntilChanged(),
