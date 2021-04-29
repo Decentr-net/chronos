@@ -1,1 +1,1 @@
-export * from './tooltip.module';
+export * from './chart-tooltip.module';
