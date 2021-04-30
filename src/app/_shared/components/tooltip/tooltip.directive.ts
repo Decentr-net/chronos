@@ -1,13 +1,16 @@
-import { ComponentRef, Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
+import { ComponentRef, Directive, ElementRef, Input, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
 import { ComponentPortal } from '@angular/cdk/portal';
+import { fromEvent } from 'rxjs';
 import { Overlay, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { TooltipComponent } from '@shared/components/tooltip/tooltip.component';
 
+@UntilDestroy()
 @Directive({
   selector: '[appTooltip]',
 })
-export class TooltipDirective implements OnInit {
+export class TooltipDirective implements OnInit, OnDestroy {
   @Input('appTooltip') text = '';
 
   private overlayRef: OverlayRef;
@@ -16,46 +19,60 @@ export class TooltipDirective implements OnInit {
     private elementRef: ElementRef<HTMLElement>,
     private overlay: Overlay,
     private overlayPositionBuilder: OverlayPositionBuilder,
+    private viewContainerRef: ViewContainerRef,
   ) {
   }
 
   public ngOnInit(): void {
-    const positionStrategy = this.overlayPositionBuilder
-      .flexibleConnectedTo(this.elementRef)
-      .withPositions([
-        {
-          originX: 'center',
-          originY: 'bottom',
-          overlayX: 'center',
-          overlayY: 'top',
-          offsetY: 4,
-        },
-        {
-          originX: 'center',
-          originY: 'top',
-          overlayX: 'center',
-          overlayY: 'bottom',
-          offsetY: -4,
-        },
-      ]);
+    fromEvent(this.elementRef.nativeElement, 'mouseenter').pipe(
+      untilDestroyed(this),
+    ).subscribe(() => {
+      const positionStrategy = this.overlayPositionBuilder
+        .flexibleConnectedTo(this.elementRef)
+        .withPositions([
+          {
+            originX: 'center',
+            originY: 'bottom',
+            overlayX: 'center',
+            overlayY: 'top',
+            offsetY: 4,
+          },
+          {
+            originX: 'center',
+            originY: 'top',
+            overlayX: 'center',
+            overlayY: 'bottom',
+            offsetY: -4,
+          },
+        ]);
 
-    this.overlayRef = this.overlay.create({ positionStrategy });
+      this.overlayRef = this.overlay.create({
+        positionStrategy,
+        scrollStrategy: this.overlay.scrollStrategies.close(),
+      });
+
+      const tooltipRef: ComponentRef<TooltipComponent> = this.overlayRef.attach(new ComponentPortal(TooltipComponent, this.viewContainerRef));
+      tooltipRef.instance.text = this.text;
+      tooltipRef.changeDetectorRef.detectChanges();
+    });
+
+    fromEvent(this.elementRef.nativeElement, 'mouseleave').pipe(
+      untilDestroyed(this),
+    ).subscribe(() => {
+      this.hide();
+    });
   }
 
-  @HostListener('mousemove')
-  @HostListener('mouseenter')
-  public show(): void {
-    if (this.overlayRef.hasAttached()) {
+  public ngOnDestroy(): void {
+    this.hide();
+  }
+
+  private hide(): void {
+    if (!this.overlayRef) {
       return;
     }
 
-    const tooltipRef: ComponentRef<TooltipComponent> = this.overlayRef.attach(new ComponentPortal(TooltipComponent));
-    tooltipRef.instance.text = this.text;
-  }
-
-  @HostListener('window:scroll')
-  @HostListener('mouseleave')
-  public hide(): void {
-    this.overlayRef.detach();
+    this.overlayRef.dispose();
+    this.overlayRef = undefined;
   }
 }
