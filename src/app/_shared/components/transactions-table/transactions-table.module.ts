@@ -8,6 +8,7 @@ import { DataTableModule } from '@shared/components/data-table';
 import { TransactionMessageTypeIconModule } from '@shared/components/transaction-message-type-icon';
 import { DateAgoModule } from '@shared/pipes/date-ago';
 import { NumberFormatModule } from '@shared/pipes/number-format';
+import { TooltipModule } from '@shared/components/tooltip';
 import { TransactionsTableComponent } from './transactions-table.component';
 import { TruncateModule } from '@shared/pipes/truncate';
 import { TxMessageTypeLabelModule } from '@shared/pipes/tx-message-type-label';
@@ -22,6 +23,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
     DataTableModule,
     NumberFormatModule,
     RouterModule,
+    TooltipModule,
     TransactionMessageTypeIconModule,
     TruncateModule,
     TxMessageTypeLabelModule,
