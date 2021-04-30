@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 import { LayoutHeaderModule } from '../layout-header';
 import { LayoutFooterModule } from '../layout-footer';
 import { MainLayoutComponent } from './main-layout.component';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { ScrollbarModule } from '@shared/components/scrollbar/scrollbar.module';
 
 @NgModule({
   imports: [
     LayoutFooterModule,
     LayoutHeaderModule,
-    PerfectScrollbarModule,
     RouterModule,
+    ScrollbarModule,
   ],
   declarations: [
     MainLayoutComponent,

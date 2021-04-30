@@ -18,6 +18,12 @@
   padding-top: $grid-step * 2;
 }
 
+.main-layout__scroll {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
+}
+
 @media (max-width: $screen-tablet) {
   :host {
     height: auto;
