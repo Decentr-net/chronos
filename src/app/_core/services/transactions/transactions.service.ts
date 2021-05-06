@@ -1,24 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Transaction, TXsSearchParameters, TXsSearchResponse } from 'decentr-js';
-import { forkJoin, Observable, timer } from 'rxjs';
-import { distinctUntilChanged, map, mergeMap, scan, switchMap, throttleTime } from 'rxjs/operators';
+import { forkJoin, Observable, of, timer } from 'rxjs';
+import { distinctUntilChanged, map, mergeMap, pluck, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
 
 import { ONE_SECOND } from '@shared/utils/date';
 import { whileDocumentVisible } from '@shared/utils/document';
-import { getGreatestCommonDivisor } from '@shared/utils/number';
 import { TransactionsApiService } from './transactions-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TransactionsService {
+  private readonly transactionsCache: Map<Transaction['txhash'], Transaction> = new Map();
+  private readonly transactionsPageCache: Map<number, Transaction> = new Map();
+
   constructor(
     private transactionsApiService: TransactionsApiService,
   ) {
   }
 
   public getTransactionByHash(hash: Transaction['txhash']): Observable<Transaction> {
-    return this.transactionsApiService.getTransactionByHash(hash);
+    const cachedTransaction = this.transactionsCache.get(hash);
+
+    return cachedTransaction
+      ? of(cachedTransaction)
+      : this.transactionsApiService.getTransactionByHash(hash).pipe(
+        tap((transaction) => {
+          this.transactionsCache.set(transaction.txhash, transaction);
+        }),
+      );
   }
 
   public searchTransactions(searchParams: TXsSearchParameters): Observable<TXsSearchResponse> {
@@ -43,22 +53,27 @@ export class TransactionsService {
   }
 
   private getLatestTransactions(count: number, totalCount: number): Observable<Transaction[]> {
-    const txsCountToRequest = getGreatestCommonDivisor(count, totalCount);
-    const pages = totalCount / txsCountToRequest;
-    const requestsCount = count / txsCountToRequest;
-
-    const requests = new Array(requestsCount)
+    return forkJoin(new Array(count)
       .fill(null)
-      .map((_, index) => this.searchTransactions({
-        limit: txsCountToRequest,
-        page: pages - index,
-        txMinHeight: 0,
-      }));
-
-    return forkJoin(requests).pipe(
-      map((responses) => {
-        return responses.reduce((acc, response) => [...acc, ...response.txs], []);
-      }),
+      .map((_, index) => this.getTransactionByPage(totalCount - index)),
     );
+  }
+
+  private getTransactionByPage(page: number): Observable<Transaction> {
+    const cachedTransaction = this.transactionsPageCache.get(page);
+
+    return cachedTransaction
+      ? of(cachedTransaction)
+      : this.searchTransactions({
+        page,
+        limit: 1,
+        txMinHeight: 0,
+      }).pipe(
+        pluck('txs', 0),
+        tap((transaction) => {
+          this.transactionsPageCache.set(page, transaction);
+          this.transactionsCache.set(transaction.txhash, transaction);
+        }),
+      );
   }
 }
