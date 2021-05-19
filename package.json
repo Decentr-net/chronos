@@ -24,6 +24,7 @@
     "@angular/platform-browser": "~10.2.4",
     "@angular/platform-browser-dynamic": "~10.2.4",
     "@angular/router": "~10.2.4",
+    "@ng-web-apis/common": "^1.9.0",
     "@ng-web-apis/resize-observer": "^1.0.0",
     "@ngneat/svg-icon": "^3.1.0",
     "@ngneat/until-destroy": "^8.0.4",
