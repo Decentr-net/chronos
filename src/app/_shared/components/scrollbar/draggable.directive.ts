@@ -3,7 +3,7 @@ import { DOCUMENT } from '@angular/common';
 import { fromEvent } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
 
-import { ScrollbarComponent } from '@shared/components/scrollbar/scrollbar.component';
+import { ScrollbarComponent } from './scrollbar.component';
 
 export type TypedMouseEvent<T extends EventTarget> = MouseEvent & { target: T };
 
