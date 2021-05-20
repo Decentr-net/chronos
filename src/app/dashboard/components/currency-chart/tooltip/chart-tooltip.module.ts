@@ -1,16 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { TooltipComponent } from './tooltip.component';
+
+import { ChartTooltipComponent } from './chart-tooltip.component';
 
 @NgModule({
   imports: [
     CommonModule,
   ],
   declarations: [
-    TooltipComponent,
+    ChartTooltipComponent,
   ],
   exports: [
-    TooltipComponent,
+    ChartTooltipComponent,
   ],
 })
-export class TooltipModule {}
+export class ChartTooltipModule {
+}

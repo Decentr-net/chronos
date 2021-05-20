@@ -14,19 +14,19 @@
 }
 
 .main-layout__content {
-  flex-grow: 1;
-  overflow: auto;
   padding-bottom: $grid-step * 2;
   padding-top: $grid-step * 2;
+}
+
+.main-layout__scroll {
+  display: flex;
+  flex-grow: 1;
+  height: 100%;
 }
 
 @media (max-width: $screen-tablet) {
   :host {
     height: auto;
     min-height: 100%;
-  }
-
-  .cdlmain-layout__content {
-    overflow: initial;
   }
 }

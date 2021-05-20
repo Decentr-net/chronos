@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Compiler, Component, Injector, Input, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
+
+import { ChartTooltipComponent } from './tooltip/chart-tooltip.component';
+import { ChartTooltipModule } from './tooltip';
 import { ComponentFactoryClass } from './utils/component-factory';
-import { TooltipComponent } from './tooltip/tooltip.component';
-import { TooltipModule } from './tooltip';
 
 export type ChartPoint = Record<number, number>;
 
@@ -27,8 +28,8 @@ export class CurrencyChartComponent implements OnInit {
   }
 
   private setChartOptions(): Highcharts.Options {
-    const component = new ComponentFactoryClass<TooltipModule, TooltipComponent>
-    (this.injector, this.compiler).createComponent(TooltipModule, TooltipComponent);
+    const component = new ComponentFactoryClass<ChartTooltipModule, ChartTooltipComponent>
+    (this.injector, this.compiler).createComponent(ChartTooltipModule, ChartTooltipComponent);
 
     const defaultOptions: Highcharts.Options = {
       credits: {
@@ -64,7 +65,6 @@ export class CurrencyChartComponent implements OnInit {
         shadow: false,
         formatter(): string {
           component.instance.data = this;
-          component.changeDetectorRef.detectChanges();
           return component.location.nativeElement.outerHTML;
         },
       },
@@ -113,18 +113,20 @@ export class CurrencyChartComponent implements OnInit {
           second: '%H:%M:%S',
           minute: '%H:%M',
           hour: '%H:%M',
-          day: '%e. %b',
-          week: '%e. %b',
+          day: '%e %b',
+          week: '%e %b',
           month: '%b \'%y',
           year: '%Y',
         },
         labels: {
           enabled: true,
+          y: 17,
           style: {
             color: '#B6B7BA',
             fontSize: '12px',
           },
         },
+        tickLength: 5,
         type: 'datetime',
         title: {
           text: '',
@@ -146,7 +148,6 @@ export class CurrencyChartComponent implements OnInit {
             color: '#B6B7BA',
             fontSize: '12px',
           },
-
         },
         tickAmount: 8,
         tickPosition: 'inside',
@@ -158,4 +159,3 @@ export class CurrencyChartComponent implements OnInit {
     };
   }
 }
-

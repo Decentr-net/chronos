@@ -8,6 +8,7 @@ import { ButtonBackModule } from '@shared/components/button-back';
 import { DataTableModule } from '@shared/components/data-table';
 import { DetailsTableModule } from '@shared/components/details-table';
 import { InfoCardModule } from '@shared/components/info-card';
+import { TooltipModule } from '@shared/components/tooltip';
 import { TypefaceModule } from '@shared/directives/typeface';
 import { VALIDATORS_PAGES } from './pages';
 import { VALIDATORS_COMPONENTS } from './components';
@@ -23,6 +24,7 @@ import { ValidatorsRoutingModule } from './validators-routing.module';
     InfoCardModule,
     NgxSkeletonLoaderModule,
     SvgIconsModule,
+    TooltipModule,
     TypefaceModule,
     ValidatorsRoutingModule,
   ],
