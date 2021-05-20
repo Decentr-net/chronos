@@ -12,6 +12,7 @@
   <app-validator-status
     *dataTableColumnDef="let item; name: 'Status'"
     [status]="item.status"
+    class="validators-table__validator-status"
   ></app-validator-status>
 
   <ng-container *dataTableColumnDef="let item; name: 'Commission'">
