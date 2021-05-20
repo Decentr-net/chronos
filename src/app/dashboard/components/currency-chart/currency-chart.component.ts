@@ -113,18 +113,20 @@ export class CurrencyChartComponent implements OnInit {
           second: '%H:%M:%S',
           minute: '%H:%M',
           hour: '%H:%M',
-          day: '%e. %b',
-          week: '%e. %b',
+          day: '%e %b',
+          week: '%e %b',
           month: '%b \'%y',
           year: '%Y',
         },
         labels: {
           enabled: true,
+          y: 17,
           style: {
             color: '#B6B7BA',
             fontSize: '12px',
           },
         },
+        tickLength: 5,
         type: 'datetime',
         title: {
           text: '',
