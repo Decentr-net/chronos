@@ -1,11 +1,4 @@
-<svg-icon
-  [key]="validatorStatusName.toLowerCase()"
-  size="lg"
-  *appBreakpoint="shrinkBreakpoint; else validatorStatus"
-  [appTooltip]="validatorStatusName"
-></svg-icon>
-
-<ng-template #validatorStatus>
+<ng-container *appBreakpoint="shrinkBreakpoint; revert true; else validatorStatusIcon">
   <svg-icon
     [key]="validatorStatusName.toLowerCase()"
     size="lg"
@@ -16,4 +9,12 @@
   >
     {{ validatorStatusName }}
   </span>
+</ng-container>
+
+<ng-template #validatorStatusIcon>
+  <svg-icon
+    [key]="validatorStatusName.toLowerCase()"
+    size="lg"
+    [appTooltip]="validatorStatusName"
+  ></svg-icon>
 </ng-template>
