@@ -1,11 +1,11 @@
 <svg-icon
   [key]="validatorStatusName.toLowerCase()"
   size="lg"
-  *appBreakpoint="shrinkBreakpoint"
+  *appBreakpoint="shrinkBreakpoint; else validatorStatus"
   [appTooltip]="validatorStatusName"
 ></svg-icon>
 
-<ng-container *appBreakpoint="shrinkBreakpoint; revert true">
+<ng-template #validatorStatus>
   <svg-icon
     [key]="validatorStatusName.toLowerCase()"
     size="lg"
@@ -16,4 +16,4 @@
   >
     {{ validatorStatusName }}
   </span>
-</ng-container>
+</ng-template>
