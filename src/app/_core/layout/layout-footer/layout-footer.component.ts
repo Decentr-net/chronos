@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
 import { svgGithubIcon } from '@shared/svg-icons/github';
-import { svgLogoBlueIcon } from '@shared/svg-icons/logo-blue';
 import { svgMediumIcon } from '@shared/svg-icons/medium';
 import { svgTelegramIcon } from '@shared/svg-icons/telegram';
 import { svgTwitterIcon } from '@shared/svg-icons/twitter';
@@ -56,7 +55,6 @@ export class LayoutFooterComponent {
   ) {
     svgIconRegistry.register([
       svgGithubIcon,
-      svgLogoBlueIcon,
       svgMediumIcon,
       svgTelegramIcon,
       svgTwitterIcon,

@@ -6,7 +6,6 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { svgCloseIcon } from '@shared/svg-icons/close';
-import { svgLogoIcon } from '@shared/svg-icons/logo';
 import { svgMenuIcon } from '@shared/svg-icons/menu';
 import { svgSearchIcon } from '@shared/svg-icons/search';
 
@@ -31,7 +30,6 @@ export class LayoutHeaderComponent implements OnInit {
   ) {
     svgIconRegistry.register([
       svgCloseIcon,
-      svgLogoIcon,
       svgMenuIcon,
       svgSearchIcon,
     ]);
