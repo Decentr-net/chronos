@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostListener, Inject } from '@angular/core';
 
 @Component({
-  selector: "app-scrollbar",
-  templateUrl: "./scrollbar.component.html",
-  styleUrls: ["./scrollbar.component.scss"],
+  selector: 'app-scrollbar',
+  templateUrl: './scrollbar.component.html',
+  styleUrls: ['./scrollbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ScrollbarComponent {
