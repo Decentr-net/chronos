@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { Breakpoint } from '@shared/directives/breakpoint';
+
 @Component({
   selector: 'app-main-layout',
   templateUrl: './main-layout.component.html',
@@ -7,4 +9,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainLayoutComponent {
+  public breakpoint: typeof Breakpoint = Breakpoint;
 }
