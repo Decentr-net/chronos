@@ -1,9 +1,17 @@
 <app-layout-header class="main-layout__header"></app-layout-header>
 
-<ng-scrollbar class="main-layout__scroll"pointerEventsMethod="scrollbar">
+<div *appBreakpoint="breakpoint.Desktop; else tabletMobileDevices">
   <div class="main-layout__content container">
     <router-outlet></router-outlet>
   </div>
-</ng-scrollbar>
+</div>
+
+<ng-template #tabletMobileDevices>
+  <ng-scrollbar class="main-layout__scroll" pointerEventsMethod="scrollbar" [disabled]="false">
+    <div class="main-layout__content container">
+      <router-outlet></router-outlet>
+    </div>
+  </ng-scrollbar>
+</ng-template>
 
 <app-layout-footer></app-layout-footer>
