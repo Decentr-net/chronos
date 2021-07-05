@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, HostBinding } from '@angular/core';
-import { version } from '../../package.json';
+import packageSettings from '../../package.json';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +8,5 @@ import { version } from '../../package.json';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  @HostBinding('attr.version') public appVersion: string = version;
+  @HostBinding('attr.version') public appVersion: string = packageSettings.version;
 }
