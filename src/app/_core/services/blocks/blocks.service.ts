@@ -27,7 +27,9 @@ export class BlocksService {
   }
 
   public getLatestBlock(): Observable<Block> {
-    return this.blocksApiService.getLatestBlock();
+    return this.blocksApiService.getLatestBlock().pipe(
+      tap((block) => this.blocksCache.set(block.block.header.height, block)),
+    );
   }
 
   public getLatestBlocksLive(count: number, updatePeriod: number): Observable<Block[]> {
