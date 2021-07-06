@@ -20,6 +20,6 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
   };
 
   transform(messageType: StdTxMessageType): string {
-    return this.messageTypeLabelMap[messageType];
+    return this.messageTypeLabelMap[messageType] || messageType;
   }
 }
