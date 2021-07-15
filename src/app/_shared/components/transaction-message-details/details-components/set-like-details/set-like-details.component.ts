@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { StdTxMessageValue } from 'decentr-js';
+import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
 
 @Component({
   selector: 'app-set-like-details',
@@ -8,5 +8,5 @@ import { StdTxMessageValue } from 'decentr-js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SetLikeDetailsComponent {
-  @Input() public details: StdTxMessageValue<any>;
+  @Input() public details: StdTxMessageValue<StdTxMessageType.CommunitySetLike>;
 }
