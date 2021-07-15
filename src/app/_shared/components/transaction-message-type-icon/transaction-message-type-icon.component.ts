@@ -8,14 +8,17 @@ import { messageTypeIcons } from '@shared/svg-icons/message-type';
 const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CommunityCreatePost]: 'create-post',
   [StdTxMessageType.CommunityDeletePost]: 'delete-post',
-  [StdTxMessageType.PdvDistributeRewards]: 'distribute-rewards',
+  [StdTxMessageType.OperationsDistributeRewards]: 'distribute-rewards',
   [StdTxMessageType.CommunityFollow]: 'follow',
   [StdTxMessageType.CosmosCreateValidator]: 'create-validator',
   [StdTxMessageType.CosmosSend]: 'send',
   [StdTxMessageType.CommunitySetLike]: 'set-like',
+  [StdTxMessageType.CommunityUnfollow]: 'unfollow',
+  [StdTxMessageType.OperationsResetAccount]: 'delete-post',
+
+  // DEPRECATED
   [StdTxMessageType.ProfileSetPrivate]: 'set-private',
   [StdTxMessageType.ProfileSetPublic]: 'set-public',
-  [StdTxMessageType.CommunityUnfollow]: 'unfollow',
 };
 
 @Component({

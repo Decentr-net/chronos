@@ -9,14 +9,15 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
   public readonly messageTypeLabelMap: Record<StdTxMessageType, string> = {
     [StdTxMessageType.CommunityCreatePost]: 'Create Post',
     [StdTxMessageType.CommunityDeletePost]: 'Delete Post',
-    [StdTxMessageType.PdvDistributeRewards]: 'Distribute Rewards',
+    [StdTxMessageType.OperationsDistributeRewards]: 'Distribute Rewards',
     [StdTxMessageType.CommunityFollow]: 'Msg Follow',
-    [StdTxMessageType.CosmosCreateValidator]: 'Create validator',
+    [StdTxMessageType.CosmosCreateValidator]: 'Create Validator',
     [StdTxMessageType.CosmosSend]: 'Msg Send',
     [StdTxMessageType.CommunitySetLike]: 'Set Like',
+    [StdTxMessageType.CommunityUnfollow]: 'Msg Unfollow',
+    [StdTxMessageType.OperationsResetAccount]: 'Reset Account',
     [StdTxMessageType.ProfileSetPrivate]: 'Set Private',
     [StdTxMessageType.ProfileSetPublic]: 'Set Public',
-    [StdTxMessageType.CommunityUnfollow]: 'Msg Unfollow',
   };
 
   transform(messageType: StdTxMessageType): string {
