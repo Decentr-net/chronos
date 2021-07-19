@@ -26,6 +26,7 @@
               "src/favicon.ico",
               "src/robots.txt",
               "src/sitemap.xml",
+              "src/assets/fonts",
               "src/assets/img"
             ],
             "styles": [
@@ -103,6 +104,7 @@
               "src/favicon.ico",
               "src/robots.txt",
               "src/sitemap.xml",
+              "src/assets/fonts",
               "src/assets/img"
             ],
             "styles": [
