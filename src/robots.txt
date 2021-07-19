@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /blocks/
+Disallow: /transactions/
+Disallow: /validators/
+Sitemap: https://explorer.decentr.net/sitemap.xml
