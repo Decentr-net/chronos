@@ -8,15 +8,22 @@ import { messageTypeIcons } from '@shared/svg-icons/message-type';
 const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CommunityCreatePost]: 'create-post',
   [StdTxMessageType.CommunityDeletePost]: 'delete-post',
-  [StdTxMessageType.OperationsDistributeRewards]: 'distribute-rewards',
   [StdTxMessageType.CommunityFollow]: 'follow',
+  [StdTxMessageType.CosmosBeginRedelegate]: 'begin-redelegate',
+  [StdTxMessageType.CosmosBeginUnbonding]: 'begin-unbonding',
   [StdTxMessageType.CosmosCreateValidator]: 'create-validator',
+  [StdTxMessageType.CosmosEditValidator]: 'edit-validator',
+  [StdTxMessageType.CosmosJail]: 'jail',
+  [StdTxMessageType.CosmosDelegate]: 'delegate',
   [StdTxMessageType.CosmosSend]: 'send',
+  [StdTxMessageType.CosmosUnjail]: 'unjail',
   [StdTxMessageType.CommunitySetLike]: 'set-like',
   [StdTxMessageType.CommunityUnfollow]: 'unfollow',
-  [StdTxMessageType.OperationsResetAccount]: 'delete-post',
+  [StdTxMessageType.OperationsDistributeRewards]: 'distribute-rewards',
+  [StdTxMessageType.OperationsResetAccount]: 'reset-account',
 
   // DEPRECATED
+  [StdTxMessageType.PDVDistributeRewards]: 'distribute-rewards',
   [StdTxMessageType.ProfileSetPrivate]: 'set-private',
   [StdTxMessageType.ProfileSetPublic]: 'set-public',
 };
@@ -38,5 +45,9 @@ export class TransactionMessageTypeIconComponent {
     private svgIconRegistry: SvgIconRegistry,
   ) {
     svgIconRegistry.register(messageTypeIcons);
+  }
+
+  public get icon(): string {
+    return MESSAGE_TYPE_ICON_MAP[this.messageType] || 'transaction';
   }
 }

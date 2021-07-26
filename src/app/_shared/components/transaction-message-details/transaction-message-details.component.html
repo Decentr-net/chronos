@@ -4,6 +4,11 @@
     [details]="message.value"
   ></app-distribute-rewards-details>
 
+  <app-distribute-rewards-details
+    *ngSwitchCase="messageType.PDVDistributeRewards"
+    [details]="message.value"
+  ></app-distribute-rewards-details>
+
   <app-reset-account-details
     *ngSwitchCase="messageType.OperationsResetAccount"
     [details]="message.value"

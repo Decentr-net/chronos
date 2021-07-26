@@ -1,0 +1,4 @@
+export const svgEditValidatorIcon = {
+    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g clip-path="url(#clip0)" fill="currentColor"><path d="M20.01 14.87l.71-.71a.996.996 0 011.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71l-5.3 5.3V23h2.12l5.3-5.3-2.12-2.12z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M4 3h16c1.1 0 2 .9 2 2v7h-2V5H4v14h8v2H4c-1.1 0-2-.9-2-2V5c0-1.1.9-2 2-2z"/><path fill-rule="evenodd" clip-rule="evenodd" d="M19.41 8.42L17.99 7l-3.17 3.17-1.41-1.42L12 10.16 14.82 13l4.59-4.58z"/><path d="M10 7H5v2h5V7zM10 11H5v2h5v-2zM10 15H5v2h5v-2z"/></g><defs><clipPath id="clip0"><path fill="#fff" d="M0 0h24v24H0z"/></clipPath></defs></svg>`,
+    name: 'edit-validator'
+};
