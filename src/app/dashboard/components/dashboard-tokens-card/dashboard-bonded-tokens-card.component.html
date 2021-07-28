@@ -4,7 +4,7 @@
   </ng-container>
 
   <ng-container
-    *ngIf="pool; else loading"
+    *ngIf="pool && supply; else loading"
     ngProjectAs="[card-body]"
   >
     <div
@@ -16,11 +16,11 @@
 
     <div
       class="dashboard-bonded-tokens-card__ratio"
-      title="{{ pool.not_bonded_tokens }} / {{ pool.bonded_tokens }}"
+      title="{{ pool.bonded_tokens / 1000000 }} / {{ +supply / 1000000 }}"
     >
       <app-progress-bar [percent]="getPoolTokenPercent"></app-progress-bar>
       <div appTypeface="paragraph">
-        {{ pool.not_bonded_tokens | numberSuffix }} / {{ pool.bonded_tokens | numberSuffix }}
+        {{ pool.bonded_tokens / 1000000 | numberSuffix }} / {{ +supply / 1000000 | numberSuffix }}
       </div>
     </div>
   </ng-container>

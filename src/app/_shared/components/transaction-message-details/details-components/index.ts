@@ -3,6 +3,7 @@ import { CreateValidatorDetailsComponent } from './create-validator-details';
 import { DeletePostDetailsComponent } from './delete-post-details';
 import { DistributeRewardsDetailsComponent } from './distribute-rewards-details';
 import { FollowDetailsComponent } from './follow-details';
+import { ResetAccountDetailsComponent } from './reset-account-details';
 import { SendDetailsComponent } from './send-details';
 import { SetLikeDetailsComponent } from './set-like-details';
 import { SetPrivateDetailsComponent } from './set-private-details';
@@ -15,6 +16,7 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   DeletePostDetailsComponent,
   DistributeRewardsDetailsComponent,
   FollowDetailsComponent,
+  ResetAccountDetailsComponent,
   SendDetailsComponent,
   SetLikeDetailsComponent,
   SetPrivateDetailsComponent,

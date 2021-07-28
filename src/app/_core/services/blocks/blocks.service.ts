@@ -27,7 +27,9 @@ export class BlocksService {
   }
 
   public getLatestBlock(): Observable<Block> {
-    return this.blocksApiService.getLatestBlock();
+    return this.blocksApiService.getLatestBlock().pipe(
+      tap((block) => this.blocksCache.set(block.block.header.height, block)),
+    );
   }
 
   public getLatestBlocksLive(count: number, updatePeriod: number): Observable<Block[]> {
@@ -47,7 +49,7 @@ export class BlocksService {
   }
 
   public getLatestBlocks(count: number, currentHeight: BlockHeader['height']): Observable<Block[]> {
-    return forkJoin(new Array(count)
+    return forkJoin(new Array(Math.min(count, +currentHeight))
       .fill(null)
       .map((_, index) => this.getBlockByHeight((+currentHeight - index).toString())),
     );

@@ -53,7 +53,7 @@ export class TransactionsService {
   }
 
   private getLatestTransactions(count: number, totalCount: number): Observable<Transaction[]> {
-    return forkJoin(new Array(count)
+    return forkJoin(new Array(Math.min(count, totalCount))
       .fill(null)
       .map((_, index) => this.getTransactionByPage(totalCount - index)),
     );

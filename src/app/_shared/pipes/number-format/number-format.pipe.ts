@@ -17,7 +17,7 @@ export class NumberFormatPipe implements PipeTransform {
   transform(
     value: number,
     digitsInfo: string | null = null,
-    separateThousands: boolean = false,
+    separateThousands = false,
     decimalSeparator: string = DEFAULT_DECIMAL_SEPARATOR,
     thousandSeparator: string = CHAR_NO_BREAK_SPACE,
   ): string {

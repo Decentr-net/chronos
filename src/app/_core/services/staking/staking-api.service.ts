@@ -2,10 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import {
+  getCoinSupply,
+  getInflation,
   getPool,
   getValidator,
   getValidators,
+  MintingInflation,
   Pool,
+  TotalSupply,
   Validator,
   ValidatorsFilterParameters,
 } from 'decentr-js';
@@ -19,6 +23,18 @@ export class StakingApiService {
   constructor(
     private networkService: NetworkService,
   ) {
+  }
+
+  public getCoinSupply(coinName: string): Observable<TotalSupply['amount']> {
+    return this.networkService.getRestUrl().pipe(
+      mergeMap((restUrl) => getCoinSupply(restUrl, coinName)),
+    );
+  }
+
+  public getInflation(): Observable<MintingInflation> {
+    return this.networkService.getRestUrl().pipe(
+      mergeMap((restUrl) => getInflation(restUrl)),
+    );
   }
 
   public getPool(): Observable<Pool> {

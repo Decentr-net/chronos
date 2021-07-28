@@ -1,0 +1,15 @@
+@import 'variables';
+
+.dashboard-inflation-card__info-card {
+  height: 100%;
+}
+
+.dashboard-inflation-card__height {
+  font-weight: 500;
+  margin-top: $grid-step;
+}
+
+.dashboard-inflation-card__loading {
+  display: flex;
+  flex-direction: column;
+}

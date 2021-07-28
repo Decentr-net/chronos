@@ -8,5 +8,5 @@ import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DistributeRewardsDetailsComponent {
-  @Input() public details: StdTxMessageValue<StdTxMessageType.PdvDistributeRewards>;
+  @Input() public details: StdTxMessageValue<StdTxMessageType.OperationsDistributeRewards>;
 }
