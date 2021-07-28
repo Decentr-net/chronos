@@ -49,7 +49,7 @@ export class BlocksService {
   }
 
   public getLatestBlocks(count: number, currentHeight: BlockHeader['height']): Observable<Block[]> {
-    return forkJoin(new Array(count)
+    return forkJoin(new Array(Math.min(count, +currentHeight))
       .fill(null)
       .map((_, index) => this.getBlockByHeight((+currentHeight - index).toString())),
     );
