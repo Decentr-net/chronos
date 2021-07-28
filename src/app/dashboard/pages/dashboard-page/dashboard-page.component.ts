@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Block, Pool, Transaction } from 'decentr-js';
+import { Block, Pool, TotalSupply, Transaction } from 'decentr-js';
 import { Observable } from 'rxjs';
 import { map, share } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
@@ -30,6 +30,7 @@ export class DashboardPageComponent implements OnInit {
   public coinStats$: Observable<CoinRateHistory>;
   public latestBlock$: Observable<Block>;
   public pool$: Observable<Pool>;
+  public supply$: Observable<TotalSupply['amount']>;
   public transactions$: Observable<Transaction[]>;
 
   public readonly appRoute: typeof AppRoute = AppRoute;
@@ -69,6 +70,7 @@ export class DashboardPageComponent implements OnInit {
     this.coinRate$ = this.dashboardPageService.getCoinRate();
     this.coinStats$ = this.dashboardPageService.getDecentCoinRateHistory(1);
     this.pool$ = this.dashboardPageService.getPool();
+    this.supply$ = this.dashboardPageService.getCoinSupply('udec');
 
     this.latestBlock$ = this.blocks$.pipe(
       map((blocks) => blocks[0]),
