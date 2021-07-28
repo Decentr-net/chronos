@@ -33,14 +33,27 @@
 .dashboard__statistics-cards {
   display: grid;
   gap: $grid-step * 3;
-  grid-template-rows: 1fr 1fr;
   position: relative;
+}
+
+.dashboard__statistics-cards-first {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dashboard__statistics-cards-second {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .dashboard__tables {
   display: grid;
   gap: $grid-step * 3;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: $grid-step * 3;
+}
+
+.dashboard__cards {
+  display: grid;
+  gap: $grid-step * 3;
   margin-top: $grid-step * 3;
 }
 
@@ -72,6 +85,10 @@
 @media (max-width: $screen-desktop-large) {
   .dashboard__statistics {
     grid-template-columns: minmax(0, 2fr);
+  }
+
+  .dashboard__statistics-cards-first {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   .dashboard__tables {

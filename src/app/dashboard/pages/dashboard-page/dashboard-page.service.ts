@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Block, Pool, TotalSupply, Transaction } from 'decentr-js';
+import { Block, MintingInflation, Pool, TotalSupply, Transaction } from 'decentr-js';
 import { Observable } from 'rxjs';
 
 import { ONE_SECOND } from '@shared/utils/date';
@@ -38,6 +38,10 @@ export class DashboardPageService {
 
   public getBlocks(): Observable<Block[]> {
     return this.blocksService.getLatestBlocksLive(5, ONE_SECOND * 10);
+  }
+
+  public getInflation(): Observable<MintingInflation> {
+    return this.stakingService.getInflation();
   }
 
   public getPool(): Observable<Pool> {

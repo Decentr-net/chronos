@@ -1,0 +1,30 @@
+<app-info-card class="dashboard-inflation-card__info-card">
+  <ng-container ngProjectAs="[card-title]">
+    Inflation
+  </ng-container>
+
+  <ng-container
+    ngProjectAs="[card-body]"
+    *ngIf="inflation; else loading"
+  >
+    <div
+      class="dashboard-inflation-card__height"
+      appTypeface="header-3"
+    >
+      {{ +inflation * 100 | numberFormat : '1.0-3' : true }}%
+    </div>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="dashboard-inflation-card__loading">
+      <ngx-skeleton-loader
+        [theme]="{
+          height: '54px',
+          marginTop: '25px',
+          marginBottom: '0',
+          width: '220px'
+        }"
+      ></ngx-skeleton-loader>
+    </div>
+  </ng-template>
+</app-info-card>

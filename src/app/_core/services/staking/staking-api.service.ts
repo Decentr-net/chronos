@@ -3,9 +3,11 @@ import { Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
 import {
   getCoinSupply,
+  getInflation,
   getPool,
   getValidator,
   getValidators,
+  MintingInflation,
   Pool,
   TotalSupply,
   Validator,
@@ -26,6 +28,12 @@ export class StakingApiService {
   public getCoinSupply(coinName: string): Observable<TotalSupply['amount']> {
     return this.networkService.getRestUrl().pipe(
       mergeMap((restUrl) => getCoinSupply(restUrl, coinName)),
+    );
+  }
+
+  public getInflation(): Observable<MintingInflation> {
+    return this.networkService.getRestUrl().pipe(
+      mergeMap((restUrl) => getInflation(restUrl)),
     );
   }
 

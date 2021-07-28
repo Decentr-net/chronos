@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Pool, TotalSupply, Validator, ValidatorsFilterParameters } from 'decentr-js';
+import { MintingInflation, Pool, TotalSupply, Validator, ValidatorsFilterParameters } from 'decentr-js';
 
 import { StakingApiService } from './staking-api.service';
 
@@ -15,6 +15,10 @@ export class StakingService {
 
   public getCoinSupply(coinName: string): Observable<TotalSupply['amount']> {
     return this.stakingApiService.getCoinSupply(coinName);
+  }
+
+  public getInflation(): Observable<MintingInflation> {
+    return this.stakingApiService.getInflation();
   }
 
   public getPool(): Observable<Pool> {
