@@ -27,7 +27,7 @@
   class="network-selector__menu menu-popup"
 >
   <ng-template matMenuContent>
-    <ng-container *ngIf="networks$ | async as networks; else loader">
+    <ng-container *ngIf="networks$ | async as networks">
       <ng-container *ngIf="translations$ | async as translations">
         <div class="network-selector__menu__title" appTypeface="paragraph">
           {{ translations.title }}
@@ -62,11 +62,5 @@
         </div>
       </div>
     </ng-container>
-
-    <ng-template #loader>
-      <div class="network-selector__loader">
-<!--        <app-spinner></app-spinner>-->
-      </div>
-    </ng-template>
   </ng-template>
 </mat-menu>
