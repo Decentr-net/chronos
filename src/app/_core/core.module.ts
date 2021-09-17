@@ -7,6 +7,8 @@ import { SvgIconsModule } from '@ngneat/svg-icon';
 import { CORE_GUARDS } from '@core/guards';
 import { environment } from '@environments/environment';
 import { Environment } from '@environments/environments.definitions';
+import { NetworkSelectorService } from '@shared/components/network-selector';
+import { NetworkSelectorService as NetworkSelectorServiceImpl } from './services/network-selector';
 
 @NgModule({
   imports: [
@@ -21,6 +23,10 @@ import { Environment } from '@environments/environments.definitions';
     {
       provide: Environment,
       useValue: environment,
+    },
+    {
+      provide: NetworkSelectorService,
+      useExisting: NetworkSelectorServiceImpl,
     },
   ],
 })

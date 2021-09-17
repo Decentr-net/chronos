@@ -7,3 +7,6 @@ export interface Configuration {
     url: string;
   };
 }
+
+export type MultiConfiguration = Record<string, Configuration>;
+

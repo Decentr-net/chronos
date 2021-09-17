@@ -1,12 +1,20 @@
-<a
-  class="header-mobile-menu-dropdown__link"
-  *ngFor="let page of pages; trackBy: trackByLink"
-  [routerLink]="page.url"
-  [routerLinkActive]="'is-active'"
-  appTypeface="subheader"
->
-  {{ page.name }}
-</a>
+<app-network-selector
+  class="header-mobile-menu-dropdown__network-selector"
+></app-network-selector>
+
+<div class="header-mobile-menu-dropdown__divider"></div>
+
+<div class="header-mobile-menu-dropdown__links-container">
+  <a
+    class="header-mobile-menu-dropdown__link"
+    *ngFor="let page of pages; trackBy: trackByLink"
+    [routerLink]="page.url"
+    [routerLinkActive]="'is-active'"
+    appTypeface="subheader"
+  >
+    {{ page.name }}
+  </a>
+</div>
 
 <div class="header-mobile-menu-dropdown__divider"></div>
 

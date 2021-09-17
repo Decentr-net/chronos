@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { filter, pluck, take } from 'rxjs/operators';
-import { Observable, ReplaySubject } from 'rxjs';
+import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 
-import { Configuration } from '@core/services/configuration/configuration.definitions';
+import { NetworkSelectorService } from '../network-selector';
+import { Configuration, MultiConfiguration } from './configuration.definitions';
 import { ConfigurationApiService } from './configuration-api.service';
 
 @Injectable({
@@ -14,6 +15,7 @@ export class ConfigurationService {
 
   constructor(
     private configurationApiService: ConfigurationApiService,
+    private networkSelectorService: NetworkSelectorService,
   ) {
   }
 
@@ -21,8 +23,11 @@ export class ConfigurationService {
     if (!this.pendingConfiguration) {
       this.pendingConfiguration = true;
 
-      this.configurationApiService.getConfig().subscribe(
-        (configuration) => this.configuration$.next(configuration),
+      combineLatest([
+        this.getMultiConfiguration(),
+        this.networkSelectorService.getActiveNetworkId(),
+      ]).subscribe(
+        ([configuration, activeNetworkId]) => this.configuration$.next(configuration[activeNetworkId]),
       );
     }
 
@@ -30,6 +35,10 @@ export class ConfigurationService {
       filter((configuration) => !!configuration),
       take(1),
     );
+  }
+
+  public getMultiConfiguration(): Observable<MultiConfiguration> {
+    return this.configurationApiService.getConfig();
   }
 
   public forceUpdate(): void {

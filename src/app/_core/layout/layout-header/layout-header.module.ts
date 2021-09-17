@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
+import { NetworkSelectorModule } from '@shared/components/network-selector';
 import { BreakpointModule } from '@shared/directives/breakpoint';
 import { DropdownModule } from '@shared/directives/dropdown';
 import { HEADER_COMPONENTS } from './components';
@@ -17,6 +18,7 @@ import { LayoutHeaderComponent } from './layout-header.component';
     CommonModule,
     DropdownModule,
     LayoutFooterModule,
+    NetworkSelectorModule,
     ReactiveFormsModule,
     RouterModule,
     SvgIconsModule,

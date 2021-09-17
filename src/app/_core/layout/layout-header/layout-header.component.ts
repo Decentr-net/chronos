@@ -20,7 +20,7 @@ export class LayoutHeaderComponent implements OnInit {
   public isMobileMenuOpen = false;
   public isMobileSearchOpened = false;
 
-  public readonly breakPoint: typeof Breakpoint = Breakpoint;
+  public readonly breakPoint = Breakpoint.DesktopLarge;
 
   constructor(
     public elementRef: ElementRef,

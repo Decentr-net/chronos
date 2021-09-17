@@ -6,8 +6,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: $grid-step * 3 $grid-step * 2 0;
+  padding: 0 $grid-step * 2;
   width: 100%;
+}
+
+.header-mobile-menu-dropdown__network-selector {
+  margin: $grid-step * 2 0;
+}
+
+.header-mobile-menu-dropdown__links-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: $grid-step * 3 0;
 }
 
 .header-mobile-menu-dropdown__link {
@@ -30,6 +41,5 @@
 
 .header-mobile-menu-dropdown__divider {
   border-bottom: 1px solid $color-outlines;
-  margin-top: $grid-step * 3;
   width: 100%;
 }

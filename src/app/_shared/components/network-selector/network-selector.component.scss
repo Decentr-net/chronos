@@ -1,0 +1,81 @@
+@import '../../styles/variables';
+
+::ng-deep .cdk-overlay-container {
+  .network-selector__menu {
+    width: 320px;
+  }
+
+  .network-selector__loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 223px;
+  }
+}
+
+.network-selector__trigger {
+  background: $color-background;
+  border-radius: $border-radius;
+  column-gap: $grid-step / 2;
+  cursor: pointer;
+  display: flex;
+  font-weight: 500;
+  padding: $grid-step $grid-step * 1.5;
+  transition: background .3s ease;
+
+  &:hover {
+    background: $color-outlines;
+  }
+}
+
+.network-selector__trigger__network-icon {
+  color: $color-mint;
+}
+
+.network-selector__trigger__network-name {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.network-selector__trigger-icon {
+  color: $color-grey;
+  transform: rotate(90deg);
+}
+
+.network-selector__menu__title {
+  font-weight: 700;
+}
+
+.network-selector__menu__subtitle {
+  color: $color-light-grey;
+  margin: $grid-step * 1.5 0 $grid-step * 2;
+}
+
+.network-selector__menu__item {
+  color: $color-grey;
+  column-gap: $grid-step * 1.5;
+
+  &.is-active,
+  &:hover {
+    color: $color-white;
+  }
+
+  &.is-active {
+    .network-selector__menu__item-icon-signal {
+      color: $color-mint;
+    }
+
+    .network-selector__menu__item-icon-check {
+      visibility: visible;
+    }
+  }
+}
+
+.network-selector__menu__item-icon-check {
+  color: $color-white;
+  visibility: hidden;
+  margin-left: auto;
+}
