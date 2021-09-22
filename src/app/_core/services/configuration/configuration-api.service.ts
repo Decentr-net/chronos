@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Environment } from '@environments/environments.definitions';
-import { MultiConfiguration } from './configuration.definitions';
+import { Configuration } from './configuration.definitions';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export class ConfigurationApiService {
   ) {
   }
 
-  public getConfig(): Observable<MultiConfiguration> {
+  public getConfig(): Observable<Configuration> {
     const now = Date.now();
     const headers = {
       'Cache-Control': 'no-cache',
@@ -23,7 +23,7 @@ export class ConfigurationApiService {
       Expires: '0',
     };
 
-    return this.httpClient.get<MultiConfiguration>(`${this.environment.config}?${now}`, {
+    return this.httpClient.get<Configuration>(`${this.environment.config}?${now}`, {
       headers,
     });
   }

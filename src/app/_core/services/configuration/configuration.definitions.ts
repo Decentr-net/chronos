@@ -1,4 +1,4 @@
-export interface Configuration {
+export interface Network {
   maintenance: boolean;
   network: {
     rest: string[];
@@ -8,5 +8,6 @@ export interface Configuration {
   };
 }
 
-export type MultiConfiguration = Record<string, Configuration>;
-
+export interface Configuration {
+  networks: Record<string, Network>;
+}

@@ -7,10 +7,10 @@ import {
   NetworkSelectorService as BaseNetworkSelectorService,
   NetworkSelectorTranslations,
 } from '@shared/components/network-selector';
-import { MultiConfiguration } from '../configuration';
+import { Configuration } from '../configuration';
 import { ConfigurationApiService } from '@core/services/configuration/configuration-api.service';
 
-const NETWORK_TRANSLATIONS: Record<keyof MultiConfiguration, string> = {
+const NETWORK_TRANSLATIONS: Record<keyof Configuration['networks'], string> = {
   mainnet: 'Decentr Main Network',
   testnet: 'Decentr Test Network',
 };
@@ -42,7 +42,7 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
   public getNetworks(): Observable<Network[]> {
     return this.configurationService.getConfig().pipe(
       map((multiConfig) => {
-        return Object.keys(multiConfig).map((networkId) => this.getOptionConfig(networkId));
+        return Object.keys(multiConfig.networks).map((networkId) => this.getOptionConfig(networkId));
       }),
     );
   }
@@ -64,7 +64,7 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
     });
   }
 
-  private getOptionConfig(networkId: keyof MultiConfiguration): Network {
+  private getOptionConfig(networkId: keyof Configuration['networks']): Network {
     return {
       id: networkId,
       name: NETWORK_TRANSLATIONS[networkId],

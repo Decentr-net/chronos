@@ -3,14 +3,14 @@ import { filter, pluck, take } from 'rxjs/operators';
 import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 
 import { NetworkSelectorService } from '../network-selector';
-import { Configuration, MultiConfiguration } from './configuration.definitions';
+import { Network } from './configuration.definitions';
 import { ConfigurationApiService } from './configuration-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfigurationService {
-  private configuration$: ReplaySubject<Configuration> = new ReplaySubject(1);
+  private configuration$: ReplaySubject<Network> = new ReplaySubject(1);
   private pendingConfiguration: boolean;
 
   constructor(
@@ -19,15 +19,15 @@ export class ConfigurationService {
   ) {
   }
 
-  private getConfig(): Observable<Configuration> {
+  private getConfig(): Observable<Network> {
     if (!this.pendingConfiguration) {
       this.pendingConfiguration = true;
 
       combineLatest([
-        this.getMultiConfiguration(),
+        this.configurationApiService.getConfig(),
         this.networkSelectorService.getActiveNetworkId(),
       ]).subscribe(
-        ([configuration, activeNetworkId]) => this.configuration$.next(configuration[activeNetworkId]),
+        ([{ networks }, activeNetworkId]) => this.configuration$.next(networks[activeNetworkId]),
       );
     }
 
@@ -35,10 +35,6 @@ export class ConfigurationService {
       filter((configuration) => !!configuration),
       take(1),
     );
-  }
-
-  public getMultiConfiguration(): Observable<MultiConfiguration> {
-    return this.configurationApiService.getConfig();
   }
 
   public forceUpdate(): void {
