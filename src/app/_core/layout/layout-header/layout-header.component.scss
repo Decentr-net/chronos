@@ -27,6 +27,17 @@ $layout-header--height: 64px;
   }
 }
 
+.header__network-selector {
+  margin-left: $grid-step;
+}
+
+.header__divider {
+  background: $color-outlines;
+  height: calc(100% - #{$grid-step} * 2);
+  margin-left: $grid-step * 2;
+  width: 1px;
+}
+
 .header__navigation {
   height: 100%;
   margin: 0 $grid-step * 3;

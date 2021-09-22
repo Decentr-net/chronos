@@ -1,28 +1,33 @@
 import { Injectable } from '@angular/core';
 import { filter, pluck, take } from 'rxjs/operators';
-import { Observable, ReplaySubject } from 'rxjs';
+import { combineLatest, Observable, ReplaySubject } from 'rxjs';
 
-import { Configuration } from '@core/services/configuration/configuration.definitions';
+import { NetworkSelectorService } from '../network-selector';
+import { Network } from './configuration.definitions';
 import { ConfigurationApiService } from './configuration-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfigurationService {
-  private configuration$: ReplaySubject<Configuration> = new ReplaySubject(1);
+  private configuration$: ReplaySubject<Network> = new ReplaySubject(1);
   private pendingConfiguration: boolean;
 
   constructor(
     private configurationApiService: ConfigurationApiService,
+    private networkSelectorService: NetworkSelectorService,
   ) {
   }
 
-  private getConfig(): Observable<Configuration> {
+  private getConfig(): Observable<Network> {
     if (!this.pendingConfiguration) {
       this.pendingConfiguration = true;
 
-      this.configurationApiService.getConfig().subscribe(
-        (configuration) => this.configuration$.next(configuration),
+      combineLatest([
+        this.configurationApiService.getConfig(),
+        this.networkSelectorService.getActiveNetworkId(),
+      ]).subscribe(
+        ([{ networks }, activeNetworkId]) => this.configuration$.next(networks[activeNetworkId]),
       );
     }
 

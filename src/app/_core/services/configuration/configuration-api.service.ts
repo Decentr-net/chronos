@@ -23,7 +23,7 @@ export class ConfigurationApiService {
       Expires: '0',
     };
 
-    return this.httpClient.get<Configuration>(`${this.environment.awsStorage}/config.json?${now}`, {
+    return this.httpClient.get<Configuration>(`${this.environment.config}?${now}`, {
       headers,
     });
   }

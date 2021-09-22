@@ -1,4 +1,4 @@
-export interface Configuration {
+export interface Network {
   maintenance: boolean;
   network: {
     rest: string[];
@@ -6,4 +6,8 @@ export interface Configuration {
   theseus: {
     url: string;
   };
+}
+
+export interface Configuration {
+  networks: Record<string, Network>;
 }
