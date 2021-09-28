@@ -54,6 +54,11 @@
     [details]="message.value"
   ></app-unfollow-details>
 
+  <app-unjail-details
+    *ngSwitchCase="messageType.CosmosUnjail"
+    [details]="message.value"
+  ></app-unjail-details>
+
   <app-create-validator-details
     *ngSwitchCase="messageType.CosmosCreateValidator"
     [details]="message.value"

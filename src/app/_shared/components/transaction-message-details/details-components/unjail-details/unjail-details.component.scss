@@ -1,0 +1,9 @@
+@import 'variables';
+
+:host {
+  display: block;
+}
+
+.unjail-details__address {
+  word-break: break-all;
+}
