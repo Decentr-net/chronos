@@ -1,7 +1,13 @@
 <div class="header__container container">
   <div class="header__section">
-    <ng-container *appBreakpoint="breakPoint.Tablet; revert: true; else headerSectionMobile">
+    <ng-container *appBreakpoint="breakPoint; revert: true; else headerSectionMobile">
       <ng-template [ngTemplateOutlet]="logo"></ng-template>
+
+      <app-network-selector
+        class="header__network-selector"
+      ></app-network-selector>
+
+      <div class="header__divider"></div>
 
       <app-header-navigation
         class="header__navigation"
@@ -16,7 +22,7 @@
   </div>
 
   <div class="header__section mod-right">
-    <div class="header__mobile-actions" *appBreakpoint="breakPoint.Tablet; else headerSearchNotTablet">
+    <div class="header__mobile-actions" *appBreakpoint="breakPoint; else headerSearchNotTablet">
       <ng-template [ngIf]="!isMobileSearchOpened" [ngIfElse]="mobileSearchClose">
         <ng-template [ngIf]="!isMobileMenuOpen">
           <svg-icon

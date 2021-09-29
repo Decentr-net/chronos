@@ -9,6 +9,7 @@ import { SetLikeDetailsComponent } from './set-like-details';
 import { SetPrivateDetailsComponent } from './set-private-details';
 import { SetPublicDetailsComponent } from './set-public-details';
 import { UnfollowDetailsComponent } from './unfollow-details';
+import { UnjailDetailsComponent } from './unjail-details';
 
 export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   CreatePostDetailsComponent,
@@ -22,4 +23,5 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   SetPrivateDetailsComponent,
   SetPublicDetailsComponent,
   UnfollowDetailsComponent,
+  UnjailDetailsComponent,
 ];

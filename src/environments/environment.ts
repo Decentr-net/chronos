@@ -5,7 +5,7 @@
 import { Environment } from './environments.definitions';
 
 export const environment: Environment = {
-  awsStorage: 'https://tf-decentr-public-testnet.s3.us-east-2.amazonaws.com',
+  config: 'https://public.decentr.xyz/config.json',
   currencyApi: 'https://api.coingecko.com/api/v3',
   ga: '',
   production: false,

@@ -31,6 +31,10 @@
       <ng-template [appDetailsTableCellDef]="'Time'">
         {{ transactionDetails.timestamp | date:'yyyy.MM.dd, HH:mm:ss' }}
       </ng-template>
+
+      <ng-template *ngIf="transactionDetails.tx.value.memo" [appDetailsTableCellDef]="'Memo'">
+        {{ transactionDetails.tx.value.memo }}
+      </ng-template>
     </app-details-table>
 
     <div class="transaction-details__divider mod-wide"></div>
