@@ -39,10 +39,17 @@
 
     <div class="transaction-details__divider mod-wide"></div>
 
-    <app-transaction-message
-      class="transaction-details__message"
-      [txMessage]="transactionDetails.tx.value.msg[0]"
-    ></app-transaction-message>
+    <ng-container *ngFor="let message of transactionDetails.tx.value.msg; let last = last">
+      <app-transaction-message
+        class="transaction-details__message"
+        [txMessage]="message"
+      ></app-transaction-message>
+
+      <div
+        class="transaction-details__divider"
+        *ngIf="!last"
+      ></div>
+    </ng-container>
   </ng-container>
 </app-info-card>
 

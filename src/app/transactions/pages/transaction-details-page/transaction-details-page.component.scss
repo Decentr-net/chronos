@@ -32,6 +32,10 @@
 
 .transaction-details__message {
   margin-top: $grid-step * 2;
+
+  &:nth-child(n-1) {
+    margin-bottom: $grid-step * 2;
+  }
 }
 
 .transaction-details__divider {
