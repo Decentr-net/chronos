@@ -1,0 +1,16 @@
+<div
+  class="ban-details__status"
+  appTypeface="header-3"
+>
+  {{ details.ban ? 'Banned' : 'Unbanned' }}
+</div>
+
+<app-transfer-details>
+  <ng-template [appTransferDetailsFrom]="'Owner'">
+    {{ details.owner }}
+  </ng-template>
+
+  <ng-template [appTransferDetailsTo]="'Address'">
+    {{ details.address }}
+  </ng-template>
+</app-transfer-details>

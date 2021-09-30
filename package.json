@@ -1,6 +1,6 @@
 {
   "name": "chronos",
-  "version": "1.1.1",
+  "version": "1.2.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -26,7 +26,7 @@
     "@angular/router": "~12.1.1",
     "@ngneat/svg-icon": "^3.1.0",
     "@ngneat/until-destroy": "^8.0.4",
-    "decentr-js": "^2.4.3",
+    "decentr-js": "^2.4.5",
     "highcharts": "^9.0.1",
     "highcharts-angular": "^2.10.0",
     "ngx-google-analytics": "^11.0.0",
