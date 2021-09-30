@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, ReplaySubject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { combineLatest, Observable, of, ReplaySubject } from 'rxjs';
+import { distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import {
   Network,
   NetworkSelectorService as BaseNetworkSelectorService,
   NetworkSelectorTranslations,
 } from '@shared/components/network-selector';
+import { ConfigurationApiService } from '../configuration';
 import { Configuration } from '../configuration';
-import { ConfigurationApiService } from '@core/services/configuration/configuration-api.service';
 
 const NETWORK_TRANSLATIONS: Record<keyof Configuration['networks'], string> = {
   mainnet: 'Decentr Main Network',
@@ -17,6 +19,7 @@ const NETWORK_TRANSLATIONS: Record<keyof Configuration['networks'], string> = {
 
 const ACTIVE_NETWORK_STORAGE_KEY = 'activeNetwork';
 
+@UntilDestroy()
 @Injectable({
   providedIn: 'root',
 })
@@ -24,9 +27,26 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
   public networkId: ReplaySubject<Network['id']> = new ReplaySubject(1);
 
   constructor(
+    private activatedRoute: ActivatedRoute,
     private configurationService: ConfigurationApiService,
   ) {
     super();
+
+    combineLatest([
+      activatedRoute.queryParamMap.pipe(
+        map((paramMap) => paramMap.get('networkId')),
+        distinctUntilChanged(),
+      ),
+      this.getNetworks().pipe(
+        map((networks) => networks.map(({ id }) => id)),
+      ),
+      this.getActiveNetworkId(),
+    ]).pipe(
+      filter(([specifiedNetworkId, networkIds, activeNetworkId]) => {
+        return activeNetworkId !== specifiedNetworkId && networkIds.includes(specifiedNetworkId);
+      }),
+      untilDestroyed(this),
+    ).subscribe(([specifiedNetworkId]) => this.setActiveNetworkId(specifiedNetworkId));
 
     const activeNetworkId = localStorage.getItem(ACTIVE_NETWORK_STORAGE_KEY);
 
