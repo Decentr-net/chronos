@@ -20,6 +20,8 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
     [StdTxMessageType.CosmosUnjail]: 'Msg Unjail',
     [StdTxMessageType.CommunitySetLike]: 'Set Like',
     [StdTxMessageType.CommunityUnfollow]: 'Msg Unfollow',
+    [StdTxMessageType.OperationsBanAccount]: 'Ban Account',
+    [StdTxMessageType.OperationsMint]: 'Mint',
     [StdTxMessageType.OperationsDistributeRewards]: 'Distribute Rewards',
     [StdTxMessageType.OperationsResetAccount]: 'Reset Account',
 

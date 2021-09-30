@@ -5,6 +5,8 @@ import { StdTxMessageType } from 'decentr-js';
 
 import { messageTypeIcons } from '@shared/svg-icons/message-type';
 
+const DEFAULT_ICON = 'transaction';
+
 const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CommunityCreatePost]: 'create-post',
   [StdTxMessageType.CommunityDeletePost]: 'delete-post',
@@ -19,6 +21,8 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CosmosUnjail]: 'unjail',
   [StdTxMessageType.CommunitySetLike]: 'set-like',
   [StdTxMessageType.CommunityUnfollow]: 'unfollow',
+  [StdTxMessageType.OperationsBanAccount]: DEFAULT_ICON,
+  [StdTxMessageType.OperationsMint]: DEFAULT_ICON,
   [StdTxMessageType.OperationsDistributeRewards]: 'distribute-rewards',
   [StdTxMessageType.OperationsResetAccount]: 'reset-account',
 
@@ -39,8 +43,6 @@ export class TransactionMessageTypeIconComponent {
 
   @Input() public size: keyof SVG_CONFIG['sizes'] = 'lg';
 
-  public messageTypeIconMap: Record<StdTxMessageType, string> = MESSAGE_TYPE_ICON_MAP;
-
   constructor(
     private svgIconRegistry: SvgIconRegistry,
   ) {
@@ -48,6 +50,6 @@ export class TransactionMessageTypeIconComponent {
   }
 
   public get icon(): string {
-    return MESSAGE_TYPE_ICON_MAP[this.messageType] || 'transaction';
+    return MESSAGE_TYPE_ICON_MAP[this.messageType] || DEFAULT_ICON;
   }
 }

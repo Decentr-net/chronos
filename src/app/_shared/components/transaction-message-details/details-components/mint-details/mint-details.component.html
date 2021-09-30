@@ -1,0 +1,9 @@
+<app-details-table>
+  <ng-template [appDetailsTableCellDef]="'Amount'">
+    {{ +details.coin.amount | numberFormat : null : true }} {{ details.coin.denom }}
+  </ng-template>
+
+  <ng-template [appDetailsTableCellDef]="'Owner'">
+    {{ details.owner }}
+  </ng-template>
+</app-details-table>

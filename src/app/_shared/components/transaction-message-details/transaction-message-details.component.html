@@ -1,4 +1,14 @@
 <ng-container [ngSwitch]="message.type">
+  <app-ban-details
+    *ngSwitchCase="messageType.OperationsBanAccount"
+    [details]="message.value"
+  ></app-ban-details>
+
+  <app-mint-details
+    *ngSwitchCase="messageType.OperationsMint"
+    [details]="message.value"
+  ></app-mint-details>
+
   <app-distribute-rewards-details
     *ngSwitchCase="messageType.OperationsDistributeRewards"
     [details]="message.value"
