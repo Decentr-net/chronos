@@ -18,6 +18,7 @@ const NETWORK_TRANSLATIONS: Record<keyof Configuration['networks'], string> = {
 };
 
 const ACTIVE_NETWORK_STORAGE_KEY = 'activeNetwork';
+const NETWORK_ID_QUERY_PARAM = 'networkId';
 
 @UntilDestroy()
 @Injectable({
@@ -34,7 +35,7 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
 
     combineLatest([
       activatedRoute.queryParamMap.pipe(
-        map((paramMap) => paramMap.get('networkId')),
+        map((paramMap) => paramMap.get(NETWORK_ID_QUERY_PARAM)),
         distinctUntilChanged(),
       ),
       this.getNetworks().pipe(
@@ -46,7 +47,9 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
         return activeNetworkId !== specifiedNetworkId && networkIds.includes(specifiedNetworkId);
       }),
       untilDestroyed(this),
-    ).subscribe(([specifiedNetworkId]) => this.setActiveNetworkId(specifiedNetworkId));
+    ).subscribe(([specifiedNetworkId]) => {
+      this.setActiveNetworkId(specifiedNetworkId, false);
+    });
 
     const activeNetworkId = localStorage.getItem(ACTIVE_NETWORK_STORAGE_KEY);
 
@@ -74,6 +77,19 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
   public setActiveNetworkId(networkId: Network['id'], reload = true): void {
     this.networkId.next(networkId);
     localStorage.setItem(ACTIVE_NETWORK_STORAGE_KEY, networkId);
+
+    const urlParams = new URLSearchParams(location.search);
+    const oldUrlParamsString = urlParams.toString();
+    urlParams.delete(NETWORK_ID_QUERY_PARAM);
+    const urlParamsString = urlParams.toString();
+
+    const networkParamChanged =  oldUrlParamsString !== urlParamsString;
+
+    if (networkParamChanged) {
+      location.href = location.origin + location.pathname + (urlParamsString && `?${urlParamsString}`);
+      return;
+    }
+
     reload && location.reload();
   }
 
