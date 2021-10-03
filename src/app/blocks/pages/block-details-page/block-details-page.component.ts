@@ -11,7 +11,6 @@ import { svgArrowLeftIcon } from '@shared/svg-icons/arrow-left';
 import { svgExpandLeftIcon } from '@shared/svg-icons/expand-left';
 import { svgExpandRightIcon } from '@shared/svg-icons/expand-right';
 import { BlocksService } from '@core/services/blocks';
-import { TransactionsService } from '@core/services/transactions';
 import { AppRoute } from '../../../app-route';
 
 @UntilDestroy()
@@ -38,7 +37,6 @@ export class BlockDetailsPageComponent implements OnInit {
     private changeDetectorRef: ChangeDetectorRef,
     private router: Router,
     private svgIconRegistry: SvgIconRegistry,
-    private transactionsService: TransactionsService,
   ) {
     svgIconRegistry.register([
       svgArrowLeftIcon,
@@ -50,11 +48,10 @@ export class BlockDetailsPageComponent implements OnInit {
   public ngOnInit(): void {
     const height$ = this.activatedRoute.params.pipe(
       pluck('blockHeight'),
-      map((blockHeight) => +blockHeight),
     );
 
     this.blockDetails$ = height$.pipe(
-      switchMap((height) => this.blocksService.getBlockByHeight(height.toString())),
+      switchMap((height) => this.blocksService.getBlockByHeight(height)),
       catchError(() => {
         this.router.navigate(['/', AppRoute.Empty], {
           skipLocationChange: true,
@@ -68,9 +65,7 @@ export class BlockDetailsPageComponent implements OnInit {
     );
 
     this.blockTxs$ = height$.pipe(
-      switchMap((height) => this.transactionsService.searchTransactions({ txMinHeight: height, txMaxHeight: height })),
-      map((transactions) => transactions.txs),
-      catchError(() => EMPTY),
+      switchMap((height) => this.blocksService.getBlockTransactions(height)),
     );
 
     height$.pipe(
@@ -80,7 +75,7 @@ export class BlockDetailsPageComponent implements OnInit {
       )),
       untilDestroyed(this),
     ).subscribe(([latestBlockHeight, height]) => {
-      this.nextBlockHeight = height === latestBlockHeight ? undefined : height + 1;
+      this.nextBlockHeight = height === latestBlockHeight ? undefined : +height + 1;
       this.previousBlockHeight = height - 1 || undefined;
 
       this.changeDetectorRef.markForCheck();
