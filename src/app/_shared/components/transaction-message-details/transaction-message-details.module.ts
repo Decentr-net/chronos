@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { BreakpointModule } from '@shared/directives/breakpoint';
@@ -21,6 +22,7 @@ import { TRANSACTION_MESSAGE_DETAILS_COMPONENTS } from './details-components';
     CommonModule,
     DetailsTableModule,
     LinkModule,
+    NgxJsonViewerModule,
     NumberFormatModule,
     TransferDetailsModule,
     TypefaceModule,

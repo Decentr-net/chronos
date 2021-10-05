@@ -83,4 +83,10 @@
     *ngSwitchCase="messageType.CosmosDeposit"
     [details]="message.value"
   ></app-deposit-details>
+
+  <ngx-json-viewer
+    *ngSwitchDefault
+    [json]="message.value"
+    [expanded]="false"
+  ></ngx-json-viewer>
 </ng-container>
