@@ -8,13 +8,10 @@
   display: flex;
 }
 
-.validators-table__voting-power {
-  align-items: flex-end;
-  display: flex;
-  flex-direction: column;
-  max-width: max-content;
-}
-
 .validators-table__voting-power-percent {
   color: $color-grey;
+}
+
+.validators-table__voting-power-percent-loading {
+  display: flex;
 }
