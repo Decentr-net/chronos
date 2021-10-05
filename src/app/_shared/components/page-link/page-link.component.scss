@@ -1,0 +1,19 @@
+@import 'variables';
+
+:host {
+  display: inline-flex;
+}
+
+.page-link__link {
+  align-items: center;
+  background-color: $color-background;
+  border-radius: $border-radius;
+  color: $color-grey;
+  cursor: pointer;
+  display: inline-flex;
+  padding: $grid-step;
+
+  &:hover {
+    color: $color-dark-grey;
+  }
+}

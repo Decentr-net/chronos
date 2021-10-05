@@ -52,6 +52,10 @@
   word-break: break-word;
 }
 
+.block-details__page-link {
+  margin-left: $grid-step * 2;
+}
+
 .block-details__divider {
   background-color: $color-outlines;
   height: 2px;

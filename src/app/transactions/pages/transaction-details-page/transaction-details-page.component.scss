@@ -8,20 +8,6 @@
   margin: 0 $grid-step * 2;
 }
 
-.transaction-details__link {
-  align-items: center;
-  background-color: $color-background;
-  border-radius: $border-radius;
-  color: $color-grey;
-  cursor: pointer;
-  display: inline-flex;
-  padding: $grid-step;
-
-  &:hover {
-    color: $color-dark-grey;
-  }
-}
-
 .transaction-details__loading {
   width: 100%;
 }
@@ -29,6 +15,10 @@
 .transaction-details__hash {
   margin-bottom: $grid-step * 3;
   word-break: break-word;
+}
+
+.transaction-details__page-link {
+  margin-left: $grid-step * 2;
 }
 
 .transaction-details__details-table {

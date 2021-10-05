@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Block, Transaction } from 'decentr-js';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, map, pluck, switchMap } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, pluck, switchMap, tap } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -11,6 +11,9 @@ import { svgArrowLeftIcon } from '@shared/svg-icons/arrow-left';
 import { svgExpandLeftIcon } from '@shared/svg-icons/expand-left';
 import { svgExpandRightIcon } from '@shared/svg-icons/expand-right';
 import { BlocksService } from '@core/services/blocks';
+import { NetworkSelectorService } from '@core/services/network-selector';
+import { svgCheckIcon } from '@shared/svg-icons/check';
+import { svgLinkIcon } from '@shared/svg-icons/link';
 import { AppRoute } from '../../../app-route';
 
 @UntilDestroy()
@@ -30,18 +33,24 @@ export class BlockDetailsPageComponent implements OnInit {
   public isTablet$: Observable<boolean>;
   public breakpoint: typeof Breakpoint = Breakpoint;
 
+  public pageLink$: Observable<string>;
+  public pageLinkIcon: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private blocksService: BlocksService,
     private breakpointService: BreakpointService,
     private changeDetectorRef: ChangeDetectorRef,
+    private networkSelectorService: NetworkSelectorService,
     private router: Router,
     private svgIconRegistry: SvgIconRegistry,
   ) {
     svgIconRegistry.register([
       svgArrowLeftIcon,
+      svgCheckIcon,
       svgExpandLeftIcon,
       svgExpandRightIcon,
+      svgLinkIcon,
     ]);
   }
 
@@ -81,6 +90,20 @@ export class BlockDetailsPageComponent implements OnInit {
       this.changeDetectorRef.markForCheck();
     });
 
+    this.pageLink$ = this.activatedRoute.params.pipe(
+      distinctUntilChanged(),
+      switchMap(() => this.networkSelectorService.getNetworkRelatedLink()),
+      tap(() => this.pageLinkIcon = svgLinkIcon.name),
+    );
+
     this.isTablet$ = this.breakpointService.observe(Breakpoint.Tablet);
+  }
+
+  public onPageLinkCopied(): void {
+    this.pageLinkIcon = svgCheckIcon.name;
+  }
+
+  public onPageLinkLeave(): void {
+    this.pageLinkIcon = svgLinkIcon.name;
   }
 }
