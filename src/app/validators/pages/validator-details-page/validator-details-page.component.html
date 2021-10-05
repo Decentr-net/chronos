@@ -49,6 +49,17 @@
         {{ validatorDetails.description.website || '-' }}
       </ng-template>
 
+      <ng-template [appDetailsTableCellDef]="'Voting power'">
+        {{ validatorDetails.tokens / 1000000 | numberFormat : '1.0-0' : true }}
+
+        <div
+          class="validator-details__details-table__voting-power-percent"
+          appTypeface="caption"
+        >
+          {{ validatorDetails.tokens / (pool$ | async)?.bonded_tokens | percent : '1.0-2' }}
+        </div>
+      </ng-template>
+
       <ng-template [appDetailsTableCellDef]="'Commission'">
         {{ validatorDetails.commission.commission_rates.rate | percent }}
       </ng-template>
