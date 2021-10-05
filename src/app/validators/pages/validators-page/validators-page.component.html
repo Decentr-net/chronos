@@ -8,6 +8,7 @@
     ngProjectAs="[card-body]"
     *ngIf="validators$ | async as validators; else tablesLoading;"
     [data]="validators"
+    [pool]="pool$ | async"
   ></app-validators-table>
 </app-info-card>
 

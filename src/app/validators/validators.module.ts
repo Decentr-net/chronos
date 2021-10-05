@@ -7,6 +7,7 @@ import { BreakpointModule } from '@shared/directives/breakpoint';
 import { ButtonBackModule } from '@shared/components/button-back';
 import { DataTableModule } from '@shared/components/data-table';
 import { DetailsTableModule } from '@shared/components/details-table';
+import { NumberFormatModule } from '@shared/pipes/number-format';
 import { InfoCardModule } from '@shared/components/info-card';
 import { TooltipModule } from '@shared/components/tooltip';
 import { TypefaceModule } from '@shared/directives/typeface';
@@ -23,6 +24,7 @@ import { ValidatorsRoutingModule } from './validators-routing.module';
     CommonModule,
     InfoCardModule,
     NgxSkeletonLoaderModule,
+    NumberFormatModule,
     SvgIconsModule,
     TooltipModule,
     TypefaceModule,

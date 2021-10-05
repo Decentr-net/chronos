@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Validator, ValidatorStatus } from 'decentr-js';
+import { Pool, Validator, ValidatorStatus } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { StakingService } from '@core/services/staking';
@@ -13,6 +13,7 @@ import { StakingService } from '@core/services/staking';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidatorsPageComponent implements OnInit {
+  public pool$: Observable<Pool>;
   public validators$: Observable<Validator[]>;
 
   public breakpoint: typeof Breakpoint = Breakpoint;
@@ -23,6 +24,8 @@ export class ValidatorsPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.pool$ = this.stakingService.getPool();
+
     this.validators$ = forkJoin([
       this.stakingService.getValidators(),
       this.stakingService.getValidators({ status: ValidatorStatus.Unbonding }),
