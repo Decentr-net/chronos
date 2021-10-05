@@ -17,6 +17,7 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CosmosEditValidator]: 'edit-validator',
   [StdTxMessageType.CosmosJail]: 'jail',
   [StdTxMessageType.CosmosDelegate]: 'delegate',
+  [StdTxMessageType.CosmosDeposit]: DEFAULT_ICON,
   [StdTxMessageType.CosmosSend]: 'send',
   [StdTxMessageType.CosmosUnjail]: 'unjail',
   [StdTxMessageType.CommunitySetLike]: 'set-like',

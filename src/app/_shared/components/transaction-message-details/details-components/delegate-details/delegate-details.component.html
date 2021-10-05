@@ -1,0 +1,16 @@
+<div
+  class="delegate-details__amount"
+  [appTypeface]="(isTablet$ | async) ? 'header-4' : 'header-3'"
+>
+  {{ +details.amount.amount / 1000000 | numberFormat : null : true }} DEC
+</div>
+
+<app-transfer-details>
+  <ng-template [appTransferDetailsFrom]="'Delegator'">
+    {{ details.delegator_address }}
+  </ng-template>
+
+  <ng-template [appTransferDetailsTo]="'Validator'">
+    {{ details.validator_address }}
+  </ng-template>
+</app-transfer-details>

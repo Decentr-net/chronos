@@ -1,7 +1,9 @@
 import { BanDetailsComponent } from './ban-details';
 import { CreatePostDetailsComponent } from './create-post-details';
 import { CreateValidatorDetailsComponent } from './create-validator-details';
+import { DelegateDetailsComponent } from './delegate-details';
 import { DeletePostDetailsComponent } from './delete-post-details';
+import { DepositDetailsComponent } from './deposit-details';
 import { DistributeRewardsDetailsComponent } from './distribute-rewards-details';
 import { FollowDetailsComponent } from './follow-details';
 import { MintDetailsComponent } from './mint-details';
@@ -17,7 +19,9 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   BanDetailsComponent,
   CreatePostDetailsComponent,
   CreateValidatorDetailsComponent,
+  DelegateDetailsComponent,
   DeletePostDetailsComponent,
+  DepositDetailsComponent,
   DistributeRewardsDetailsComponent,
   FollowDetailsComponent,
   MintDetailsComponent,

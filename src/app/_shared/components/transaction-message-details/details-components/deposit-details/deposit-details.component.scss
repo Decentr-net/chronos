@@ -1,0 +1,9 @@
+@import 'variables';
+
+:host {
+  display: block;
+}
+
+.deposit-details__amount {
+  margin-bottom: $grid-step * 2;
+}
