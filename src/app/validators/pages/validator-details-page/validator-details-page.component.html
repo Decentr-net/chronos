@@ -46,7 +46,7 @@
 
     <app-details-table class="validator-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Website'">
-        {{ validatorDetails.description.website || '-' }}
+        <a [appLink]="validatorDetails.description.website"></a>
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Voting power'">
