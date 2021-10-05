@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, mergeMap } from 'rxjs/operators';
-import { Validator } from 'decentr-js';
+import { Pool, Validator } from 'decentr-js';
 
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { StakingService } from '@core/services/staking';
@@ -15,6 +15,7 @@ import { AppRoute } from '../../../app-route';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidatorDetailsPageComponent implements OnInit {
+  public pool$: Observable<Pool>;
   public validatorDetails$: Observable<Validator>;
 
   public isTablet$: Observable<boolean>;
@@ -29,6 +30,8 @@ export class ValidatorDetailsPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.pool$ = this.stakingService.getPool();
+
     this.validatorDetails$ = this.activatedRoute.params.pipe(
       mergeMap((params) => this.stakingService.getValidatorByAddress(params.operatorAddress)),
       catchError(() => {

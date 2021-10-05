@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@angular/core';
-import { Validator } from 'decentr-js';
+import { Pool, Validator } from 'decentr-js';
 
 import { AppRoute } from '../../../app-route';
 
@@ -11,6 +11,7 @@ import { AppRoute } from '../../../app-route';
 })
 export class ValidatorsTableComponent {
   @Input() data: Validator[];
+  @Input() pool: Pool;
 
   public validatorRoute: AppRoute = AppRoute.Validators;
 

@@ -7,3 +7,14 @@
 .validators-table__validator-status {
   display: flex;
 }
+
+.validators-table__voting-power {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  max-width: max-content;
+}
+
+.validators-table__voting-power-percent {
+  color: $color-grey;
+}

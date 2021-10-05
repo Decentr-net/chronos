@@ -42,3 +42,7 @@
 .validator-details__details-table {
   margin-top: $grid-step * 2;
 }
+
+.validator-details__details-table__voting-power-percent {
+  color: $color-grey;
+}
