@@ -4,8 +4,22 @@
   display: block;
 }
 
-.transaction-details__back-link {
-  margin-right: $grid-step * 2;
+.transaction-details__title {
+  margin: 0 $grid-step * 2;
+}
+
+.transaction-details__link {
+  align-items: center;
+  background-color: $color-background;
+  border-radius: $border-radius;
+  color: $color-grey;
+  cursor: pointer;
+  display: inline-flex;
+  padding: $grid-step;
+
+  &:hover {
+    color: $color-dark-grey;
+  }
 }
 
 .transaction-details__loading {

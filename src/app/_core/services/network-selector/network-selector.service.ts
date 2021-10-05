@@ -9,6 +9,7 @@ import {
   NetworkSelectorService as BaseNetworkSelectorService,
   NetworkSelectorTranslations,
 } from '@shared/components/network-selector';
+import { getLocalLinkWithParams } from '@shared/utils/document';
 import { ConfigurationApiService } from '../configuration';
 import { Configuration } from '../configuration';
 
@@ -83,14 +84,24 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
     urlParams.delete(NETWORK_ID_QUERY_PARAM);
     const urlParamsString = urlParams.toString();
 
-    const networkParamChanged =  oldUrlParamsString !== urlParamsString;
+    const networkParamChanged = oldUrlParamsString !== urlParamsString;
 
     if (networkParamChanged) {
-      location.href = location.origin + location.pathname + (urlParamsString && `?${urlParamsString}`);
+      location.href = getLocalLinkWithParams(urlParamsString);
       return;
     }
 
     reload && location.reload();
+  }
+
+  public getNetworkRelatedLink(): Observable<string> {
+    return this.networkId.pipe(
+      map((networkIdValue) => {
+        const urlParams = new URLSearchParams(location.search);
+        urlParams.set(NETWORK_ID_QUERY_PARAM, networkIdValue);
+        return getLocalLinkWithParams(urlParams.toString());
+      }),
+    );
   }
 
   public getTranslations(): Observable<NetworkSelectorTranslations> {

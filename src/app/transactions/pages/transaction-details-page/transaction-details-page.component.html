@@ -1,11 +1,25 @@
 <app-info-card [contentDivider]="true" [removeBorderBreakpoint]="breakpoint.Mobile">
   <ng-container ngProjectAs="[card-title]">
     <a
-      class="transaction-details__back-link"
       app-button-back
       [routerLink]="['../']"
     ></a>
-    Transaction details
+
+    <span class="transaction-details__title">
+      Transaction details
+    </span>
+
+    <span
+      class="transaction-details__link"
+      [cdkCopyToClipboard]="pageLink$ | async"
+      (cdkCopyToClipboardCopied)="onPageLinkCopied()"
+      [appTooltip]="'Copy the page link'"
+    >
+      <svg-icon
+        [key]="pageLinkIcon$ | async"
+        size="lg"
+      ></svg-icon>
+    </span>
   </ng-container>
 
   <ng-container
