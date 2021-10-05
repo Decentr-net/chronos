@@ -1,7 +1,8 @@
 import { ComponentRef, Directive, ElementRef, Input, OnDestroy, OnInit, ViewContainerRef } from '@angular/core';
+import { Overlay, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { fromEvent } from 'rxjs';
-import { Overlay, OverlayPositionBuilder, OverlayRef } from '@angular/cdk/overlay';
+import { filter } from 'rxjs/operators';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { TooltipComponent } from '@shared/components/tooltip/tooltip.component';
@@ -25,6 +26,7 @@ export class TooltipDirective implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     fromEvent(this.elementRef.nativeElement, 'mouseenter').pipe(
+      filter(() => !this.overlayRef),
       untilDestroyed(this),
     ).subscribe(() => {
       const positionStrategy = this.overlayPositionBuilder
