@@ -4,16 +4,24 @@
   display: inline-flex;
 }
 
-.page-link__link {
+.page-link {
   align-items: center;
   background-color: $color-background;
   border-radius: $border-radius;
   color: $color-grey;
   cursor: pointer;
   display: inline-flex;
-  padding: $grid-step;
+  padding: $grid-step * 1.5 $grid-step * 3 $grid-step * 1.5 $grid-step * 2;
 
   &:hover {
     color: $color-dark-grey;
   }
+}
+
+.page-link__icon {
+  margin-right: $grid-step;
+}
+
+.page-link__label {
+  font-weight: 500;
 }

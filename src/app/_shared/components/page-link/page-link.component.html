@@ -1,12 +1,19 @@
-<span
-  class="page-link__link"
+<div
+  class="page-link"
   [cdkCopyToClipboard]="pageLink$ | async"
   (cdkCopyToClipboardCopied)="onPageLinkCopied()"
-  [appTooltip]="'Copy the page link'"
   (mouseleave)="onPageLinkLeave()"
 >
   <svg-icon
+    class="page-link__icon"
     [key]="pageLinkIcon"
     size="lg"
   ></svg-icon>
-</span>
+
+  <span
+    class="page-link__label"
+    appTypeface="paragraph"
+  >
+    Copy the page link
+  </span>
+</div>

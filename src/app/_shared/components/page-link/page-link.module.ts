@@ -3,8 +3,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CommonModule } from '@angular/common';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
-import { TooltipModule } from '@shared/components/tooltip';
 import { PageLinkComponent } from './page-link.component';
+import { TypefaceModule } from '@shared/directives/typeface';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { PageLinkComponent } from './page-link.component';
     ClipboardModule,
     CommonModule,
     SvgIconsModule,
-    TooltipModule,
+    TypefaceModule,
   ],
 })
 export class PageLinkModule {

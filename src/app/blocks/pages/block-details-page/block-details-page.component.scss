@@ -53,7 +53,8 @@
 }
 
 .block-details__page-link {
-  margin-left: $grid-step * 2;
+  display: block;
+  margin-top: $grid-step;
 }
 
 .block-details__divider {

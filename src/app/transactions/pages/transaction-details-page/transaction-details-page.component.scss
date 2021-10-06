@@ -18,7 +18,8 @@
 }
 
 .transaction-details__page-link {
-  margin-left: $grid-step * 2;
+  display: block;
+  margin-top: $grid-step;
 }
 
 .transaction-details__details-table {
