@@ -30,6 +30,7 @@
     "highcharts": "^9.0.1",
     "highcharts-angular": "^2.10.0",
     "ngx-google-analytics": "^11.0.0",
+    "ngx-json-viewer": "^3.0.2",
     "ngx-scrollbar": "^7.5.6",
     "ngx-skeleton-loader": "^2.9.1",
     "rxjs": "~6.5.4",
