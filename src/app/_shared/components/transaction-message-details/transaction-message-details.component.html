@@ -73,4 +73,20 @@
     *ngSwitchCase="messageType.CosmosCreateValidator"
     [details]="message.value"
   ></app-create-validator-details>
+
+  <app-delegate-details
+    *ngSwitchCase="messageType.CosmosDelegate"
+    [details]="message.value"
+  ></app-delegate-details>
+
+  <app-deposit-details
+    *ngSwitchCase="messageType.CosmosDeposit"
+    [details]="message.value"
+  ></app-deposit-details>
+
+  <ngx-json-viewer
+    *ngSwitchDefault
+    [json]="message.value"
+    [expanded]="false"
+  ></ngx-json-viewer>
 </ng-container>

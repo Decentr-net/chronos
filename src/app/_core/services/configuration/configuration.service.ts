@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { filter, pluck, take } from 'rxjs/operators';
-import { combineLatest, Observable, ReplaySubject } from 'rxjs';
+import { combineLatest, Observable, ReplaySubject, Subscription } from 'rxjs';
 
 import { NetworkSelectorService } from '../network-selector';
 import { Network } from './configuration.definitions';
@@ -11,7 +11,10 @@ import { ConfigurationApiService } from './configuration-api.service';
 })
 export class ConfigurationService {
   private configuration$: ReplaySubject<Network> = new ReplaySubject(1);
+
   private pendingConfiguration: boolean;
+
+  private configSubscription: Subscription = Subscription.EMPTY;
 
   constructor(
     private configurationApiService: ConfigurationApiService,
@@ -22,8 +25,9 @@ export class ConfigurationService {
   private getConfig(): Observable<Network> {
     if (!this.pendingConfiguration) {
       this.pendingConfiguration = true;
+      this.configSubscription.unsubscribe();
 
-      combineLatest([
+      this.configSubscription = combineLatest([
         this.configurationApiService.getConfig(),
         this.networkSelectorService.getActiveNetworkId(),
       ]).subscribe(

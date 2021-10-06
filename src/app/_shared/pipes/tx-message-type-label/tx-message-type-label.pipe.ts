@@ -16,6 +16,7 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
     [StdTxMessageType.CosmosEditValidator]: 'Edit Validator',
     [StdTxMessageType.CosmosJail]: 'Msg Jail',
     [StdTxMessageType.CosmosDelegate]: 'Msg Delegate',
+    [StdTxMessageType.CosmosDeposit]: 'Msg Deposit',
     [StdTxMessageType.CosmosSend]: 'Msg Send',
     [StdTxMessageType.CosmosUnjail]: 'Msg Unjail',
     [StdTxMessageType.CommunitySetLike]: 'Set Like',

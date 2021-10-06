@@ -7,3 +7,11 @@
 .validators-table__validator-status {
   display: flex;
 }
+
+.validators-table__voting-power-percent {
+  color: $color-grey;
+}
+
+.validators-table__voting-power-percent-loading {
+  display: flex;
+}

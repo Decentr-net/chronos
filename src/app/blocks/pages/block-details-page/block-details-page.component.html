@@ -36,6 +36,8 @@
       [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
     >
       {{ blockDetails.block_id.hash }}
+
+      <app-page-link class="block-details__page-link"></app-page-link>
     </div>
 
     <div class="block-details__divider"></div>

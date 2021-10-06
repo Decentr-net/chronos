@@ -9,6 +9,18 @@
     {{ item.description.moniker }}
   </a>
 
+  <ng-container *dataTableColumnDef="let item; name: 'Voting power'">
+    {{ item.tokens / 1000000 | numberFormat : '1.0-0' : true }}
+
+    <div
+      *ngIf="pool; else votingPowerPercentLoading"
+      class="validators-table__voting-power-percent"
+      appTypeface="caption"
+    >
+      {{ item.tokens / pool.bonded_tokens | percent : '1.0-2' }}
+    </div>
+  </ng-container>
+
   <app-validator-status
     *dataTableColumnDef="let item; name: 'Status'"
     [status]="item.status"
@@ -19,3 +31,14 @@
     {{ item.commission.commission_rates.rate | percent }}
   </ng-container>
 </app-data-table>
+
+<ng-template #votingPowerPercentLoading>
+  <ngx-skeleton-loader
+    class="validators-table__voting-power-percent-loading"
+    [theme]="{
+      height: '16px',
+      margin: '0',
+      width: '35px'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>

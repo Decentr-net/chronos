@@ -46,7 +46,19 @@
 
     <app-details-table class="validator-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Website'">
-        {{ validatorDetails.description.website || '-' }}
+        <a [appLink]="validatorDetails.description.website"></a>
+      </ng-template>
+
+      <ng-template [appDetailsTableCellDef]="'Voting power'">
+        {{ validatorDetails.tokens / 1000000 | numberFormat : '1.0-0' : true }}
+
+        <div
+          *ngIf="pool$ | async as pool; else votingPowerPercentLoading"
+          class="validator-details__details-table__voting-power-percent"
+          appTypeface="caption"
+        >
+          {{ validatorDetails.tokens / pool.bonded_tokens | percent : '1.0-2' }}
+        </div>
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Commission'">
@@ -63,6 +75,17 @@
     [theme]="{
       height: '40px',
       width: '100%'
+    }"
+  ></ngx-skeleton-loader>
+</ng-template>
+
+<ng-template #votingPowerPercentLoading>
+  <ngx-skeleton-loader
+    class="validator-details__voting-power-percent-loading"
+    [theme]="{
+      height: '16px',
+      margin: '0',
+      width: '35px'
     }"
   ></ngx-skeleton-loader>
 </ng-template>

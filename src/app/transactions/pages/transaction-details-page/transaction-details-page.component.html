@@ -1,19 +1,26 @@
 <app-info-card [contentDivider]="true" [removeBorderBreakpoint]="breakpoint.Mobile">
   <ng-container ngProjectAs="[card-title]">
     <a
-      class="transaction-details__back-link"
       app-button-back
       [routerLink]="['../']"
     ></a>
-    Transaction details
+
+    <span class="transaction-details__title">
+      Transaction details
+    </span>
   </ng-container>
 
   <ng-container
     ngProjectAs="[card-body]"
     *ngIf="transactionDetails$ | async as transactionDetails; else tablesLoading;"
   >
-    <div class="transaction-details__hash">
-      <p [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'">{{ transactionDetails.txhash }}</p>
+    <div
+      class="transaction-details__hash"
+      [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
+    >
+      {{ transactionDetails.txhash }}
+
+      <app-page-link class="transaction-details__page-link"></app-page-link>
     </div>
 
     <div class="transaction-details__divider"></div>

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Block, BlockHeader } from 'decentr-js';
 import { forkJoin, Observable, of, timer } from 'rxjs';
-import { distinctUntilChanged, map, mergeMap, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
+import { catchError, distinctUntilChanged, map, mergeMap, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
+import { Transaction } from 'decentr-js';
 
 import { ONE_SECOND } from '@shared/utils/date';
 import { whileDocumentVisible } from '@shared/utils/document';
+import { TransactionsService } from '@core/services/transactions';
 import { BlocksApiService } from './blocks-api.service';
 
 @Injectable({
@@ -13,7 +15,12 @@ import { BlocksApiService } from './blocks-api.service';
 export class BlocksService {
   private readonly blocksCache: Map<string, Block> = new Map();
 
-  constructor(private blocksApiService: BlocksApiService) {
+  private readonly blockTransactionsCache: Map<BlockHeader['height'], Transaction[]> = new Map();
+
+  constructor(
+    private blocksApiService: BlocksApiService,
+    private transactionsService: TransactionsService,
+  ) {
   }
 
   public getBlockByHeight(height: BlockHeader['height']): Observable<Block> {
@@ -53,5 +60,17 @@ export class BlocksService {
       .fill(null)
       .map((_, index) => this.getBlockByHeight((+currentHeight - index).toString())),
     );
+  }
+
+  public getBlockTransactions(height: BlockHeader['height']): Observable<Transaction[]> {
+    const cachedTransactions = this.blockTransactionsCache.get(height);
+
+    return cachedTransactions
+      ? of(cachedTransactions)
+      : this.transactionsService.searchTransactions({ txMinHeight: +height, txMaxHeight: +height }).pipe(
+        map((transactionsResponse) => transactionsResponse.txs),
+        tap((transactions) => this.blockTransactionsCache.set(height, transactions)),
+        catchError(() => of([])),
+      );
   }
 }
