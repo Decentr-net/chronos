@@ -18,6 +18,7 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
     [StdTxMessageType.CosmosDelegate]: 'Msg Delegate',
     [StdTxMessageType.CosmosDeposit]: 'Msg Deposit',
     [StdTxMessageType.CosmosSend]: 'Msg Send',
+    [StdTxMessageType.CosmosUndelegate]: 'Msg Undelegate',
     [StdTxMessageType.CosmosUnjail]: 'Msg Unjail',
     [StdTxMessageType.CommunitySetLike]: 'Set Like',
     [StdTxMessageType.CommunityUnfollow]: 'Msg Unfollow',

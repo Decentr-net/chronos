@@ -1,4 +1,5 @@
 import { BanDetailsComponent } from './ban-details';
+import { BeginRedelegateDetailsComponent } from './begin-redelegate-details';
 import { CreatePostDetailsComponent } from './create-post-details';
 import { CreateValidatorDetailsComponent } from './create-validator-details';
 import { DelegateDetailsComponent } from './delegate-details';
@@ -12,11 +13,13 @@ import { SendDetailsComponent } from './send-details';
 import { SetLikeDetailsComponent } from './set-like-details';
 import { SetPrivateDetailsComponent } from './set-private-details';
 import { SetPublicDetailsComponent } from './set-public-details';
+import { UndelegateDetailsComponent } from './undelegate-details';
 import { UnfollowDetailsComponent } from './unfollow-details';
 import { UnjailDetailsComponent } from './unjail-details';
 
 export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   BanDetailsComponent,
+  BeginRedelegateDetailsComponent,
   CreatePostDetailsComponent,
   CreateValidatorDetailsComponent,
   DelegateDetailsComponent,
@@ -30,6 +33,7 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   SetLikeDetailsComponent,
   SetPrivateDetailsComponent,
   SetPublicDetailsComponent,
+  UndelegateDetailsComponent,
   UnfollowDetailsComponent,
   UnjailDetailsComponent,
 ];

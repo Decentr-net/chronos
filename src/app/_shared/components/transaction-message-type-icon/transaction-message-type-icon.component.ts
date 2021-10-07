@@ -19,6 +19,7 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CosmosDelegate]: 'delegate',
   [StdTxMessageType.CosmosDeposit]: DEFAULT_ICON,
   [StdTxMessageType.CosmosSend]: 'send',
+  [StdTxMessageType.CosmosUndelegate]: 'delegate',
   [StdTxMessageType.CosmosUnjail]: 'unjail',
   [StdTxMessageType.CommunitySetLike]: 'set-like',
   [StdTxMessageType.CommunityUnfollow]: 'unfollow',
