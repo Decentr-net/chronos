@@ -1,4 +1,5 @@
 import { svgBeginRedelegateIcon } from './begin-redelegate';
+import { svgBeginUnbondingIcon } from './begin-unbonding';
 import { svgCreatePostIcon } from './create-post';
 import { svgCreateValidatorIcon } from './create-validator';
 import { svgDelegateIcon } from './delegate';
@@ -15,23 +16,4 @@ import { svgSetPublicIcon } from './set-public';
 import { svgTransactionIcon } from './transaction';
 import { svgUnfollowIcon } from './unfollow';
 import { svgUnjailIcon } from './unjail';
-
-export const messageTypeIcons = [
-  svgBeginRedelegateIcon,
-  svgCreatePostIcon,
-  svgCreateValidatorIcon,
-  svgDelegateIcon,
-  svgDeletePostIcon,
-  svgDistributeRewardsIcon,
-  svgEditValidatorIcon,
-  svgFollowIcon,
-  svgJailIcon,
-  svgResetAccountIcon,
-  svgSendIcon,
-  svgSetLikeIcon,
-  svgSetPrivateIcon,
-  svgSetPublicIcon,
-  svgTransactionIcon,
-  svgUnfollowIcon,
-  svgUnjailIcon,
-];
+export const messageTypeIcons = [svgBeginRedelegateIcon, svgBeginUnbondingIcon, svgCreatePostIcon, svgCreateValidatorIcon, svgDelegateIcon, svgDeletePostIcon, svgDistributeRewardsIcon, svgEditValidatorIcon, svgFollowIcon, svgJailIcon, svgResetAccountIcon, svgSendIcon, svgSetLikeIcon, svgSetPrivateIcon, svgSetPublicIcon, svgTransactionIcon, svgUnfollowIcon, svgUnjailIcon];

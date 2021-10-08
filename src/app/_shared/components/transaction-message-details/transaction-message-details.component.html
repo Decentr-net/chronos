@@ -84,6 +84,16 @@
     [details]="message.value"
   ></app-deposit-details>
 
+  <app-undelegate-details
+    *ngSwitchCase="messageType.CosmosUndelegate"
+    [details]="message.value"
+  ></app-undelegate-details>
+
+  <app-begin-redelegate-details
+    *ngSwitchCase="messageType.CosmosBeginRedelegate"
+    [details]="message.value"
+  ></app-begin-redelegate-details>
+
   <ngx-json-viewer
     *ngSwitchDefault
     [json]="message.value"

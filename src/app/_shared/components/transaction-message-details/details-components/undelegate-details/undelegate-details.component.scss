@@ -1,0 +1,9 @@
+@import 'variables';
+
+:host {
+  display: block;
+}
+
+.undelegate-details__amount {
+  margin-bottom: $grid-step * 2;
+}

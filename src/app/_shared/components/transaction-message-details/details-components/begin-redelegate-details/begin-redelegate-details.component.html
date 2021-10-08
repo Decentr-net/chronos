@@ -1,0 +1,24 @@
+<div
+  class="begin-delegate-details__amount"
+  [appTypeface]="(isTablet$ | async) ? 'header-4' : 'header-3'"
+>
+  {{ +details.amount.amount / 1000000 | numberFormat : null : true }} DEC
+</div>
+
+<app-details-table
+  class="begin-delegate-details__name"
+>
+  <ng-template [appDetailsTableCellDef]="'Delegator'">
+    {{ details.delegator_address }}
+  </ng-template>
+</app-details-table>
+
+<app-transfer-details>
+  <ng-template [appTransferDetailsFrom]="'Source validator'">
+    {{ details.validator_src_address }}
+  </ng-template>
+
+  <ng-template [appTransferDetailsTo]="'Destination validator'">
+    {{ details.validator_dst_address }}
+  </ng-template>
+</app-transfer-details>

@@ -4,6 +4,15 @@
   display: block;
 }
 
+.transactions-table__tx {
+  align-items: center;
+  display: inline-flex;
+}
+
+.transactions-table__tx-failed-icon {
+  margin-left: $grid-step / 2;
+}
+
 .transactions-table__type-icon {
   &:hover {
     color: $color-dark-grey;
@@ -13,4 +22,12 @@
 .transactions-table__type-label {
   display: inline-block;
   margin-left: $grid-step;
+}
+
+.mod-failed {
+  color: $color-red;
+
+  &:hover {
+    color: $color-red;
+  }
 }

@@ -1,8 +1,10 @@
 import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@angular/core';
 import { Transaction } from 'decentr-js';
+import { SvgIconRegistry } from '@ngneat/svg-icon';
 
 import { AppRoute } from '../../../app-route';
 import { Breakpoint } from '@shared/directives/breakpoint';
+import { svgWarningIcon } from '@shared/svg-icons/warning';
 
 @Component({
   selector: 'app-transactions-table',
@@ -23,4 +25,12 @@ export class TransactionsTableComponent {
   public breakpoint: typeof Breakpoint = Breakpoint;
 
   public trackByHash: TrackByFunction<Transaction> = ({}, { txhash }) => txhash;
+
+  constructor(
+    svgIconRegistry: SvgIconRegistry,
+  ) {
+    svgIconRegistry.register([
+      svgWarningIcon,
+    ]);
+  }
 }
