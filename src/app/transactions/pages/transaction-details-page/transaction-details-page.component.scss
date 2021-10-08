@@ -13,13 +13,33 @@
 }
 
 .transaction-details__hash {
-  margin-bottom: $grid-step * 3;
   word-break: break-word;
+}
+
+.transaction-details__error {
+  background-color: rgba($color-red, .08);
+  border-radius: $border-radius;
+  color: $color-red;
+  display: flex;
+  margin-top: $grid-step;
+  max-width: max-content;
+  padding: $grid-step $grid-step * 1.5;
+}
+
+.transaction-details__error-message-title {
+  font-weight: 700;
+  margin-bottom: $grid-step / 2;
+}
+
+.transaction-details__error-icon {
+  flex-shrink: 0;
+  margin-right: $grid-step;
 }
 
 .transaction-details__page-link {
   display: block;
-  margin-top: $grid-step;
+  margin-bottom: $grid-step * 3;
+  margin-top: $grid-step * 1.5;
 }
 
 .transaction-details__details-table {

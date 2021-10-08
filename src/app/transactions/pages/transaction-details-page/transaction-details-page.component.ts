@@ -2,12 +2,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, mergeMap, pluck } from 'rxjs/operators';
 import { EMPTY, Observable } from 'rxjs';
+import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { Transaction } from 'decentr-js';
 
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { NetworkSelectorService } from '@core/services/network-selector';
 import { TransactionsService } from '@core/services/transactions';
 import { AppRoute } from '../../../app-route';
+import { svgWarningIcon } from '@shared/svg-icons/warning';
 
 @Component({
   selector: 'app-transaction-details',
@@ -28,11 +30,16 @@ export class TransactionDetailsPageComponent implements OnInit {
     private breakpointService: BreakpointService,
     private networkSelectorService: NetworkSelectorService,
     private router: Router,
+    private svgIconRegistry: SvgIconRegistry,
     private transactionsService: TransactionsService,
   ) {
   }
 
   public ngOnInit(): void {
+    this.svgIconRegistry.register([
+      svgWarningIcon,
+    ]);
+
     this.transactionDetails$ = this.activatedRoute.params.pipe(
       pluck('transactionHash'),
       mergeMap((transactionHash) => this.transactionsService.getTransactionByHash(transactionHash)),

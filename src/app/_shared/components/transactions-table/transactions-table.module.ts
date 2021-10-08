@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { BreakpointModule } from '@shared/directives/breakpoint';
 import { DataTableModule } from '@shared/components/data-table';
@@ -23,6 +24,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
     DataTableModule,
     NumberFormatModule,
     RouterModule,
+    SvgIconsModule,
     TooltipModule,
     TransactionMessageTypeIconModule,
     TruncateModule,

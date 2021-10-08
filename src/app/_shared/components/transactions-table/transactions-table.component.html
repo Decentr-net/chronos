@@ -1,22 +1,33 @@
 <app-data-table [data]="data" [trackBy]="trackByHash">
   <a
     *dataTableColumnDef="let item; name: 'Hash'"
-    [attr.title]="item.txhash"
     [routerLink]="['/', appRoute.Transactions, item.txhash]"
+    class="transactions-table__tx"
   >
-    <ng-container *appBreakpoint="breakpoint.Desktop; revert true; else tabletHash">
-      {{ item.txhash | truncate : hashSize[breakpoint.Desktop] }}
-    </ng-container>
-
-    <ng-template #tabletHash>
-      <ng-container *appBreakpoint="breakpoint.Tablet; revert true; else mobileHash">
-        {{ item.txhash | truncate : hashSize[breakpoint.Tablet] }}
+    <span [attr.title]="item.txhash">
+      <ng-container *appBreakpoint="breakpoint.Desktop; revert true; else tabletHash">
+        {{ item.txhash | truncate : hashSize[breakpoint.Desktop] }}
       </ng-container>
-    </ng-template>
 
-    <ng-template #mobileHash>
-      {{ item.txhash | truncate : hashSize[breakpoint.Mobile] }}
-    </ng-template>
+      <ng-template #tabletHash>
+        <ng-container *appBreakpoint="breakpoint.Tablet; revert true; else mobileHash">
+          {{ item.txhash | truncate : hashSize[breakpoint.Tablet] }}
+        </ng-container>
+      </ng-template>
+
+      <ng-template #mobileHash>
+        {{ item.txhash | truncate : hashSize[breakpoint.Mobile] }}
+      </ng-template>
+    </span>
+
+    <svg-icon
+      *ngIf="item?.code"
+      [class.mod-failed]="item?.code"
+      class="transactions-table__tx-failed-icon"
+      key="warning"
+      size="lg"
+      appTooltip="Transaction is failed"
+    ></svg-icon>
   </a>
 
   <ng-container
