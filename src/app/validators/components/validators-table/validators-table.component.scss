@@ -4,6 +4,16 @@
   display: block;
 }
 
+.validators-table__validator {
+  align-items: center;
+  display: flex;
+}
+
+.validators-table__validator-jailed {
+  margin-left: $grid-step;
+  user-select: none;
+}
+
 .validators-table__validator-status {
   display: flex;
 }
