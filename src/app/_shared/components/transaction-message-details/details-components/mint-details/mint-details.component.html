@@ -1,6 +1,6 @@
 <app-details-table>
   <ng-template [appDetailsTableCellDef]="'Amount'">
-    {{ +details.coin.amount | numberFormat : null : true }} {{ details.coin.denom }}
+    {{ +details.coin.amount / 1000000 | numberFormat : null : true }} DEC
   </ng-template>
 
   <ng-template [appDetailsTableCellDef]="'Owner'">
