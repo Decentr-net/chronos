@@ -55,6 +55,18 @@
         </a>
       </ng-template>
 
+      <ng-template [appDetailsTableCellDef]="'Fee'">
+        {{ +transactionDetails.tx.value.fee.amount[0].amount / 1000000 | numberFormat : null : true }}
+      </ng-template>
+
+      <ng-template [appDetailsTableCellDef]="'Gas used/wanted'">
+        {{ (+transactionDetails.gas_used | numberFormat : null : true) || 0 }} /
+
+        <span class="transaction-details__gas-wanted">
+          {{ (+transactionDetails.gas_wanted | numberFormat : null : true) || 0 }}
+        </span>
+      </ng-template>
+
       <ng-template [appDetailsTableCellDef]="'Date & Time'">
         {{ transactionDetails.timestamp | date:'yyyy.MM.dd, HH:mm:ss' }}
       </ng-template>
