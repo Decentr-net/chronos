@@ -60,10 +60,10 @@
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Gas used/wanted'">
-        {{ (+transactionDetails.gas_used | numberFormat : null : true) || 0 }} /
+        {{ transactionDetails.gas_used ? (+transactionDetails.gas_used | numberFormat : null : true) : 0 }} /
 
         <span class="transaction-details__gas-wanted">
-          {{ (+transactionDetails.gas_wanted | numberFormat : null : true) || 0 }}
+          {{ transactionDetails.gas_wanted ? (+transactionDetails.gas_wanted | numberFormat : null : true) : 0 }}
         </span>
       </ng-template>
 
