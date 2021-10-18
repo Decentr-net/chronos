@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { combineLatest, Observable, of, ReplaySubject } from 'rxjs';
-import { distinctUntilChanged, filter, map } from 'rxjs/operators';
+import { distinctUntilChanged, filter, map, switchMap } from 'rxjs/operators';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import {
@@ -29,8 +29,9 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
   public networkId: ReplaySubject<Network['id']> = new ReplaySubject(1);
 
   constructor(
-    private activatedRoute: ActivatedRoute,
+    activatedRoute: ActivatedRoute,
     private configurationService: ConfigurationApiService,
+    router: Router,
   ) {
     super();
 
@@ -61,6 +62,28 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
 
       this.setActiveNetworkId(networks[0].id, false);
     });
+
+    router.events.pipe(
+      filter((event) => event instanceof NavigationEnd),
+      map((event: NavigationEnd) => event.urlAfterRedirects),
+      switchMap((url) => this.networkId.pipe(
+        map((networkId) => ({ url, networkId })),
+      )),
+      map(({ url, networkId }) => {
+        const newURLTree = router.createUrlTree([url.split('?')[0]], {
+          queryParams: {
+            [NETWORK_ID_QUERY_PARAM]: networkId,
+          },
+          queryParamsHandling: 'merge',
+        });
+
+        return { newURLTree, oldURL: url };
+      }),
+      filter(({ newURLTree, oldURL }) => newURLTree.toString() !== oldURL),
+      map(({ newURLTree }) => newURLTree),
+      switchMap((newURLTree) => router.navigateByUrl(newURLTree)),
+      untilDestroyed(this),
+    ).subscribe();
   }
 
   public getNetworks(): Observable<Network[]> {
@@ -78,19 +101,6 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
   public setActiveNetworkId(networkId: Network['id'], reload = true): void {
     this.networkId.next(networkId);
     localStorage.setItem(ACTIVE_NETWORK_STORAGE_KEY, networkId);
-
-    const urlParams = new URLSearchParams(location.search);
-    const oldUrlParamsString = urlParams.toString();
-    urlParams.delete(NETWORK_ID_QUERY_PARAM);
-    const urlParamsString = urlParams.toString();
-
-    const networkParamChanged = oldUrlParamsString !== urlParamsString;
-
-    if (networkParamChanged) {
-      location.href = getLocalLinkWithParams(urlParamsString);
-      return;
-    }
-
     reload && location.reload();
   }
 
