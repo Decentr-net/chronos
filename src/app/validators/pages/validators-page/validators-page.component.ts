@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { FormControl } from '@angular/forms';
+import { combineLatest, forkJoin, Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { Pool, Validator, ValidatorStatus } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
@@ -18,6 +19,8 @@ export class ValidatorsPageComponent implements OnInit {
 
   public breakpoint: typeof Breakpoint = Breakpoint;
 
+  public onlyBondedFormControl: FormControl = new FormControl(false);
+
   constructor(
     private stakingService: StakingService,
   ) {
@@ -26,8 +29,23 @@ export class ValidatorsPageComponent implements OnInit {
   public ngOnInit(): void {
     this.pool$ = this.stakingService.getPool();
 
-    this.validators$ = forkJoin([
-      this.stakingService.getValidators(),
+    const onlyBonded$ = this.onlyBondedFormControl.valueChanges.pipe(
+      startWith(this.onlyBondedFormControl.value),
+    );
+
+    this.validators$ = combineLatest([
+      this.getValidators(),
+      onlyBonded$,
+    ]).pipe(
+      map(([validators, onlyBonded]) => {
+        return validators.filter(({ status }) => !onlyBonded || status === ValidatorStatus.Bonded);
+      }),
+    );
+  }
+
+  private getValidators(): Observable<Validator[]> {
+    return forkJoin([
+      this.stakingService.getValidators({ status: ValidatorStatus.Bonded }),
       this.stakingService.getValidators({ status: ValidatorStatus.Unbonding }),
       this.stakingService.getValidators({ status: ValidatorStatus.Unbonded }),
     ]).pipe(

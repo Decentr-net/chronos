@@ -3,6 +3,13 @@
     Validators
   </ng-container>
 
+  <app-toggle
+    ngProjectAs="[card-show-more]"
+    [formControl]="onlyBondedFormControl"
+  >
+    Show only active
+  </app-toggle>
+
   <app-validators-table
     class="validators-page__table"
     ngProjectAs="[card-body]"
