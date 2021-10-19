@@ -9,9 +9,8 @@ import {
   NetworkSelectorService as BaseNetworkSelectorService,
   NetworkSelectorTranslations,
 } from '@shared/components/network-selector';
-import { getLocalLinkWithParams } from '@shared/utils/document';
-import { ConfigurationApiService } from '../configuration';
-import { Configuration } from '../configuration';
+import { getLocalLink, getLocalLinkWithParams } from '@shared/utils/document';
+import { Configuration, ConfigurationApiService } from '../configuration';
 
 const NETWORK_TRANSLATIONS: Record<keyof Configuration['networks'], string> = {
   mainnet: 'Decentr Main Network',
@@ -101,7 +100,10 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
   public setActiveNetworkId(networkId: Network['id'], reload = true): void {
     this.networkId.next(networkId);
     localStorage.setItem(ACTIVE_NETWORK_STORAGE_KEY, networkId);
-    reload && location.reload();
+
+    if (reload) {
+      location.href = getLocalLink({ excludeQueryParams: NETWORK_ID_QUERY_PARAM });
+    }
   }
 
   public getNetworkRelatedLink(): Observable<string> {
