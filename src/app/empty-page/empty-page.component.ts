@@ -13,6 +13,6 @@ export class EmptyPageComponent {
   constructor(
     router: Router,
   ) {
-    this.title = router.getCurrentNavigation().extras.state.title;
+    this.title = router.getCurrentNavigation()?.extras.state.title;
   }
 }
