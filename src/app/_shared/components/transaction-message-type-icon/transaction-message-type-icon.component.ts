@@ -27,6 +27,7 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CommunitySetLike]: 'set-like',
   [StdTxMessageType.CommunityUnfollow]: 'unfollow',
   [StdTxMessageType.CosmosWithdrawDelegationReward]: DEFAULT_ICON,
+  [StdTxMessageType.CosmosWithdrawValidatorCommission]: DEFAULT_ICON,
   [StdTxMessageType.OperationsBanAccount]: DEFAULT_ICON,
   [StdTxMessageType.OperationsMint]: DEFAULT_ICON,
   [StdTxMessageType.OperationsDistributeRewards]: 'distribute-rewards',

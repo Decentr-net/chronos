@@ -26,6 +26,7 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
     [StdTxMessageType.CommunitySetLike]: 'Set Like',
     [StdTxMessageType.CommunityUnfollow]: 'Unfollow',
     [StdTxMessageType.CosmosWithdrawDelegationReward]: 'Withdraw Delegation Reward',
+    [StdTxMessageType.CosmosWithdrawValidatorCommission]: 'Withdraw Validator Commission',
     [StdTxMessageType.OperationsBanAccount]: 'Ban Account',
     [StdTxMessageType.OperationsMint]: 'Mint',
     [StdTxMessageType.OperationsDistributeRewards]: 'Distribute Rewards',

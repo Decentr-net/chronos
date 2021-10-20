@@ -19,6 +19,7 @@ import { UnfollowDetailsComponent } from './unfollow-details';
 import { UnjailDetailsComponent } from './unjail-details';
 import { VoteDetailsComponent } from './vote-details';
 import { WithdrawDelegationRewardDetailsComponent } from './withdraw-delegation-reward-details';
+import { WithdrawValidatorCommissionDetailsComponent } from './withdraw-validator-commission-details';
 
 export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   BanDetailsComponent,
@@ -42,4 +43,5 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   UnjailDetailsComponent,
   VoteDetailsComponent,
   WithdrawDelegationRewardDetailsComponent,
+  WithdrawValidatorCommissionDetailsComponent,
 ];

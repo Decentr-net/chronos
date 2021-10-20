@@ -109,6 +109,11 @@
     [details]="message.value"
   ></app-withdraw-delegation-reward-details>
 
+  <app-withdraw-validator-commission-details
+    *ngSwitchCase="messageType.CosmosWithdrawValidatorCommission"
+    [details]="message.value"
+  ></app-withdraw-validator-commission-details>
+
   <ngx-json-viewer
     *ngSwitchDefault
     [json]="message.value"
