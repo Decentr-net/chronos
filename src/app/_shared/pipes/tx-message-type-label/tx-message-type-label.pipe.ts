@@ -9,19 +9,23 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
   public readonly messageTypeLabelMap: Record<StdTxMessageType, string> = {
     [StdTxMessageType.CommunityCreatePost]: 'Create Post',
     [StdTxMessageType.CommunityDeletePost]: 'Delete Post',
-    [StdTxMessageType.CommunityFollow]: 'Msg Follow',
-    [StdTxMessageType.CosmosBeginRedelegate]: 'Msg Begin Redelegate',
-    [StdTxMessageType.CosmosBeginUnbonding]: 'Msg Begin Unbonding',
+    [StdTxMessageType.CommunityFollow]: 'Follow',
+    [StdTxMessageType.CosmosBeginRedelegate]: 'Begin Redelegate',
+    [StdTxMessageType.CosmosBeginUnbonding]: 'Begin Unbonding',
     [StdTxMessageType.CosmosCreateValidator]: 'Create Validator',
     [StdTxMessageType.CosmosEditValidator]: 'Edit Validator',
-    [StdTxMessageType.CosmosJail]: 'Msg Jail',
-    [StdTxMessageType.CosmosDelegate]: 'Msg Delegate',
-    [StdTxMessageType.CosmosDeposit]: 'Msg Deposit',
-    [StdTxMessageType.CosmosSend]: 'Msg Send',
-    [StdTxMessageType.CosmosUndelegate]: 'Msg Undelegate',
-    [StdTxMessageType.CosmosUnjail]: 'Msg Unjail',
+    [StdTxMessageType.CosmosFundCommunityPool]: 'Fund Community Pool',
+    [StdTxMessageType.CosmosDelegate]: 'Delegate',
+    [StdTxMessageType.CosmosDeposit]: 'Deposit',
+    [StdTxMessageType.CosmosJail]: 'Jail',
+    [StdTxMessageType.CosmosModifyWithdrawAddress]: 'Modify Withdraw Address',
+    [StdTxMessageType.CosmosSend]: 'Send',
+    [StdTxMessageType.CosmosUndelegate]: 'Undelegate',
+    [StdTxMessageType.CosmosUnjail]: 'Unjail',
+    [StdTxMessageType.CosmosVote]: 'Vote',
     [StdTxMessageType.CommunitySetLike]: 'Set Like',
-    [StdTxMessageType.CommunityUnfollow]: 'Msg Unfollow',
+    [StdTxMessageType.CommunityUnfollow]: 'Unfollow',
+    [StdTxMessageType.CosmosWithdrawDelegationReward]: 'Withdraw Delegation Reward',
     [StdTxMessageType.OperationsBanAccount]: 'Ban Account',
     [StdTxMessageType.OperationsMint]: 'Mint',
     [StdTxMessageType.OperationsDistributeRewards]: 'Distribute Rewards',
@@ -31,6 +35,9 @@ export class TxMessageTypeLabelPipe implements PipeTransform {
     [StdTxMessageType.PDVDistributeRewards]: 'Distribute Rewards',
     [StdTxMessageType.ProfileSetPrivate]: 'Set Private',
     [StdTxMessageType.ProfileSetPublic]: 'Set Public',
+
+    // Undefined
+    [StdTxMessageType.Undefined]: '',
   };
 
   transform(messageType: StdTxMessageType): string {

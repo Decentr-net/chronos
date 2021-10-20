@@ -15,14 +15,18 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.CosmosBeginUnbonding]: 'begin-unbonding',
   [StdTxMessageType.CosmosCreateValidator]: 'create-validator',
   [StdTxMessageType.CosmosEditValidator]: 'edit-validator',
-  [StdTxMessageType.CosmosJail]: 'jail',
+  [StdTxMessageType.CosmosFundCommunityPool]: DEFAULT_ICON,
   [StdTxMessageType.CosmosDelegate]: 'delegate',
   [StdTxMessageType.CosmosDeposit]: DEFAULT_ICON,
+  [StdTxMessageType.CosmosJail]: 'jail',
+  [StdTxMessageType.CosmosModifyWithdrawAddress]: DEFAULT_ICON,
   [StdTxMessageType.CosmosSend]: 'send',
   [StdTxMessageType.CosmosUndelegate]: 'delegate',
   [StdTxMessageType.CosmosUnjail]: 'unjail',
+  [StdTxMessageType.CosmosVote]: DEFAULT_ICON,
   [StdTxMessageType.CommunitySetLike]: 'set-like',
   [StdTxMessageType.CommunityUnfollow]: 'unfollow',
+  [StdTxMessageType.CosmosWithdrawDelegationReward]: DEFAULT_ICON,
   [StdTxMessageType.OperationsBanAccount]: DEFAULT_ICON,
   [StdTxMessageType.OperationsMint]: DEFAULT_ICON,
   [StdTxMessageType.OperationsDistributeRewards]: 'distribute-rewards',
@@ -32,6 +36,9 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   [StdTxMessageType.PDVDistributeRewards]: 'distribute-rewards',
   [StdTxMessageType.ProfileSetPrivate]: 'set-private',
   [StdTxMessageType.ProfileSetPublic]: 'set-public',
+
+  // Undefined
+  [StdTxMessageType.Undefined]: DEFAULT_ICON,
 };
 
 @Component({

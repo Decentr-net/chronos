@@ -94,6 +94,21 @@
     [details]="message.value"
   ></app-begin-redelegate-details>
 
+  <app-fund-community-pool-details
+    *ngSwitchCase="messageType.CosmosFundCommunityPool"
+    [details]="message.value"
+  ></app-fund-community-pool-details>
+
+  <app-vote-details
+    *ngSwitchCase="messageType.CosmosVote"
+    [details]="message.value"
+  ></app-vote-details>
+
+  <app-withdraw-delegation-reward-details
+    *ngSwitchCase="messageType.CosmosWithdrawDelegationReward"
+    [details]="message.value"
+  ></app-withdraw-delegation-reward-details>
+
   <ngx-json-viewer
     *ngSwitchDefault
     [json]="message.value"
