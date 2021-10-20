@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, mergeMap } from 'rxjs/operators';
+import { catchError, mergeMap, tap } from 'rxjs/operators';
 import { Pool, Validator } from 'decentr-js';
 
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { StakingService } from '@core/services/staking';
 import { AppRoute } from '../../../app-route';
+import { TitleService } from '@core/services/title';
 
 @Component({
   selector: 'app-validator-details-page',
@@ -26,6 +27,7 @@ export class ValidatorDetailsPageComponent implements OnInit {
     private breakpointService: BreakpointService,
     private router: Router,
     private stakingService: StakingService,
+    private titleService: TitleService,
   ) {
   }
 
@@ -34,6 +36,7 @@ export class ValidatorDetailsPageComponent implements OnInit {
 
     this.validatorDetails$ = this.activatedRoute.params.pipe(
       mergeMap((params) => this.stakingService.getValidatorByAddress(params.operatorAddress)),
+      tap((validator) => this.titleService.setTitle(`Validator - ${validator.description.moniker}`)),
       catchError(() => {
         this.router.navigate(['/', AppRoute.Empty], {
           skipLocationChange: true,

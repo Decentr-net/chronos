@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { TitleService } from '@core/services/title';
 
 @Component({
   selector: 'app-empty-page',
@@ -7,12 +9,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./empty-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EmptyPageComponent {
+export class EmptyPageComponent implements OnInit {
   public title: string;
 
   constructor(
     router: Router,
+    private titleService: TitleService,
   ) {
     this.title = router.getCurrentNavigation()?.extras.state.title;
+  }
+
+  public ngOnInit(): void {
+    this.titleService.setTitle('404');
   }
 }

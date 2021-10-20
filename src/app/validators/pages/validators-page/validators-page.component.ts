@@ -6,6 +6,7 @@ import { Pool, Validator, ValidatorStatus } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { StakingService } from '@core/services/staking';
+import { TitleService } from '@core/services/title';
 
 @Component({
   selector: 'app-validators-page',
@@ -23,10 +24,13 @@ export class ValidatorsPageComponent implements OnInit {
 
   constructor(
     private stakingService: StakingService,
+    private titleService: TitleService,
   ) {
   }
 
   public ngOnInit(): void {
+    this.titleService.setTitle('Validators');
+
     this.pool$ = this.stakingService.getPool();
 
     const onlyBonded$ = this.onlyBondedFormControl.valueChanges.pipe(

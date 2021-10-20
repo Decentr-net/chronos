@@ -6,6 +6,7 @@ import { catchError, distinctUntilChanged, map, pluck, switchMap, tap } from 'rx
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
+import { AppRoute } from '../../../app-route';
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { svgArrowLeftIcon } from '@shared/svg-icons/arrow-left';
 import { svgExpandLeftIcon } from '@shared/svg-icons/expand-left';
@@ -14,7 +15,7 @@ import { BlocksService } from '@core/services/blocks';
 import { NetworkSelectorService } from '@core/services/network-selector';
 import { svgCheckIcon } from '@shared/svg-icons/check';
 import { svgLinkIcon } from '@shared/svg-icons/link';
-import { AppRoute } from '../../../app-route';
+import { TitleService } from '@core/services/title';
 
 @UntilDestroy()
 @Component({
@@ -44,6 +45,7 @@ export class BlockDetailsPageComponent implements OnInit {
     private networkSelectorService: NetworkSelectorService,
     private router: Router,
     private svgIconRegistry: SvgIconRegistry,
+    private titleService: TitleService,
   ) {
     svgIconRegistry.register([
       svgArrowLeftIcon,
@@ -61,6 +63,7 @@ export class BlockDetailsPageComponent implements OnInit {
 
     this.blockDetails$ = height$.pipe(
       switchMap((height) => this.blocksService.getBlockByHeight(height)),
+      tap((height) => this.titleService.setTitle(`Block - ${height.block.header.height}`)),
       catchError(() => {
         this.router.navigate(['/', AppRoute.Empty], {
           skipLocationChange: true,
