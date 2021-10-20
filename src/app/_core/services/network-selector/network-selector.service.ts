@@ -80,7 +80,7 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
       }),
       filter(({ newURLTree, oldURL }) => newURLTree.toString() !== oldURL),
       map(({ newURLTree }) => newURLTree),
-      switchMap((newURLTree) => router.navigateByUrl(newURLTree)),
+      switchMap((newURLTree) => router.navigateByUrl(newURLTree, { replaceUrl: true })),
       untilDestroyed(this),
     ).subscribe();
   }
