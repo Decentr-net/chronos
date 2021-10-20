@@ -4,6 +4,7 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 
 import { BreakpointModule } from '@shared/directives/breakpoint';
+import { CurrencySymbolModule } from '@shared/pipes/currency-symbol';
 import { DetailsTableModule } from '@shared/components/details-table';
 import { LinkModule } from '@shared/directives/link';
 import { NumberFormatModule } from '@shared/pipes/number-format';
@@ -20,6 +21,7 @@ import { TRANSACTION_MESSAGE_DETAILS_COMPONENTS } from './details-components';
   imports: [
     BreakpointModule,
     CommonModule,
+    CurrencySymbolModule,
     DetailsTableModule,
     LinkModule,
     NgxJsonViewerModule,
