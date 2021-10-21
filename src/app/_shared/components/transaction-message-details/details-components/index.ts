@@ -7,6 +7,7 @@ import { DeletePostDetailsComponent } from './delete-post-details';
 import { DepositDetailsComponent } from './deposit-details';
 import { DistributeRewardsDetailsComponent } from './distribute-rewards-details';
 import { FollowDetailsComponent } from './follow-details';
+import { FundCommunityPoolDetailsComponent } from './fund-community-pool-details';
 import { MintDetailsComponent } from './mint-details';
 import { ResetAccountDetailsComponent } from './reset-account-details';
 import { SendDetailsComponent } from './send-details';
@@ -16,6 +17,9 @@ import { SetPublicDetailsComponent } from './set-public-details';
 import { UndelegateDetailsComponent } from './undelegate-details';
 import { UnfollowDetailsComponent } from './unfollow-details';
 import { UnjailDetailsComponent } from './unjail-details';
+import { VoteDetailsComponent } from './vote-details';
+import { WithdrawDelegationRewardDetailsComponent } from './withdraw-delegation-reward-details';
+import { WithdrawValidatorCommissionDetailsComponent } from './withdraw-validator-commission-details';
 
 export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   BanDetailsComponent,
@@ -27,6 +31,7 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   DepositDetailsComponent,
   DistributeRewardsDetailsComponent,
   FollowDetailsComponent,
+  FundCommunityPoolDetailsComponent,
   MintDetailsComponent,
   ResetAccountDetailsComponent,
   SendDetailsComponent,
@@ -36,4 +41,7 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   UndelegateDetailsComponent,
   UnfollowDetailsComponent,
   UnjailDetailsComponent,
+  VoteDetailsComponent,
+  WithdrawDelegationRewardDetailsComponent,
+  WithdrawValidatorCommissionDetailsComponent,
 ];

@@ -12,6 +12,7 @@ import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';
 import { DashboardPageService } from './dashboard-page.service';
 import { svgClockIcon } from '@shared/svg-icons/clock';
 import { svgExpandRightIcon } from '@shared/svg-icons/expand-right';
+import { TitleService } from '@core/services/title';
 
 @UntilDestroy()
 @Component({
@@ -52,6 +53,7 @@ export class DashboardPageComponent implements OnInit {
   constructor(
     private dashboardPageService: DashboardPageService,
     private svgIconRegistry: SvgIconRegistry,
+    private titleService: TitleService,
   ) {
     svgIconRegistry.register([
       svgClockIcon,
@@ -60,6 +62,8 @@ export class DashboardPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.titleService.setTitle();
+
     this.advDdvStats$ = this.dashboardPageService.getAdvDdvStatistics().pipe(
       share(),
     );

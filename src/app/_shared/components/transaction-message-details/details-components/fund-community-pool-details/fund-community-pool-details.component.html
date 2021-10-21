@@ -1,0 +1,9 @@
+<app-details-table>
+  <ng-template [appDetailsTableCellDef]="'Amount'">
+    {{ +details.amount[0].amount / 1000000 | numberFormat : null : true | appCurrencySymbol }}
+  </ng-template>
+
+  <ng-template [appDetailsTableCellDef]="'Depositor'">
+    {{ details.depositor }}
+  </ng-template>
+</app-details-table>

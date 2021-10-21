@@ -20,7 +20,7 @@
     >
       <app-progress-bar [percent]="getPoolTokenPercent"></app-progress-bar>
       <div appTypeface="paragraph">
-        {{ pool.bonded_tokens / 1000000 | numberSuffix }} / {{ +supply / 1000000 | numberSuffix }}
+        {{ pool.bonded_tokens / 1000000 | numberSuffix : '1.0-2' }} / {{ +supply / 1000000 | numberSuffix : '1.0-2' }}
       </div>
     </div>
   </ng-container>

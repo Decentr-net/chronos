@@ -55,6 +55,11 @@
   }
 }
 
+.transaction-details__gas-wanted {
+  color: $color-grey;
+  font-weight: 400;
+}
+
 .transaction-details__message {
   margin-top: $grid-step * 2;
 

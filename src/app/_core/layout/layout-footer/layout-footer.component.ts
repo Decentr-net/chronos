@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 
+import { svgDiscordIcon } from '@shared/svg-icons/discord';
 import { svgGithubIcon } from '@shared/svg-icons/github';
 import { svgMediumIcon } from '@shared/svg-icons/medium';
 import { svgTelegramIcon } from '@shared/svg-icons/telegram';
@@ -48,12 +49,18 @@ export class LayoutFooterComponent {
       title: 'Medium',
       url: 'https://decentrnet.medium.com/',
     },
+    {
+      iconKey: svgDiscordIcon.name,
+      title: 'Discord',
+      url: 'https://discord.gg/VMUt7yw92B',
+    },
   ];
 
   constructor(
     svgIconRegistry: SvgIconRegistry,
   ) {
     svgIconRegistry.register([
+      svgDiscordIcon,
       svgGithubIcon,
       svgMediumIcon,
       svgTelegramIcon,

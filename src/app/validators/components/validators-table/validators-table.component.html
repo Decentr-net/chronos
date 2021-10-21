@@ -2,12 +2,21 @@
   [data]="data"
   [trackBy]="trackByAddress"
 >
-  <a
+  <div
     *dataTableColumnDef="let item; name: 'Validator'"
-    [routerLink]="['/', validatorRoute, item.operator_address]"
+    class="validators-table__validator"
   >
-    {{ item.description.moniker }}
-  </a>
+    <a [routerLink]="['/', validatorRoute, item.operator_address]">
+      {{ item.description.moniker }}
+    </a>
+
+    <app-validator-jailed
+      *ngIf="item.jailed"
+      class="validators-table__validator-jailed"
+    >
+      jailed
+    </app-validator-jailed>
+  </div>
 
   <ng-container *dataTableColumnDef="let item; name: 'Voting power'">
     {{ item.tokens / 1000000 | numberFormat : '1.0-0' : true }}

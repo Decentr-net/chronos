@@ -3,8 +3,9 @@ import { Observable } from 'rxjs';
 import { Block } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
-import { ONE_SECOND } from '@shared/utils/date';
 import { BlocksService } from '@core/services/blocks';
+import { ONE_SECOND } from '@shared/utils/date';
+import { TitleService } from '@core/services/title';
 
 @Component({
   selector: 'app-blocks-page',
@@ -19,10 +20,13 @@ export class BlocksPageComponent implements OnInit {
 
   constructor(
     private blocksService: BlocksService,
+    private titleService: TitleService,
   ) {
   }
 
   public ngOnInit(): void {
+    this.titleService.setTitle('Blocks');
+
     this.blocks$ = this.blocksService.getLatestBlocksLive(50, ONE_SECOND * 10);
   }
 }

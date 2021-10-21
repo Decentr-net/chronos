@@ -1,10 +1,20 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 
 @Pipe({
   name: 'numberSuffix',
 })
 export class NumberSuffixPipe implements PipeTransform {
-  transform(input: number, args?: number): string {
+
+  constructor(
+    private decimalPipe: DecimalPipe,
+  ) {
+  }
+
+  transform(
+    input: number,
+    digitsInfo: string | null = null,
+  ): string {
 
     const suffixes: string[] = ['k', 'M', 'G', 'T', 'P', 'E'];
 
@@ -18,6 +28,6 @@ export class NumberSuffixPipe implements PipeTransform {
 
     const exp = Math.floor(Math.log(input) / Math.log(1000));
 
-    return (input / Math.pow(1000, exp)).toFixed(args) + suffixes[exp - 1];
+    return this.decimalPipe.transform((input / Math.pow(1000, exp)), digitsInfo).replace(/,/g, '') + suffixes[exp - 1];
   }
 }

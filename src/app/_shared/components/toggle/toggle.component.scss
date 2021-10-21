@@ -1,0 +1,38 @@
+@import 'variables';
+
+:host {
+  align-items: center;
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.toggle__bar {
+  $padding: 2px;
+
+  background: $color-outlines;
+  border-radius: $border-radius;
+  height: $grid-step * 2.5;
+  margin-right: $grid-step;
+  padding: $padding;
+  position: relative;
+  width: $grid-step * 4;
+
+  &.is-active {
+    background: $color-primary;
+
+    .toggle__thumb {
+      right: $padding;
+    }
+  }
+}
+
+.toggle__thumb {
+  $size: $grid-step * 2;
+
+  background: $color-white;
+  border-radius: 50%;
+  box-shadow: $box-shadow;
+  height: $size;
+  position: absolute;
+  width: $size;
+}

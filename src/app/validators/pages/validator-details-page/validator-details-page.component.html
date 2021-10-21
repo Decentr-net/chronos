@@ -32,6 +32,14 @@
       >
         {{ details }}
       </div>
+
+      <app-validator-jailed
+        *ngIf="validatorDetails.jailed"
+        class="validator-details__jailed"
+        [isBig]="true"
+      >
+        This validator is currently being jailed!
+      </app-validator-jailed>
     </div>
 
     <div class="validator-details__divider"></div>
