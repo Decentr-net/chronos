@@ -27,6 +27,6 @@ export class TransactionsPageComponent implements OnInit {
   public ngOnInit(): void {
     this.titleService.setTitle('Transactions');
 
-    this.transactions$ = this.transactionsService.getTransactionsLive(50, ONE_SECOND * 10);
+    this.transactions$ = this.transactionsService.getTransactionsLive(10, ONE_SECOND * 10);
   }
 }

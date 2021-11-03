@@ -27,6 +27,6 @@ export class BlocksPageComponent implements OnInit {
   public ngOnInit(): void {
     this.titleService.setTitle('Blocks');
 
-    this.blocks$ = this.blocksService.getLatestBlocksLive(50, ONE_SECOND * 10);
+    this.blocks$ = this.blocksService.getLatestBlocksLive(25, ONE_SECOND * 10);
   }
 }
