@@ -5,3 +5,7 @@ export const getGreatestCommonDivisor = (firstNum: number, secondNum: number): n
 
   return getGreatestCommonDivisor(secondNum, firstNum % secondNum);
 };
+
+export const calculateDifferencePercentage = (newNumber: number, oldNumber: number): number => {
+  return oldNumber ? (newNumber - oldNumber) / Math.abs(oldNumber) * 100 : 0;
+};

@@ -5,7 +5,7 @@ import { map, share } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
-import { AdvDdvStatistics } from '@core/services/statistics';
+import { AdvDdvStatistics, RegisteredUsers } from '@core/services/statistics';
 import { AppRoute } from '../../../app-route';
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';
@@ -32,6 +32,7 @@ export class DashboardPageComponent implements OnInit {
   public inflation$: Observable<MintingInflation>;
   public latestBlock$: Observable<Block>;
   public pool$: Observable<Pool>;
+  public registeredUsersStats$: Observable<RegisteredUsers>;
   public supply$: Observable<TotalSupply['amount']>;
   public transactions$: Observable<Transaction[]>;
 
@@ -76,6 +77,7 @@ export class DashboardPageComponent implements OnInit {
     this.coinStats$ = this.dashboardPageService.getDecentCoinRateHistory(1);
     this.inflation$ = this.dashboardPageService.getInflation();
     this.pool$ = this.dashboardPageService.getPool();
+    this.registeredUsersStats$ = this.dashboardPageService.getRegisteredUsersStatistics();
     this.supply$ = this.dashboardPageService.getCoinSupply('udec');
 
     this.latestBlock$ = this.blocks$.pipe(

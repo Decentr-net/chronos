@@ -9,7 +9,7 @@ export interface CoinRateFor24Hours {
   value: number;
 }
 
-export type CoinRateHistory = Record<number, number>;
+export type CoinRateHistory = [number, number][];
 
 @Injectable({
   providedIn: 'root',
