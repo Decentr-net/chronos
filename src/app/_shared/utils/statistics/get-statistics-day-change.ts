@@ -1,4 +1,3 @@
-import { calculateDifferencePercentage } from '../number';
 import { RegisteredUsersStats } from '@core/services/statistics';
 
 export const getRegisteredUsersDayChange = (stats: RegisteredUsersStats[], currentValue: number): number => {
@@ -9,5 +8,5 @@ export const getRegisteredUsersDayChange = (stats: RegisteredUsersStats[], curre
     .sort((left, right) => right[0] - left[0])
     .find((stat) => stat[0] !== today)[1];
 
-  return calculateDifferencePercentage(currentValue, previousValue);
+  return currentValue - previousValue;
 };

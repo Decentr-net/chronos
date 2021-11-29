@@ -10,7 +10,8 @@
     <app-margin-label
       *ngIf="registeredUsersStats"
       class="registered-users-stats__stat-info-margin-label"
-      [dayMargin]="+(registeredUsersStats.dayMargin | numberFormat : '1.0-3' : true)"
+      [dayMargin]="registeredUsersStats.dayMargin"
+      [showInPercent]="false"
     ></app-margin-label>
 
     <ngx-skeleton-loader
@@ -29,7 +30,7 @@
   class="registered-users-stats__stat-value"
   appTypeface="header-3"
 >
-  {{ registeredUsersStats.total | numberFormat : '1.0-3' : true}}
+  {{ registeredUsersStats.total | numberFormat : '1.0-3' : true }}
 </div>
 
 <ngx-skeleton-loader

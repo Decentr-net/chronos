@@ -14,6 +14,7 @@ import { svgChartArrowUpIcon } from '../../svg-icons/chart-arrow-up';
 export class MarginLabelComponent implements OnChanges {
   @Input() public dayMargin: number;
   @Input() public digitsInfo: string;
+  @Input() public showInPercent = true;
 
   @HostBinding('class.mod-negative')
   public get isNegative(): boolean {
