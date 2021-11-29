@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import 'variables';
 
 :host {
@@ -10,7 +11,7 @@
 }
 
 .transactions-table__tx-failed-icon {
-  margin-left: $grid-step / 2;
+  margin-left: math.div($grid-step, 2);
 }
 
 .transactions-table__type-icon {
