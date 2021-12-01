@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Block, MintingInflation, Pool, TotalSupply, Transaction } from 'decentr-js';
 import { Observable } from 'rxjs';
 
-import { ONE_SECOND } from '@shared/utils/date';
+import { ONE_HOUR, ONE_SECOND } from '@shared/utils/date';
 import { BlocksService } from '@core/services/blocks';
 import { CoinRateFor24Hours, CoinRateHistory, CurrencyService } from '@core/services/currency';
 import { StakingService } from '@core/services/staking';
@@ -37,7 +37,11 @@ export class DashboardPageService {
   }
 
   public getBlocks(): Observable<Block[]> {
-    return this.blocksService.getLatestBlocksLive(5, ONE_SECOND * 10);
+    return this.blocksService.getLatestBlocksLive(5, ONE_HOUR * 24);
+  }
+
+  public getLatestBlock(): Observable<Block> {
+    return this.blocksService.getLatestBlockLive(ONE_SECOND * 15);
   }
 
   public getInflation(): Observable<MintingInflation> {
@@ -53,6 +57,6 @@ export class DashboardPageService {
   }
 
   public getTransactions(): Observable<Transaction[]> {
-    return this.transactionsService.getTransactionsLive(5, ONE_SECOND * 10);
+    return this.transactionsService.getTransactionsLive(5, ONE_HOUR * 24);
   }
 }

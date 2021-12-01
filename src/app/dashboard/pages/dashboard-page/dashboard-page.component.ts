@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Block, MintingInflation, Pool, TotalSupply, Transaction } from 'decentr-js';
 import { Observable } from 'rxjs';
-import { map, share } from 'rxjs/operators';
+import { share } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
@@ -80,9 +80,7 @@ export class DashboardPageComponent implements OnInit {
     this.registeredUsersStats$ = this.dashboardPageService.getRegisteredUsersStatistics();
     this.supply$ = this.dashboardPageService.getCoinSupply('udec');
 
-    this.latestBlock$ = this.blocks$.pipe(
-      map((blocks) => blocks[0]),
-    );
+    this.latestBlock$ = this.dashboardPageService.getLatestBlock();
 
     this.transactions$ = this.dashboardPageService.getTransactions();
   }
