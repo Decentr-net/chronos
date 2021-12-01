@@ -6,7 +6,7 @@ import { ONE_SECOND } from '@shared/utils/date';
 import { BlocksService } from '@core/services/blocks';
 import { CoinRateFor24Hours, CoinRateHistory, CurrencyService } from '@core/services/currency';
 import { StakingService } from '@core/services/staking';
-import { AdvDdvStatistics, StatisticsService } from '@core/services/statistics';
+import { AdvDdvStatistics, RegisteredUsers, StatisticsService } from '@core/services/statistics';
 import { TransactionsService } from '@core/services/transactions';
 
 @Injectable()
@@ -46,6 +46,10 @@ export class DashboardPageService {
 
   public getPool(): Observable<Pool> {
     return this.stakingService.getPool();
+  }
+
+  public getRegisteredUsersStatistics(): Observable<RegisteredUsers> {
+  return this.statisticsService.getRegisteredUsersStatistics();
   }
 
   public getTransactions(): Observable<Transaction[]> {

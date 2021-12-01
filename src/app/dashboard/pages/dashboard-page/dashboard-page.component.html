@@ -4,6 +4,11 @@
     [coinRate]="coinRate$ | async"
     [coinStats]="coinStats$ | async"
   ></app-currency-stats>
+
+  <app-registered-users-stats
+    class="dashboard__currency-stats"
+    [registeredUsersStats]="registeredUsersStats$ | async"
+  ></app-registered-users-stats>
 </div>
 
 <div class="dashboard__cards">

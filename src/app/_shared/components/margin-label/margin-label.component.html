@@ -1,5 +1,13 @@
-{{ dayMargin | positiveNumber | number : digitsInfo || '1.0-2' }}%
-<svg-icon
-  class="color-margin-label-icon"
-  [key]="marginIcon"
-></svg-icon>
+<ng-container *ngIf="showInPercent">
+  {{ dayMargin | positiveNumber | number : digitsInfo || '1.0-2' }}%
+  <svg-icon
+    class="color-margin-label-icon"
+    [key]="marginIcon"
+  ></svg-icon>
+</ng-container>
+
+<ng-container *ngIf="!showInPercent">
+  <ng-container *ngIf="dayMargin !== 0">
+    {{ dayMargin > 0 ? '+' : ''}}{{ dayMargin < 0 ? '-' : '' }}{{ dayMargin | positiveNumber | numberFormat : digitsInfo || '1.0-2' : true }}
+  </ng-container>
+</ng-container>

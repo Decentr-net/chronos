@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { filter, pluck, take } from 'rxjs/operators';
+import { filter, map, take } from 'rxjs/operators';
 import { combineLatest, Observable, ReplaySubject, Subscription } from 'rxjs';
 
 import { NetworkSelectorService } from '../network-selector';
-import { Network } from './configuration.definitions';
+import { Configuration, Network } from './configuration.definitions';
 import { ConfigurationApiService } from './configuration-api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ConfigurationService {
-  private configuration$: ReplaySubject<Network> = new ReplaySubject(1);
+  private config$: ReplaySubject<Configuration> = new ReplaySubject(1);
 
-  private pendingConfiguration: boolean;
+  private pendingConfig: boolean;
 
   private configSubscription: Subscription = Subscription.EMPTY;
 
@@ -22,45 +22,62 @@ export class ConfigurationService {
   ) {
   }
 
-  private getConfig(): Observable<Network> {
-    if (!this.pendingConfiguration) {
-      this.pendingConfiguration = true;
-      this.configSubscription.unsubscribe();
+  private getConfig(): Observable<Configuration> {
+    if (!this.pendingConfig) {
+      this.pendingConfig = true;
+      this.configSubscription?.unsubscribe();
 
-      this.configSubscription = combineLatest([
-        this.configurationApiService.getConfig(),
-        this.networkSelectorService.getActiveNetworkId(),
-      ]).subscribe(
-        ([{ networks }, activeNetworkId]) => this.configuration$.next(networks[activeNetworkId]),
+      this.configSubscription = this.configurationApiService.getConfig().pipe(
+      ).subscribe(
+        (config) => this.config$.next(config),
+        (error) => this.config$.error(error),
       );
     }
 
-    return this.configuration$.pipe(
-      filter((configuration) => !!configuration),
+    return this.config$.pipe(
+      filter((config) => !!config),
+      take(1),
+    );
+  }
+
+  private getNetworkConfig(): Observable<Network> {
+    return combineLatest([
+      this.getConfig(),
+      this.networkSelectorService.getActiveNetworkId().pipe(
+        filter((id) => !!id),
+      ),
+    ]).pipe(
+      map(([config, networkId]) => config.networks[networkId]),
       take(1),
     );
   }
 
   public forceUpdate(): void {
-    this.configuration$.next(void 0);
-    this.pendingConfiguration = false;
+    this.config$.next(void 0);
+    this.pendingConfig = false;
   }
 
   public getMaintenanceStatus(): Observable<boolean> {
-    return this.getConfig().pipe(
-      pluck('maintenance'),
+    return this.getNetworkConfig().pipe(
+      map((config) => config.maintenance),
     );
   }
 
   public getNodesUrls(): Observable<string[]> {
-    return this.getConfig().pipe(
-      pluck('network', 'rest'),
+    return this.getNetworkConfig().pipe(
+      map((config) => config.network.rest),
     );
   }
 
   public getTheseusUrl(): Observable<string> {
+    return this.getNetworkConfig().pipe(
+      map((config) => config.theseus.url),
+    );
+  }
+
+  public getVulcanUrl(): Observable<string> {
     return this.getConfig().pipe(
-      pluck('theseus', 'url'),
+      map((config) => config.vulcan.url),
     );
   }
 }

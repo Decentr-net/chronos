@@ -1,35 +1,89 @@
-import { ChangeDetectionStrategy, Compiler, Component, Injector, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Compiler,
+  Component,
+  ComponentFactoryResolver,
+  ElementRef, Inject,
+  InjectionToken,
+  Injector,
+  Input,
+  OnInit,
+  Type,
+} from '@angular/core';
 import * as Highcharts from 'highcharts';
 
-import { ChartTooltipComponent } from './tooltip/chart-tooltip.component';
-import { ChartTooltipModule } from './tooltip';
+import { ChartTooltip } from './chart-tooltip/chart.tooltip';
 import { ComponentFactoryClass } from './utils/component-factory';
+import { DashboardModule } from '../../dashboard.module';
 
-export type ChartPoint = Record<number, number>;
+export type ChartPoint = [number, number];
+
+export const CHART_TOOLTIP: InjectionToken<Type<ChartTooltip>> = new InjectionToken('CHART_TOOLTIP');
+
+enum ChartColor {
+  Blue = 'blue',
+  Green = 'green',
+}
+
+type ChartPointColor = {
+  color: string;
+  gradient: {
+    start: string;
+    end: string;
+  };
+};
+
+const COLORS: Record<ChartColor, ChartPointColor> = {
+  [ChartColor.Blue]: {
+    color: '#9F65FD',
+    gradient: {
+      start: 'rgba(159, 101, 253, .24)',
+      end: 'rgba(159, 101, 253, 0)',
+    },
+  },
+  [ChartColor.Green]: {
+    color: '#03B15E',
+    gradient: {
+      start: 'rgba(3, 177, 94, .24)',
+      end: 'rgba(3, 177, 94, 0)',
+    },
+  },
+};
 
 @Component({
-  selector: 'app-currency-chart',
-  templateUrl: './currency-chart.component.html',
-  styleUrls: ['./currency-chart.component.scss'],
+  selector: 'app-chart',
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
-export class CurrencyChartComponent implements OnInit {
+export class ChartComponent implements OnInit {
   @Input() data: ChartPoint[];
 
+  @Input() color: 'blue' | 'green';
+
+  private chartColors: ChartPointColor;
+
   constructor(
-    private injector: Injector,
     private compiler: Compiler,
+    private injector: Injector,
+    private elementRef: ElementRef,
+    private componentFactoryResolver: ComponentFactoryResolver,
+    @Inject(CHART_TOOLTIP) private chartTooltip: Type<ChartTooltip>,
   ) {
   }
 
   ngOnInit(): void {
-    Highcharts.chart('chart-container', this.setChartOptions());
+    switch (this.color) {
+      case ChartColor.Blue: this.chartColors = COLORS[ChartColor.Blue]; break;
+      case ChartColor.Green: this.chartColors = COLORS[ChartColor.Green]; break;
+    }
+
+    Highcharts.chart(this.elementRef.nativeElement, this.setChartOptions());
   }
 
   private setChartOptions(): Highcharts.Options {
-    const component = new ComponentFactoryClass<ChartTooltipModule, ChartTooltipComponent>
-    (this.injector, this.compiler).createComponent(ChartTooltipModule, ChartTooltipComponent);
+    const component = new ComponentFactoryClass<DashboardModule, ChartTooltip>(this.injector, this.compiler)
+      .createComponent(DashboardModule, this.chartTooltip);
 
     const defaultOptions: Highcharts.Options = {
       credits: {
@@ -78,8 +132,8 @@ export class CurrencyChartComponent implements OnInit {
               y2: 1,
             },
             stops: [
-              [0, 'rgba(159, 101, 253, .24)'],
-              [1, 'rgba(159, 101, 253, 0)'],
+              [0, this.chartColors.gradient.start],
+              [1, this.chartColors.gradient.end],
             ],
           },
           lineWidth: 2,
@@ -102,7 +156,7 @@ export class CurrencyChartComponent implements OnInit {
       },
       series: [
         {
-          color: '#9F65FD',
+          color: this.chartColors.color,
           data: this.data,
           type: 'area',
         },
