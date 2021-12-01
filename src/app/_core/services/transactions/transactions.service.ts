@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Transaction, TXsSearchParameters, TXsSearchResponse } from 'decentr-js';
 import { forkJoin, Observable, of, timer } from 'rxjs';
-import { distinctUntilChanged, map, mergeMap, pluck, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
+import { distinctUntilChanged, map, mergeMap, pluck, retry, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
 
 import { ONE_SECOND } from '@shared/utils/date';
 import { whileDocumentVisible } from '@shared/utils/document';
@@ -32,7 +32,9 @@ export class TransactionsService {
   }
 
   public searchTransactions(searchParams: TXsSearchParameters): Observable<TXsSearchResponse> {
-    return this.transactionsApiService.searchTransactions(searchParams);
+    return this.transactionsApiService.searchTransactions(searchParams).pipe(
+      retry(),
+    );
   }
 
   public getTransactionsLive(count: number, updatePeriod: number): Observable<Transaction[]> {
