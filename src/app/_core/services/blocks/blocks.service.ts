@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Block, BlockHeader } from 'decentr-js';
+import { Block, BlockHeader, Transaction } from 'decentr-js';
 import { forkJoin, Observable, of, timer } from 'rxjs';
 import { catchError, distinctUntilChanged, map, mergeMap, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
-import { Transaction } from 'decentr-js';
 
 import { ONE_SECOND } from '@shared/utils/date';
 import { whileDocumentVisible } from '@shared/utils/document';
@@ -36,6 +35,14 @@ export class BlocksService {
   public getLatestBlock(): Observable<Block> {
     return this.blocksApiService.getLatestBlock().pipe(
       tap((block) => this.blocksCache.set(block.block.header.height, block)),
+    );
+  }
+
+  public getLatestBlockLive(updatePeriod: number): Observable<Block> {
+    return timer(0, ONE_SECOND).pipe(
+      whileDocumentVisible(),
+      throttleTime(updatePeriod),
+      switchMap(() => this.getLatestBlock()),
     );
   }
 

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Transaction } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
-import { ONE_SECOND } from '@shared/utils/date';
+import { ONE_HOUR } from '@shared/utils/date';
 import { TitleService } from '@core/services/title';
 import { TransactionsService } from '@core/services/transactions';
 
@@ -27,6 +27,6 @@ export class TransactionsPageComponent implements OnInit {
   public ngOnInit(): void {
     this.titleService.setTitle('Transactions');
 
-    this.transactions$ = this.transactionsService.getTransactionsLive(10, ONE_SECOND * 10);
+    this.transactions$ = this.transactionsService.getTransactionsLive(10, ONE_HOUR * 24);
   }
 }

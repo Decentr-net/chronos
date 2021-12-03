@@ -1,0 +1,61 @@
+<div
+  class="registered-users-stats__stat-info"
+  appTypeface="paragraph"
+>
+  <div class="registered-users-stats__stat-info-name-margin">
+    <span class="registered-users-stats__stat-info-name">
+      Total Decentr users
+    </span>
+
+    <app-margin-label
+      *ngIf="registeredUsersStats"
+      class="registered-users-stats__stat-info-margin-label"
+      [dayMargin]="registeredUsersStats.dayMargin"
+      [showInPercent]="false"
+    ></app-margin-label>
+
+    <ngx-skeleton-loader
+      *ngIf="!registeredUsersStats"
+      [theme]="{
+        height: '16px',
+        marginBottom: '0',
+        width: '70px'
+      }"
+    ></ngx-skeleton-loader>
+  </div>
+</div>
+
+<div
+  *ngIf="registeredUsersStats"
+  class="registered-users-stats__stat-value"
+  appTypeface="header-3"
+>
+  {{ registeredUsersStats.total | numberFormat : '1.0-3' : true }}
+</div>
+
+<ngx-skeleton-loader
+  *ngIf="!registeredUsersStats"
+  [theme]="{
+    height: '55px',
+    marginBottom: '0',
+    width: '220px'
+  }"
+></ngx-skeleton-loader>
+
+<app-chart
+  *ngIf="registeredUsersStats"
+  class="registered-users-stats__chart"
+  [data]="registeredUsersStats.stats"
+  color="green"
+>
+  <app-currency-chart-tooltip></app-currency-chart-tooltip>
+</app-chart>
+
+<ngx-skeleton-loader
+  *ngIf="!registeredUsersStats"
+  [theme]="{
+    height: '250px',
+    marginBottom: '0',
+    width: '100%'
+  }"
+></ngx-skeleton-loader>

@@ -10,4 +10,7 @@ export interface Network {
 
 export interface Configuration {
   networks: Record<string, Network>;
+  vulcan: {
+    url: string;
+  };
 }

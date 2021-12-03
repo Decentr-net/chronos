@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import 'variables';
 
 :host {
@@ -26,7 +27,7 @@
 
 .data-table__header-row__cell {
   font-weight: 500;
-  padding: $grid-step $grid-step * 2 $grid-step / 2;
+  padding: $grid-step $grid-step * 2 math.div($grid-step, 2);
 }
 
 .data-table__row {

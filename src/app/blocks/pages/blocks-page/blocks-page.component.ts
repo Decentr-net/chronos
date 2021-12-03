@@ -4,7 +4,7 @@ import { Block } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { BlocksService } from '@core/services/blocks';
-import { ONE_SECOND } from '@shared/utils/date';
+import { ONE_HOUR } from '@shared/utils/date';
 import { TitleService } from '@core/services/title';
 
 @Component({
@@ -27,6 +27,6 @@ export class BlocksPageComponent implements OnInit {
   public ngOnInit(): void {
     this.titleService.setTitle('Blocks');
 
-    this.blocks$ = this.blocksService.getLatestBlocksLive(25, ONE_SECOND * 10);
+    this.blocks$ = this.blocksService.getLatestBlocksLive(25, ONE_HOUR * 24);
   }
 }

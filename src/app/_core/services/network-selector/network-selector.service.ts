@@ -13,8 +13,8 @@ import { getLocalLink, getLocalLinkWithParams } from '@shared/utils/document';
 import { Configuration, ConfigurationApiService } from '../configuration';
 
 const NETWORK_TRANSLATIONS: Record<keyof Configuration['networks'], string> = {
-  mainnet: 'Decentr Main Network',
-  testnet: 'Decentr Test Network',
+  mainnet: 'Mainnet',
+  testnet: 'Testnet',
 };
 
 const ACTIVE_NETWORK_STORAGE_KEY = 'activeNetwork';

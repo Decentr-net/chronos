@@ -1,3 +1,4 @@
+@use 'sass:math';
 @import '../../styles/variables';
 
 ::ng-deep .cdk-overlay-container {
@@ -9,7 +10,7 @@
 .network-selector__trigger {
   background: $color-background;
   border-radius: $border-radius;
-  column-gap: $grid-step / 2;
+  column-gap: math.div($grid-step, 2);
   cursor: pointer;
   display: flex;
   font-weight: 500;

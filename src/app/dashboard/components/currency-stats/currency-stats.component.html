@@ -50,11 +50,12 @@
   }"
 ></ngx-skeleton-loader>
 
-<app-currency-chart
+<app-chart
   *ngIf="coinStats"
   class="currency-stats__chart"
   [data]="coinStats"
-></app-currency-chart>
+  color="blue"
+></app-chart>
 
 <ngx-skeleton-loader
   *ngIf="!coinStats"
