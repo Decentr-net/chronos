@@ -26,10 +26,10 @@ const ROUTES: Routes = [
         path: AppRoute.Dashboard,
         loadChildren: () => import('./dashboard').then(m => m.DashboardModule),
       },
-      {
-        path: AppRoute.Transactions,
-        loadChildren: () => import('./transactions').then(m => m.TransactionsModule),
-      },
+      // {
+      //   path: AppRoute.Transactions,
+      //   loadChildren: () => import('./transactions').then(m => m.TransactionsModule),
+      // },
       {
         path: AppRoute.Validators,
         loadChildren: () => import('./validators').then(m => m.ValidatorsModule),

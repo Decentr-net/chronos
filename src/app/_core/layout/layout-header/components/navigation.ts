@@ -15,10 +15,10 @@ export const NAVIGATION_ELEMENTS: NavigationMenuElement[] = [
     name: 'Blocks',
     url: AppRoute.Blocks,
   },
-  {
-    name: 'Transactions',
-    url: AppRoute.Transactions,
-  },
+  // {
+  //   name: 'Transactions',
+  //   url: AppRoute.Transactions,
+  // },
   {
     name: 'Validators',
     url: AppRoute.Validators,

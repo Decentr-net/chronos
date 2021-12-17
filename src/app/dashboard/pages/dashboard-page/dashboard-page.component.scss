@@ -47,7 +47,7 @@
 .dashboard__tables {
   display: grid;
   gap: $grid-step * 3;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  //grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   margin-top: $grid-step * 3;
 }
 
