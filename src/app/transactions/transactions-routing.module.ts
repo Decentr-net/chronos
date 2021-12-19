@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TransactionDetailsPageComponent, TransactionsPageComponent } from './pages';
+import { TransactionDetailsPageComponent } from './pages';
 
 const ROUTES: Routes = [
   {
     path: '',
-    component: TransactionsPageComponent,
+    pathMatch: 'full',
+    redirectTo: '/',
+    // component: TransactionsPageComponent,
   },
   {
     path: ':transactionHash',
