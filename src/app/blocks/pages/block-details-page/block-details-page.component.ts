@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Block, Transaction } from 'decentr-js';
+import { Block } from 'decentr-js';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, distinctUntilChanged, map, pluck, switchMap, tap } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
@@ -16,6 +16,7 @@ import { NetworkSelectorService } from '@core/services/network-selector';
 import { svgCheckIcon } from '@shared/svg-icons/check';
 import { svgLinkIcon } from '@shared/svg-icons/link';
 import { TitleService } from '@core/services/title';
+import { TxTableItem } from '@shared/components/transactions-table/transactions-table.component';
 
 @UntilDestroy()
 @Component({
@@ -26,7 +27,7 @@ import { TitleService } from '@core/services/title';
 })
 export class BlockDetailsPageComponent implements OnInit {
   public blockDetails$: Observable<Block>;
-  public blockTxs$: Observable<Transaction[]>;
+  public blockTxs$: Observable<TxTableItem[]>;
 
   public nextBlockHeight: number;
   public previousBlockHeight: number;
@@ -57,13 +58,13 @@ export class BlockDetailsPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    const height$ = this.activatedRoute.params.pipe(
+    const height$: Observable<string> = this.activatedRoute.params.pipe(
       pluck('blockHeight'),
     );
 
     this.blockDetails$ = height$.pipe(
-      switchMap((height) => this.blocksService.getBlockByHeight(height)),
-      tap((height) => this.titleService.setTitle(`Block - ${height.block.header.height}`)),
+      switchMap((height) => this.blocksService.getBlockByHeight(+height)),
+      tap((height) => this.titleService.setTitle(`Block - ${height.header.height}`)),
       catchError(() => {
         this.router.navigate(['/', AppRoute.Empty], {
           skipLocationChange: true,
@@ -76,18 +77,26 @@ export class BlockDetailsPageComponent implements OnInit {
       }),
     );
 
-    this.blockTxs$ = height$.pipe(
-      switchMap((height) => this.blocksService.getBlockTransactions(height)),
+    this.blockTxs$ = this.blockDetails$.pipe(
+      switchMap((block) => this.blocksService.getBlockTransactions(block.header.height).pipe(
+        map((txs) => txs.map((tx) => ({
+          code: tx.code,
+          hash: tx.hash,
+          height: tx.height,
+          messageType: tx.tx.body.messages[0].typeUrl,
+          timestamp: block.header.time,
+        }))),
+      )),
     );
 
     height$.pipe(
       switchMap((height) => this.blocksService.getLatestBlock().pipe(
-        pluck('block', 'header', 'height'),
-        map((latestBlockHeight) => [+latestBlockHeight, height]),
+        pluck('header', 'height'),
+        map((latestBlockHeight) => [+latestBlockHeight, +height]),
       )),
       untilDestroyed(this),
     ).subscribe(([latestBlockHeight, height]) => {
-      this.nextBlockHeight = height === latestBlockHeight ? undefined : +height + 1;
+      this.nextBlockHeight = height === latestBlockHeight ? undefined : height + 1;
       this.previousBlockHeight = height - 1 || undefined;
 
       this.changeDetectorRef.markForCheck();

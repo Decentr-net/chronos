@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
+import { TxMessageValue, TxMessageTypeUrl } from 'decentr-js';
 
 @Component({
   selector: 'app-distribute-rewards-details',
@@ -8,5 +8,5 @@ import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DistributeRewardsDetailsComponent {
-  @Input() public details: StdTxMessageValue<StdTxMessageType.OperationsDistributeRewards>;
+  @Input() public details: TxMessageValue<TxMessageTypeUrl.OperationsDistributeRewards>;
 }

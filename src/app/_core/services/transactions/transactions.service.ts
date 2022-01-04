@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Transaction, TXsSearchParameters, TXsSearchResponse } from 'decentr-js';
+import { DecodedIndexedTx, SearchTxFilter, SearchTxQuery } from 'decentr-js';
 import { forkJoin, Observable, of, timer } from 'rxjs';
 import { distinctUntilChanged, map, mergeMap, pluck, retry, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
 
@@ -11,38 +11,41 @@ import { TransactionsApiService } from './transactions-api.service';
   providedIn: 'root',
 })
 export class TransactionsService {
-  private readonly transactionsCache: Map<Transaction['txhash'], Transaction> = new Map();
-  private readonly transactionsPageCache: Map<number, Transaction> = new Map();
+  private readonly transactionsCache: Map<DecodedIndexedTx['hash'], DecodedIndexedTx> = new Map();
+  private readonly transactionsPageCache: Map<number, DecodedIndexedTx> = new Map();
 
   constructor(
     private transactionsApiService: TransactionsApiService,
   ) {
   }
 
-  public getTransactionByHash(hash: Transaction['txhash']): Observable<Transaction> {
+  public getTransactionByHash(hash: DecodedIndexedTx['hash']): Observable<DecodedIndexedTx> {
     const cachedTransaction = this.transactionsCache.get(hash);
 
     return cachedTransaction
       ? of(cachedTransaction)
       : this.transactionsApiService.getTransactionByHash(hash).pipe(
         tap((transaction) => {
-          this.transactionsCache.set(transaction.txhash, transaction);
+          this.transactionsCache.set(transaction.hash, transaction);
         }),
       );
   }
 
-  public searchTransactions(searchParams: TXsSearchParameters): Observable<TXsSearchResponse> {
-    return this.transactionsApiService.searchTransactions(searchParams).pipe(
+  public searchTransactions(searchParams: SearchTxQuery, filter?: SearchTxFilter): Observable<DecodedIndexedTx[]> {
+    return this.transactionsApiService.searchTransactions(searchParams, filter).pipe(
       retry(),
     );
   }
 
-  public getTransactionsLive(count: number, updatePeriod: number): Observable<Transaction[]> {
+  public getTransactionsLive(count: number, updatePeriod: number): Observable<DecodedIndexedTx[]> {
     return timer(0, ONE_SECOND).pipe(
       whileDocumentVisible(),
       throttleTime(updatePeriod),
-      switchMap(() => this.searchTransactions({ limit: 1, txMinHeight: 0 })),
-      map((response) => +response.page_total),
+      switchMap(() => this.searchTransactions({ height: 100 })),
+      // { limit: 1, txMinHeight: 0 }
+      // TODO: implement with offchain
+      // map((response) => +response.page_total),
+      map((response) => 2),
       distinctUntilChanged(),
       scan((acc, totalCount) => ({
         totalCount,
@@ -54,27 +57,30 @@ export class TransactionsService {
     );
   }
 
-  private getLatestTransactions(count: number, totalCount: number): Observable<Transaction[]> {
+  private getLatestTransactions(count: number, totalCount: number): Observable<DecodedIndexedTx[]> {
     return forkJoin(new Array(Math.min(count, totalCount))
       .fill(null)
       .map((_, index) => this.getTransactionByPage(totalCount - index)),
     );
   }
 
-  private getTransactionByPage(page: number): Observable<Transaction> {
+  private getTransactionByPage(page: number): Observable<DecodedIndexedTx> {
     const cachedTransaction = this.transactionsPageCache.get(page);
 
+    // TODO: implement with offchain
     return cachedTransaction
       ? of(cachedTransaction)
       : this.searchTransactions({
-        page,
-        limit: 1,
-        txMinHeight: 0,
+        height: 100,
+        // page,
+        // limit: 1,
+        // txMinHeight: 0,
       }).pipe(
-        pluck('txs', 0),
+        tap(console.log),
+        // pluck('tx', 0),
         tap((transaction) => {
           this.transactionsPageCache.set(page, transaction);
-          this.transactionsCache.set(transaction.txhash, transaction);
+          this.transactionsCache.set(transaction.hash, transaction);
         }),
       );
   }

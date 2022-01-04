@@ -18,7 +18,7 @@
       class="transaction-details__hash"
       [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
     >
-      {{ transactionDetails.txhash }}
+      {{ transactionDetails.hash }}
     </div>
 
     <div
@@ -37,7 +37,7 @@
           Transactions is failed
         </div>
 
-        {{ transactionDetails.raw_log }}
+        {{ transactionDetails.rawLog }}
       </div>
     </div>
 
@@ -56,29 +56,29 @@
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Fee'">
-        {{ +transactionDetails.tx.value.fee.amount[0].amount / 1000000 | numberFormat : null : true | appCurrencySymbol }}
+        {{ +transactionDetails.tx.authInfo.fee.amount[0].amount / 1000000 | numberFormat : null : true | appCurrencySymbol }}
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Gas used/wanted'">
-        {{ transactionDetails.gas_used ? (+transactionDetails.gas_used | numberFormat : null : true) : 0 }} /
+        {{ transactionDetails.gasUsed ? (+transactionDetails.gasUsed | numberFormat : null : true) : 0 }} /
 
         <span class="transaction-details__gas-wanted">
-          {{ transactionDetails.gas_wanted ? (+transactionDetails.gas_wanted | numberFormat : null : true) : 0 }}
+          {{ transactionDetails.gasWanted ? (+transactionDetails.gasWanted | numberFormat : null : true) : 0 }}
         </span>
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Date & Time'">
-        {{ transactionDetails.timestamp | date:'yyyy.MM.dd, HH:mm:ss' }}
+        {{ blockTime$ | async | date:'yyyy.MM.dd, HH:mm:ss' }}
       </ng-template>
 
-      <ng-template *ngIf="transactionDetails.tx.value.memo" [appDetailsTableCellDef]="'Memo'">
-        {{ transactionDetails.tx.value.memo }}
+      <ng-template *ngIf="transactionDetails.tx.body.memo" [appDetailsTableCellDef]="'Memo'">
+        {{ transactionDetails.tx.body.memo }}
       </ng-template>
     </app-details-table>
 
     <div class="transaction-details__divider mod-wide"></div>
 
-    <ng-container *ngFor="let message of transactionDetails.tx.value.msg; let last = last">
+    <ng-container *ngFor="let message of transactionDetails.tx.body.messages; let last = last">
       <app-transaction-message
         class="transaction-details__message"
         [txMessage]="message"

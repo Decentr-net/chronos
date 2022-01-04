@@ -1,45 +1,35 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { SVG_CONFIG } from '@ngneat/svg-icon/lib/types';
-import { StdTxMessageType } from 'decentr-js';
+import { TxMessageTypeUrl } from 'decentr-js';
 
 import { messageTypeIcons } from '@shared/svg-icons/message-type';
 
 const DEFAULT_ICON = 'transaction';
 
-const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
-  [StdTxMessageType.CommunityCreatePost]: 'create-post',
-  [StdTxMessageType.CommunityDeletePost]: 'delete-post',
-  [StdTxMessageType.CommunityFollow]: 'follow',
-  [StdTxMessageType.CosmosBeginRedelegate]: 'begin-redelegate',
-  [StdTxMessageType.CosmosBeginUnbonding]: 'begin-unbonding',
-  [StdTxMessageType.CosmosCreateValidator]: 'create-validator',
-  [StdTxMessageType.CosmosEditValidator]: 'edit-validator',
-  [StdTxMessageType.CosmosFundCommunityPool]: DEFAULT_ICON,
-  [StdTxMessageType.CosmosDelegate]: 'delegate',
-  [StdTxMessageType.CosmosDeposit]: DEFAULT_ICON,
-  [StdTxMessageType.CosmosJail]: 'jail',
-  [StdTxMessageType.CosmosModifyWithdrawAddress]: DEFAULT_ICON,
-  [StdTxMessageType.CosmosSend]: 'send',
-  [StdTxMessageType.CosmosUndelegate]: 'delegate',
-  [StdTxMessageType.CosmosUnjail]: 'unjail',
-  [StdTxMessageType.CosmosVote]: DEFAULT_ICON,
-  [StdTxMessageType.CommunitySetLike]: 'set-like',
-  [StdTxMessageType.CommunityUnfollow]: 'unfollow',
-  [StdTxMessageType.CosmosWithdrawDelegationReward]: DEFAULT_ICON,
-  [StdTxMessageType.CosmosWithdrawValidatorCommission]: DEFAULT_ICON,
-  [StdTxMessageType.OperationsBanAccount]: DEFAULT_ICON,
-  [StdTxMessageType.OperationsMint]: DEFAULT_ICON,
-  [StdTxMessageType.OperationsDistributeRewards]: 'distribute-rewards',
-  [StdTxMessageType.OperationsResetAccount]: 'reset-account',
-
-  // DEPRECATED
-  [StdTxMessageType.PDVDistributeRewards]: 'distribute-rewards',
-  [StdTxMessageType.ProfileSetPrivate]: 'set-private',
-  [StdTxMessageType.ProfileSetPublic]: 'set-public',
-
-  // Undefined
-  [StdTxMessageType.Undefined]: DEFAULT_ICON,
+const MESSAGE_TYPE_ICON_MAP: Record<TxMessageTypeUrl, string> = {
+  [TxMessageTypeUrl.CommunityCreatePost]: 'create-post',
+  [TxMessageTypeUrl.CommunityDeletePost]: 'delete-post',
+  [TxMessageTypeUrl.CommunityFollow]: 'follow',
+  [TxMessageTypeUrl.StakingBeginRedelegate]: 'begin-redelegate',
+  [TxMessageTypeUrl.StakingCreateValidator]: 'create-validator',
+  [TxMessageTypeUrl.StakingEditValidator]: 'edit-validator',
+  [TxMessageTypeUrl.DistributionFundCommunityPool]: DEFAULT_ICON,
+  [TxMessageTypeUrl.StakingDelegate]: 'delegate',
+  [TxMessageTypeUrl.GovDeposit]: DEFAULT_ICON,
+  [TxMessageTypeUrl.DistributionSetWithdrawAddress]: DEFAULT_ICON,
+  [TxMessageTypeUrl.BankSend]: 'send',
+  [TxMessageTypeUrl.StakingUndelegate]: 'delegate',
+  [TxMessageTypeUrl.SlashingUnjail]: 'unjail',
+  [TxMessageTypeUrl.GovVote]: DEFAULT_ICON,
+  [TxMessageTypeUrl.CommunitySetLike]: 'set-like',
+  [TxMessageTypeUrl.CommunityUnfollow]: 'unfollow',
+  [TxMessageTypeUrl.DistributionWithdrawDelegatorReward]: DEFAULT_ICON,
+  [TxMessageTypeUrl.DistributionWithdrawValidatorCommission]: DEFAULT_ICON,
+  [TxMessageTypeUrl.OperationsBurn]: DEFAULT_ICON,
+  [TxMessageTypeUrl.OperationsMint]: DEFAULT_ICON,
+  [TxMessageTypeUrl.OperationsDistributeRewards]: 'distribute-rewards',
+  [TxMessageTypeUrl.OperationsResetAccount]: 'reset-account',
 };
 
 @Component({
@@ -49,7 +39,7 @@ const MESSAGE_TYPE_ICON_MAP: Record<StdTxMessageType, string> = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionMessageTypeIconComponent {
-  @Input() public messageType: StdTxMessageType;
+  @Input() public messageType: TxMessageTypeUrl;
 
   @Input() public size: keyof SVG_CONFIG['sizes'] = 'lg';
 

@@ -1,13 +1,13 @@
 <app-details-table>
   <ng-template [appDetailsTableCellDef]="'Post UUID'">
-    {{ details.uuid }}
+    {{ details.post.uuid }}
   </ng-template>
 
   <ng-template [appDetailsTableCellDef]="'Title'">
-    {{ details.title }}
+    {{ details.post.title }}
   </ng-template>
 
   <ng-template [appDetailsTableCellDef]="'Owner'">
-    {{ details.owner }}
+    {{ details.post.owner }}
   </ng-template>
 </app-details-table>

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Transaction } from 'decentr-js';
+import { DecodedIndexedTx } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { ONE_HOUR } from '@shared/utils/date';
@@ -14,7 +14,7 @@ import { TransactionsService } from '@core/services/transactions';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionsPageComponent implements OnInit {
-  public transactions$: Observable<Transaction[]>;
+  public transactions$: Observable<DecodedIndexedTx[]>;
 
   public breakpoint: typeof Breakpoint = Breakpoint;
 

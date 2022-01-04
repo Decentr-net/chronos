@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Block, MintingInflation, Pool, TotalSupply, Transaction } from 'decentr-js';
+import { Block, Coin, DecodedIndexedTx, Pool } from 'decentr-js';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
@@ -29,12 +29,12 @@ export class DashboardPageComponent implements OnInit {
   public blocks$: Observable<Block[]>;
   public coinRate$: Observable<CoinRateFor24Hours>;
   public coinStats$: Observable<CoinRateHistory>;
-  public inflation$: Observable<MintingInflation>;
+  public inflation$: Observable<string>;
   public latestBlock$: Observable<Block>;
   public pool$: Observable<Pool>;
   public registeredUsersStats$: Observable<RegisteredUsers>;
-  public supply$: Observable<TotalSupply['amount']>;
-  public transactions$: Observable<Transaction[]>;
+  public supply$: Observable<Coin>;
+  public transactions$: Observable<DecodedIndexedTx[]>;
 
   public readonly appRoute: typeof AppRoute = AppRoute;
   public breakpoint: typeof Breakpoint = Breakpoint;

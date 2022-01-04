@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
+import { TxMessageValue, TxMessageTypeUrl } from 'decentr-js';
 import { Observable } from 'rxjs';
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 
@@ -10,7 +10,7 @@ import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BeginRedelegateDetailsComponent implements OnInit {
-  @Input() public details: StdTxMessageValue<StdTxMessageType.CosmosBeginRedelegate>;
+  @Input() public details: TxMessageValue<TxMessageTypeUrl.StakingBeginRedelegate>;
 
   public isTablet$: Observable<boolean>;
 

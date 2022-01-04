@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
+import { TxMessageValue, TxMessageTypeUrl } from 'decentr-js';
 
 @Component({
   selector: 'app-mint-details',
@@ -8,5 +8,5 @@ import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MintDetailsComponent {
-  @Input() public details: StdTxMessageValue<StdTxMessageType.OperationsMint>;
+  @Input() public details: TxMessageValue<TxMessageTypeUrl.OperationsMint>;
 }
