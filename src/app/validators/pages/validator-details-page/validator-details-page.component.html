@@ -46,7 +46,7 @@
 
     <app-details-table class="validator-details__address">
       <ng-template [appDetailsTableCellDef]="'Operator address'">
-        {{ validatorDetails.operator_address }}
+        {{ validatorDetails.operatorAddress }}
       </ng-template>
     </app-details-table>
 
@@ -65,12 +65,12 @@
           class="validator-details__details-table__voting-power-percent"
           appTypeface="caption"
         >
-          {{ validatorDetails.tokens / pool.bonded_tokens | percent : '1.0-2' }}
+          {{ validatorDetails.tokens / pool.bondedTokens | percent : '1.0-2' }}
         </div>
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Commission'">
-        {{ validatorDetails.commission.commission_rates.rate | percent }}
+        {{ validatorDetails.commission.commissionRates.rate | percent }}
       </ng-template>
     </app-details-table>
   </ng-container>

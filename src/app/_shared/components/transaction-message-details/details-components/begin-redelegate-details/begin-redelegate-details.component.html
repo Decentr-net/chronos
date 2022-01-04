@@ -9,16 +9,16 @@
   class="begin-delegate-details__name"
 >
   <ng-template [appDetailsTableCellDef]="'Delegator'">
-    {{ details.delegator_address }}
+    {{ details.delegatorAddress }}
   </ng-template>
 </app-details-table>
 
 <app-transfer-details>
   <ng-template [appTransferDetailsFrom]="'Source validator'">
-    {{ details.validator_src_address }}
+    {{ details.validatorSrcAddress }}
   </ng-template>
 
   <ng-template [appTransferDetailsTo]="'Destination validator'">
-    {{ details.validator_dst_address }}
+    {{ details.validatorDstAddress }}
   </ng-template>
 </app-transfer-details>

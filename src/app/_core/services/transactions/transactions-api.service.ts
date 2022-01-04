@@ -1,13 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-import {
-  getTransactionByHash,
-  searchTransactions,
-  Transaction,
-  TXsSearchParameters,
-  TXsSearchResponse,
-} from 'decentr-js';
+import { Observable, ReplaySubject } from 'rxjs';
+import { mergeMap, switchMap, take } from 'rxjs/operators';
+import { DecentrTxClient, DecodedIndexedTx, IndexedTx, SearchTxFilter, SearchTxQuery } from 'decentr-js';
 
 import { Environment } from '@environments/environments.definitions';
 import { NetworkService } from '../network';
@@ -16,21 +10,32 @@ import { NetworkService } from '../network';
   providedIn: 'root',
 })
 export class TransactionsApiService {
+  private client: ReplaySubject<DecentrTxClient> = new ReplaySubject(1);
+
   constructor(
     private environment: Environment,
     private networkService: NetworkService,
   ) {
+    this.createAPIClient().subscribe((client) => this.client.next(client));
   }
 
-  public getTransactionByHash(hash: Transaction['txhash']): Observable<Transaction> {
-    return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => getTransactionByHash(restUrl, hash)),
+  public getTransactionByHash(hash: IndexedTx['hash']): Observable<DecodedIndexedTx | undefined> {
+    return this.client.pipe(
+        take(1),
+        mergeMap((client) => client.getByHash(hash)),
     );
   }
 
-  public searchTransactions(searchParams: TXsSearchParameters): Observable<TXsSearchResponse> {
+  public searchTransactions(searchParams: SearchTxQuery, filter?: SearchTxFilter): Observable<DecodedIndexedTx[]> {
+    return this.client.pipe(
+        take(1),
+        mergeMap((client) => client.search(searchParams, filter)),
+    );
+  }
+
+  private createAPIClient(): Observable<DecentrTxClient> {
     return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => searchTransactions(restUrl, searchParams)),
+        switchMap((api) => DecentrTxClient.create(api)),
     );
   }
 }

@@ -1,18 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { mergeMap } from 'rxjs/operators';
-import {
-  getCoinSupply,
-  getInflation,
-  getPool,
-  getValidator,
-  getValidators,
-  MintingInflation,
-  Pool,
-  TotalSupply,
-  Validator,
-  ValidatorsFilterParameters,
-} from 'decentr-js';
+import { BondStatusString, DecentrStakingClient, Pool, Validator } from 'decentr-js';
+import { Observable, ReplaySubject } from 'rxjs';
+import { mergeMap, switchMap, take } from 'rxjs/operators';
 
 import { NetworkService } from '../network';
 
@@ -20,38 +9,38 @@ import { NetworkService } from '../network';
   providedIn: 'root',
 })
 export class StakingApiService {
+  private client: ReplaySubject<DecentrStakingClient> = new ReplaySubject(1);
+
   constructor(
     private networkService: NetworkService,
   ) {
-  }
-
-  public getCoinSupply(coinName: string): Observable<TotalSupply['amount']> {
-    return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => getCoinSupply(restUrl, coinName)),
-    );
-  }
-
-  public getInflation(): Observable<MintingInflation> {
-    return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => getInflation(restUrl)),
-    );
+    this.createAPIClient().subscribe((client) => this.client.next(client));
   }
 
   public getPool(): Observable<Pool> {
-    return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => getPool(restUrl)),
+    return this.client.pipe(
+      take(1),
+      mergeMap((client) => client.getPool()),
     );
   }
 
-  public getValidators(filter?: ValidatorsFilterParameters): Observable<Validator[]> {
-    return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => getValidators(restUrl, filter)),
+  public getValidators(status?: BondStatusString): Observable<Validator[]> {
+    return this.client.pipe(
+      take(1),
+      mergeMap((client) => client.getValidators(status)),
     );
   }
 
-  public getValidatorByAddress(address: Validator['operator_address']): Observable<Validator> {
+  public getValidatorByAddress(address: Validator['operatorAddress']): Observable<Validator> {
+    return this.client.pipe(
+      take(1),
+      mergeMap((client) => client.getValidator(address)),
+    );
+  }
+
+  private createAPIClient(): Observable<DecentrStakingClient> {
     return this.networkService.getRestUrl().pipe(
-      mergeMap((restUrl) => getValidator(restUrl, address)),
+      switchMap((api) => DecentrStakingClient.create(api)),
     );
   }
 }

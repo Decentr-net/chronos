@@ -1,9 +1,4 @@
-<ng-container [ngSwitch]="message.type">
-  <app-ban-details
-    *ngSwitchCase="messageType.OperationsBanAccount"
-    [details]="message.value"
-  ></app-ban-details>
-
+<ng-container [ngSwitch]="message.typeUrl">
   <app-mint-details
     *ngSwitchCase="messageType.OperationsMint"
     [details]="message.value"
@@ -14,28 +9,13 @@
     [details]="message.value"
   ></app-distribute-rewards-details>
 
-  <app-distribute-rewards-details
-    *ngSwitchCase="messageType.PDVDistributeRewards"
-    [details]="message.value"
-  ></app-distribute-rewards-details>
-
   <app-reset-account-details
     *ngSwitchCase="messageType.OperationsResetAccount"
     [details]="message.value"
   ></app-reset-account-details>
 
-  <app-set-private-details
-    *ngSwitchCase="messageType.ProfileSetPrivate"
-    [details]="message.value"
-  ></app-set-private-details>
-
-  <app-set-public-details
-    *ngSwitchCase="messageType.ProfileSetPublic"
-    [details]="message.value"
-  ></app-set-public-details>
-
   <app-send-details
-    *ngSwitchCase="messageType.CosmosSend"
+    *ngSwitchCase="messageType.BankSend"
     [details]="message.value"
   ></app-send-details>
 
@@ -65,52 +45,52 @@
   ></app-unfollow-details>
 
   <app-unjail-details
-    *ngSwitchCase="messageType.CosmosUnjail"
+    *ngSwitchCase="messageType.SlashingUnjail"
     [details]="message.value"
   ></app-unjail-details>
 
   <app-create-validator-details
-    *ngSwitchCase="messageType.CosmosCreateValidator"
+    *ngSwitchCase="messageType.StakingCreateValidator"
     [details]="message.value"
   ></app-create-validator-details>
 
   <app-delegate-details
-    *ngSwitchCase="messageType.CosmosDelegate"
+    *ngSwitchCase="messageType.StakingDelegate"
     [details]="message.value"
   ></app-delegate-details>
 
   <app-deposit-details
-    *ngSwitchCase="messageType.CosmosDeposit"
+    *ngSwitchCase="messageType.GovDeposit"
     [details]="message.value"
   ></app-deposit-details>
 
   <app-undelegate-details
-    *ngSwitchCase="messageType.CosmosUndelegate"
+    *ngSwitchCase="messageType.StakingUndelegate"
     [details]="message.value"
   ></app-undelegate-details>
 
   <app-begin-redelegate-details
-    *ngSwitchCase="messageType.CosmosBeginRedelegate"
+    *ngSwitchCase="messageType.StakingBeginRedelegate"
     [details]="message.value"
   ></app-begin-redelegate-details>
 
   <app-fund-community-pool-details
-    *ngSwitchCase="messageType.CosmosFundCommunityPool"
+    *ngSwitchCase="messageType.DistributionFundCommunityPool"
     [details]="message.value"
   ></app-fund-community-pool-details>
 
   <app-vote-details
-    *ngSwitchCase="messageType.CosmosVote"
+    *ngSwitchCase="messageType.GovVote"
     [details]="message.value"
   ></app-vote-details>
 
   <app-withdraw-delegation-reward-details
-    *ngSwitchCase="messageType.CosmosWithdrawDelegationReward"
+    *ngSwitchCase="messageType.DistributionWithdrawDelegatorReward"
     [details]="message.value"
   ></app-withdraw-delegation-reward-details>
 
   <app-withdraw-validator-commission-details
-    *ngSwitchCase="messageType.CosmosWithdrawValidatorCommission"
+    *ngSwitchCase="messageType.DistributionWithdrawValidatorCommission"
     [details]="message.value"
   ></app-withdraw-validator-commission-details>
 

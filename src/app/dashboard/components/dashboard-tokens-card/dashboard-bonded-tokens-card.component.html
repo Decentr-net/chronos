@@ -16,11 +16,11 @@
 
     <div
       class="dashboard-bonded-tokens-card__ratio"
-      title="{{ pool.bonded_tokens / 1000000 }} / {{ +supply / 1000000 }}"
+      title="{{ +pool.bondedTokens / 1000000 }} / {{ +supply.amount / 1000000 }}"
     >
       <app-progress-bar [percent]="getPoolTokenPercent"></app-progress-bar>
       <div appTypeface="paragraph">
-        {{ pool.bonded_tokens / 1000000 | numberSuffix : '1.0-2' }} / {{ +supply / 1000000 | numberSuffix : '1.0-2' }}
+        {{ +pool.bondedTokens / 1000000 | numberSuffix : '1.0-2' }} / {{ +supply.amount / 1000000 | numberSuffix : '1.0-2' }}
       </div>
     </div>
   </ng-container>

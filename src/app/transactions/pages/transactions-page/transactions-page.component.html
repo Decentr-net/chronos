@@ -7,7 +7,6 @@
     class="transactions__table"
     ngProjectAs="[card-body]"
     *ngIf="transactions$ | async as transactions; else tablesLoading;"
-    [data]="transactions"
   ></app-transactions-table>
 </app-info-card>
 

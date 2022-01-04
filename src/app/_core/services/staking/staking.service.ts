@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { BondStatusString, Pool, Validator } from 'decentr-js';
 import { Observable } from 'rxjs';
-import { MintingInflation, Pool, TotalSupply, Validator, ValidatorsFilterParameters } from 'decentr-js';
 
 import { StakingApiService } from './staking-api.service';
 
@@ -13,23 +13,15 @@ export class StakingService {
   ) {
   }
 
-  public getCoinSupply(coinName: string): Observable<TotalSupply['amount']> {
-    return this.stakingApiService.getCoinSupply(coinName);
-  }
-
-  public getInflation(): Observable<MintingInflation> {
-    return this.stakingApiService.getInflation();
-  }
-
   public getPool(): Observable<Pool> {
     return this.stakingApiService.getPool();
   }
 
-  public getValidators(filter?: ValidatorsFilterParameters): Observable<Validator[]> {
-    return this.stakingApiService.getValidators(filter);
+  public getValidators(status?: BondStatusString): Observable<Validator[]> {
+    return this.stakingApiService.getValidators(status);
   }
 
-  public getValidatorByAddress(address: Validator['operator_address']): Observable<Validator> {
+  public getValidatorByAddress(address: Validator['operatorAddress']): Observable<Validator> {
     return this.stakingApiService.getValidatorByAddress(address);
   }
 }

@@ -1,31 +1,31 @@
 <app-data-table [data]="data" [trackBy]="trackByHash">
   <a
     *dataTableColumnDef="let item; name: 'Height'"
-    [routerLink]="['/', blocksRoute, item.block.header.height]"
+    [routerLink]="['/', blocksRoute, item.header.height]"
   >
-    {{ item.block.header.height | numberFormat : null : true }}
+    {{ item.header.height | numberFormat : null : true }}
   </a>
 
   <span
-    [attr.title]="item.block_id.hash"
+    [attr.title]="item.id"
     *dataTableColumnDef="let item; name: 'Hash'"
   >
     <ng-container *appBreakpoint="breakpoint.Desktop; revert true; else tabletHash">
-      {{ item.block_id.hash | truncate : hashSize[breakpoint.Desktop] }}
+      {{ item.id | truncate : hashSize[breakpoint.Desktop] }}
     </ng-container>
 
     <ng-template #tabletHash>
       <ng-container *appBreakpoint="breakpoint.Tablet; revert true; else mobileHash">
-        {{ item.block_id.hash | truncate : hashSize[breakpoint.Tablet] }}
+        {{ item.id | truncate : hashSize[breakpoint.Tablet] }}
       </ng-container>
     </ng-template>
 
     <ng-template #mobileHash>
-      {{ item.block_id.hash | truncate : hashSize[breakpoint.Mobile] }}
+      {{ item.id | truncate : hashSize[breakpoint.Mobile] }}
     </ng-template>
   </span>
 
   <ng-container *dataTableColumnDef="let item; name: 'Time'">
-    {{ item.block.header.time | dateAgo }}
+    {{ item.header.time | dateAgo }}
   </ng-container>
 </app-data-table>

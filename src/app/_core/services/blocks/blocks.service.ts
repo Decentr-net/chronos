@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Block, BlockHeader, Transaction } from 'decentr-js';
+import { Block, BlockHeader, DecodedIndexedTx } from 'decentr-js';
 import { forkJoin, Observable, of, timer } from 'rxjs';
 import { catchError, distinctUntilChanged, map, mergeMap, scan, switchMap, tap, throttleTime } from 'rxjs/operators';
 
@@ -12,9 +12,9 @@ import { BlocksApiService } from './blocks-api.service';
   providedIn: 'root',
 })
 export class BlocksService {
-  private readonly blocksCache: Map<string, Block> = new Map();
+  private readonly blocksCache: Map<number, Block> = new Map();
 
-  private readonly blockTransactionsCache: Map<BlockHeader['height'], Transaction[]> = new Map();
+  private readonly blockTransactionsCache: Map<BlockHeader['height'], DecodedIndexedTx[]> = new Map();
 
   constructor(
     private blocksApiService: BlocksApiService,
@@ -34,7 +34,7 @@ export class BlocksService {
 
   public getLatestBlock(): Observable<Block> {
     return this.blocksApiService.getLatestBlock().pipe(
-      tap((block) => this.blocksCache.set(block.block.header.height, block)),
+      tap((block) => this.blocksCache.set(block.header.height, block)),
     );
   }
 
@@ -51,31 +51,30 @@ export class BlocksService {
       whileDocumentVisible(),
       throttleTime(updatePeriod),
       switchMap(() => this.getLatestBlock()),
-      map((block) => block.block.header.height),
+      map((block) => block.header.height),
       distinctUntilChanged(),
       scan((acc, height) => ({
         height,
         newCount: Math.min((+height - +(acc.height || height)) || count, count),
-      }), { newCount: 0, height: '0' }),
+      }), { newCount: 0, height: 0 }),
       mergeMap((updateInfo) => this.getLatestBlocks(updateInfo.newCount, updateInfo.height)),
       scan((acc, newBlocks) => [...newBlocks, ...acc].slice(0, count), []),
     );
   }
 
   public getLatestBlocks(count: number, currentHeight: BlockHeader['height']): Observable<Block[]> {
-    return forkJoin(new Array(Math.min(count, +currentHeight))
+    return forkJoin(new Array(Math.min(count, currentHeight))
       .fill(null)
-      .map((_, index) => this.getBlockByHeight((+currentHeight - index).toString())),
+      .map((_, index) => this.getBlockByHeight((currentHeight - index))),
     );
   }
 
-  public getBlockTransactions(height: BlockHeader['height']): Observable<Transaction[]> {
+  public getBlockTransactions(height: BlockHeader['height']): Observable<DecodedIndexedTx[]> {
     const cachedTransactions = this.blockTransactionsCache.get(height);
 
     return cachedTransactions
       ? of(cachedTransactions)
-      : this.transactionsService.searchTransactions({ txMinHeight: +height, txMaxHeight: +height }).pipe(
-        map((transactionsResponse) => transactionsResponse.txs),
+      : this.transactionsService.searchTransactions({ height }).pipe(
         tap((transactions) => this.blockTransactionsCache.set(height, transactions)),
         catchError(() => of([])),
       );

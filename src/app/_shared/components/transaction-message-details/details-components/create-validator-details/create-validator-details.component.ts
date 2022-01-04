@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
+import { TxMessageValue, TxMessageTypeUrl } from 'decentr-js';
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateValidatorDetailsComponent implements OnInit {
-  @Input() public details: StdTxMessageValue<StdTxMessageType.CosmosCreateValidator>;
+  @Input() public details: TxMessageValue<TxMessageTypeUrl.StakingCreateValidator>;
 
   public isTablet$: Observable<boolean>;
 

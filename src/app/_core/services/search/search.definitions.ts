@@ -1,4 +1,4 @@
-import { Block, Transaction } from 'decentr-js';
+import { Block, DecodedIndexedTx } from 'decentr-js';
 
 export abstract class SearchItem<T> {
   protected constructor(public readonly result?: T) {
@@ -11,8 +11,8 @@ export class BlockSearchItem extends SearchItem<Block> {
   }
 }
 
-export class TransactionSearchItem extends SearchItem<Transaction> {
-  constructor(tx?: Transaction) {
+export class TransactionSearchItem extends SearchItem<DecodedIndexedTx> {
+  constructor(tx?: DecodedIndexedTx) {
     super(tx);
   }
 }

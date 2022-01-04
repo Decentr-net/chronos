@@ -24,7 +24,7 @@ export class StatisticsApiService {
 
   public getRegisteredUsersStatistics(): Observable<RegisteredUsersResponse> {
     return this.configurationService.getVulcanUrl().pipe(
-      mergeMap((vulcanUrl) => this.httpClient.get<RegisteredUsersResponse>(`${vulcanUrl}//v1/register/stats`)),
+      mergeMap((vulcanUrl) => this.httpClient.get<RegisteredUsersResponse>(`${vulcanUrl}/v1/register/stats`)),
     );
   }
 }

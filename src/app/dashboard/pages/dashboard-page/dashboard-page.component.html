@@ -23,7 +23,7 @@
   <div class="dashboard__statistics-cards dashboard__statistics-cards-second">
     <app-dashboard-bonded-tokens-card [pool]="pool$ | async" [supply]="supply$ | async"></app-dashboard-bonded-tokens-card>
 
-    <app-dashboard-height-card [latestBlockHeader]="(latestBlock$ | async)?.block.header"></app-dashboard-height-card>
+    <app-dashboard-height-card [latestBlockHeader]="(latestBlock$ | async)?.header"></app-dashboard-height-card>
   </div>
 </div>
 

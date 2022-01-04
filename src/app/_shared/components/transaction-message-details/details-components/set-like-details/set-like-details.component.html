@@ -1,17 +1,17 @@
 <app-details-table>
   <ng-template [appDetailsTableCellDef]="'Post owner'">
-    {{ details.postOwner }}
+    {{ details.like.postOwner }}
   </ng-template>
 
   <ng-template [appDetailsTableCellDef]="'Post UUID'">
-    {{ details.postUUID }}
+    {{ details.like.postUuid }}
   </ng-template>
 
   <ng-template [appDetailsTableCellDef]="'Owner'">
-    {{ details.owner }}
+    {{ details.like.owner }}
   </ng-template>
 
   <ng-template [appDetailsTableCellDef]="'Weight'">
-    {{ details.weight }}
+    {{ details.like.weight }}
   </ng-template>
 </app-details-table>
