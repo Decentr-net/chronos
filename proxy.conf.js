@@ -1,43 +1,18 @@
-// {
-//   "/api": {
-//     "target": {
-//       "host": "zeus.testnet.decentr.xyz",
-//       "protocol": "https:"
-//     },
-//     "secure": false,
-//     "changeOrigin": true,
-//     "logLevel": "info"
-//   }
-// }
-let serverUrl = 'https://zeus.testnet.decentr.xyz';
-let logLevel = 'debug';
+let logLevel = 'error';
+let serverUrl = 'http://hera.testnet.decentr.xyz:26657';
 
 const PROXY_CONFIG = [
   {
     context: function (url) {
-      url = url.toLowerCase();
-      return url.startsWith('/api');
+      return url.toLowerCase().startsWith('/api');
     },
-    target: serverUrl,
+    pathRewrite: function () {
+      return '';
+    },
     logLevel: logLevel,
-    secure: serverUrl.startsWith(serverUrl),
-    changeOrigin: true
-  }
-  // {
-  //   context: function (url) {
-  //     return url === '/';
-  //   },
-  //   target: localDevTargetUrl
-  // }
-  // {
-  //   context: [
-  //     "/url1",
-  //     "/url2"
-  //   ],
-  //   target: "<url_to_dev_server>",
-  //   secure: true,
-  //   logLevel: logLevel,
-  //   changeOrigin: true
-  // }
+    target: serverUrl,
+    changeOrigin: true,
+    secure: true,
+  },
 ];
 module.exports = PROXY_CONFIG;
