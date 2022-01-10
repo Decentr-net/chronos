@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Block, Coin, DecodedIndexedTx, Pool } from 'decentr-js';
+import { Block, Coin, Pool } from 'decentr-js';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
@@ -34,7 +34,8 @@ export class DashboardPageComponent implements OnInit {
   public pool$: Observable<Pool>;
   public registeredUsersStats$: Observable<RegisteredUsers>;
   public supply$: Observable<Coin>;
-  public transactions$: Observable<DecodedIndexedTx[]>;
+  // TODO: implement with offchain
+  // public transactions$: Observable<DecodedIndexedTx[]>;
 
   public readonly appRoute: typeof AppRoute = AppRoute;
   public breakpoint: typeof Breakpoint = Breakpoint;
@@ -82,6 +83,7 @@ export class DashboardPageComponent implements OnInit {
 
     this.latestBlock$ = this.dashboardPageService.getLatestBlock();
 
-    this.transactions$ = this.dashboardPageService.getTransactions();
+    // TODO: implement with offchain
+    // this.transactions$ = this.dashboardPageService.getTransactions();
   }
 }

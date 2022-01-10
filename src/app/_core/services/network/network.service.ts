@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { defer, Observable, ReplaySubject } from 'rxjs';
 import { delay, mapTo, mergeMap, retryWhen, take } from 'rxjs/operators';
-import { getNodeInfo } from 'decentr-js';
+import { DecentrNodeClient } from 'decentr-js';
 
 import { ONE_SECOND } from '@shared/utils/date';
 import { ConfigurationService } from '../configuration';
@@ -28,7 +28,7 @@ export class NetworkService {
 
     this.availableNodesCache.set(node, sbj);
 
-    getNodeInfo(node)
+    DecentrNodeClient.create(node)
       .then(() => sbj.next())
       .catch((error) => sbj.error(error));
 

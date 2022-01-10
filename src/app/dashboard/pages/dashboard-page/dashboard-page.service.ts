@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Block, Coin, DecodedIndexedTx, Pool } from 'decentr-js';
+import { Block, Coin, Pool } from 'decentr-js';
 import { Observable } from 'rxjs';
 
 import { ONE_HOUR, ONE_SECOND } from '@shared/utils/date';
@@ -9,7 +9,6 @@ import { StakingService } from '@core/services/staking';
 import { AdvDdvStatistics, RegisteredUsers, StatisticsService } from '@core/services/statistics';
 import { BankService } from '@core/services/bank';
 import { MintService } from '@core/services/mint';
-import { TransactionsService } from '@core/services/transactions';
 
 @Injectable()
 export class DashboardPageService {
@@ -20,7 +19,7 @@ export class DashboardPageService {
     private mintService: MintService,
     private stakingService: StakingService,
     private statisticsService: StatisticsService,
-    private transactionsService: TransactionsService,
+    // private transactionsService: TransactionsService,
   ) {
   }
 
@@ -60,7 +59,8 @@ export class DashboardPageService {
   return this.statisticsService.getRegisteredUsersStatistics();
   }
 
-  public getTransactions(): Observable<DecodedIndexedTx[]> {
-    return this.transactionsService.getTransactionsLive(5, ONE_HOUR * 24);
-  }
+  // TODO: implement with offchain
+  // public getTransactions(): Observable<DecodedIndexedTx[]> {
+  //   return this.transactionsService.getTransactionsLive(5, ONE_HOUR * 24);
+  // }
 }
