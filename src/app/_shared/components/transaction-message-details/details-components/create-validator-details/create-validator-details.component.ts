@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { TxMessageValue, TxMessageTypeUrl } from 'decentr-js';
+import { TxMessageValue, TxMessageTypeUrl, correctDecodedFloatNumber } from 'decentr-js';
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { Observable } from 'rxjs';
 
@@ -11,6 +11,10 @@ import { Observable } from 'rxjs';
 })
 export class CreateValidatorDetailsComponent implements OnInit {
   @Input() public details: TxMessageValue<TxMessageTypeUrl.StakingCreateValidator>;
+
+  public get commission(): number {
+    return +correctDecodedFloatNumber(this.details.commission.rate);
+  }
 
   public isTablet$: Observable<boolean>;
 
