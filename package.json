@@ -27,7 +27,7 @@
     "@angular/router": "~12.1.1",
     "@ngneat/svg-icon": "^3.1.0",
     "@ngneat/until-destroy": "^8.0.4",
-    "decentr-js": "^3.0.0",
+    "decentr-js": "^3.0.1",
     "highcharts": "^9.0.1",
     "highcharts-angular": "^2.10.0",
     "ngx-google-analytics": "^11.0.0",
