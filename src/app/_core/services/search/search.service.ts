@@ -18,7 +18,7 @@ export class SearchService {
 
   public search(value: string): Observable<SearchResult> {
     if (/^[0-9 ]+$/.test(value)) {
-      return this.blocksService.getBlockByHeight(+value.replace(' ', '')).pipe(
+      return this.blocksService.getBlockByHeight(+value.replace(/ /g, '')).pipe(
         catchError(() => of(null)),
         map((block) => new BlockSearchItem(block)),
       );

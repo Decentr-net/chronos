@@ -33,6 +33,7 @@
 
 .header-search__dropdown__item {
   color: $color-black;
+  cursor: pointer;
   display: block;
   padding: $grid-step * 1.5 $grid-step * 2;
 
