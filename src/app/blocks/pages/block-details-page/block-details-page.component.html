@@ -35,7 +35,7 @@
       class="block-details__hash"
       [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
     >
-      {{ blockDetails.block_id.hash }}
+      {{ blockDetails.id }}
 
       <app-page-link class="block-details__page-link"></app-page-link>
     </div>
@@ -44,11 +44,11 @@
 
     <app-details-table class="block-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Height'">
-        {{ +blockDetails.block.header.height | numberFormat : null : true }}
+        {{ +blockDetails.header.height | numberFormat : null : true }}
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Date & Time'">
-        {{ blockDetails.block.header.time | date:'yyyy.MM.dd, HH:mm:ss' }}
+        {{ blockDetails.header.time | date:'yyyy.MM.dd, HH:mm:ss' }}
       </ng-template>
     </app-details-table>
 

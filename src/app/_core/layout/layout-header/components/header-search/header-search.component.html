@@ -33,8 +33,8 @@
   <a
     class="header-search__dropdown__item"
     *ngIf="searchResult.result; else invalidBlock"
-    [routerLink]="['/', appRoute.Blocks, searchResult.result.block.header.height]"
-    (click)="onLinkClick()"
+    [routerLink]="link"
+    (click)="reset()"
   >
     Block details
   </a>
@@ -48,8 +48,8 @@
   <a
     class="header-search__dropdown__item"
     *ngIf="searchResult.result; else invalidTx"
-    [routerLink]="['/', appRoute.Transactions, searchResult.result.txhash]"
-    (click)="onLinkClick()"
+    [routerLink]="link"
+    (click)="reset()"
   >
     Tx details
   </a>

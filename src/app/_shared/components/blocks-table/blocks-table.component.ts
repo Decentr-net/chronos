@@ -22,5 +22,5 @@ export class BlocksTableComponent {
   public breakpoint: typeof Breakpoint = Breakpoint;
   public columns: string[] = ['Height', 'Hash', 'Time'];
 
-  public trackByHash: TrackByFunction<Block> = ({}, { block_id }) => block_id.hash;
+  public trackByHash: TrackByFunction<Block> = ({}, { id }) => id;
 }

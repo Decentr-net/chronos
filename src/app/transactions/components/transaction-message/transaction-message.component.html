@@ -1,14 +1,14 @@
 <div class="transaction-message__type">
   <app-transaction-message-type-icon
     class="transaction-message__type-icon"
-    [messageType]="txMessage.type"
+    [messageType]="txMessage.typeUrl"
   ></app-transaction-message-type-icon>
 
   <span
     class="transaction-message__type-label"
     appTypeface="subheader"
   >
-    {{ txMessage.type | txMessageTypeLabel }}
+    {{ txMessage.typeUrl | txMessageTypeLabel }}
   </span>
 </div>
 

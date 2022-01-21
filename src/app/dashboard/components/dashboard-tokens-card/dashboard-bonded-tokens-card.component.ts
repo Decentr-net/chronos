@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { Pool, TotalSupply } from 'decentr-js';
+import { Coin, Pool } from 'decentr-js';
 
 @Component({
   selector: 'app-dashboard-bonded-tokens-card',
@@ -9,9 +9,9 @@ import { Pool, TotalSupply } from 'decentr-js';
 })
 export class DashboardBondedTokensCardComponent {
   @Input() public pool: Pool;
-  @Input() public supply: TotalSupply['amount'];
+  @Input() public supply: Coin;
 
   get getPoolTokenPercent(): number {
-    return this.pool.bonded_tokens / +this.supply * 100;
+    return +this.pool.bondedTokens / +this.supply.amount * 100;
   }
 }

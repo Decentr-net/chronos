@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { StdTxMessage } from 'decentr-js';
+import { TypedEncodeObject } from 'decentr-js';
 
 @Component({
   selector: 'app-transaction-message',
@@ -8,5 +8,5 @@ import { StdTxMessage } from 'decentr-js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TransactionMessageComponent {
-  @Input() txMessage: StdTxMessage<any>;
+  @Input() txMessage: TypedEncodeObject;
 }

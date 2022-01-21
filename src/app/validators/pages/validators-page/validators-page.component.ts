@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { combineLatest, forkJoin, Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-import { Pool, Validator, ValidatorStatus } from 'decentr-js';
+import { BondStatus, Pool, Validator } from 'decentr-js';
 
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { StakingService } from '@core/services/staking';
@@ -42,16 +42,16 @@ export class ValidatorsPageComponent implements OnInit {
       onlyBonded$,
     ]).pipe(
       map(([validators, onlyBonded]) => {
-        return validators.filter(({ status }) => !onlyBonded || status === ValidatorStatus.Bonded);
+        return validators.filter(({ status }) => !onlyBonded || status === BondStatus.BOND_STATUS_BONDED);
       }),
     );
   }
 
   private getValidators(): Observable<Validator[]> {
     return forkJoin([
-      this.stakingService.getValidators({ status: ValidatorStatus.Bonded }),
-      this.stakingService.getValidators({ status: ValidatorStatus.Unbonding }),
-      this.stakingService.getValidators({ status: ValidatorStatus.Unbonded }),
+      this.stakingService.getValidators('BOND_STATUS_BONDED'),
+      this.stakingService.getValidators('BOND_STATUS_UNBONDING'),
+      this.stakingService.getValidators('BOND_STATUS_UNBONDED'),
     ]).pipe(
       map(([bonded, unbonding, unbonded]) => [...bonded, ...unbonding, ...unbonded]),
     );

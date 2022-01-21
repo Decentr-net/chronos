@@ -6,7 +6,7 @@
     *dataTableColumnDef="let item; name: 'Validator'"
     class="validators-table__validator"
   >
-    <a [routerLink]="['/', validatorRoute, item.operator_address]">
+    <a [routerLink]="['/', validatorRoute, item.operatorAddress]">
       {{ item.description.moniker }}
     </a>
 
@@ -26,7 +26,7 @@
       class="validators-table__voting-power-percent"
       appTypeface="caption"
     >
-      {{ item.tokens / pool.bonded_tokens | percent : '1.0-2' }}
+      {{ item.tokens / +pool.bondedTokens | percent : '1.0-2' }}
     </div>
   </ng-container>
 
@@ -37,7 +37,7 @@
   ></app-validator-status>
 
   <ng-container *dataTableColumnDef="let item; name: 'Commission'">
-    {{ item.commission.commission_rates.rate | percent }}
+    {{ item.commission.commissionRates.rate | percent }}
   </ng-container>
 </app-data-table>
 

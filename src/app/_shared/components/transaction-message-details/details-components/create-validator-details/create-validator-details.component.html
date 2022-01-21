@@ -21,7 +21,7 @@
 
 <app-details-table class="create-validator-details__address">
   <ng-template [appDetailsTableCellDef]="'Operator address'">
-    {{ details.validator_address }}
+    {{ details.validatorAddress }}
   </ng-template>
 </app-details-table>
 
@@ -33,6 +33,6 @@
   </ng-template>
 
   <ng-template [appDetailsTableCellDef]="'Commission'">
-    {{ details.commission.rate| percent }}
+    {{ commission | percent }}
   </ng-template>
 </app-details-table>

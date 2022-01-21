@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  HostListener,
   Input,
   OnInit,
   TemplateRef,
@@ -10,7 +11,8 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, of, timer } from 'rxjs';
-import { map, mergeMap, share, startWith, switchMap } from 'rxjs/operators';
+import { filter, map, mergeMap, share, startWith, switchMap } from 'rxjs/operators';
+import { NavigationStart, Router } from '@angular/router';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
@@ -45,6 +47,8 @@ export class HeaderSearchComponent implements OnInit {
 
   public resultTemplate: TemplateRef<{}>;
 
+  public link: string[];
+
   public isDropdownOpened: boolean;
 
   public appRoute: typeof AppRoute = AppRoute;
@@ -52,6 +56,7 @@ export class HeaderSearchComponent implements OnInit {
   constructor(
     public elementRef: ElementRef,
     private changeDetectorRef: ChangeDetectorRef,
+    private router: Router,
     private searchService: SearchService,
     private svgIconRegistry: SvgIconRegistry,
   ) {
@@ -63,6 +68,13 @@ export class HeaderSearchComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    this.router.events.pipe(
+      filter((event) => event instanceof NavigationStart),
+      untilDestroyed(this),
+    ).subscribe(() => {
+      this.reset();
+    });
+
     this.searchResult$ = this.searchControl.valueChanges.pipe(
       startWith(this.searchControl.value),
       switchMap((searchValue) => searchValue
@@ -88,36 +100,53 @@ export class HeaderSearchComponent implements OnInit {
     });
 
     this.searchResult$.pipe(
-      map((result) => {
-        if (!result) {
-          return null;
-        }
-
-        switch (result.constructor) {
-          case BlockSearchItem:
-            return this.blockResultTemplate;
-          case TransactionSearchItem:
-            return this.txResultTemplate;
-          default:
-            return null;
-        }
-      }),
       untilDestroyed(this),
-    ).subscribe((resultTemplate) => this.resultTemplate = resultTemplate);
+    ).subscribe((result) => {
+      if (result instanceof BlockSearchItem) {
+        this.resultTemplate = this.blockResultTemplate;
+        this.link = result.result ? ['/', AppRoute.Blocks, result.result.header.height.toString()] : null;
+        return;
+      }
+
+      if (result instanceof TransactionSearchItem) {
+        this.resultTemplate = this.txResultTemplate;
+        this.link = result.result ? ['/', AppRoute.Transactions, result.result.hash] : null;
+        return;
+      }
+
+      this.resultTemplate = null;
+      this.link = null;
+    });
 
     if (this.autofocus) {
       this.inputElement.nativeElement.focus();
     }
   }
 
-  public onLinkClick(): void {
+  @HostListener('keydown.enter') public onDownEnter(): void {
+    this.navigateTo();
+    this.reset();
+  }
+
+  public reset(): void {
     this.searchControl.reset();
   }
 
+  public navigateTo(): void {
+    if (!this.link) {
+      return;
+    }
+
+    this.router.navigate(this.link);
+  }
+
   public closeDropdown(): void {
-    timer(0).pipe(
+    timer(200).pipe(
       untilDestroyed(this),
-    ).subscribe(() => this.isDropdownOpened = false);
+    ).subscribe(() => {
+      this.isDropdownOpened = false;
+      this.changeDetectorRef.markForCheck();
+    });
   }
 
   public openDropdown(): void {

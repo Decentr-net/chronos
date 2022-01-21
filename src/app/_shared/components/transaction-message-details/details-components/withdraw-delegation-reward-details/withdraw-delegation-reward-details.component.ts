@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
+import { TxMessageValue, TxMessageTypeUrl } from 'decentr-js';
 
 @Component({
   selector: 'app-withdraw-delegation-reward-details',
@@ -8,5 +8,5 @@ import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WithdrawDelegationRewardDetailsComponent {
-  @Input() public details: StdTxMessageValue<StdTxMessageType.CosmosWithdrawDelegationReward>;
+  @Input() public details: TxMessageValue<TxMessageTypeUrl.DistributionWithdrawDelegatorReward>;
 }

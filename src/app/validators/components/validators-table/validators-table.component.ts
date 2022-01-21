@@ -15,5 +15,5 @@ export class ValidatorsTableComponent {
 
   public validatorRoute: AppRoute = AppRoute.Validators;
 
-  public trackByAddress: TrackByFunction<Validator> = ({}, { operator_address }) => operator_address;
+  public trackByAddress: TrackByFunction<Validator> = ({}, { operatorAddress }) => operatorAddress;
 }

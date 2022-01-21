@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { StdTxMessageType, StdTxMessageValue } from 'decentr-js';
+import { TxMessageValue, TxMessageTypeUrl } from 'decentr-js';
 import { Observable } from 'rxjs';
+
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 
 @Component({
@@ -10,7 +11,7 @@ import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UndelegateDetailsComponent implements OnInit {
-  @Input() public details: StdTxMessageValue<StdTxMessageType.CosmosUndelegate>;
+  @Input() public details: TxMessageValue<TxMessageTypeUrl.StakingUndelegate>;
 
   public isTablet$: Observable<boolean>;
 

@@ -1,47 +1,37 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { StdTxMessageType } from 'decentr-js';
+import { TxMessageTypeUrl } from 'decentr-js';
 
 @Pipe({
   name: 'txMessageTypeLabel',
 })
 export class TxMessageTypeLabelPipe implements PipeTransform {
 
-  public readonly messageTypeLabelMap: Record<StdTxMessageType, string> = {
-    [StdTxMessageType.CommunityCreatePost]: 'Create Post',
-    [StdTxMessageType.CommunityDeletePost]: 'Delete Post',
-    [StdTxMessageType.CommunityFollow]: 'Follow',
-    [StdTxMessageType.CosmosBeginRedelegate]: 'Begin Redelegate',
-    [StdTxMessageType.CosmosBeginUnbonding]: 'Begin Unbonding',
-    [StdTxMessageType.CosmosCreateValidator]: 'Create Validator',
-    [StdTxMessageType.CosmosEditValidator]: 'Edit Validator',
-    [StdTxMessageType.CosmosFundCommunityPool]: 'Fund Community Pool',
-    [StdTxMessageType.CosmosDelegate]: 'Delegate',
-    [StdTxMessageType.CosmosDeposit]: 'Deposit',
-    [StdTxMessageType.CosmosJail]: 'Jail',
-    [StdTxMessageType.CosmosModifyWithdrawAddress]: 'Modify Withdraw Address',
-    [StdTxMessageType.CosmosSend]: 'Send',
-    [StdTxMessageType.CosmosUndelegate]: 'Undelegate',
-    [StdTxMessageType.CosmosUnjail]: 'Unjail',
-    [StdTxMessageType.CosmosVote]: 'Vote',
-    [StdTxMessageType.CommunitySetLike]: 'Set Like',
-    [StdTxMessageType.CommunityUnfollow]: 'Unfollow',
-    [StdTxMessageType.CosmosWithdrawDelegationReward]: 'Withdraw Delegation Reward',
-    [StdTxMessageType.CosmosWithdrawValidatorCommission]: 'Withdraw Validator Commission',
-    [StdTxMessageType.OperationsBanAccount]: 'Ban Account',
-    [StdTxMessageType.OperationsMint]: 'Mint',
-    [StdTxMessageType.OperationsDistributeRewards]: 'Distribute Rewards',
-    [StdTxMessageType.OperationsResetAccount]: 'Reset Account',
-
-    // DEPRECATED
-    [StdTxMessageType.PDVDistributeRewards]: 'Distribute Rewards',
-    [StdTxMessageType.ProfileSetPrivate]: 'Set Private',
-    [StdTxMessageType.ProfileSetPublic]: 'Set Public',
-
-    // Undefined
-    [StdTxMessageType.Undefined]: '',
+  public readonly messageTypeLabelMap: Record<TxMessageTypeUrl, string> = {
+    [TxMessageTypeUrl.CommunityCreatePost]: 'Create Post',
+    [TxMessageTypeUrl.CommunityDeletePost]: 'Delete Post',
+    [TxMessageTypeUrl.CommunityFollow]: 'Follow',
+    [TxMessageTypeUrl.StakingBeginRedelegate]: 'Begin Redelegate',
+    [TxMessageTypeUrl.StakingCreateValidator]: 'Create Validator',
+    [TxMessageTypeUrl.StakingEditValidator]: 'Edit Validator',
+    [TxMessageTypeUrl.DistributionFundCommunityPool]: 'Fund Community Pool',
+    [TxMessageTypeUrl.StakingDelegate]: 'Delegate',
+    [TxMessageTypeUrl.GovDeposit]: 'Deposit',
+    [TxMessageTypeUrl.DistributionSetWithdrawAddress]: 'Set Withdraw Address',
+    [TxMessageTypeUrl.BankSend]: 'Send',
+    [TxMessageTypeUrl.StakingUndelegate]: 'Undelegate',
+    [TxMessageTypeUrl.SlashingUnjail]: 'Unjail',
+    [TxMessageTypeUrl.GovVote]: 'Vote',
+    [TxMessageTypeUrl.CommunitySetLike]: 'Set Like',
+    [TxMessageTypeUrl.CommunityUnfollow]: 'Unfollow',
+    [TxMessageTypeUrl.DistributionWithdrawDelegatorReward]: 'Withdraw Delegation Reward',
+    [TxMessageTypeUrl.DistributionWithdrawValidatorCommission]: 'Withdraw Validator Commission',
+    [TxMessageTypeUrl.OperationsBurn]: 'Burn',
+    [TxMessageTypeUrl.OperationsMint]: 'Mint',
+    [TxMessageTypeUrl.OperationsDistributeRewards]: 'Distribute Rewards',
+    [TxMessageTypeUrl.OperationsResetAccount]: 'Reset Account',
   };
 
-  transform(messageType: StdTxMessageType): string {
+  transform(messageType: TxMessageTypeUrl): string {
     return this.messageTypeLabelMap[messageType] || messageType;
   }
 }
