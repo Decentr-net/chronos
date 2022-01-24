@@ -76,7 +76,7 @@ export class ConfigurationService {
   }
 
   public getVulcanUrl(): Observable<string> {
-    return this.getConfig().pipe(
+    return this.getNetworkConfig().pipe(
       map((config) => config.vulcan.url),
     );
   }
