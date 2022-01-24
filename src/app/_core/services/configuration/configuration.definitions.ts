@@ -6,11 +6,11 @@ export interface Network {
   theseus: {
     url: string;
   };
+  vulcan: {
+    url: string;
+  };
 }
 
 export interface Configuration {
   networks: Record<string, Network>;
-  vulcan: {
-    url: string;
-  };
 }
