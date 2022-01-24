@@ -9,6 +9,7 @@ import { environment } from '@environments/environment';
 import { Environment } from '@environments/environments.definitions';
 import { NetworkSelectorService } from '@shared/components/network-selector';
 import { NetworkSelectorService as NetworkSelectorServiceImpl } from './services/network-selector';
+import { HelpService } from './services/help';
 
 @NgModule({
   imports: [
@@ -31,9 +32,14 @@ import { NetworkSelectorService as NetworkSelectorServiceImpl } from './services
   ],
 })
 export class CoreModule {
-  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
+  constructor(
+    helpService: HelpService,
+    @Optional() @SkipSelf() parentModule: CoreModule,
+  ) {
     if (parentModule) {
       throw new Error('CoreModule has already been loaded. Import CoreModule in the AppModule only.');
     }
+
+    helpService.initialize();
   }
 }
