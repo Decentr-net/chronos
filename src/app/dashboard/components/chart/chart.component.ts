@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
-import { ChartTooltip } from './chart-tooltip/chart.tooltip';
+import { ChartTooltip } from './chart-tooltip';
 import { ComponentFactoryClass } from './utils/component-factory';
 import { DashboardModule } from '../../dashboard.module';
 
@@ -66,7 +66,7 @@ export class ChartComponent implements OnInit {
   constructor(
     private compiler: Compiler,
     private injector: Injector,
-    private elementRef: ElementRef,
+    private elementRef: ElementRef<HTMLElement>,
     private componentFactoryResolver: ComponentFactoryResolver,
     @Inject(CHART_TOOLTIP) private chartTooltip: Type<ChartTooltip>,
   ) {

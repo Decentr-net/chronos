@@ -19,7 +19,7 @@ export class NetworkService {
     return this.getRandomRestUrl();
   }
 
-  private checkNode(node): Observable<void> {
+  private checkNode(node: string): Observable<void> {
     if (this.availableNodesCache.has(node)) {
       return this.availableNodesCache.get(node);
     }

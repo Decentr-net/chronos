@@ -1,4 +1,4 @@
 export const svgUnjailIcon = {
-    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 8h1c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2H6c-1.1 0-2-.9-2-2V10c0-1.1.9-2 2-2h9V6c0-1.66-1.34-3-3-3S9 4.34 9 6H7c0-2.76 2.24-5 5-5s5 2.24 5 5v2zM6 10v10h12V10H6zm4.97 8.5L7.5 15l1.4-1.41 2.07 2.08 4.13-4.17 1.4 1.41-5.53 5.59z" fill="currentColor"/></svg>`,
+    data: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M17 8H18C19.1 8 20 8.9 20 10V20C20 21.1 19.1 22 18 22H6C4.9 22 4 21.1 4 20V10C4 8.9 4.9 8 6 8H15V6C15 4.34 13.66 3 12 3C10.34 3 9 4.34 9 6H7C7 3.24 9.24 1 12 1C14.76 1 17 3.24 17 6V8ZM6 10V20H18V10H6ZM10.97 18.5L7.5 15L8.9 13.59L10.97 15.67L15.1 11.5L16.5 12.91L10.97 18.5Z" fill="currentColor"/></svg>`,
     name: 'unjail'
 };

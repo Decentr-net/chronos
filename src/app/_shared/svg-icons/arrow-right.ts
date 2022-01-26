@@ -1,4 +1,4 @@
 export const svgArrowRightIcon = {
-    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M30 10l-2.82 2.82L36.34 22H4v4h32.34l-9.18 9.18L30 38l14-14-14-14z" fill="currentColor"/></svg>`,
+    data: `<svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30 10L27.18 12.82L36.34 22H4V26H36.34L27.16 35.18L30 38L44 24L30 10Z" fill="currentColor"/></svg>`,
     name: 'arrow-right'
 };

@@ -1,4 +1,4 @@
 export const svgDelegateIcon = {
-    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 3a2 2 0 00-2 2v7a2 2 0 002 2h3v3c0 1.093.907 2 2 2h7c1.093 0 2-.907 2-2v-7c0-1.093-.907-2-2-2h-3V5a2 2 0 00-2-2H8zm9 7h3v7h-7v-3h2a2 2 0 002-2v-2zM2 14v4c0 1.093.907 2 2 2h3v2l3-3-3-3v2H4v-4H2z" fill="currentColor"/></svg>`,
+    data: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8 3C6.895 3 6 3.895 6 5V12C6 13.105 6.895 14 8 14H11V17C11 18.0931 11.9069 19 13 19H20C21.0931 19 22 18.0931 22 17V10C22 8.90694 21.0931 8 20 8H17V5C17 3.895 16.105 3 15 3H8ZM17 10H20V17H13V14H15C16.105 14 17 13.105 17 12V10ZM2 14V18C2 19.0931 2.90694 20 4 20H7V22L10 19L7 16V18H4V14H2Z" fill="currentColor"/></svg>`,
     name: 'delegate'
 };

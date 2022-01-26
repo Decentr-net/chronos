@@ -77,7 +77,7 @@ export class HeaderSearchComponent implements OnInit {
 
     this.searchResult$ = this.searchControl.valueChanges.pipe(
       startWith(this.searchControl.value),
-      switchMap((searchValue) => searchValue
+      switchMap((searchValue: string) => searchValue
         ? timer(ONE_SECOND / 4).pipe(
           mergeMap(() => this.searchService.search(searchValue)),
         )
