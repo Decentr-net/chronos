@@ -1,4 +1,4 @@
 export const svgChartArrowUpIcon = {
-    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.667 4h4v4h-1.334V6.276l-4 4L6.667 7.61 2.47 11.805l-.942-.943 5.138-5.138L9.333 8.39l3.057-3.058h-1.723V4z" fill="currentColor"/></svg>`,
+    data: `<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M10.6667 4H14.6667V8H13.3333V6.27614L9.33333 10.2761L6.66666 7.60948L2.4714 11.8047L1.52859 10.8619L6.66666 5.72386L9.33333 8.39052L12.3905 5.33333H10.6667V4Z" fill="currentColor"/></svg>`,
     name: 'chart-arrow-up'
 };

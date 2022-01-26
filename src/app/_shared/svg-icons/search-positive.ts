@@ -1,4 +1,4 @@
 export const svgSearchPositiveIcon = {
-    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 10a6 6 0 11-12 0 6 6 0 0112 0zm-1.094 6.32a8 8 0 111.414-1.414l5.387 5.387-1.414 1.414-5.387-5.387z" fill="#03B15E"/><path d="M9.45 10.05L12 7.5l1.398 1.4-3.949 3.95L6.5 9.9l1.398-1.4 1.551 1.55z" fill="#03B15E"/></svg>`,
+    data: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 10C16 13.3137 13.3137 16 10 16C6.68629 16 4 13.3137 4 10C4 6.68629 6.68629 4 10 4C13.3137 4 16 6.68629 16 10ZM14.9057 16.3199C13.551 17.3729 11.8487 18 10 18C5.58172 18 2 14.4183 2 10C2 5.58172 5.58172 2 10 2C14.4183 2 18 5.58172 18 10C18 11.8487 17.3729 13.551 16.3199 14.9056L21.7071 20.2929L20.2929 21.7071L14.9057 16.3199Z" fill="#03B15E"/><path d="M9.44922 10.0508L12 7.5L13.3984 8.90039L9.44922 12.8496L6.5 9.90039L7.89844 8.5L9.44922 10.0508Z" fill="#03B15E"/></svg>`,
     name: 'search-positive'
 };

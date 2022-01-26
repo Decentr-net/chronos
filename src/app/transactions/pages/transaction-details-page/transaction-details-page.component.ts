@@ -47,7 +47,7 @@ export class TransactionDetailsPageComponent implements OnInit {
 
     this.transactionDetails$ = this.activatedRoute.params.pipe(
       pluck('transactionHash'),
-      mergeMap((transactionHash) => this.transactionsService.getTransactionByHash(transactionHash)),
+      mergeMap((transactionHash: string) => this.transactionsService.getTransactionByHash(transactionHash)),
       tap((transactionHash) => this.titleService.setTitle(`Transaction - ${transactionHash.hash}`)),
       catchError(() => {
         this.router.navigate(['/', AppRoute.Empty], {

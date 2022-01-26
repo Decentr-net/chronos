@@ -1,4 +1,4 @@
 export const svgJailIcon = {
-    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 10v10h5.29c.22.72.55 1.4.97 2H6c-1.1 0-2-.9-2-2V10c0-1.1.9-2 2-2h1V6c0-2.76 2.24-5 5-5s5 2.24 5 5v2h1c1.1 0 2 .9 2 2v1.29c-.63-.19-1.3-.29-2-.29v-1H6zm6-7c-1.66 0-3 1.34-3 3v2h6V6c0-1.66-1.34-3-3-3zm1 15c0-2.76 2.24-5 5-5s5 2.24 5 5-2.24 5-5 5-5-2.24-5-5zm4.5.2l2.15 2.15.7-.71-1.85-1.85V15h-1v3.2z" fill="currentColor"/></svg>`,
+    data: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 10V20H11.29C11.51 20.72 11.84 21.4 12.26 22H6C4.9 22 4 21.1 4 20V10C4 8.9 4.9 8 6 8H7V6C7 3.24 9.24 1 12 1C14.76 1 17 3.24 17 6V8H18C19.1 8 20 8.9 20 10V11.29C19.37 11.1 18.7 11 18 11V10H6ZM12 3C10.34 3 9 4.34 9 6V8H15V6C15 4.34 13.66 3 12 3ZM13 18C13 15.24 15.24 13 18 13C20.76 13 23 15.24 23 18C23 20.76 20.76 23 18 23C15.24 23 13 20.76 13 18ZM17.5 18.2L19.65 20.35L20.35 19.64L18.5 17.79V15H17.5V18.2Z" fill="currentColor"/></svg>`,
     name: 'jail'
 };

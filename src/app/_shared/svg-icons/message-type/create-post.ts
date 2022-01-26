@@ -1,4 +1,4 @@
 export const svgCreatePostIcon = {
-    data: `<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 3v15c0 1.645 1.355 3 3 3h14c1.645 0 3-1.355 3-3V7h-2v11c0 .565-.435 1-1 1s-1-.435-1-1V3H2zm2 2h12v13c0 .388.279.658.416 1H5c-.565 0-1-.435-1-1V5zm2 2v3h8V7H6zm0 5v2h8v-2H6zm0 4v2h8v-2H6z" fill="currentColor"/></svg>`,
+    data: `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3V18C2 19.645 3.35503 21 5 21H19C20.645 21 22 19.645 22 18V7H20V18C20 18.565 19.565 19 19 19C18.435 19 18 18.565 18 18V3H2ZM4 5H16V18C16 18.3883 16.279 18.658 16.416 19H5C4.43497 19 4 18.565 4 18V5ZM6 7V10H14V7H6ZM6 12V14H14V12H6ZM6 16V18H14V16H6Z" fill="currentColor"/></svg>`,
     name: 'create-post'
 };
