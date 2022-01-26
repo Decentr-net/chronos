@@ -6,7 +6,7 @@ export const getRegisteredUsersDayChange = (stats: RegisteredUsersStats[], curre
 
   const previousValue = (stats || [])
     .sort((left, right) => right[0] - left[0])
-    .find((stat) => stat[0] !== today)[1];
+    .find((stat) => stat[0] !== today)?.[1] || 0;
 
   return currentValue - previousValue;
 };
