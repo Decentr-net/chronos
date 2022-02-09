@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component, ContentChildren, Input, QueryList, TrackByFunction } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  EventEmitter,
+  Input,
+  Output,
+  QueryList,
+  TrackByFunction,
+} from '@angular/core';
+import { Sort } from '@angular/material/sort';
 
 import { DataTableColumnDefDirective } from './data-table-column-def.directive';
 
@@ -12,6 +22,8 @@ export class DataTableComponent<T> {
   @Input() public data: T[];
   @Input() public trackBy: TrackByFunction<T>;
 
+  @Output() sortClick: EventEmitter<Sort> = new EventEmitter();
+
   @ContentChildren(DataTableColumnDefDirective)
   public dataTableColumnDefs: QueryList<DataTableColumnDefDirective>;
 
@@ -24,4 +36,8 @@ export class DataTableComponent<T> {
   }
 
   public trackByColumnName: TrackByFunction<DataTableColumnDefDirective> = ({}, { name }) => name;
+
+  public sortChange(sort: Sort): void {
+    this.sortClick.emit(sort);
+  }
 }

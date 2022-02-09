@@ -1,13 +1,14 @@
 <app-data-table
   [data]="data"
   [trackBy]="trackByAddress"
+  (sortClick)="sortClick.emit($event)"
 >
   <div
-    *dataTableColumnDef="let item; name: 'Validator'"
+    *dataTableColumnDef="let item; name: 'Validator'; id: 'name'"
     class="validators-table__validator"
   >
-    <a [routerLink]="['/', validatorRoute, item.operatorAddress]">
-      {{ item.description.moniker }}
+    <a [routerLink]="['/', validatorRoute, item.address]">
+      {{ item.name }}
     </a>
 
     <app-validator-jailed
@@ -18,36 +19,24 @@
     </app-validator-jailed>
   </div>
 
-  <ng-container *dataTableColumnDef="let item; name: 'Voting power'">
+  <ng-container *dataTableColumnDef="let item; name: 'Voting power'; id: 'tokens'">
     {{ item.tokens / 1000000 | numberFormat : '1.0-0' : true }}
 
     <div
-      *ngIf="pool; else votingPowerPercentLoading"
       class="validators-table__voting-power-percent"
       appTypeface="caption"
     >
-      {{ item.tokens / +pool.bondedTokens | percent : '1.0-2' }}
+      {{ item.votingPower | percent : '1.0-2' }}
     </div>
   </ng-container>
 
   <app-validator-status
-    *dataTableColumnDef="let item; name: 'Status'"
+    *dataTableColumnDef="let item; name: 'Status'; id: 'status'"
     [status]="item.status"
     class="validators-table__validator-status"
   ></app-validator-status>
 
-  <ng-container *dataTableColumnDef="let item; name: 'Commission'">
-    {{ item.commission.commissionRates.rate | percent }}
+  <ng-container *dataTableColumnDef="let item; name: 'Commission'; id: 'commission'">
+    {{ item.commission | percent }}
   </ng-container>
 </app-data-table>
-
-<ng-template #votingPowerPercentLoading>
-  <ngx-skeleton-loader
-    class="validators-table__voting-power-percent-loading"
-    [theme]="{
-      height: '16px',
-      margin: '0',
-      width: '35px'
-    }"
-  ></ngx-skeleton-loader>
-</ng-template>

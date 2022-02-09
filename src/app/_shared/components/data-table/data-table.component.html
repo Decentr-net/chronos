@@ -1,6 +1,8 @@
 <table
   class="data-table__table"
   cdk-table
+  matSort
+  (matSortChange)="sortChange($event)"
   [dataSource]="data"
   [trackBy]="trackBy"
 >
@@ -11,6 +13,7 @@
     <th
       class="data-table__header-row__cell"
       cdk-header-cell
+      [mat-sort-header]="column.id"
       *cdkHeaderCellDef
       appTypeface="caption"
     >

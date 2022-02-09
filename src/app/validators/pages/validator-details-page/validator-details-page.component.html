@@ -15,7 +15,7 @@
           class="validator-details__moniker"
           [appTypeface]="(isTablet$ | async) ? 'subheader' : 'header-4'"
         >
-          {{ validatorDetails.description.moniker }}
+          {{ validatorDetails.name }}
         </span>
 
         <app-validator-status
@@ -27,7 +27,7 @@
 
       <div
         class="validator-details__description__details"
-        *ngIf="validatorDetails.description.details as details"
+        *ngIf="validatorDetails.details as details"
         appTypeface="paragraph"
       >
         {{ details }}
@@ -46,7 +46,7 @@
 
     <app-details-table class="validator-details__address">
       <ng-template [appDetailsTableCellDef]="'Operator address'">
-        {{ validatorDetails.operatorAddress }}
+        {{ validatorDetails.address }}
       </ng-template>
     </app-details-table>
 
@@ -54,23 +54,22 @@
 
     <app-details-table class="validator-details__details-table">
       <ng-template [appDetailsTableCellDef]="'Website'">
-        <a [appLink]="validatorDetails.description.website"></a>
+        <a [appLink]="validatorDetails.website"></a>
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Voting power'">
         {{ validatorDetails.tokens / 1000000 | numberFormat : '1.0-0' : true }}
 
         <div
-          *ngIf="pool$ | async as pool; else votingPowerPercentLoading"
           class="validator-details__details-table__voting-power-percent"
           appTypeface="caption"
         >
-          {{ validatorDetails.tokens / pool.bondedTokens | percent : '1.0-2' }}
+          {{ validatorDetails.votingPower | percent : '1.0-2' }}
         </div>
       </ng-template>
 
       <ng-template [appDetailsTableCellDef]="'Commission'">
-        {{ validatorDetails.commission.commissionRates.rate | percent }}
+        {{ validatorDetails.commission | percent }}
       </ng-template>
     </app-details-table>
   </ng-container>
@@ -83,17 +82,6 @@
     [theme]="{
       height: '40px',
       width: '100%'
-    }"
-  ></ngx-skeleton-loader>
-</ng-template>
-
-<ng-template #votingPowerPercentLoading>
-  <ngx-skeleton-loader
-    class="validator-details__voting-power-percent-loading"
-    [theme]="{
-      height: '16px',
-      margin: '0',
-      width: '35px'
     }"
   ></ngx-skeleton-loader>
 </ng-template>
