@@ -24,7 +24,6 @@ export class StatisticsService {
       map((registeredUsers) => ({
         dayMargin: getRegisteredUsersDayChange(
           registeredUsers.stats.map((stat) => [new Date(stat.date).valueOf(), +stat.value]),
-          registeredUsers.total,
         ),
         stats: registeredUsers.stats.map((stat) => [new Date(stat.date).valueOf(), +stat.value]),
         total: registeredUsers.total,

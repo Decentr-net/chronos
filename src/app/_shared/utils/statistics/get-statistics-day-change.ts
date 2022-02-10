@@ -1,12 +1,8 @@
 import { RegisteredUsersStats } from '@core/services/statistics';
 
-export const getRegisteredUsersDayChange = (stats: RegisteredUsersStats[], currentValue: number): number => {
-  const now = new Date();
-  const today = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
+export const getRegisteredUsersDayChange = (stats: RegisteredUsersStats[]): number => {
+  const stat = (stats || [])
+    .sort((left, right) => right[0] - left[0]);
 
-  const previousValue = (stats || [])
-    .sort((left, right) => right[0] - left[0])
-    .find((stat) => stat[0] !== today)?.[1] || 0;
-
-  return currentValue - previousValue;
+  return (stat[0]?.[1] || 0) - (stat[1]?.[1] || 0);
 };
