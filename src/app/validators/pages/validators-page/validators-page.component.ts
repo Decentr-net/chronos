@@ -57,7 +57,7 @@ export class ValidatorsPageComponent implements OnInit {
             switch (sort.active as keyof ValidatorDefinition) {
               case 'commission':
               case 'tokens':
-              case 'status': return left[sort.active] - right[sort.active] * direction;
+              case 'status': return (left[sort.active] - right[sort.active]) * direction;
               case 'name': return (left[sort.active] as string).localeCompare(right[sort.active] as string) * direction;
               default: return 0;
             }
