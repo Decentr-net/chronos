@@ -14,6 +14,7 @@
       class="data-table__header-row__cell"
       cdk-header-cell
       [mat-sort-header]="column.id"
+      [disabled]="!sortClick.observed"
       *cdkHeaderCellDef
       appTypeface="caption"
     >
