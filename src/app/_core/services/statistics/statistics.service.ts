@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AdvDdvStatistics } from 'decentr-js';
 
-import { AdvDdvStatistics, RegisteredUsers } from './statistics.definitions';
+import { RegisteredUsers } from './statistics.definitions';
 import { StatisticsApiService } from './statistics-api.service';
 import { map } from 'rxjs/operators';
 import { getRegisteredUsersDayChange } from '@shared/utils/statistics';

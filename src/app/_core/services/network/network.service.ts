@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { defer, Observable, ReplaySubject } from 'rxjs';
 import { delay, mapTo, mergeMap, retryWhen, take } from 'rxjs/operators';
-import { DecentrNodeClient } from 'decentr-js';
+import { DecentrClient } from 'decentr-js';
 
 import { ONE_SECOND } from '@shared/utils/date';
 import { ConfigurationService } from '../configuration';
@@ -12,7 +12,9 @@ import { ConfigurationService } from '../configuration';
 export class NetworkService {
   private availableNodesCache = new Map<string, ReplaySubject<void>>();
 
-  constructor(private configurationService: ConfigurationService) {
+  constructor(
+    private configurationService: ConfigurationService,
+  ) {
   }
 
   public getRestUrl(): Observable<string> {
@@ -28,7 +30,7 @@ export class NetworkService {
 
     this.availableNodesCache.set(node, sbj);
 
-    DecentrNodeClient.create(node)
+    DecentrClient.create(node)
       .then(() => sbj.next())
       .catch((error) => sbj.error(error));
 

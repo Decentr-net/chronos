@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Block, Coin, Pool } from 'decentr-js';
+import { AdvDdvStatistics, Block, Coin, Pool } from 'decentr-js';
 import { Observable } from 'rxjs';
 
 import { ONE_HOUR, ONE_SECOND } from '@shared/utils/date';
 import { BlocksService } from '@core/services/blocks';
 import { CoinRateFor24Hours, CoinRateHistory, CurrencyService } from '@core/services/currency';
 import { StakingService } from '@core/services/staking';
-import { AdvDdvStatistics, RegisteredUsers, StatisticsService } from '@core/services/statistics';
+import { RegisteredUsers, StatisticsService } from '@core/services/statistics';
 import { BankService } from '@core/services/bank';
 import { MintService } from '@core/services/mint';
 

@@ -1,39 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Observable, ReplaySubject } from 'rxjs';
-import { mergeMap, switchMap, take } from 'rxjs/operators';
-import { Block, BlockHeader, DecentrBlocksClient } from 'decentr-js';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+import { Block, BlockHeader } from 'decentr-js';
 
-import { NetworkService } from '../network';
+import { DecentrService } from '../decentr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BlocksApiService {
-  private client: ReplaySubject<DecentrBlocksClient> = new ReplaySubject(1);
 
   constructor(
-    private networkService: NetworkService,
+    private decentrService: DecentrService,
   ) {
-    this.createAPIClient().subscribe((client) => this.client.next(client));
   }
 
   public getBlockByHeight(height: BlockHeader['height']): Observable<Block> {
-    return this.client.pipe(
-      take(1),
-      mergeMap((client) => client.getBlock(height)),
+    return this.decentrService.decentrClient.pipe(
+      switchMap((decentrClient) => decentrClient.blocks.getBlock(height)),
     );
   }
 
   public getLatestBlock(): Observable<Block> {
-    return this.client.pipe(
-      take(1),
-      mergeMap((client) => client.getBlock()),
-    );
-  }
-
-  private createAPIClient(): Observable<DecentrBlocksClient> {
-    return this.networkService.getRestUrl().pipe(
-      switchMap((api) => DecentrBlocksClient.create(api)),
+    return this.decentrService.decentrClient.pipe(
+      switchMap((decentrClient) => decentrClient.blocks.getBlock()),
     );
   }
 }

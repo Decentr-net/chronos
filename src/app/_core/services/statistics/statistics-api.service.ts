@@ -1,30 +1,28 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
+import { AdvDdvStatistics, RegistrationStats } from 'decentr-js';
 
-import { ConfigurationService } from '@core/services/configuration';
-import { AdvDdvStatistics, RegisteredUsersResponse } from './statistics.definitions';
+import { DecentrService } from '../decentr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StatisticsApiService {
   constructor(
-    private configurationService: ConfigurationService,
-    private httpClient: HttpClient,
+    private decentrService: DecentrService,
   ) {
   }
 
   public getAdvDdvStatistics(): Observable<AdvDdvStatistics> {
-    return this.configurationService.getTheseusUrl().pipe(
-      mergeMap((theseusUrl) => this.httpClient.get<AdvDdvStatistics>(`${theseusUrl}/v1/profiles/stats`)),
+    return this.decentrService.theseusClient.pipe(
+      mergeMap((theseusClient) => theseusClient.profile.getAdvDdvStats()),
     );
   }
 
-  public getRegisteredUsersStatistics(): Observable<RegisteredUsersResponse> {
-    return this.configurationService.getVulcanUrl().pipe(
-      mergeMap((vulcanUrl) => this.httpClient.get<RegisteredUsersResponse>(`${vulcanUrl}/v1/register/stats`)),
+  public getRegisteredUsersStatistics(): Observable<RegistrationStats> {
+    return this.decentrService.vulcanClient.pipe(
+      mergeMap((vulcanClient) => vulcanClient.registration.getStats()),
     );
   }
 }

@@ -4,8 +4,9 @@ import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
+import { AdvDdvStatistics } from 'decentr-js';
 
-import { AdvDdvStatistics, RegisteredUsers } from '@core/services/statistics';
+import { RegisteredUsers } from '@core/services/statistics';
 import { AppRoute } from '../../../app-route';
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';

@@ -3,14 +3,6 @@ export interface AdvDdvStatistics {
   ddv: number;
 }
 
-export interface RegisteredUsersResponse {
-  stats: {
-    date: string;
-    value: string;
-  }[];
-  total: number;
-}
-
 export type RegisteredUsersStats = [number, number];
 
 export interface RegisteredUsers {
