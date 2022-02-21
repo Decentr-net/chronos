@@ -23,6 +23,7 @@ export const CHART_TOOLTIP: InjectionToken<Type<ChartTooltip>> = new InjectionTo
 enum ChartColor {
   Blue = 'blue',
   Green = 'green',
+  Purple = 'purple',
 }
 
 type ChartPointColor = {
@@ -35,10 +36,10 @@ type ChartPointColor = {
 
 const COLORS: Record<ChartColor, ChartPointColor> = {
   [ChartColor.Blue]: {
-    color: '#9F65FD',
+    color: '#4F80FF',
     gradient: {
-      start: 'rgba(159, 101, 253, .24)',
-      end: 'rgba(159, 101, 253, 0)',
+      start: 'rgba(79, 128, 255, .24)',
+      end: 'rgba(79, 128, 255, 0)',
     },
   },
   [ChartColor.Green]: {
@@ -46,6 +47,13 @@ const COLORS: Record<ChartColor, ChartPointColor> = {
     gradient: {
       start: 'rgba(3, 177, 94, .24)',
       end: 'rgba(3, 177, 94, 0)',
+    },
+  },
+  [ChartColor.Purple]: {
+    color: '#9F65FD',
+    gradient: {
+      start: 'rgba(159, 101, 253, .24)',
+      end: 'rgba(159, 101, 253, 0)',
     },
   },
 };
@@ -59,7 +67,7 @@ const COLORS: Record<ChartColor, ChartPointColor> = {
 export class ChartComponent implements OnInit {
   @Input() data: ChartPoint[];
 
-  @Input() color: 'blue' | 'green';
+  @Input() color: 'blue' | 'green' | 'purple';
 
   private chartColors: ChartPointColor;
 
@@ -76,6 +84,7 @@ export class ChartComponent implements OnInit {
     switch (this.color) {
       case ChartColor.Blue: this.chartColors = COLORS[ChartColor.Blue]; break;
       case ChartColor.Green: this.chartColors = COLORS[ChartColor.Green]; break;
+      case ChartColor.Purple: this.chartColors = COLORS[ChartColor.Purple]; break;
     }
 
     Highcharts.chart(this.elementRef.nativeElement, this.setChartOptions());

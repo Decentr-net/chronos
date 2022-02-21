@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { mergeMap } from 'rxjs/operators';
-import { AdvDdvStatistics, RegistrationStats } from 'decentr-js';
+import { AdvDdvStatistics, DDVStats, RegistrationStats } from 'decentr-js';
 
 import { DecentrService } from '../decentr';
 
@@ -17,6 +17,12 @@ export class StatisticsApiService {
   public getAdvDdvStatistics(): Observable<AdvDdvStatistics> {
     return this.decentrService.theseusClient.pipe(
       mergeMap((theseusClient) => theseusClient.profile.getAdvDdvStats()),
+    );
+  }
+
+  public getDdvStatistics(): Observable<DDVStats> {
+    return this.decentrService.theseusClient.pipe(
+      mergeMap((theseusClient) => theseusClient.ddv.getStats()),
     );
   }
 

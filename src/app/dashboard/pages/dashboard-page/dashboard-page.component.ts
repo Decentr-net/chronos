@@ -6,7 +6,7 @@ import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { AdvDdvStatistics } from 'decentr-js';
 
-import { RegisteredUsers } from '@core/services/statistics';
+import { DdvChartStats, RegisteredUsers } from '@core/services/statistics';
 import { AppRoute } from '../../../app-route';
 import { Breakpoint } from '@shared/directives/breakpoint';
 import { CoinRateFor24Hours, CoinRateHistory } from '@core/services/currency';
@@ -33,6 +33,7 @@ export class DashboardPageComponent implements OnInit {
   public inflation$: Observable<string>;
   public latestBlock$: Observable<Block>;
   public pool$: Observable<Pool>;
+  public ddvStatistics$: Observable<DdvChartStats>;
   public registeredUsersStats$: Observable<RegisteredUsers>;
   public supply$: Observable<Coin>;
   // TODO: implement with offchain
@@ -80,6 +81,8 @@ export class DashboardPageComponent implements OnInit {
     this.inflation$ = this.dashboardPageService.getInflation();
     this.pool$ = this.dashboardPageService.getPool();
     this.registeredUsersStats$ = this.dashboardPageService.getRegisteredUsersStatistics();
+    this.ddvStatistics$ = this.dashboardPageService.getDdvStatistics();
+
     this.supply$ = this.dashboardPageService.getCoinSupply('udec');
 
     this.latestBlock$ = this.dashboardPageService.getLatestBlock();

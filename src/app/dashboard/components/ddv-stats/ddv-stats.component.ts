@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { CHART_TOOLTIP } from '../chart';
-import { RegisteredUsers } from '@core/services/statistics';
+import { DdvChartStats } from '@core/services/statistics';
 import { StatisticsChartTooltipComponent } from '@shared/components/statistics-chart-tooltip';
 
 @Component({
-  selector: 'app-registered-users-stats',
-  templateUrl: './registered-users-stats.component.html',
-  styleUrls: ['./registered-users-stats.component.scss'],
+  selector: 'app-ddv-stats',
+  templateUrl: './ddv-stats.component.html',
+  styleUrls: ['./ddv-stats.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
@@ -16,6 +16,6 @@ import { StatisticsChartTooltipComponent } from '@shared/components/statistics-c
     },
   ],
 })
-export class RegisteredUsersStatsComponent {
-  @Input() public registeredUsersStats: RegisteredUsers;
+export class DdvStatsComponent {
+  @Input() public ddv: DdvChartStats;
 }

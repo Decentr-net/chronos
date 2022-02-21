@@ -1,6 +1,6 @@
-import { RegisteredUsersStats } from '@core/services/statistics';
+import { StatisticsValue } from '@core/services/statistics';
 
-export const getRegisteredUsersDayChange = (stats: RegisteredUsersStats[]): number => {
+export const getStatisticsDayMargin = (stats: StatisticsValue[]): number => {
   const stat = (stats || [])
     .sort((left, right) => right[0] - left[0]);
 

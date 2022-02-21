@@ -56,7 +56,11 @@ export class DashboardPageService {
   }
 
   public getRegisteredUsersStatistics(): Observable<RegisteredUsers> {
-  return this.statisticsService.getRegisteredUsersStatistics();
+    return this.statisticsService.getRegisteredUsersStatistics();
+  }
+
+  public getDdvStatistics(): Observable<RegisteredUsers> {
+    return this.statisticsService.getDdvStatistics();
   }
 
   // TODO: implement with offchain
