@@ -59,6 +59,22 @@
     [details]="message.value"
   ></app-delegate-details>
 
+  <app-ibc-acknowledgement-details
+    *ngSwitchCase="messageType.IbcMsgAcknowledgement"
+    [details]="message.value"
+  ></app-ibc-acknowledgement-details>
+
+  <app-ibc-message-transfer-details
+    *ngSwitchCase="messageType.IbcMsgTransfer"
+    [details]="message.value"
+  >
+  </app-ibc-message-transfer-details>
+
+  <app-ibc-update-client-details
+    *ngSwitchCase="messageType.IbcMsgUpdateClient"
+    [details]="message.value"
+  ></app-ibc-update-client-details>
+
   <app-deposit-details
     *ngSwitchCase="messageType.GovDeposit"
     [details]="message.value"
