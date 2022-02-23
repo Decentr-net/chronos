@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, map, mergeMap, pluck, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { EMPTY, Observable } from 'rxjs';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { DecodedIndexedTx } from 'decentr-js';
@@ -46,7 +46,8 @@ export class TransactionDetailsPageComponent implements OnInit {
     ]);
 
     this.transactionDetails$ = this.activatedRoute.params.pipe(
-      pluck('transactionHash'),
+      // TODO: temporary hotfix for https://github.com/osmosis-labs/osmosis-frontend/pull/273/files
+      map(({ transactionHash }) => (transactionHash as string).replace(/\$/, '')),
       mergeMap((transactionHash) => this.transactionsService.getTransactionByHash(transactionHash)),
       tap((transactionHash) => this.titleService.setTitle(`Transaction - ${transactionHash.hash}`)),
       catchError(() => {
@@ -63,7 +64,7 @@ export class TransactionDetailsPageComponent implements OnInit {
 
     this.blockTime$ = this.transactionDetails$.pipe(
       switchMap((tx) => this.blocksService.getBlockByHeight(tx.height).pipe(
-          map((block) => block.header.time),
+        map((block) => block.header.time),
       )),
     );
 
