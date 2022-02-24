@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input, TrackByFunction } from '@angular/core';
-import { Pool, Validator } from 'decentr-js';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, TrackByFunction } from '@angular/core';
+import { Sort } from '@angular/material/sort';
 
 import { AppRoute } from '../../../app-route';
+import { ValidatorDefinition } from '@shared/models/validator/validator';
 
 @Component({
   selector: 'app-validators-table',
@@ -10,10 +11,11 @@ import { AppRoute } from '../../../app-route';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidatorsTableComponent {
-  @Input() data: Validator[];
-  @Input() pool: Pool;
+  @Input() data: ValidatorDefinition[];
+
+  @Output() sortClick: EventEmitter<Sort> = new EventEmitter();
 
   public validatorRoute: AppRoute = AppRoute.Validators;
 
-  public trackByAddress: TrackByFunction<Validator> = ({}, { operatorAddress }) => operatorAddress;
+  public trackByAddress: TrackByFunction<ValidatorDefinition> = ({}, { address }) => address;
 }

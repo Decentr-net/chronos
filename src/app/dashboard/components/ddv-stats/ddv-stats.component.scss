@@ -1,0 +1,22 @@
+@import 'variables';
+
+.ddv-stats__stat-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ddv-stats__stat-info-name-margin {
+  font-weight: 500;
+}
+
+.ddv-stats__stat-info-margin-label {
+  margin-left: $grid-step;
+}
+
+.ddv-stats__stat-value {
+  font-weight: 500;
+}
+
+.ddv-stats__chart {
+}

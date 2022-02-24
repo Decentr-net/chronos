@@ -1,21 +1,24 @@
 <div class="dashboard__statistics">
   <app-currency-stats
-    class="dashboard__currency-stats"
+    class="dashboard__chart-stats"
     [coinRate]="coinRate$ | async"
     [coinStats]="coinStats$ | async"
   ></app-currency-stats>
 
   <app-registered-users-stats
-    class="dashboard__currency-stats"
+    class="dashboard__chart-stats"
     [registeredUsersStats]="registeredUsersStats$ | async"
   ></app-registered-users-stats>
+
+  <app-ddv-stats
+    class="dashboard__chart-stats"
+    [ddv]="(ddvStatistics$ | async)"
+  ></app-ddv-stats>
 </div>
 
 <div class="dashboard__cards">
   <div class="dashboard__statistics-cards dashboard__statistics-cards-first">
     <app-dashboard-adv-card [adv]="(advDdvStats$ | async)?.adv"></app-dashboard-adv-card>
-
-    <app-dashboard-ddv-card [ddv]="(advDdvStats$ | async)?.ddv"></app-dashboard-ddv-card>
 
     <app-dashboard-inflation-card [inflation]="inflation$ | async"></app-dashboard-inflation-card>
   </div>

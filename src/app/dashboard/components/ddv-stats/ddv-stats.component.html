@@ -1,0 +1,59 @@
+<div
+  class="ddv-stats__stat-info"
+  appTypeface="paragraph"
+>
+  <div class="ddv-stats__stat-info-name-margin">
+    <span class="ddv-stats__stat-info-name">
+      Digital data value
+    </span>
+
+    <app-margin-label
+      *ngIf="ddv"
+      class="ddv-stats__stat-info-margin-label"
+      [dayMargin]="ddv.dayMargin"
+      [showInPercent]="false"
+    ></app-margin-label>
+
+    <ngx-skeleton-loader
+      *ngIf="!ddv"
+      [theme]="{
+        height: '16px',
+        marginBottom: '0',
+        width: '70px'
+      }"
+    ></ngx-skeleton-loader>
+  </div>
+</div>
+
+<div
+  *ngIf="ddv"
+  class="ddv-stats__stat-value"
+  appTypeface="header-3"
+>
+  {{ ddv.total | numberFormat : '1.0-3' : true }}
+</div>
+
+<ngx-skeleton-loader
+  *ngIf="!ddv"
+  [theme]="{
+    height: '55px',
+    marginBottom: '0',
+    width: '220px'
+  }"
+></ngx-skeleton-loader>
+
+<app-chart
+  *ngIf="ddv"
+  class="ddv-stats__chart"
+  [data]="ddv.stats"
+  color="blue"
+></app-chart>
+
+<ngx-skeleton-loader
+  *ngIf="!ddv"
+  [theme]="{
+    height: '250px',
+    marginBottom: '0',
+    width: '100%'
+  }"
+></ngx-skeleton-loader>

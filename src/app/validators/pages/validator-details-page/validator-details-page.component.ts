@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EMPTY, Observable } from 'rxjs';
-import { catchError, mergeMap, tap } from 'rxjs/operators';
-import { Pool, Validator } from 'decentr-js';
+import { EMPTY, forkJoin, Observable } from 'rxjs';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
+import { buildValidatorDefinition } from '@shared/utils/build-validator';
 import { StakingService } from '@core/services/staking';
 import { AppRoute } from '../../../app-route';
 import { TitleService } from '@core/services/title';
+import { ValidatorDefinition } from '@shared/models/validator/validator';
 
 @Component({
   selector: 'app-validator-details-page',
@@ -16,8 +17,7 @@ import { TitleService } from '@core/services/title';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ValidatorDetailsPageComponent implements OnInit {
-  public pool$: Observable<Pool>;
-  public validatorDetails$: Observable<Validator>;
+  public validatorDetails$: Observable<ValidatorDefinition>;
 
   public isTablet$: Observable<boolean>;
   public readonly breakpoint: typeof Breakpoint = Breakpoint;
@@ -32,11 +32,13 @@ export class ValidatorDetailsPageComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.pool$ = this.stakingService.getPool();
-
     this.validatorDetails$ = this.activatedRoute.params.pipe(
-      mergeMap((params) => this.stakingService.getValidatorByAddress(params.operatorAddress)),
-      tap((validator) => this.titleService.setTitle(`Validator - ${validator.description.moniker}`)),
+      mergeMap((params) => forkJoin([
+        this.stakingService.getValidatorByAddress(params.operatorAddress as string),
+        this.stakingService.getPool(),
+      ])),
+      map(([validator, pool]) => buildValidatorDefinition(validator, pool)),
+      tap((validator) => this.titleService.setTitle(`Validator - ${validator.name}`)),
       catchError(() => {
         this.router.navigate(['/', AppRoute.Empty], {
           skipLocationChange: true,

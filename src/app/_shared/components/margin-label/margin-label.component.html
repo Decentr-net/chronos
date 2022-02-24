@@ -8,6 +8,6 @@
 
 <ng-container *ngIf="!showInPercent">
   <ng-container *ngIf="dayMargin !== 0">
-    {{ dayMargin > 0 ? '+' : ''}}{{ dayMargin < 0 ? '-' : '' }}{{ dayMargin | positiveNumber | numberFormat : digitsInfo || '1.0-2' : true }}
+    {{ dayMargin > 0 ? '+' : ''}}{{ dayMargin < 0 ? '-' : '' }}{{ dayMargin | positiveNumber | numberFormat : digitsInfo || '1.0-5' : true }}
   </ng-container>
 </ng-container>

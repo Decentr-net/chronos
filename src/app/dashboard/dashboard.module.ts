@@ -13,6 +13,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { NumberFormatModule } from '@shared/pipes/number-format';
 import { NumberSuffixModule } from '@shared/pipes/number-suffix';
 import { ProgressBarModule } from '@shared/components/progress-bar';
+import { StatisticsChartTooltipModule } from '@shared/components/statistics-chart-tooltip';
 import { SvgIconsModule } from '@ngneat/svg-icon';
 import { TransactionsTableModule } from '@shared/components/transactions-table';
 import { TypefaceModule } from '@shared/directives/typeface';
@@ -30,6 +31,7 @@ import { TypefaceModule } from '@shared/directives/typeface';
     NumberFormatModule,
     NumberSuffixModule,
     ProgressBarModule,
+    StatisticsChartTooltipModule,
     SvgIconsModule,
     TransactionsTableModule,
     TypefaceModule,

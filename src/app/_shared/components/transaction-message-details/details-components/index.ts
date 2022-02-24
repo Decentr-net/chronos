@@ -7,6 +7,9 @@ import { DepositDetailsComponent } from './deposit-details';
 import { DistributeRewardsDetailsComponent } from './distribute-rewards-details';
 import { FollowDetailsComponent } from './follow-details';
 import { FundCommunityPoolDetailsComponent } from './fund-community-pool-details';
+import { IbcAcknowledgementDetailsComponent } from './ibc-acknowledgement-details';
+import { IbcMessageTransferDetailsComponent } from './ibc-message-transfer-details';
+import { IbcUpdateClientDetailsComponent } from './ibc-update-client-details';
 import { MintDetailsComponent } from './mint-details';
 import { ResetAccountDetailsComponent } from './reset-account-details';
 import { SendDetailsComponent } from './send-details';
@@ -28,6 +31,9 @@ export const TRANSACTION_MESSAGE_DETAILS_COMPONENTS = [
   DistributeRewardsDetailsComponent,
   FollowDetailsComponent,
   FundCommunityPoolDetailsComponent,
+  IbcAcknowledgementDetailsComponent,
+  IbcMessageTransferDetailsComponent,
+  IbcUpdateClientDetailsComponent,
   MintDetailsComponent,
   ResetAccountDetailsComponent,
   SendDetailsComponent,

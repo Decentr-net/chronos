@@ -1,32 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Coin, DecentrBankClient } from 'decentr-js';
-import { Observable, ReplaySubject } from 'rxjs';
-import { mergeMap, switchMap, take } from 'rxjs/operators';
+import { Coin } from 'decentr-js';
+import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
-import { NetworkService } from '../network';
+import { DecentrService } from '../decentr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class BankApiService {
-  private client: ReplaySubject<DecentrBankClient> = new ReplaySubject(1);
-
   constructor(
-    private networkService: NetworkService,
+    private decentrService: DecentrService,
   ) {
-    this.createAPIClient().subscribe((client) => this.client.next(client));
   }
 
   public getCoinSupply(coinName: string): Observable<Coin> {
-    return this.client.pipe(
-      take(1),
-      mergeMap((client) => client.getDenomSupply(coinName)),
-    );
-  }
-
-  private createAPIClient(): Observable<DecentrBankClient> {
-    return this.networkService.getRestUrl().pipe(
-      switchMap((api) => DecentrBankClient.create(api)),
+    return this.decentrService.decentrClient.pipe(
+      switchMap((decentrClient) => decentrClient.bank.getDenomSupply(coinName)),
     );
   }
 }

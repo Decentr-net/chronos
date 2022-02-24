@@ -15,14 +15,14 @@
     ngProjectAs="[card-body]"
     *ngIf="validators$ | async as validators; else tablesLoading;"
     [data]="validators"
-    [pool]="pool$ | async"
+    (sortClick)="sort($event)"
   ></app-validators-table>
 </app-info-card>
 
 <ng-template #tablesLoading>
   <ngx-skeleton-loader
     class="validators-page__loading"
-    count="10"
+    count="9"
     [theme]="{
       height: '40px',
       width: '100%'

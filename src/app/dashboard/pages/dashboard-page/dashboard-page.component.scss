@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.dashboard__currency-stats {
+.dashboard__chart-stats {
   border: 2px solid $color-outlines;
   border-radius: $border-radius;
   padding: $grid-step * 2;
@@ -19,7 +19,7 @@
 .dashboard__statistics {
   display: grid;
   gap: $grid-step * 3;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 4fr);
+  grid-template-columns: repeat(3, minmax(0, 4fr));
   min-height: 360px;
 }
 
@@ -37,7 +37,7 @@
 }
 
 .dashboard__statistics-cards-first {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .dashboard__statistics-cards-second {

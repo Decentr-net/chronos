@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { CHART_TOOLTIP } from '../chart';
 import { RegisteredUsers } from '@core/services/statistics';
-import { RegisteredUsersChartTooltipComponent } from './registered-users-chart-tooltip';
+import { StatisticsChartTooltipComponent } from '@shared/components/statistics-chart-tooltip';
 
 @Component({
   selector: 'app-registered-users-stats',
@@ -12,7 +12,7 @@ import { RegisteredUsersChartTooltipComponent } from './registered-users-chart-t
   providers: [
     {
       provide: CHART_TOOLTIP,
-      useValue: RegisteredUsersChartTooltipComponent,
+      useValue: StatisticsChartTooltipComponent,
     },
   ],
 })
