@@ -9,6 +9,7 @@ import { TxMessageValue, TxMessageTypeUrl, correctDecodedFloatNumber } from 'dec
 })
 export class DistributeRewardsDetailsComponent implements OnInit {
   @Input() public details: TxMessageValue<TxMessageTypeUrl.OperationsDistributeRewards>;
+
   public amount: number;
 
   public ngOnInit(): void {

@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 
 import { Environment } from '@environments/environments.definitions';
 
+type WindowWithBeacon = Window & typeof global & {
+  Beacon: (...args) => void;
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,12 +14,12 @@ export class HelpService {
   }
 
   private get beacon(): (...args) => void {
-    return window['Beacon'];
+    return (window as WindowWithBeacon).Beacon;
   }
 
   public initialize(): void {
-     const script = document.createElement('script');
-    script.textContent = `!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});`;
+    const script = document.createElement('script');
+    script.textContent = '!function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});';
 
     const container = document.head || document.documentElement;
     container.insertBefore(script, container.children[0]);

@@ -8,5 +8,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class HeaderNavigationLinkComponent {
   @Input() public link: string;
+
   @Input() public title: string;
 }

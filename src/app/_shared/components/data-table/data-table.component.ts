@@ -20,22 +20,23 @@ import { DataTableColumnDefDirective } from './data-table-column-def.directive';
 })
 export class DataTableComponent<T> {
   @Input() public data: T[];
+
   @Input() public trackBy: TrackByFunction<T>;
 
   @Output() sortClick: EventEmitter<Sort> = new EventEmitter();
 
   @ContentChildren(DataTableColumnDefDirective)
-  public dataTableColumnDefs: QueryList<DataTableColumnDefDirective>;
+  public dataTableColumnDefs: QueryList<DataTableColumnDefDirective<unknown>>;
 
-  public get columns(): DataTableColumnDefDirective[] {
+  public get columns(): DataTableColumnDefDirective<unknown>[] {
     return this.dataTableColumnDefs.toArray();
   }
 
-  public get columnNames(): DataTableColumnDefDirective['name'][] {
+  public get columnNames(): DataTableColumnDefDirective<unknown>['name'][] {
     return this.columns.map(({ name }) => name);
   }
 
-  public trackByColumnName: TrackByFunction<DataTableColumnDefDirective> = ({}, { name }) => name;
+  public trackByColumnName: TrackByFunction<DataTableColumnDefDirective<unknown>> = ({}, { name }) => name;
 
   public sortChange(sort: Sort): void {
     this.sortClick.emit(sort);

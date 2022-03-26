@@ -17,13 +17,13 @@ export class TransactionsApiService {
 
   public getTransactionByHash(hash: IndexedTx['hash']): Observable<DecodedIndexedTx | undefined> {
     return this.decentrService.decentrClient.pipe(
-        mergeMap((decentrClient) => decentrClient.tx.getByHash(hash)),
+      mergeMap((decentrClient) => decentrClient.tx.getByHash(hash)),
     );
   }
 
   public searchTransactions(searchParams: SearchTxQuery, filter?: SearchTxFilter): Observable<DecodedIndexedTx[]> {
     return this.decentrService.decentrClient.pipe(
-        mergeMap((decentrClient) => decentrClient.tx.search(searchParams, filter)),
+      mergeMap((decentrClient) => decentrClient.tx.search(searchParams, filter)),
     );
   }
 }

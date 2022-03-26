@@ -20,6 +20,7 @@ export class ValidatorDetailsPageComponent implements OnInit {
   public validatorDetails$: Observable<ValidatorDefinition>;
 
   public isTablet$: Observable<boolean>;
+
   public readonly breakpoint: typeof Breakpoint = Breakpoint;
 
   constructor(

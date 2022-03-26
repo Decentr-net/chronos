@@ -12,6 +12,7 @@ import { Breakpoint } from '@shared/directives/breakpoint';
 })
 export class BlocksTableComponent {
   @Input() data: Block[];
+
   @Input() hashSize: Record<Breakpoint.Desktop | Breakpoint.Mobile | Breakpoint.Tablet, number> = {
     [Breakpoint.Desktop]: 70,
     [Breakpoint.Tablet]: 50,
@@ -19,7 +20,9 @@ export class BlocksTableComponent {
   };
 
   public blocksRoute: AppRoute = AppRoute.Blocks;
+
   public breakpoint: typeof Breakpoint = Breakpoint;
+
   public columns: string[] = ['Height', 'Hash', 'Time'];
 
   public trackByHash: TrackByFunction<Block> = ({}, { id }) => id;

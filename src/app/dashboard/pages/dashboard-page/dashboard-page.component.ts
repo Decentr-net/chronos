@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { Block, Coin, Pool } from 'decentr-js';
 import { Observable } from 'rxjs';
 import { share } from 'rxjs/operators';
 import { SvgIconRegistry } from '@ngneat/svg-icon';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { AdvDdvStatistics } from 'decentr-js';
+import { AdvDdvStatistics, Block, Coin, Pool } from 'decentr-js';
 
 import { DdvChartStats, RegisteredUsers } from '@core/services/statistics';
 import { AppRoute } from '../../../app-route';
@@ -27,19 +26,29 @@ import { TitleService } from '@core/services/title';
 })
 export class DashboardPageComponent implements OnInit {
   public advDdvStats$: Observable<AdvDdvStatistics>;
+
   public blocks$: Observable<Block[]>;
+
   public coinRate$: Observable<CoinRateFor24Hours>;
+
   public coinStats$: Observable<CoinRateHistory>;
+
   public inflation$: Observable<string>;
+
   public latestBlock$: Observable<Block>;
+
   public pool$: Observable<Pool>;
+
   public ddvStatistics$: Observable<DdvChartStats>;
+
   public registeredUsersStats$: Observable<RegisteredUsers>;
+
   public supply$: Observable<Coin>;
   // TODO: implement with offchain
   // public transactions$: Observable<DecodedIndexedTx[]>;
 
   public readonly appRoute: typeof AppRoute = AppRoute;
+
   public breakpoint: typeof Breakpoint = Breakpoint;
 
   public blocksHashSize: Record<Breakpoint.Desktop | Breakpoint.Mobile | Breakpoint.Tablet, number> = {

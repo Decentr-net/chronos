@@ -1,6 +1,6 @@
 <app-data-table [data]="data" [trackBy]="trackByHash">
   <a
-    *dataTableColumnDef="let item; name: 'Height'"
+    *appDataTableColumnDef="let item; name: 'Height'"
     [routerLink]="['/', blocksRoute, item.header.height]"
   >
     {{ item.header.height | numberFormat : null : true }}
@@ -8,7 +8,7 @@
 
   <span
     [attr.title]="item.id"
-    *dataTableColumnDef="let item; name: 'Hash'"
+    *appDataTableColumnDef="let item; name: 'Hash'"
   >
     <ng-container *appBreakpoint="breakpoint.Desktop; revert true; else tabletHash">
       {{ item.id | truncate : hashSize[breakpoint.Desktop] }}
@@ -25,7 +25,7 @@
     </ng-template>
   </span>
 
-  <ng-container *dataTableColumnDef="let item; name: 'Time'">
+  <ng-container *appDataTableColumnDef="let item; name: 'Time'">
     {{ item.header.time | dateAgo }}
   </ng-container>
 </app-data-table>

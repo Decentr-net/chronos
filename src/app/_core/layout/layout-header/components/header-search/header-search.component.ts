@@ -33,9 +33,9 @@ import { AppRoute } from '../../../../../app-route';
 export class HeaderSearchComponent implements OnInit {
   @Input() public autofocus = false;
 
-  @ViewChild('blockResult') public blockResultTemplate: TemplateRef<{}>;
+  @ViewChild('blockResult') public blockResultTemplate: TemplateRef<{ $implicit: BlockSearchItem }>;
 
-  @ViewChild('txResult') public txResultTemplate: TemplateRef<{}>;
+  @ViewChild('txResult') public txResultTemplate: TemplateRef<{ $implicit: TransactionSearchItem }>;
 
   @ViewChild('inputElement', { static: true }) public inputElement: ElementRef<HTMLInputElement>;
 
@@ -45,7 +45,7 @@ export class HeaderSearchComponent implements OnInit {
 
   public icon: string;
 
-  public resultTemplate: TemplateRef<{}>;
+  public resultTemplate: TemplateRef<{ $implicit: SearchResult }>;
 
   public link: string[];
 

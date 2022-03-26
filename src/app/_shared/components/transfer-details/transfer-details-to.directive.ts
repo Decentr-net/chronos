@@ -6,6 +6,6 @@ import { Directive, Input, TemplateRef } from '@angular/core';
 export class TransferDetailsToDirective {
   @Input('appTransferDetailsTo') public title: string;
 
-  constructor(public templateRef: TemplateRef<{ $implicit: any }>) {
+  constructor(public templateRef: TemplateRef<void>) {
   }
 }

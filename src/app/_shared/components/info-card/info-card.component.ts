@@ -31,9 +31,11 @@ export class InfoCardComponent implements OnInit {
       this.breakpointObserver.observe(this.removeBorderBreakpoint).pipe(
         untilDestroyed(this),
       ).subscribe((matches) => {
-        matches
-          ? this.renderer.removeClass(this.elementRef.nativeElement, borderModClass)
-          : this.renderer.addClass(this.elementRef.nativeElement, borderModClass);
+        if (matches) {
+          this.renderer.removeClass(this.elementRef.nativeElement, borderModClass);
+        } else {
+          this.renderer.addClass(this.elementRef.nativeElement, borderModClass);
+        }
       });
     }
   }

@@ -18,15 +18,18 @@ import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 })
 export class DropdownDirective implements OnInit, OnDestroy {
   @Input('appDropdown') public anchor: HTMLElement;
+
   @Input('appDropdownBackdrop') public backdrop = false;
+
   @Input('appDropdownBackdropClass') public backdropClass = '';
+
   @Output() public appDropdownBackdropClick: EventEmitter<void> = new EventEmitter();
 
   private overlayRef: OverlayRef;
 
   constructor(
     private overlay: Overlay,
-    private templateRef: TemplateRef<{}>,
+    private templateRef: TemplateRef<void>,
     private viewContainerRef: ViewContainerRef,
   ) {
   }

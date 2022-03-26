@@ -1,13 +1,13 @@
 import { Directive, Input, TemplateRef } from '@angular/core';
 
 @Directive({
-  selector: '[dataTableColumnDef]',
+  selector: '[appDataTableColumnDef]',
 })
-export class DataTableColumnDefDirective {
-  @Input('dataTableColumnDefId') public id: string;
+export class DataTableColumnDefDirective<T> {
+  @Input('appDataTableColumnDefId') public id: string;
 
-  @Input('dataTableColumnDefName') public name: string;
+  @Input('appDataTableColumnDefName') public name: string;
 
-  constructor(public templateRef: TemplateRef<{ $implicit: any }>) {
+  constructor(public templateRef: TemplateRef<T>) {
   }
 }

@@ -13,15 +13,15 @@ export class BreakpointDirective implements OnInit {
 
   @Input('appBreakpointRevert') public revert = false;
 
-  @Input('appBreakpointElse') public set else(value: TemplateRef<{}>) {
+  @Input('appBreakpointElse') public set else(value: TemplateRef<void>) {
     this.elseTemplateRef = value;
   }
 
-  private elseTemplateRef: TemplateRef<{}>;
+  private elseTemplateRef: TemplateRef<void>;
 
   constructor(
     private breakpointService: BreakpointService,
-    private templateRef: TemplateRef<{}>,
+    private templateRef: TemplateRef<void>,
     private viewContainerRef: ViewContainerRef,
   ) {
   }
@@ -46,7 +46,7 @@ export class BreakpointDirective implements OnInit {
     });
   }
 
-  private renderTemplate(templateRef: TemplateRef<{}>): void {
+  private renderTemplate(templateRef: TemplateRef<void>): void {
     this.viewContainerRef.createEmbeddedView(templateRef).detectChanges();
   }
 }

@@ -1,6 +1,6 @@
 <app-data-table [data]="data" [trackBy]="trackByHash">
   <a
-    *dataTableColumnDef="let item; name: 'Hash'"
+    *appDataTableColumnDef="let item; name: 'Hash'"
     [routerLink]="['/', appRoute.Transactions, item.hash]"
     class="transactions-table__tx"
   >
@@ -31,7 +31,7 @@
   </a>
 
   <ng-container
-    *dataTableColumnDef="let item; name: 'Type'"
+    *appDataTableColumnDef="let item; name: 'Type'"
   >
     <app-transaction-message-type-icon
       *appBreakpoint="shrinkBreakpoint"
@@ -54,13 +54,13 @@
   </ng-container>
 
   <a
-    *dataTableColumnDef="let item; name: 'Height'"
+    *appDataTableColumnDef="let item; name: 'Height'"
     [routerLink]="['/', appRoute.Blocks, item.height]"
   >
     {{ item.height | numberFormat : null : true }}
   </a>
 
-  <ng-container *dataTableColumnDef="let item; name: 'Time'">
+  <ng-container *appDataTableColumnDef="let item; name: 'Time'">
     {{ item.timestamp | dateAgo }}
   </ng-container>
 </app-data-table>

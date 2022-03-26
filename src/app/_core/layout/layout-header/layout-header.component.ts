@@ -18,6 +18,7 @@ import { svgSearchIcon } from '@shared/svg-icons/search';
 })
 export class LayoutHeaderComponent implements OnInit {
   public isMobileMenuOpen = false;
+
   public isMobileSearchOpened = false;
 
   public readonly breakPoint = Breakpoint.DesktopLarge;

@@ -4,7 +4,7 @@
   (sortClick)="sortClick.emit($event)"
 >
   <div
-    *dataTableColumnDef="let item; name: 'Validator'; id: 'name'"
+    *appDataTableColumnDef="let item; name: 'Validator'; id: 'name'"
     class="validators-table__validator"
   >
     <a [routerLink]="['/', validatorRoute, item.address]">
@@ -19,7 +19,7 @@
     </app-validator-jailed>
   </div>
 
-  <ng-container *dataTableColumnDef="let item; name: 'Voting power'; id: 'tokens'">
+  <ng-container *appDataTableColumnDef="let item; name: 'Voting power'; id: 'tokens'">
     {{ item.tokens / 1000000 | numberFormat : '1.0-0' : true }}
 
     <div
@@ -31,12 +31,12 @@
   </ng-container>
 
   <app-validator-status
-    *dataTableColumnDef="let item; name: 'Status'; id: 'status'"
+    *appDataTableColumnDef="let item; name: 'Status'; id: 'status'"
     [status]="item.status"
     class="validators-table__validator-status"
   ></app-validator-status>
 
-  <ng-container *dataTableColumnDef="let item; name: 'Commission'; id: 'commission'">
+  <ng-container *appDataTableColumnDef="let item; name: 'Commission'; id: 'commission'">
     {{ item.commission | percent }}
   </ng-container>
 </app-data-table>

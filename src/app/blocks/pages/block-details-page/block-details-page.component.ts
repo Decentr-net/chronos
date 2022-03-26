@@ -27,15 +27,19 @@ import { TxTableItem } from '@shared/components/transactions-table/transactions-
 })
 export class BlockDetailsPageComponent implements OnInit {
   public blockDetails$: Observable<Block>;
+
   public blockTxs$: Observable<TxTableItem[]>;
 
   public nextBlockHeight: number;
+
   public previousBlockHeight: number;
 
   public isTablet$: Observable<boolean>;
+
   public breakpoint: typeof Breakpoint = Breakpoint;
 
   public pageLink$: Observable<string>;
+
   public pageLinkIcon: string;
 
   constructor(

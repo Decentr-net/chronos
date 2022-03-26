@@ -21,11 +21,13 @@ import { BlocksService } from '@core/services/blocks';
 })
 export class TransactionDetailsPageComponent implements OnInit {
   public transactionDetails$: Observable<DecodedIndexedTx>;
+
   public blockTime$: Observable<string>;
 
   public readonly blocksRoute = AppRoute.Blocks;
 
   public isTablet$: Observable<boolean>;
+
   public breakpoint: typeof Breakpoint = Breakpoint;
 
   constructor(

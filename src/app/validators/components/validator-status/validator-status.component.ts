@@ -16,6 +16,7 @@ import { VALIDATOR_STATUS_MAP } from './validator-status.definitions';
 })
 export class ValidatorStatusComponent implements OnInit {
   @Input() status: Validator['status'];
+
   @Input() shrinkBreakpoint: Breakpoint | undefined = Breakpoint.Mobile;
 
   @Input()
@@ -38,6 +39,7 @@ export class ValidatorStatusComponent implements OnInit {
   }
 
   public breakpoint: typeof Breakpoint = Breakpoint;
+
   public validatorStatusName: string;
 
   constructor(

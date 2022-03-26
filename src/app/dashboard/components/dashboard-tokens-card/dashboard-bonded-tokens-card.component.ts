@@ -9,6 +9,7 @@ import { Coin, Pool } from 'decentr-js';
 })
 export class DashboardBondedTokensCardComponent {
   @Input() public pool: Pool;
+
   @Input() public supply: Coin;
 
   get getPoolTokenPercent(): number {

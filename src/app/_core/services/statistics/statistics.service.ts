@@ -23,13 +23,12 @@ export class StatisticsService {
   public getDdvStatistics(): Observable<DdvChartStats> {
     return this.statisticsApiService.getDdvStatistics().pipe(
       map((ddvStatistics) => ({
-          dayMargin: getStatisticsDayMargin(
-            ddvStatistics.stats.map((stat) => [new Date(stat.date).valueOf(), +stat.value]),
-          ),
-          stats: ddvStatistics.stats.map((stat) => [new Date(stat.date).valueOf(), +stat.value]),
-          total: ddvStatistics.total,
-        }),
-      ),
+        dayMargin: getStatisticsDayMargin(
+          ddvStatistics.stats.map((stat) => [new Date(stat.date).valueOf(), +stat.value]),
+        ),
+        stats: ddvStatistics.stats.map((stat) => [new Date(stat.date).valueOf(), +stat.value]),
+        total: ddvStatistics.total,
+      })),
     );
   }
 
