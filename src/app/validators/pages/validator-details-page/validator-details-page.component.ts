@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { EMPTY, forkJoin, Observable } from 'rxjs';
-import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { EMPTY, forkJoin, Observable, switchMap } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { Breakpoint, BreakpointService } from '@shared/directives/breakpoint';
 import { buildValidatorDefinition } from '@shared/utils/build-validator';
@@ -9,6 +9,7 @@ import { StakingService } from '@core/services/staking';
 import { AppRoute } from '../../../app-route';
 import { TitleService } from '@core/services/title';
 import { ValidatorDefinition } from '@shared/models/validator/validator';
+import { ValidatorsRoute } from '../../validators-route';
 
 @Component({
   selector: 'app-validator-details-page',
@@ -34,8 +35,8 @@ export class ValidatorDetailsPageComponent implements OnInit {
 
   public ngOnInit(): void {
     this.validatorDetails$ = this.activatedRoute.params.pipe(
-      mergeMap((params) => forkJoin([
-        this.stakingService.getValidatorByAddress(params.operatorAddress as string),
+      switchMap((params) => forkJoin([
+        this.stakingService.getValidatorByAddress(params[ValidatorsRoute.ValidatorAddressParam]),
         this.stakingService.getPool(),
       ])),
       map(([validator, pool]) => buildValidatorDefinition(validator, pool)),

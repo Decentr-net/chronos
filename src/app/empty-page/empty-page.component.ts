@@ -16,7 +16,7 @@ export class EmptyPageComponent implements OnInit {
     router: Router,
     private titleService: TitleService,
   ) {
-    this.title = router.getCurrentNavigation()?.extras.state.title;
+    this.title = router.getCurrentNavigation()?.extras.state['title'];
   }
 
   public ngOnInit(): void {

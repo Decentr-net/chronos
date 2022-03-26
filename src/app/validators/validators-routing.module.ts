@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { ValidatorDetailsPageComponent, ValidatorsPageComponent } from './pages';
+import { ValidatorsRoute } from './validators-route';
 
 const routes: Routes = [
   {
@@ -9,7 +10,7 @@ const routes: Routes = [
     component: ValidatorsPageComponent,
   },
   {
-    path: ':operatorAddress',
+    path: `:${ValidatorsRoute.ValidatorAddressParam}`,
     component: ValidatorDetailsPageComponent,
   },
 ];

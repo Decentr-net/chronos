@@ -118,7 +118,7 @@ export class NetworkSelectorService extends BaseNetworkSelectorService {
 
   public getTranslations(): Observable<NetworkSelectorTranslations> {
     return of({
-      defaultNetwork: `The default network for Decs transactions is ${NETWORK_TRANSLATIONS.mainnet}.`,
+      defaultNetwork: `The default network for Decs transactions is ${NETWORK_TRANSLATIONS['mainnet']}.`,
       title: 'Networks',
     });
   }
