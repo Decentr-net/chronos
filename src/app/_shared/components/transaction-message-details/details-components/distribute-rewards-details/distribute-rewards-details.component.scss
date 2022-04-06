@@ -7,3 +7,9 @@
 .distribute-rewards-details__amount {
   margin-bottom: $grid-step * 2;
 }
+
+.distribute-rewards-details__divider {
+  background-color: $color-outlines;
+  height: 2px;
+  margin: $grid-step * 2 0;
+}

@@ -1,6 +1,12 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { TxMessageValue, TxMessageTypeUrl, correctDecodedFloatNumber } from 'decentr-js';
 
+interface DistributedReward {
+  amount: number;
+  owner: string;
+  receiver: string;
+}
+
 @Component({
   selector: 'app-distribute-rewards-details',
   templateUrl: './distribute-rewards-details.component.html',
@@ -10,9 +16,13 @@ import { TxMessageValue, TxMessageTypeUrl, correctDecodedFloatNumber } from 'dec
 export class DistributeRewardsDetailsComponent implements OnInit {
   @Input() public details: TxMessageValue<TxMessageTypeUrl.OperationsDistributeRewards>;
 
-  public amount: number;
+  public rewards: DistributedReward[];
 
   public ngOnInit(): void {
-    this.amount = +correctDecodedFloatNumber(this.details.rewards[0].reward.dec) * 1000000;
+    this.rewards = this.details.rewards.map((reward) => ({
+      amount: +correctDecodedFloatNumber(reward.reward.dec) * 1000000,
+      owner: this.details.owner,
+      receiver: reward.receiver,
+    }));
   }
 }

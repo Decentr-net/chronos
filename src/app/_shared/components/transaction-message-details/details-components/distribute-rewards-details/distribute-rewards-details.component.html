@@ -1,16 +1,23 @@
-<div
-  class="distribute-rewards-details__amount"
-  appTypeface="header-3"
->
-  {{ +amount | numberFormat : null : true }} uPDV
-</div>
+<ng-container *ngFor="let reward of rewards; let last = last">
+  <div
+    class="distribute-rewards-details__amount"
+    appTypeface="header-3"
+  >
+    {{ reward.amount | numberFormat : null : true }} uPDV
+  </div>
 
-<app-transfer-details>
-  <ng-template [appTransferDetailsFrom]="'Owner'">
-    {{ details.owner }}
-  </ng-template>
+  <app-transfer-details>
+    <ng-template [appTransferDetailsFrom]="'Owner'">
+      {{ reward.owner }}
+    </ng-template>
 
-  <ng-template [appTransferDetailsTo]="'Receiver'">
-    {{ details.rewards[0].receiver }}
-  </ng-template>
-</app-transfer-details>
+    <ng-template [appTransferDetailsTo]="'Receiver'">
+      {{ reward.receiver }}
+    </ng-template>
+  </app-transfer-details>
+
+  <div
+    class="distribute-rewards-details__divider"
+    *ngIf="!last"
+  ></div>
+</ng-container>
